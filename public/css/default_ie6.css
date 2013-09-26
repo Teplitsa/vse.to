@@ -1,0 +1,5 @@
+
+.popup_blocker {
+    background: #FFFFFF;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=80);
+}

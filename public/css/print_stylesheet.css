@@ -1,0 +1,9 @@
+body {
+    background-color: #FFFFFF;
+}
+#contentMainWrapper {
+    background-color: #FFFFFF;
+}
+.messageStackWarning, #navMainWrapper, #navMainSearch, #navCatTabsWrapper, #navEZPagesTop, #navColumnOne.columnLeft, #navColumnTwo.columnRight, .navMainSearch, #navSupp, .banners, #navBreadCrumb, .buttonRow {
+    display: none;
+}

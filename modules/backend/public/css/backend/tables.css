@@ -1,0 +1,220 @@
+/******************************************************************************
+ * Tables
+ ******************************************************************************/
+table {
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+td.c {
+    text-align: center !important;
+}
+
+td.r {
+    text-align: right !important;
+}
+
+td.l {
+    text-align: left !important;
+}
+
+td.nowrap {
+    white-space: nowrap !important;
+}
+
+/* ----- controls ----- */
+td.ctl {
+    padding-top: 0px; padding-bottom: 0px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+td.ctl img, td.ctl input {
+    vertical-align: middle;
+}
+
+td.ctl input {
+    padding: 0px; margin: 0px;
+}
+
+td.ctl a {
+    margin: 0px 1px 0px 1px;
+}
+
+/* ----- multi-action buttons ----- */
+.table_multi_action {
+    padding-left: 10px;
+}
+
+/* ----- sorting ----- */
+th a.sort_desc {
+    background: url(tables/sort_desc.gif) right 5px no-repeat;
+    padding-right: 12px;
+}
+
+th a.sort_asc {
+    background: url(tables/sort_asc.gif) right 4px no-repeat;
+    padding-right: 12px;
+}
+
+/******************************************************************************
+ * Table
+ ******************************************************************************/
+.table {
+    border: 1px solid #78B7E0;
+}
+
+/* ----- header ----- */
+.table th {
+    padding: 5px 10px 6px 10px;
+    
+    background: #C9DFF1;
+    border: 1px solid #78B7E0;
+    
+    text-align: left;
+    font-size: 11px;
+}
+
+.table th, .table th a {
+    color: #256CA0;
+    font-size: 11px; font-weight: bold;
+    text-decoration: none;
+}
+
+.table th a:hover {
+    color: #256CA0;
+    text-decoration: underline;
+}
+
+/* ----- rows ----- */
+.table tr.even {
+    background: #F4F9FD;
+}
+
+.table tr:hover {
+    background-color: #E3FAFB !important;
+}
+
+/* ----- footer ----- */
+.table tr.table_footer td {
+    background: #C9DFF1;
+    border-top: none;
+    border-bottom: none;
+    font-size: 11px;
+}
+
+/* ----- cells ----- */
+.table td {
+    padding: 5px 10px 5px 10px;
+    text-align: left;
+    border: 1px solid #78B7E0;
+
+    font-size: 12px;
+}
+
+/******************************************************************************
+ * light_table
+ ******************************************************************************/
+/* ----- header ----- */
+.light_table th {
+    padding: 5px 10px 6px 10px;
+    text-align: left;
+    font-size: 11px;
+}
+
+.light_table th, .light_table th a {
+    color: #256CA0;
+    font-size: 11px; font-weight: bold;
+    text-decoration: none;
+}
+
+.light_table th a:hover {
+    color: #256CA0;
+    text-decoration: underline;
+}
+
+.light_table tr.table_header:hover {
+    background-color: transparent !important;
+}
+
+
+/* ----- rows ----- */
+.light_table tr:hover {
+    background-color: #E3FAFB !important;
+}
+
+.light_table tr.even {
+    background: #F4F9FD;
+}
+
+/* ----- footer ----- */
+.light_table tr.table_footer td {
+    border: none;
+    font-size: 11px;
+}
+
+.light_table tr.table_footer:hover {
+    background-color: transparent !important;
+}
+
+/* ----- cells ----- */
+.light_table td {
+    padding: 5px 10px 5px 10px;
+    text-align: left;
+    border: 1px solid #A7CFEB;
+
+    font-size: 12px;
+}
+
+/******************************************************************************
+ * very_light_table
+ ******************************************************************************/
+/* ----- header ----- */
+.very_light_table th {
+    padding: 5px 10px 6px 10px;
+    border-bottom: 1px solid #A7CFEB;
+    text-align: left;
+}
+
+.very_light_table th, .very_light_table th a {
+    color: #256CA0;
+    font-size: 11px; font-weight: bold;
+    text-decoration: none;
+}
+
+.very_light_table th a:hover {
+    color: #256CA0;
+    text-decoration: underline;
+}
+
+.very_light_table tr.table_header:hover {
+    background-color: transparent !important;
+}
+
+
+/* ----- rows ----- */
+.very_light_table tr:hover {
+    background-color: #E3FAFB !important;
+}
+
+.very_light_table tr.even {
+    background: #F4F9FD;
+}
+
+/* ----- footer ----- */
+.very_light_table tr.table_footer td {
+    border: none;
+    font-size: 11px;
+}
+
+.very_light_table tr.table_footer:hover {
+    background-color: transparent !important;
+}
+
+/* ----- cells ----- */
+.very_light_table td {
+    padding: 5px 10px 5px 10px;
+    text-align: left;
+
+    font-size: 12px;
+}

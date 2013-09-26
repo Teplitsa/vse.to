@@ -1,0 +1,16 @@
+/******************************************************************************
+ * Forms
+ ******************************************************************************/
+
+.history .entry {
+    margin: 0px 0px 20px 0px;
+}
+
+.history .entry .date {
+    color: #A0A0A0;
+    font-size: 12px;
+}
+
+.history .entry a {
+    text-decoration: underline;
+}

@@ -1,0 +1,39 @@
+/******************************************************************************
+ * Nodes
+ ******************************************************************************/
+
+.nodes .node_caption {
+    padding: 5px 0px 5px 20px;
+    background: url('icons/16x16/node.gif') 0px 4px no-repeat;
+}
+
+.nodes .selected {
+    text-decoration: underline;
+}
+
+.nodes .node_inactive .node_caption {
+    color: #777777;
+}
+
+.nodes .inactive {
+    font-style: italic;
+}
+
+/******************************************************************************
+ * Nodes_menu
+ ******************************************************************************/
+.nodes_menu .node {
+    padding: 0px 0px 10px 0px;
+}
+
+.nodes_menu .selected .node_caption {
+    font-weight: bold;
+}
+
+.nodes_menu .node_inactive .node_caption {
+    color: #777777;
+}
+
+.nodes_menu .inactive {
+    font-style: italic;
+}

@@ -1,0 +1,592 @@
+/******************************************************************************/
+/* Общие стили
+/******************************************************************************/
+html, body, td, th, input, select, button, textarea {
+    font: 11px Verdana, Tahoma, Geneva, sans-serif;
+    color: #000000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    padding: 0px 0px 0px 0px;
+    margin: 0.2em 0em 0.2em 0em;
+    font-family: Arial;
+    font-weight: bold;
+    color: #007ACC;
+}
+
+h1 {
+    font-size: 18px;
+}
+
+h2 {
+    font-size: 16px;
+}
+
+h3 {
+    font-size: 14px;
+}
+
+img {
+    border: none;
+}
+
+a {
+    color: #0000FF;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #F00000;
+}
+
+/*---------------------- Кнопки (button) -------------------------------------*/
+.buttons {
+    padding: 3px 0px 3px 0px;
+    margin: 0px 0px 7px 0px;
+}
+
+.button {
+    padding: 3px 7px 4px 7px;
+
+    background-color: #007ACC;
+    background-repeat: no-repeat;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #6FB4E2 #003960 #00385E #69B1E1;
+
+    color: #FFFFFF;
+
+    cursor: pointer;
+}
+
+.button:hover, button:hover .button {
+    background-color: #108ADC;
+
+    color: #FFFFFF;
+}
+
+.button.ok {
+    background-color: #009900;
+    border-color: #6FC56F #004800 #004700 #69C369;
+}
+.button.ok:hover, button:hover .button.ok {
+    background-color: #10A910;
+}
+
+.button.cancel {
+    background-color: #CC3333;
+    border-color: #E28C8C #601818 #5E1818 #E18787;
+}
+.button.cancel:hover {
+    background-color: #DC4343;
+}
+
+/* ----- Кнопка "Добавить" ----- */
+.button.add {
+    padding-left: 18px;
+
+    background-image: url('images/buttons/add.gif');
+    background-position: 3px center;
+}
+/*---------------------- End of button ---------------------------------------*/
+
+
+/*---------------------- Формы (form) ----------------------------------------*/
+form {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* ----- different widths ----- */
+form.w300px { width: 300px; }
+form.w400px { width: 400px; }
+form.w500px { width: 500px; }
+form.w600px { width: 600px; }
+form.w700px { width: 700px; }
+form.w800px { width: 800px; }
+
+/* ----- dl, dt, dd layout ----- */
+form dl {
+    margin: 0px;
+    padding: 0px 10px 0px 10px;
+}
+
+form fieldset dl {
+    padding-top: 5px;
+}
+
+form dt {
+    margin: 0px;
+    padding: 0px;
+}
+
+form dd {
+    margin: 0px 0px 10px 0px;
+    padding: 0px;
+}
+
+/* ===== "wide" layout ===== */
+.wide dt.can_be_wide {
+    width: 80px;
+    float: left;
+    clear: both;
+
+    padding: 2px 0px 0px 0px;
+}
+
+.wide dd.can_be_wide {
+    margin-left: 90px;
+}
+
+/* ----- different label  widths ----- */
+.wide.lb60px dt.can_be_wide{ width: 60px;}
+.wide.lb60px dd.can_be_wide{ margin-left: 80px;}
+
+.wide.lb80px dt.can_be_wide{ width: 80px;}
+.wide.lb80px dd.can_be_wide{ margin-left: 90px;}
+
+.wide.lb100px dt.can_be_wide{ width: 100px;}
+.wide.lb100px dd.can_be_wide{ margin-left: 110px;}
+
+.wide.lb120px dt.can_be_wide{ width: 120px;}
+.wide.lb120px dd.can_be_wide{ margin-left: 130px;}
+
+.wide.lb140px dt.can_be_wide{ width: 140px;}
+.wide.lb140px dd.can_be_wide{ margin-left: 150px;}
+/* ========== */
+
+/* ----- Field labels ----- */
+form .required {
+    color: #F15B40;
+}
+
+/* ----- Inputs ----- */
+form input.text, form input.password, form textarea, form select {
+    border: 1px solid #A0A0A0;
+    background: #FFFFFF;
+}
+
+/* Text input */
+form input.text, form input.password {
+    width: 60%;
+}
+
+/* Integer & float */
+form input.integer, form input.float {
+    width: 50px;
+}
+
+/* Date */
+form .date {
+    white-space: nowrap;
+}
+
+/* Checkbox */
+form .input-checkbox label, form input.checkbox {
+    vertical-align: middle;
+}
+
+form input.checkbox {
+    margin: 0px;
+    padding: 0px;
+    background: transparent;
+}
+
+form .input-checkbox label {
+    margin: 0px 0px 0px 5px;
+}
+
+/* Textarea */
+form textarea  {
+    width: 99%;
+    overflow: auto;
+}
+
+/* wysiwyg */
+form .wysiwyg_content {
+    width: 99%;
+    height: 400px;
+}
+
+/* Date */
+form .date .day {
+    width: 22px;
+}
+
+form .date .month {
+    width: 22px;
+}
+
+form .date .year {
+    width: 40px;
+}
+
+form td.date {
+    text-align: left;
+}
+
+/* Checkselect */
+form .input-checkselect .option {
+    margin: 3px 0px 3px 0px;
+}
+
+/* ----- Input comments ----- */
+form .comment {
+    color: #444444;
+    font-size: 9px;
+}
+
+/* ----- Error highlighting, error messages ----- */
+form .invalid {
+    border-color: #F07070 !important;
+    background-color: #FFF0F0 !important;
+}
+
+form .valid {
+    border-color: #00D000 !important;
+}
+
+form .disabled {
+    background-color: #F4F4F4 !important;
+}
+
+form .errors {
+    color: #F15B40;
+}
+
+/*----- Submit & buttons -----*/
+form button {
+    width: auto;
+    overflow: visible; /* ie5-6 extra padding fix */
+
+    padding: 3px 2px 4px 2px;
+
+    border: none;
+    background: none;
+
+    cursor: pointer;
+}
+
+form .buttons {
+    /*padding: 5px 0px 0px 0px;*/
+
+    text-align: center;
+    word-spacing: 0px;
+}
+
+form .buttons button, form .buttons a.button {
+    margin: 0px 5px 0px 5px;
+}
+
+/* ----- Fieldset ----- */
+form fieldset {
+    border: 1px solid #007ACC;
+    padding: 0px 0px 0px 0px;
+}
+
+form fieldset legend {
+    background: #CCCCCC;
+    /*position: relative;
+    top: -8px;*/
+    margin: 0px 0px 0px 10px;
+    padding: 0px 4px 0px 4px;
+    color: #007ACC;
+    font-weight: bold;
+}
+
+.panel form fieldset legend {
+    background: #EEEEEE;
+}
+/*---------------------- End of form -----------------------------------------*/
+
+
+/*---------------------- Сообщения (messages) --------------------------------*/
+/* Запрос подтверждения */
+.confirm_message {
+    background: url('images/messages/confirm.gif') top left no-repeat;
+    padding: 10px 0px 10px 40px;
+}
+
+/* Сообщение об ошибке */
+.error_message {
+    background: url('images/messages/error.gif') top left no-repeat;
+    padding: 10px 0px 10px 40px;
+}
+
+.flash_msg_ok, .flash_msg_error {
+    padding: 10px 0px 10px 45px;
+    margin: 0px 0px 5px 0px;
+
+    background-color: #FFFFFF;
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+
+    border-width: 2px;
+    border-style: solid;
+}
+.flash_msg_ok {
+
+    background-image: url('images/messages/ok_small.gif');
+    border-color: #10A910;
+    color: #009900;
+}
+
+.flash_msg_error {
+    background-image: url('images/messages/error_small.gif');
+    border-color: #DC4343;
+    color: #CC3333;
+}
+/*---------------------- End of message --------------------------------------*/
+
+
+/*---------------------- Таблицы (table) -------------------------------------*/
+table {
+    /*background: #E0E0E0;*/
+    /*background: #CCCCCC;*/
+    border: 1px solid #000000;
+    border-collapse: separate;
+    border-spacing: 2px;
+}
+
+td {
+    padding: 2px 5px 2px 5px;
+
+    background: #FFFFFF;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #FFFFFF #B0B0B0 #AEAEAE #FFFFFF;
+}
+
+th {
+    padding: 2px 0px 2px 0px;
+
+    background: #007ACC;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #3194D6 #005E9D #005D9C #2E92D5;
+}
+
+th a, th {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+th a, th span {
+    padding: 2px 10px 2px 10px;
+    margin: 0px 2px 0px 2px;
+}
+
+th a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+th a.sort_asc, th a.sort_desc {
+    color: #FFD700;
+
+    background-position: right 5px;
+    background-repeat: no-repeat;
+}
+th a.sort_asc:hover, th a.sort_desc:hover {
+    color: #FFD700;
+    text-decoration: underline;
+}
+
+th a.sort_asc {
+    background-image: url('table/sort_asc.gif');
+}
+
+th a.sort_desc {
+    background-image: url('table/sort_desc.gif');
+}
+
+td.ctl {
+	background-color: #F5F5F5;
+    border-width: 1px;
+    border-style: solid;
+	border-color: #FFFFFF #B0B0B0 #AEAEAE #FFFFFF;
+
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+td.centered {
+    text-align: center;
+}
+td.righted {
+    text-align: right;
+}
+/*---------------------- End of table ----------------------------------------*/
+
+/*---------------------- Переключатель страниц (pages) -----------------------*/
+.pages {
+    margin: 5px 0px 5px 0px;
+}
+
+.pages a, .pages span
+{
+    font-weight: bold;
+    padding: 2px 4px 2px 4px;
+}
+
+.pages span
+{
+    color: #FFD700;
+    background: #007ACC;
+}
+/*---------------------- End of pages ----------------------------------------*/
+
+/*---------------------- Верстка таблицами (layout) --------------------------*/
+table.layout {
+    border: none;
+    background: none;
+    border-collapse: collapse;
+}
+
+table.layout td.layout {
+    padding: 0px;
+    border: none;
+    background: none;
+    vertical-align: top;
+}
+
+table.layout td.column2 {
+    padding-left: 10px;
+}
+/*---------------------- End of layout ---------------------------------------*/
+
+/******************************************************************************/
+
+html, body {
+    width: 100%; height: 100%;
+	margin: 0px; padding: 0px;
+}
+
+body {
+    background: #CCCCCC;
+}
+
+/*---------------------- Шапка сайта (header) --------------------------------*/
+.header {
+    margin: 0px 0px 2px 0px;
+    padding: 2px 10px 2px 10px;
+
+    background: #007ACC;
+
+    border-color: #66AADD #000055 #000055 #66AADD;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.header .caption, .header .caption a {
+    color: #FFD700;
+    font-size: 12px;
+    font-weight: bold;
+    font-style: italic;
+}
+/*---------------------- End of header ---------------------------------------*/
+
+/*---------------------- Боковая панель (sidebar) ----------------------------*/
+td.sidebar {
+    vertical-align: top;
+}
+
+td.sidebar, td.sidebar .min_width {
+    width: 200px;
+}
+td.sidebar .min_width {
+    height: 0px; line-height: 0px; font-size: 0px;
+}
+
+/* ----- Меню в боковой панели (sidebar menu) ----- */
+.sidebar ul.menu {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+
+    list-style: none;
+}
+
+.sidebar ul.menu li {
+    margin: 0px 0px 0px 0px;
+    padding: 4px 0px 4px 0px;
+}
+
+.sidebar ul.menu li span {
+    color: #0000FF;
+    font-weight: bold;
+}
+
+.sidebar ul.menu .inactive {
+    color: #777777;
+}
+/* ----- End of sidebar menu ----- */
+/*---------------------- End of sidebar --------------------------------------*/
+
+/*---------------------- Основная область (main) -----------------------------*/
+table.layout td.main {
+    vertical-align: top;
+    padding: 0px 0px 0px 10px;
+}
+/*---------------------- End of main -----------------------------------------*/
+
+/*---------------------- panel -----------------------------------------------*/
+.panel {
+    padding: 2px 0px 0px 0px;
+
+    background:#EEEEEE;
+    border: 1px solid #999999;
+}
+
+.panel .caption {
+    margin: 0px 2px 2px 2px;
+    padding: 0px 10px 1px 10px;
+
+    color: #FFD700;
+    font-weight: bold;
+    text-align: center;
+
+    border-color: #0088DD #0055AA #0055AA #0066BB;
+    border-style: solid;
+    border-width: 1px;
+
+    background: #007ACC;
+}
+
+.panel .content {
+    margin: 0px 2px 2px 2px;
+    padding: 2px 2px 2px 2px;
+
+    border: 1px solid #B5B5B5;
+    background: #EEEEEE;
+}
+
+.main .panel .content {
+    padding: 10px 10px 10px 10px;
+}
+/*---------------------- End of panel ----------------------------------------*/
+
+/*---------------------- Закладки (tabs) -------------------------------------*/
+.tabs {
+    margin: 8px 0px 0px 0px;
+    padding: 4px 8px 4px 8px;
+}
+
+.tabs a, .tabs span {
+    margin: 0px 2px 0px 2px;
+    padding: 4px 10px 4px 10px;
+
+    color: #000000;
+    border: 1px solid #A9A9A9;
+    background: #E0E0E0;
+}
+
+.tabs a:hover {
+    color: #F00000;
+}
+
+.tabs span, .tabs a.selected {
+    background: #EEEEEE;
+    border-bottom: 1px solid #EEEEEE;
+}
+/*---------------------- End of tabs -----------------------------------------*/
+

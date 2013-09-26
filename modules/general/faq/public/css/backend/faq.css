@@ -1,0 +1,15 @@
+
+.questions .inactive td, .questions .inactive a {
+    color: #777777;
+    font-style: italic;
+}
+
+.questions .inactive a:hover {
+    color: #F00000;
+}
+
+.questions .unanswered td, .questions .unanswered a {
+    font-weight: bold;
+    font-style: normal;
+    color: #1F75CC;
+}

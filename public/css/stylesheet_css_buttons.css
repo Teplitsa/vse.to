@@ -1,0 +1,39 @@
+.cssButton, .cssButtonHover {
+    background-color: #F4F4F4;
+    border: 2px outset #F4F4F4;
+    color: #000000;
+    font-family: Tahoma,Verdana,Arial,Helvetica,sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 0.3em;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    width: 20em;
+}
+.cssButtonHover {
+    border-style: inset;
+    color: #006600;
+    text-decoration: none;
+}
+.small_delete, .button_prev, .button_next, .button_search {
+    width: 7em;
+}
+.button_sold_out_sm, .button_sold_out, .button_update_cart, .button_checkout, .button_login {
+    width: 10em;
+}
+.button_return_to_product_list, .button_add_selected {
+    width: 22em;
+}
+.button_in_cart {
+    width: 19em;
+}
+.button_submit {
+    width: 18em;
+}
+.button_update_cart {
+    color: red;
+}
+.button_update_cartHover {
+    color: #003D00;
+}

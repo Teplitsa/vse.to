@@ -1,0 +1,132 @@
+/******************************************************************************
+ * Groups
+ ******************************************************************************/
+.groups table {
+    border-collapse: collapse;
+    background: none;
+    border: none;
+}
+
+.groups table td {
+    padding: 5px 5px 5px 5px;
+    background: none;
+    border: none;
+}
+
+.groups table td a.group {
+    padding: 5px 0px 5px 22px;
+    background: url('images/group.gif') 0px no-repeat;
+}
+
+.groups table td a.group.selected {
+    text-decoration: underline;
+}
+
+.group_name {
+    padding: 7px 0px 18px 40px;
+    margin: 0px;
+    /*font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;*/
+    font-size: 14px;
+    font-weight: bold;
+    
+    background: url('images/group_name.gif') 0px 0px no-repeat;
+}
+
+/* ----- button_group_add ----- */
+a.button_group_add, .button_group_add button, .button_group_add input {
+    padding-left: 25px;
+    background-image: url(images/group_add.gif);
+}
+
+/******************************************************************************
+ * Users
+ ******************************************************************************/
+/* ----- button_user_add ----- */
+a.button_user_add, .button_user_add button, .button_user_add input {
+    padding-left: 25px;
+    background-image: url(images/user_add.gif);
+}
+
+.no_user {
+    margin: 0px 0px 10px 0px;
+    font-size: 12px;
+}
+
+.back {
+    margin: 20px 0px 0px 0px;
+}
+
+.user_card tr td{
+    border-collapse: collapse;
+    border-width: 0;
+}
+
+.user_info {
+    width: 300px;
+}
+
+/******************************************************************************
+ * Lecturers
+ ******************************************************************************/
+.lecturer_ac {
+    height: 54px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+.lecturer_ac .item {
+  float:left;
+}
+/******************************************************************************
+ * Organizers
+ ******************************************************************************/
+.organizer_ac {
+    height: 54px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+.organizer_ac .item {
+  float:left;
+}
+
+/******************************************************************************
+ * Login page
+ ******************************************************************************/
+table.authorization {
+    width: 100%; height: 100%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+table.authorization .workspace_content {
+    margin: 0px auto;
+    width: 400px;
+    text-align: left;
+}
+
+/******************************************************************************
+ * Links
+ ******************************************************************************/
+.facebook {
+    background: url("images/facebook.gif") no-repeat scroll 0 0 transparent;
+    padding-left: 20px;
+}
+.livejournal {
+    background: url("images/livejournal.gif") no-repeat scroll 0 0 transparent;
+    padding-left: 20px;    
+}
+.youtube {
+    background: url("images/youtube.gif") no-repeat scroll 0 0 transparent;
+    padding-left: 20px;    
+}
+.twitter {
+    background: url("images/twitter.gif") no-repeat scroll 0 0 transparent;
+    padding-left: 20px;    
+}
+.vkontakte {
+    background: url("images/vkontakte.gif") no-repeat scroll 0 0 transparent;
+    padding-left: 20px;    
+}
+.skype {
+    background: url("images/skype.gif") no-repeat scroll 0 0 transparent;
+    padding-left: 20px;
+}

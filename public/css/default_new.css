@@ -1,0 +1,235 @@
+body {
+    background: url("img/bottom.jpg") repeat-x scroll center bottom #E3D6B3;
+    color: #646464;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+a {
+    color: #523B23;
+}
+h1 {
+    color: #80540D;
+    line-height: 32px;
+}
+#top {
+    background: url("img/top1.gif") repeat-x scroll center top transparent;
+}
+#container {
+    background: url("img/right.jpg") repeat-y scroll right center #FFFFFF;
+    margin: 0 auto;
+    text-align: left;
+    width: 1000px;
+}
+#header {
+    padding: 0;
+}
+#basket {
+    background: url("img/basket.jpg") no-repeat scroll left top transparent;
+    height: 26px;
+    padding-left: 50px;
+    padding-top: 4px;
+}
+#basket strong {
+    color: #523B23;
+    padding-right: 20px;
+}
+#basket a {
+    color: #523B23;
+    text-decoration: none;
+}
+#basket a:hover {
+    color: #000000;
+}
+#basket strong a:hover {
+    color: #000000;
+}
+#sort_list a {
+    color: #646464;
+    font-weight: bold;
+    text-decoration: none;
+}
+#sort_list a:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+#sidebar1 {
+    float: right;
+    padding: 15px 10px 200px;
+    width: 240px;
+}
+#sidebar1 h2 {
+    color: #80540D;
+    text-align: center;
+}
+#sidebar1 img {
+    height: 155px;
+    width: 155px;
+}
+#nopicture {
+    height: 355px;
+    position: absolute;
+    width: 355px;
+}
+#mainContent {
+    margin: 0 260px 0 0;
+    padding: 1px 20px 20px;
+}
+#mainContent h1 {
+    color: #80540D;
+    font-size: 30px;
+    font-weight: bold;
+}
+#mainContent h4 {
+    color: #7E5E23;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 7px 0;
+}
+#mainContent h4 strong {
+    color: #000000;
+    font-size: 14px;
+    font-weight: normal;
+}
+#leftmnu {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+    padding-left: 20px;
+}
+#leftmnu a {
+    color: #80540D;
+    display: block;
+    text-decoration: none;
+}
+#leftmnu a:hover {
+    background: none repeat scroll 0 0 #E3D6B3;
+    color: #000000;
+}
+#sidebar1 h4 {
+    background: none repeat scroll 0 0 #E3D6B3;
+    color: #000000;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 7px;
+    padding: 4px 5px;
+    text-align: left;
+}
+#sidebar1 .butt {
+    background: none repeat scroll 0 0 #E3D6B3;
+    padding: 4px 5px;
+}
+#sidebar1 .buttonsf {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    color: #646464;
+    cursor: pointer;
+}
+#footer {
+    background: url("img/footer_bg.jpg") repeat scroll 0 0 transparent;
+    clear: both;
+    color: #523B23;
+    font-family: "Courier New",Courier,monospace;
+    height: 76px;
+    padding: 0;
+}
+#bambuk {
+    background: url("img/bambuk.png") no-repeat scroll left top transparent;
+    height: 326px;
+    margin: -250px 0 0 949px;
+    position: absolute;
+    width: 96px;
+}
+#contectes {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    margin: -145px 0 0 750px;
+    position: absolute;
+    width: 260px;
+}
+#contectes h2 {
+    color: #9A5F37;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+#contectes h3 {
+    color: #9A5F37;
+    font-size: 14px;
+    margin: 0;
+    padding: 7px 0;
+}
+#copy {
+    color: #523B23;
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    padding-top: 10px;
+}
+#boot_mnu_copy {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 20px 50px 0 35px;
+    text-align: right;
+}
+#boot_mnu_copy a {
+    color: #523B23;
+    text-decoration: none;
+}
+#boot_mnu_copy a:hover {
+    color: #000000;
+}
+.clearfloat {
+    clear: both;
+    font-size: 1px;
+    height: 0;
+    line-height: 0;
+}
+#firstpagetxt {
+    font-size: 16px;
+    line-height: 24px;
+}
+#counters {
+    height: 1px;
+    overflow: hidden;
+}
+a.banner {
+    opacity: 0.5;
+}
+a.banner:hover {
+    opacity: 1;
+}
+#nav_detal a {
+    text-decoration: none;
+}
+#nav_detal a:hover {
+    color: #523B23;
+    font-weight: bold;
+}
+div.navigation-yandex-style {
+    font-size: 125%;
+    line-height: 200%;
+}
+div.navigation-yandex-style a {
+    padding: 0.2em 0.3em;
+    text-decoration: underline;
+}
+span.nav-current-page {
+    background-color: #E8E9EC;
+    padding: 0.2em 0.3em;
+}
+div.navigation-yandex-style span.disabled {
+    color: #999999;
+}
+div.navigation-yandex-style span.arrow {
+    font-family: Times;
+    font-size: 100%;
+}
+div.navigation-yandex-style span.ctrl {
+    font-size: 68%;
+}
+

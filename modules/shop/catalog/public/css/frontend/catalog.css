@@ -1,0 +1,74 @@
+/******************************************************************************
+ * Products
+ ******************************************************************************/
+#events {
+    width: 480px;
+    float:left;
+}
+    .eventListing {
+        padding-bottom: 10px;
+        text-align: left;
+        width: 240px;
+        float:left; 
+    }
+    .eventListing_additional {
+        padding-left:10px;
+    }
+
+    .eventListing_additional span {
+        padding-left: 10px;
+
+    }
+
+    .eventListing_lecturer {
+        padding-left: 10px;        
+    }
+
+    .eventListing_caption {
+        padding-left: 10px;    
+    }
+
+    .eventListing_caption h3{
+        margin: 3px 0;    
+    }
+
+    .eventListing_organizer {
+        padding-left: 10px;    
+    }
+#lecturers_select {
+    padding-left: 10px;
+    width:170px;
+    float: left;
+}
+
+#product-reps h3 {
+    margin-bottom: 0;
+}
+
+#product-reps a {
+    margin: 5px;
+}
+
+#product-reps td {
+    vertical-align: middle;
+}
+
+.product_desc p {
+    margin: 0px;
+}
+
+#product_lecturer {
+    text-align: center;
+    padding-top: 10px;
+    padding-right: 10px;
+    float: left; 
+}
+
+/******************************************************************************
+ * Sections
+ ******************************************************************************/
+/* ---------- sections menu ------------------------------------------------- */
+#sectiongroups {
+    padding: 2px 0 10px 0;
+    background-color: #EEEEEE;
+}

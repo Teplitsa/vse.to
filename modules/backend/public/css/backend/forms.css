@@ -1,0 +1,455 @@
+/******************************************************************************
+ * Forms
+ ******************************************************************************/
+form {
+    margin: 0px; padding: 0px;
+}
+
+/* ----- Form widths ----- */
+.w200px { width: 200px; }
+.w300px { width: 300px; }
+.w400px { width: 400px; }
+.w500px { width: 500px; }
+.w600px { width: 600px; }
+.w700px { width: 700px; }
+.w800px { width: 800px; }
+.w900px { width: 900px; }
+.w99per { width: 99%; }
+
+/* ----- Labels ----- */
+label {
+    color: #256CA0;
+}
+
+/* ---------- Form elemenents ----------------------------------------------- */
+/* ----- Input ----- */
+input.text, input.password,
+textarea,
+select
+{
+    color: #000000;
+    font-size: 13px;
+    
+    border: 1px solid #6EB0DD;
+    background: #FFFFFF;
+}
+
+input.text, input.password {
+    padding: 4px 8px 4px 8px;
+    width: 100%;
+}
+
+/* compensate input borders and padding */
+form .pad_comp {
+    padding-right: 18px;
+}
+
+input.w50px  { width: 50px; }
+input.w100px { width: 100px; }
+input.w150px { width: 150px; }
+input.w190px { width: 190px; }
+input.w200px { width: 200px; }
+input.w250px { width: 250px; }
+
+/* ----- Integer ----- */
+input.integer {
+    width: 50px;
+}
+
+/* ----- Float ----- */
+input.float {
+    width: 50px;
+}
+
+/* ----- Date ----- */
+input.date {
+    width: 6em;
+}
+/*
+input.datetime {
+    width: 10em;
+}*/
+input.day {
+    width: 2em;
+}
+input.month {
+    width: 2em;
+}
+input.year {
+    width: 4em;
+}
+
+/* ----- Select ----- */
+select {
+    padding: 2px 0px 3px 0px;
+}
+
+option {
+    background-color: #FFFFFF;
+}
+
+.select {
+    position: relative;    
+    height: 25px;
+
+    padding: 0px 15px 0px 0px;
+
+    border: 1px solid #6EB0DD;
+    background: url('forms/select.gif') center right no-repeat #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.select:hover {
+    background-image: url('forms/select_hover.gif');
+    text-decoration: none;
+}
+
+.select .value {
+    position: absolute;
+    z-index: 1;
+    top: 0px; left: 0px;
+
+    padding: 4px 30px 4px 4px;
+    white-space: nowrap; overflow: hidden;
+    color: #000000;
+}
+
+.select select {
+    position: relative;
+    z-index: 10;
+
+    opacity: 0;
+    cursor: pointer;
+}
+
+.select_disabled {
+    position: relative;    
+    height: 25px;
+
+    padding: 0px 15px 0px 0px;
+
+    border: 1px solid #6EB0DD;
+    background: url('forms/select.gif') center right no-repeat #F4F4F4;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.select_disabled .value {
+    position: absolute;
+    z-index: 1;
+    top: 0px; left: 0px;
+
+    padding: 4px 30px 4px 4px;
+    white-space: nowrap; overflow: hidden;
+    color: #999999;
+}
+
+.select_disabled select {
+    position: relative;
+    z-index: 10;
+
+    opacity: 0;
+    cursor: pointer;
+}
+
+.select_options {
+    display: none;
+    position: absolute;
+    z-index: 20;
+
+    height: 200px;
+    overflow: auto;
+    
+    border: 1px solid #6EB0DD;
+    background: #FFFFFF;
+}
+
+.select_options a {
+    display: block;
+    padding: 2px 5px 2px 5px;
+
+    color: #000000;
+    text-decoration: none;
+}
+
+.select_options a:hover {
+    text-decoration: none;
+    background: #F4F9FD;
+}
+
+/* ----- Textarea ----- */
+/* compensate textarea borders and padding */
+form .pad_comp_textarea {
+    padding-right: 10px;
+}
+
+textarea {
+    width: 100%;
+    padding: 3px 0px 3px 8px;
+}
+
+/* ----- Checkbox ----- */
+form input.checkbox {
+    margin: 0px; padding: 0px;
+    background: #FFFFFF;
+}
+
+form .element-checkbox label, form input.checkbox {
+    vertical-align: middle;
+}
+
+form .element-checkbox label {
+    margin: 0px 0px 0px 3px;
+    padding: 0px;
+}
+
+/* ----- Checkselect & Radioselect ----- */
+td.element-checkselect, td.element-radioselect {
+    padding-top: 15px;
+}
+.element-checkselect div.options, .element-radioselect div.options {
+}
+.element-checkselect div.option, .element-radioselect div.option {
+    margin: 6px 0px 6px 0px;
+}
+.element-checkselect span.option, .element-radioselect span.option {
+    margin: 0px 10px 0px 0px;
+}
+
+/* ----- Fieldset ----- */
+fieldset {
+    margin: 0px;
+    padding: 0px 15px 0px 15px;
+    border: 1px solid #ADADAD;
+}
+
+legend {
+    color: #ADADAD; font-size: 11px;
+}
+
+/* ---------- highlights and errors ----------------------------------------- */
+.required {
+    margin: 0px 0px 0px 1px;
+    color: #F30000;
+}
+
+input.active, textarea.active {
+    border-color: #3F97D2;
+    background: #FFFFD5;
+}
+
+.invalid {
+    border-color: #FF0000 !important;
+    background: #FEF0EE !important;
+}
+
+.disabled {
+    color: #999999 !important;
+    font-style: italic;
+    background: #F4F4F4 !important;
+}
+
+.errors {
+    color: #FF0000;
+    font-size: 11px;
+}
+
+.comment {
+    color: #666666; font-size: 10px;
+}
+
+/* ---------- dl,dt,dd layout ----------------------------------------------- */
+form dl {
+    margin: 0px; padding: 0px;
+}
+
+form dt {
+    margin: 0px 0px 4px 0px;
+    padding: 0px;
+}
+form dd {
+    margin: 0px;
+    padding: 0px 0px 10px 0px;
+
+    /*margin: 0px 0px 12px 0px;
+    padding: 0px;*/
+}
+
+fieldset dl {
+    padding-top: 5px;
+}
+
+/* ----- wide ----- */
+.wide dt.can_be_wide {
+    width: 100px;
+    float: left;
+
+    padding: 3px 0px 0px 0px;
+}
+
+.wide dt {
+    clear: both;
+}
+
+.wide dd.can_be_wide {
+    margin-left: 110px;
+}
+
+.wide.lb60px dt.can_be_wide{ width: 60px;}
+.wide.lb60px dd.can_be_wide{ margin-left: 80px;}
+
+.wide.lb80px dt.can_be_wide{ width: 80px;}
+.wide.lb80px dd.can_be_wide{ margin-left: 90px;}
+
+.wide.lb100px dt.can_be_wide{ width: 100px;}
+.wide.lb100px dd.can_be_wide{ margin-left: 110px;}
+
+.wide.lb120px dt.can_be_wide{ width: 120px;}
+.wide.lb120px dd.can_be_wide{ margin-left: 130px;}
+
+.wide.lb140px dt.can_be_wide{ width: 140px;}
+.wide.lb140px dd.can_be_wide{ margin-left: 150px;}
+
+.not_wide dt {
+    float: none !important;
+}
+.not_wide dd {
+    margin-left: 0px !important;
+}
+
+/* ----- Form buttons ----- */
+.form_buttons {
+    padding: 5px 0px 5px 0px;
+}
+
+.form_buttons .button, .form_buttons .button_adv, .form_buttons input, .form_buttons button {
+    font-weight: bold;
+}
+
+.form_buttons .button, .form_buttons .button_adv {
+    margin: 0px 10px 0px 0px;
+}
+
+/* ----- Auto-complete popup ----- */
+.autocomplete_wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.autocomplete_popup {
+    display: none;
+
+    position: absolute;
+    z-index: 30;
+    width: 100%;
+}
+
+.autocomplete {
+    border-right: 1px solid #AAAAAA;
+    border-bottom: 1px solid #AAAAAA;
+    border-left: 1px solid #AAAAAA;
+    background: #FFFFFF;
+}
+
+.autocomplete .item {
+    padding: 3px 5px 3px 5px;
+    border-top: 1px solid #EEEEEE;
+
+    font-size: 11px;
+}
+
+.autocomplete .item.highlighted {
+    background: #E3FAFB;
+}
+
+/* ---------- table layout -------------------------------------------------- */
+table.form_table {
+    table-layout: fixed;
+    width: 100%;
+
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+table.form_table .empty td {
+    padding: 0px;
+}
+
+table.form_table td {
+    /*border: 1px solid blue;*/
+}
+
+.form_table td.input_cell {
+    vertical-align: top;
+    padding: 5px 0px 5px 0px;
+}
+
+/* ----- Labels for "wide" forms ----- */
+.form_table td.label_cell {
+    width: 20%;
+    vertical-align: top;
+    padding: 5px 0px 5px 0px;
+}
+
+.form_table td.label_pad {
+    padding-top: 10px;
+}
+
+.lb100px td.label_cell { width: 100px; }
+.lb110px td.label_cell { width: 110px; }
+.lb120px td.label_cell { width: 120px; }
+.lb130px td.label_cell { width: 130px; }
+.lb140px td.label_cell { width: 140px; }
+.lb150px td.label_cell { width: 150px; }
+.lb160px td.label_cell { width: 160px; }
+.lb170px td.label_cell { width: 170px; }
+.lb180px td.label_cell { width: 180px; }
+.lb190px td.label_cell { width: 190px; }
+.lb200px td.label_cell { width: 200px; }
+
+/* ----- fieldset ----- */
+.form_table .fieldset {
+    padding: 5px 0px 5px 0px;
+}
+
+.form_table .fieldset fieldset {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* ----- fieldset_columns ----- */
+.fieldset_column {
+    padding: 0px 10px 0px 0px;
+    vertical-align: top;
+}
+
+.fieldset_column.last {
+    padding: 0px;
+}
+
+.fieldset_column.w30per { width: 30%; }
+.fieldset_column.w40per { width: 40%; }
+.fieldset_column.w50per { width: 50%; }
+.fieldset_column.w55per { width: 55%; }
+.fieldset_column.w60per { width: 60%; }
+.fieldset_column.w70per { width: 70%; }
+
+/* ----- fieldset_inline ----- */
+td.fieldset_inline_cell {
+    vertical-align: top;
+    padding: 5px 0px 5px 0px;
+}
+
+table.fieldset_inline_elements {
+    table-layout: auto;
+    border: none;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+td.fieldset_inline_element_cell {    
+    vertical-align: top;
+    padding: 0px 5px 0px 0px;
+    white-space: nowrap;
+}

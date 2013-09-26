@@ -1,0 +1,60 @@
+.dialogs {
+    width: 600px;
+}
+.dialogs #message {
+    width: 300px;
+}
+
+.messages {
+    width: 600px;
+}
+.messages #message {
+    width: 300px;
+}
+
+.smallmsg {
+    width: 600px;
+    border-top-width: 0;
+    
+}
+.smallmsg tr td {
+    border-collapse: collapse;
+    border-width: 0px;    
+}
+
+
+.smallmsg_sender tr td {
+    padding:0px;
+}
+
+.smallmsg_message {
+    width: 500px;
+}
+
+.smallmsg_up {
+    width:100%;
+}
+
+.smallmsg_down tr td {
+    border-collapse: collapse;
+    border-width: 0px;
+}
+
+.messages #message {
+    width: 300px;
+}
+
+.messages .inactive td, .messages .inactive a {
+    color: #777777;
+    font-style: italic;
+}
+
+.messages .inactive a:hover {
+    color: #F00000;
+}
+
+.messages .unanswered td, .messages .unanswered a {
+    font-weight: bold;
+    font-style: normal;
+    color: #1F75CC;
+}

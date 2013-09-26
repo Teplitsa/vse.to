@@ -1,0 +1,799 @@
+/******************************************************************************
+ * General
+ ******************************************************************************/
+html, body, td, th, input, select, button, textarea {
+    font: 11px Tahoma, Verdana, Geneva, sans-serif;
+    color: #222222;
+}
+
+img {
+    border: none;
+}
+
+a {
+    color: #1F75CC;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/******************************************************************************
+ * Messages
+ ******************************************************************************/
+.confirm_message {
+    background: url('icons/32x32/help.gif') top left no-repeat;
+    padding: 10px 0px 10px 40px;
+}
+
+.error_message {
+    background: url('icons/32x32/error.gif') top left no-repeat;
+    padding: 10px 0px 10px 40px;
+}
+
+.flash_msg_ok, .flash_msg_error {
+    padding: 10px 0px 10px 45px;
+    margin: 0px 0px 5px 0px;
+
+    background-color: #FFFFFF;
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+
+    border-width: 2px;
+    border-style: solid;
+}
+.flash_msg_ok {
+    background-image: url('images/messages/ok_small.gif');
+    border-color: #10A910;
+    color: #009900;
+}
+
+.flash_msg_error {
+    background-image: url('images/messages/error_small.gif');
+    border-color: #DC4343;
+    color: #CC3333;
+}
+
+/******************************************************************************
+ * Site layout
+ ******************************************************************************/
+html, body {
+    width: 100%; height: 100%;
+    margin: 0px; padding: 0px;
+    background: #BDDBF0;
+}
+
+.header {
+    padding: 0px 30px 0px 30px;
+
+    background: #4598D6;
+}
+
+.main {
+    padding: 0px 30px 0px 30px;
+    
+    border-top: 1px solid #D6E9F6;    
+}
+
+/* ---------- layout -------------------------------------------------------- */
+table.layout {
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+table.layout td.sidebar_layout {
+    width: 170px;
+    padding: 51px 30px 0px 0px;
+    vertical-align: top;
+}
+
+table.layout td.main_layout {
+    width: 800px;
+    vertical-align: top;
+}
+
+/* ---------- Main_layout_top ----------------------------------------------- */
+.main_layout_top {
+    padding-top: 20px;
+    height: 30px;
+}
+.layout_caption {
+    float: left;
+    padding: 3px 0px 0px 0px;
+    color: #CC6600; font-size: 14px; font-weight: bold;
+}
+
+/******************************************************************************
+ * Top menu
+ ******************************************************************************/
+.top_menu {
+    position: relative; top: 1px;
+    height: 30px;
+    
+    font-size: 12px;
+}
+
+.top_menu a {
+    float: left;    
+    height: 23px;
+
+    margin: 0px 10px 0px 0px;
+    padding: 6px 10px 0px 10px;
+
+    color: #FFFFFF;
+    background: 4px -34px no-repeat;
+}
+
+.top_menu a:hover {
+    text-decoration: underline;
+}
+
+.top_menu a.selected {
+    height: 22px;
+
+    border-top: 1px solid #D6E9F6;
+    border-right: 1px solid #D6E9F6;
+    border-bottom: 1px solid #BDDBF0;
+    border-left: 1px solid #D6E9F6;
+    
+    color: #000000;
+    background-color: #BDDBF0;
+    background-position: 4px -3px;
+}
+
+/* ----- Icons ----- */
+.top_menu .icon_sites {
+    background-image: url(tabs/sites.gif);
+    padding-left: 26px;
+}
+
+.top_menu .icon_pages {
+    background-image: url(tabs/pages.gif);
+    padding-left: 26px;
+}
+
+.top_menu .icon_acl {
+    background-image: url(tabs/acl.gif);
+    padding-left: 26px;
+}
+
+.top_menu .icon_orders {
+    background-image: url(tabs/orders.gif);
+    padding-left: 26px;
+}
+
+.top_menu .icon_catalog {
+    background-image: url(tabs/catalog.gif);
+    padding-left: 26px;
+}
+
+/******************************************************************************
+ * Sidebar menu
+ ******************************************************************************/
+.sidebar_menu {}
+
+.sidebar_menu a {
+    display: block;
+    padding: 5px 0px 5px 0px;
+    
+    cursor: pointer;
+}
+
+.sidebar_menu a.selected {
+    font-weight: bold;
+}
+
+/******************************************************************************
+ * Buttons
+ ******************************************************************************/
+.buttons {
+    margin: 0px 0px 10px 0px;
+    padding: 5px 0px 5px 0px;
+}
+
+.button {
+    margin: 0px 5px 0px 0px;
+}
+
+.button, .button input, .button button {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+a.button, .button input, .button button {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.button, .button input, .button button {
+    background: 4px center no-repeat;
+}
+
+.button {
+    border: 1px solid #AACCEE;
+    background-color: #FAFCFF;
+}
+
+.button, .button input, .button button {
+    color: #1F75CC;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button input, .button button {
+    border: none;
+    background-color: transparent;
+    overflow: visible;
+}
+
+.button:hover, .button button:hover, .button input:hover {
+    color: #DE6800;
+    text-decoration: none;
+}
+
+/* ----- button acl ----- */
+a.button_acl, .button_acl button, .button_acl input {
+    padding-left: 25px;
+    background-image: url(icons/16x16/acl.gif);
+}
+
+/* ----- button add ----- */
+a.button_add, .button_add button, .button_add input {
+    padding-left: 25px;
+    background-image: url(icons/16x16/add.gif);
+}
+
+/* ----- button delete ----- */
+a.button_delete, .button_delete button, .button_delete input {
+    padding-left: 25px;
+    background-image: url(icons/16x16/delete.gif);
+}
+
+/* ----- button cancel ----- */
+.button_cancel {
+    border-color: #FDB141;
+    background-color: #FEE3BC;
+}
+a.button_cancel, .button_cancel button, .button_cancel input {
+    padding-left: 25px;
+    background-image: url(icons/16x16/cancel.gif);
+    color: #B86F01;
+}
+
+/* ----- button accept ----- */
+.button_accept {
+    border-color: #35C01D;
+    background-color: #D7F8D1;
+}
+a.button_accept, .button_accept button, .button_accept input {
+    padding-left: 25px;
+    background-image: url(icons/16x16/accept.gif);
+    color: #248213;
+}
+
+/* ----- button calculate ----- */
+a.button_calculate, .button_calculate button, .button_calculate input {
+    padding-left: 22px;
+    background-image: url(icons/16x16/calculator.gif);
+}
+
+/******************************************************************************
+ * Panel
+ ******************************************************************************/
+.panel {
+    margin: 0px 0px 20px 0px;
+    
+    border: 1px solid #4598D6;
+    background: #A5CFEB;
+}
+
+.panel .panel_caption {    
+    padding: 5px 20px 5px 20px;
+    color: #FFFFFF; font-weight: bold; font-size: 12px;
+    background: #4598D6;
+}
+
+/* ---------- panel_tabs ----------------------------------------------------- */
+.panel_tabs {
+    height: 13px;
+    padding: 9px 0px 8px 0px;
+    text-align: right;
+}
+
+.panel_tabs a {
+    padding: 7px 10px 8px 10px;
+    margin: 0px 0px 0px 5px;
+
+    color: #000000;
+    background: #80BBE3; /*#BCBCBC;*/
+
+    /*
+    border-top:   1px solid #DFDFDF;
+    border-right: 1px solid #DFDFDF;
+    border-left:  1px solid #DFDFDF;
+    */
+    border-top:   1px solid #4598D6;
+    border-right: 1px solid #4598D6;
+    border-left:  1px solid #4598D6;
+}
+
+.panel_tabs a:hover {
+    background: #90CBF3; /*#CCCCCC;*/
+    text-decoration: none;
+}
+
+.panel_tabs a.selected, .panel_tabs a.selected:hover {
+    color: #FFFFFF;
+    border-color: #4598D6;
+    background: #4598D6;
+}
+
+/******************************************************************************
+ * Area
+ ******************************************************************************/
+.area_caption {
+    padding: 0px 20px 0px 20px;    
+    color: #4598D6; font-size: 12px; font-weight: bold;
+    background: #FFFFFF;
+}
+.area_caption div {
+    padding: 10px 0px 10px 0px;
+    border-bottom: 1px solid #4598D6;
+}
+
+.area_content {
+    background: #FFFFFF;
+}
+/* ---------- area_tabs ----------------------------------------------------- */
+.area_tabs {
+    padding: 15px 20px 7px 20px;
+}
+
+.area_tabs a {
+    padding: 7px 10px 7px 10px;
+    margin: 0px 5px 0px 0px;
+
+    color: #000000;
+    background: #BCBCBC;
+
+    border-top:   1px solid #DFDFDF;
+    border-right: 1px solid #DFDFDF;
+    border-left:  1px solid #DFDFDF;
+}
+
+.area_tabs a:hover {
+    background: #CCCCCC;
+    text-decoration: none;
+}
+
+.area_tabs a.selected, .area_tabs a.selected:hover {
+    font-weight: bold;
+    border-color: #FFFFFF;
+    background: #FFFFFF;
+}
+
+/* ---------- area_layout --------------------------------------------------- */
+table.area_layout {
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.area_layout td.column {
+    vertical-align: top;
+}
+
+.area_layout .column1 {
+    width: 30%;
+
+    background: #E9F4FF;
+    border-right: 1px solid #AACCEE;
+}
+
+/******************************************************************************
+ * Content
+ ******************************************************************************/
+.content {
+    padding: 20px;
+}
+
+.content_caption {
+    margin:  0px 0px 10px 0px;
+    padding: 0px 0px 10px 0px;
+    background: url(dots_blue.gif) bottom repeat-x;
+    color: #4598D6; font-size: 12px; font-weight: bold;
+}
+
+/* ---------- content_layout ------------------------------------------------ */
+table.content_layout {
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+td.content_layout {
+    vertical-align: top;
+}
+
+/******************************************************************************
+ * Tables
+ ******************************************************************************/
+.table {
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+/* ----- header ----- */
+.table tr.header, .table tr.header:hover {
+    background: url(dots_grey.gif) bottom repeat-x;
+}
+
+.table tr.footer {
+    background: url(dots_grey.gif) top repeat-x;
+}
+
+.table th {
+    padding: 5px 10px 6px 10px;
+    text-align: left;
+}
+
+.table th, table th a {
+    color: #222222; font-weight: bold;
+    text-decoration: none;
+}
+
+.table th a:hover {
+    color: #1F75CC;
+    text-decoration: none;
+}
+
+/* ----- sorting ----- */
+.table th a.sort_desc {
+    background: url(controls/sort_desc.gif) right 6px no-repeat;
+    padding-right: 12px;
+}
+
+.table th a.sort_asc {
+    background: url(controls/sort_asc.gif) right 5px no-repeat;
+    padding-right: 12px;
+}
+
+
+.table tr:hover {
+    background-color: #F5FAFB;
+}
+
+/* ----- cells ----- */
+.table td {
+    padding: 5px 10px 5px 10px;
+    text-align: left;
+}
+
+.table td.c {
+    text-align: center;
+}
+
+/* ----- controls ----- */
+.table td.ctl {
+    padding-top: 0px; padding-bottom: 0px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.table td.ctl img, .table td.ctl input {
+    vertical-align: middle;
+}
+
+.table td.ctl input {
+    padding: 0px; margin: 0px;
+}
+
+.table_multi_action {
+    margin-top: 15px;
+    padding-left: 10px;
+}
+
+/******************************************************************************
+ * Forms
+ ******************************************************************************/
+form {
+    margin: 0px; padding: 0px;
+}
+
+/* ----- Form widths ----- */
+.w200px { width: 200px; }
+.w300px { width: 300px; }
+.w400px { width: 400px; }
+.w500px { width: 500px; }
+.w600px { width: 600px; }
+.w700px { width: 700px; }
+.w800px { width: 800px; }
+.w900px { width: 900px; }
+.w99per { width: 99%; }
+
+/* ----- Labels ----- */
+label {
+    color: #222222;
+    /*font-weight: bold;*/
+}
+
+/* ---------- Form elemenents ----------------------------------------------- */
+/* ----- Input ----- */
+input.text, input.password, textarea, select, .input-text, .input-password, .input-textarea {
+    border: 1px solid #AAAAAA;
+    background: url(forms/bg.gif) top repeat-x #FFFFFF;
+    font-size: 12px;
+}
+
+input.text, input.password {
+    padding: 3px 5px 3px 5px;
+    width: 100%;
+}
+
+/* compensate input borders and padding */
+form .pad_comp {
+    padding-right: 12px;
+}
+
+/* compensate textarea borders */
+form .pad_comp_textarea {
+    padding-right: 2px;
+}
+
+.input-text, .input-password {
+    padding: 0px 5px 0px 5px;
+}
+
+.input-text input, .input-password input {
+    border: none;
+    background: none;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100%;
+}
+
+/* ----- Integer ----- */
+input.integer {
+    width: 50px;
+}
+
+/* ----- Date ----- */
+input.day {
+    width: 2em;
+}
+input.month {
+    width: 2em;
+}
+input.year {
+    width: 4em;
+}
+
+/* ----- Textarea ----- */
+textarea {
+    width: 100%;
+    /*padding: 3px 0px 3px 0px;*/
+}
+
+.input-textarea {
+    padding: 0px 0px 0px 5px;
+}
+
+.input-textarea textarea {
+    border: none;
+    background: none;
+}
+
+/* ----- Checkbox ----- */
+form input.checkbox {
+    margin: 0px; padding: 0px;
+    background: transparent;
+}
+
+form .element-checkbox label, form input.checkbox {
+    vertical-align: middle;
+}
+
+form .element-checkbox label {
+    margin: 0px 0px 0px 3px;
+}
+
+/* ----- Checkselect ----- */
+.element-checkselect .option {
+    margin: 6px 0px 6px 0px;
+}
+
+/* ----- Fieldset ----- */
+fieldset {
+    margin: 0px; 
+    padding: 0px 15px 0px 15px;
+    border: 1px solid #4598D6;
+}
+
+legend {
+    color: #4598D6; font-weight: bold;
+}
+
+/* ---------- highlights and errors ----------------------------------------- */
+.required {
+    margin: 0px 0px 0px 1px;
+    color: #F30000;
+}
+
+.invalid {
+    border-color: #FF0000 !important;
+    background: url(forms/invalid_bg.gif) top repeat-x #FEF0EE !important;
+}
+
+.disabled {
+    background: #F0F0F0 !important;
+}
+
+.errors {
+    color: #FF0000;
+}
+
+.comment {
+    color: #666666; font-size: 10px;
+}
+
+/* ---------- dl,dt,dd layout ----------------------------------------------- */
+form dl {
+    margin: 0px; padding: 0px;
+}
+
+form dt {
+    margin: 0px 0px 4px 0px;
+    padding: 0px;
+}
+form dd {
+    margin: 0px;
+    padding: 0px 0px 10px 0px;
+
+    /*margin: 0px 0px 12px 0px;
+    padding: 0px;*/
+}
+
+fieldset dl {
+    padding-top: 5px;
+}
+
+/* ----- wide ----- */
+.wide dt.can_be_wide {
+    width: 100px;
+    float: left;
+
+    padding: 3px 0px 0px 0px;
+}
+
+.wide dt {
+    clear: both;
+}
+
+.wide dd.can_be_wide {
+    margin-left: 110px;
+}
+
+.wide.lb60px dt.can_be_wide{ width: 60px;}
+.wide.lb60px dd.can_be_wide{ margin-left: 80px;}
+
+.wide.lb80px dt.can_be_wide{ width: 80px;}
+.wide.lb80px dd.can_be_wide{ margin-left: 90px;}
+
+.wide.lb100px dt.can_be_wide{ width: 100px;}
+.wide.lb100px dd.can_be_wide{ margin-left: 110px;}
+
+.wide.lb120px dt.can_be_wide{ width: 120px;}
+.wide.lb120px dd.can_be_wide{ margin-left: 130px;}
+
+.wide.lb140px dt.can_be_wide{ width: 140px;}
+.wide.lb140px dd.can_be_wide{ margin-left: 150px;}
+
+.not_wide dt {
+    float: none !important;
+}
+.not_wide dd {
+    margin-left: 0px !important;
+}
+
+/* ----- Form buttons ----- */
+dd.buttons {
+}
+
+dd.buttons, dd.buttons input, dd.buttons button {
+    font-weight: bold; /*font-size: 12px;*/
+}
+
+dd.buttons .button {
+    margin: 0px 10px 0px 0px;
+}
+
+/* ----- Auto-complete popup ----- */
+.autocomplete_wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.autocomplete_popup {
+    display: none;
+    
+    position: absolute;
+    width: 100%;
+}
+
+.autocomplete {
+    border-right: 1px solid #AAAAAA;
+    border-bottom: 1px solid #AAAAAA;
+    border-left: 1px solid #AAAAAA;
+    background: #FFFFFF;
+}
+
+.autocomplete .item {
+    padding: 3px 5px 3px 5px;
+    border-top: 1px solid #EEEEEE;
+}
+
+.autocomplete .item.highlighted {
+    background: #FE9EAE;
+}
+
+/******************************************************************************
+ * Windows
+ ******************************************************************************/
+#blocker {
+    display: none;
+    position: absolute;
+    top: 0px; left: 0px;
+    width: 100%; height: 100%;
+    z-index: 1;
+
+    background: url('blocker.png');
+}
+
+.window {
+    position: absolute; 
+    top: 0px; left: 0px;
+    z-index: 100;
+
+    overflow: hidden;
+
+    border: 1px solid #4598D6;
+    background: #FFFFFF;
+}
+
+.window_body {
+    background: #FFFFFF;
+    padding: 0px; margin: 0px;
+}
+
+.window_caption {
+    height: 24px;
+    padding: 10px 20px 0px 20px;
+    color: #FFFFFF; font-weight: bold; font-size: 12px;
+    background: #4598D6;
+}
+.window_caption .close_window {
+    float: right;
+}
+
+.window_content {
+    overflow: auto;
+}
+
+/******************************************************************************
+ * Pages
+ ******************************************************************************/
+.pages {
+    padding: 5px 0px 5px 0px;
+}
+
+.pages a, .pages span {
+    padding: 1px 4px 1px 4px;
+    
+    font-weight: bold;
+}
+
+.pages span {
+    color: #FFFFFF;
+    background: #1F75CC;
+}

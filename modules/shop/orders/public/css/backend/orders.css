@@ -1,0 +1,33 @@
+/******************************************************************************
+ * Order comments
+ ******************************************************************************/
+table.ordercomments {
+    border-spacing: 0px;
+}
+
+table.ordercomments td {
+    padding: 5px;
+    vertical-align: top;
+}
+
+table.ordercomments td.ctl {
+    padding-top: 20px;
+}
+
+.ordercomments .ordercomment {
+    margin: 0px 0px 20px 0px;
+}
+
+.ordercomments .ordercomment .date {
+    color: #A0A0A0;
+    font-size: 12px;
+}
+
+.ordercomments .ordercomment a {
+    text-decoration: underline;
+}
+
+.ordercomments .notify_client {
+    font-size: 10px;
+    font-style: italic;
+}

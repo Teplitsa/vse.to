@@ -1,0 +1,59 @@
+/******************************************************************************
+ * Widget status
+ ******************************************************************************/
+.task_status .progress {
+    border: 1px solid #78B7E0;
+    width: 200px; height: 20px;
+    position: relative;
+}
+
+.task_status .progress .bar {
+    position: absolute;
+    z-index: 1;
+    height: 20px;
+
+    background: #10FF40;
+}
+
+.task_status .progress .status {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+
+    text-align: center;
+    font-weight: bold;
+}
+
+.task_status  .errors_num {
+    color: #F00000;
+    font-weight: bold;
+}
+
+.task_status .warnings_num {
+    color: orange;
+    font-weight: bold;
+}
+
+/* ---------- task log ------------------------------------------------------ */
+.task_log .log_message {
+    margin: 10px 0px 10px 10px;
+}
+
+.task_log .log_message .warning {
+    margin: 0px 10px 0px 0px;
+
+    color: orange;
+}
+
+.task_log .log_message .error {
+    margin: 0px 10px 0px 0px;
+
+    color: #F00000;
+}
+
+.task_log .log_message .fatal {
+    margin: 0px 10px 0px 0px;
+
+    color: #F00000;
+    font-weight: bold;
+}

@@ -1,0 +1,197 @@
+
+.filemanager {
+
+}
+
+.filemanager .panel .content {
+    padding: 10px 10px 10px 10px;
+}
+
+/*---------------------- Способ отображения списка файлов (list_styles_select) */
+.list_styles_select {
+    /*margin: 10px 0px 10px 0px;*/
+    padding: 5px 0px 5px 0px;
+}
+
+.list_styles_select a {
+    background: center left no-repeat;
+    margin: 0px 5px 0px 5px;
+    padding: 2px 0px 3px 20px;
+}
+
+.list_styles_select .selected {
+    text-decoration: underline;
+}
+
+.list_styles_select .as_list {
+    background-image: url(images/view_list.gif);
+}
+
+.list_styles_select .as_thumbs {
+    background-image: url(images/view_thumbs.gif);
+}
+/*---------------------- list_styles_select ----------------------------------*/
+
+/*---------------------- Текущий путь (current_path) -------------------------*/
+.current_path {
+    margin: 5px 0px 8px 0px;
+}
+
+.current_path a {
+    font-weight: bold;
+}
+
+.current_path a.up {
+    margin-left: 10px;
+}
+/*---------------------- End of current_path ---------------------------------*/
+
+/*---------------------- Форма загрузки файла (fileupload_form) --------------*/
+.fileupload_form {
+    width: 500px;
+}
+
+.fileupload_form dl {
+    padding: 0px;
+}
+
+.fileupload_form fieldset dl {
+    padding: 5px 10px 0px 10px;
+}
+
+.fileupload_form .integer {
+    width: 30px;
+}
+/*---------------------- End of fileupload_form ------------------------------*/
+
+/*---------------------- Список файлов (files) -------------------------------*/
+.files {
+    border: 1px solid #999999;
+    background: #FFFFFF;
+    padding: 5px 5px 5px 5px;
+}
+
+.files tr:hover {
+    background: none;
+}
+
+.files.list .file {
+    padding: 3px 0px 3px 0px;
+}
+
+.files.list .file a {
+    padding: 3px 0px 4px 20px;
+    background: center left no-repeat;
+}
+
+.files.list td {
+    padding: 2px 5px 2px 5px;
+}
+.files.list td.ctl {
+    padding: 0px 5px 0px 5px;
+}
+
+/*----- File types (list) -----*/
+.files.list .file a, .files.list .file span { background-image: url(file_types/list/unknown.gif); }
+
+.files.list .file .folder { background-image: url(file_types/list/folder.gif); }
+
+.files.list .file .txt { background-image: url(file_types/list/txt.gif); }
+
+.files.list .file .rar,
+.files.list .file .tar,
+.files.list .file .gz,
+.files.list .file .bz,
+.files.list .file .zip,
+.files.list .file ._7z { background-image: url(file_types/list/archive.gif); }
+
+.files.list .file .jpg,
+.files.list .file .bmp,
+.files.list .file .png,
+.files.list .file .gif { background-image: url(file_types/list/image.gif); }
+
+.files.list .file .doc { background-image: url(file_types/list/doc.gif); }
+.files.list .file .docx { background-image: url(file_types/list/docx.gif); }
+.files.list .file .xls { background-image: url(file_types/list/xls.gif); }
+.files.list .file .xlsx { background-image: url(file_types/list/xlsx.gif); }
+.files.list .file .pdf { background-image: url(file_types/list/pdf.gif); }
+/*---------------------- End of files ----------------------------------------*/
+
+/*---------------------- Миниатюры (thumbs) ----------------------------------*/
+.files.thumbs {
+    overflow: hidden;
+    zoom: 1;
+}
+
+/*----- Width x Height -----*/
+.files.thumbs .file_thumb {
+    width: 80px;
+}
+.files.thumbs .file a, .files.thumbs .file span {
+    height: 80px;
+}
+
+.files.thumbs .file_thumb {
+    margin: 5px 10px 5px 10px;
+    float: left;
+}
+
+.files.thumbs .file_thumb .ctl {
+    text-align: center;
+	background-color: #F5F5F5;
+    border-width: 1px;
+    border-style: solid;
+	border-color: #EFEFEF #B0B0B0 #AEAEAE #EFEFEF;
+    padding: 1px 0px 1px 0px;
+}
+.files.thumbs .file_thumb .ctl a {
+    margin: 0px 2px 0px 2px;
+}
+
+.files.thumbs .file {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #EFEFEF #B0B0B0 #AEAEAE #EFEFEF;
+}
+
+.files.thumbs .file a, .files.thumbs .file span {
+    display: block;
+
+    text-align: center;
+    background: center no-repeat;
+}
+
+.files.thumbs .file_thumb .file_caption  {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+}
+
+/*----- File types (thumbs) -----*/
+.files.thumbs .file a, .files.thumbs .file span { background-image: url(file_types/thumbs/unknown.gif); }
+
+.files.thumbs .file .folder { background-image: url(file_types/thumbs/folder.gif); }
+
+.files.thumbs .file .txt { background-image: url(file_types/thumbs/txt.gif); }
+
+.files.thumbs .file .rar,
+.files.thumbs .file .tar,
+.files.thumbs .file .gz,
+.files.thumbs .file .bz,
+.files.thumbs .file .zip,
+.files.thumbs .file ._7z { background-image: url(file_types/thumbs/archive.gif); }
+
+.files.thumbs .file .jpg,
+.files.thumbs .file .bmp,
+.files.thumbs .file .png,
+.files.thumbs .file .gif { background-image: url(file_types/thumbs/image.gif); }
+
+.files.thumbs .file .doc { background-image: url(file_types/thumbs/doc.gif); }
+.files.thumbs .file .docx { background-image: url(file_types/thumbs/docx.gif); }
+.files.thumbs .file .xls { background-image: url(file_types/thumbs/xls.gif); }
+.files.thumbs .file .xlsx { background-image: url(file_types/thumbs/xlsx.gif); }
+.files.thumbs .file .pdf { background-image: url(file_types/thumbs/pdf.gif); }
+/*---------------------- End of files ----------------------------------------*/
+
+

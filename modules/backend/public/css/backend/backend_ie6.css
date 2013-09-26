@@ -1,0 +1,71 @@
+/******************************************************************************
+ * Buttons
+ ******************************************************************************/
+.buttons {
+    padding-top: 6px;
+}
+
+span.button {
+    position: relative;
+    top: 3px;
+
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.button button, .button input {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+/******************************************************************************
+ * Advanced buttons
+ ******************************************************************************/
+span.button_adv {
+    position: relative;
+    top: 3px;
+
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.button_adv button, .button_adv input {
+    padding-top: 2px;
+    padding-bottom: 1px;
+}
+
+.button_adv span {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    
+    cursor: pointer;
+}
+
+/******************************************************************************
+ * tabs
+ ******************************************************************************/
+.tabs {
+    height: 22px;
+    padding: 16px 20px 0px 0px;
+}
+
+
+/******************************************************************************
+ * Forms
+ ******************************************************************************/
+input.text, input.password {
+    margin-right: -18px;
+    vertical-align: middle;
+}
+
+textarea {
+    margin-right: -10px;
+}
+
+form .append {
+    margin-left: 18px;
+}
+
+form input.checkbox {
+    background: transparent;
+}

@@ -1,0 +1,18 @@
+.main {
+    zoom: 1;
+    margin-left: 207px;
+}
+
+/* http://www.positioniseverything.net/explorer/threepxtest.html */
+.ie_3px_gap_fix_right {
+    margin-right: -3px;
+}
+
+.ie_3px_gap_fix_left {
+    margin-left: -30px;
+}
+
+form button {
+    position: relative;
+    top: 3px;
+}

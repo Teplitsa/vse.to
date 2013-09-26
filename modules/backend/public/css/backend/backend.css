@@ -1,0 +1,698 @@
+/******************************************************************************
+ * General
+ ******************************************************************************/
+html, body, td, th, input, select, button, textarea {
+    font: 13px Tahoma, Geneva, sans-serif;
+    color: #256CA0;
+}
+
+img {
+    border: none;
+}
+
+a {
+    color: #1F75CC;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.toggle {
+    display: block;
+    width: 9px; height: 9px;
+    background: url('controls/unfolded.gif') center no-repeat;
+}
+
+.toggle.toggled_off {
+    background-image: url('controls/folded.gif');
+}
+
+/******************************************************************************
+ * Messages
+ ******************************************************************************/
+.confirm_message {
+    text-align: left;
+    background: url('messages/confirm.gif') top left no-repeat;
+    padding: 10px 0px 10px 40px;
+}
+
+.error_message {
+    text-align: left;
+    background: url('messages/error.gif') top left no-repeat;
+    padding: 10px 0px 10px 40px;
+}
+
+.flash_msg_ok, .flash_msg_error {
+    padding: 10px 0px 10px 45px;
+    margin: 5px 0px 5px 0px;
+
+    background-color: #FFFFFF;
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+
+    border-width: 2px;
+    border-style: solid;
+}
+.flash_msg_ok {
+    background-image: url('messages/ok_small.gif');
+    border-color: #10A910;
+    color: #009900;
+}
+
+.flash_msg_error {
+    background-image: url('messages/error_small.gif');
+    border-color: #DC4343;
+    color: #CC3333;
+}
+
+/******************************************************************************
+ * Site layout
+ ******************************************************************************/
+html, body {
+    width: 100%; height: 100%;
+    margin: 0px; padding: 0px;
+    background: #BDDBF0;
+}
+
+.header {
+    padding: 0px 20px 0px 20px;
+
+    background: url(header_bg.gif) #2675AE ;
+}
+
+.payload {
+    padding: 0px 20px 0px 20px;
+    
+    border-top: 1px solid #D6E9F6;    
+}
+
+table.layout {
+    margin: 20px 0px 0px 0px;
+    
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+table.layout td.main {
+    width: 980px;
+    vertical-align: top;
+}
+
+/******************************************************************************
+ * Workspace
+ ******************************************************************************/
+.workspace {
+    padding: 20px 20px 20px 20px;
+
+    border: 1px solid #78B7E0;
+    background: #FFFFFF;
+}
+
+.workspace_caption {
+    padding: 0px 0px 10px 0px;
+    border-bottom: 1px solid #78B7E0;
+
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: #256CA0;
+    text-transform: uppercase;
+}
+.workspace_caption a {
+    color: #256CA0;
+}
+.workspace_caption span {
+    font-weight: bold;
+}
+
+.workspace .caption {
+    padding: 0px 0px 10px 0px;
+
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* ---------- workspace ----------------------------------------------------- */
+.workspace_content {
+    padding: 20px 0px 0px 0px;
+}
+
+/* ---------- workspace_content_2col ---------------------------------------- */
+table.workspace_content_2col {
+    table-layout: fixed;
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+table.workspace_content_2col td.column1 {
+    width: 35%;
+    padding: 20px 20px 20px 20px;
+    
+    vertical-align: top;
+    border-right: 1px solid #78B7E0;
+    background: #F4F9FD;
+}
+
+table.workspace_content_2col td.column2 {
+    width: 65%;
+    padding: 20px 20px 20px 20px;
+    
+    vertical-align: top;
+}
+
+/******************************************************************************
+ * Top menu & Top_subment
+ ******************************************************************************/
+/* ---------- top_menu ------------------------------------------------------ */
+.top_menu {
+    position: relative; top: 1px;
+    height: 30px;
+    
+    font-size: 12px;
+}
+
+.top_menu a {
+    float: left;    
+    height: 22px;
+
+    margin: 0px 10px 0px 0px;
+    padding: 6px 10px 0px 10px;
+
+    color: #FFFFFF;
+    font-family: Tahoma;
+
+    border-top:    1px solid #A4CFEC;
+    border-right:  1px solid #A4CFEC;
+    border-left:   1px solid #A4CFEC;
+    
+    background: #71B0DF 4px -34px no-repeat;
+}
+
+.top_menu a:hover {
+    text-decoration: underline;
+}
+
+.top_menu a.selected {
+    height: 22px;
+
+    border-top:    1px solid #D6E9F6;
+    border-right:  1px solid #D6E9F6;
+    border-bottom: 1px solid #BDDBF0;
+    border-left:   1px solid #D6E9F6;
+    
+    color: #256CA0; font-weight: bold;
+    background-color: #BDDBF0;
+    background-position: 4px -3px;
+}
+
+/* ---------- top_submenu --------------------------------------------------- */
+.top_submenu {
+    padding: 8px 0px 8px 10px;
+    font-size: 12px;
+}
+
+.top_submenu a {
+    margin: 0px 16px 0px 0px;
+    
+    color: #256CA0;
+    font-family: Tahoma;
+    text-decoration: none;
+}
+
+.top_submenu a:hover {
+    text-decoration: underline;
+}
+
+.top_submenu a.selected {
+    text-decoration: underline;
+}
+
+/* ----- Icons ----- */
+.top_menu .icon_sites {
+    background-image: url(menu/sites.gif);
+    padding-left: 26px;
+}
+
+.top_menu .icon_pages {
+    background-image: url(menu/pages.gif);
+    padding-left: 26px;
+}
+
+.top_menu .icon_acl {
+    background-image: url(menu/acl.gif);
+    padding-left: 26px;
+}
+
+.top_menu .icon_orders {
+    background-image: url(menu/orders.gif);
+    padding-left: 26px;
+}
+
+.top_menu .icon_catalog {
+    background-image: url(menu/catalog.gif);
+    padding-left: 26px;
+}
+
+/******************************************************************************
+ * Sidebar menu
+ ******************************************************************************/
+.sidebar_menu {}
+
+.sidebar_menu a {
+    display: block;
+    padding: 5px 0px 5px 0px;
+    
+    cursor: pointer;
+}
+
+.sidebar_menu a.selected {
+    font-weight: bold;
+}
+
+/******************************************************************************
+ * Buttons
+ ******************************************************************************/
+.buttons {
+    text-align: left;
+    margin: 0px 0px 10px 0px;
+    padding: 5px 0px 5px 0px;
+}
+
+.button {
+    margin: 0px 5px 0px 0px;
+}
+
+.button, .button input, .button button {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+a.button, .button input, .button button {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.button, .button input, .button button {
+    background: 4px center no-repeat;
+}
+
+.button {
+    border: 1px solid #AACCEE;
+    background-color: #FAFCFF;
+}
+
+.button, .button input, .button button {
+    color: #1F75CC;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button input, .button button {
+    border: none;
+    background-color: transparent;
+    overflow: visible;
+}
+
+.button:hover, .button button:hover, .button input:hover {
+    color: #DE6800;
+    text-decoration: none;
+}
+
+/* ----- button add ----- */
+a.button_add, .button_add button, .button_add input {
+    padding-left: 25px;
+    background-image: url(buttons/add.gif);
+}
+
+/* ----- button delete ----- */
+a.button_delete, .button_delete button, .button_delete input {
+    padding-left: 25px;
+    background-image: url(buttons/delete.gif);
+}
+
+/* ----- button link ----- */
+a.button_link, .button_link button, .button_link input {
+    padding-left: 25px;
+    background-image: url(buttons/link.gif);
+}
+/******************************************************************************
+ * Advanced buttons
+ ******************************************************************************/
+/* ------ margin & paddings ----- */
+.button_adv {
+    margin: 0px 5px 0px 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.button_adv, .button_adv span, .button_adv input, .button_adv button {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.button_adv, .button_adv input, .button_adv button {
+    background: 4px center no-repeat;
+}
+
+/* ----- font and color ----- */
+.button_adv, .button_adv input, .button_adv button {
+    color: #256CA0;
+    /*font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; font-weight: normal;*/
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button_adv:hover, .button_adv button:hover, .button_adv input:hover {
+    color: #DE6800;
+    text-decoration: none;
+}
+
+/* ------ backgrounds ----- */
+.button_adv {
+    border: 1px solid #6CB0DD;
+    background: url('buttons_adv/button_bg.gif') center right repeat-x #FAFCFF;
+}
+
+.button_adv span, .button_adv input, .button_adv button {
+    border: none;
+    background: left center no-repeat;
+    overflow: visible;
+}
+
+.button_adv:hover {
+    background-image: url('buttons_adv/button_bg_hover.gif');
+}
+
+/* ----- button_calculate ----- */
+.button_calculate .icon  {
+    padding-left: 18px;
+    background-image: url(buttons_adv/calculate.gif);
+}
+
+/* ----- button_select_user ----- */
+.button_select_user .icon  {
+    padding-left: 18px;
+    background-image: url(buttons_adv/select_user.gif);
+}
+
+/* ----- button_select_lecturer ----- */
+.button_select_lecturer .icon  {
+    padding-left: 18px;
+    background-image: url(buttons_adv/select_user.gif);
+}
+
+/* ----- button_accept ----- */
+.button_accept, .button_accept input, .button_accept button {
+    color: #248213;
+}
+
+.button_accept {
+    border-color: #36C01E;
+    background: url('buttons_adv/button_accept_bg.gif') center right repeat-x #C1F4B8;
+}
+
+.button_accept:hover {
+    background-image: url('buttons_adv/button_accept_bg_hover.gif');
+    background-color: #D9F9D4;
+}
+
+.button_accept .icon {
+    padding-left: 20px;
+    background-image: url(buttons_adv/accept.gif);
+}
+
+/* ----- button_cancel ----- */
+.button_cancel, .button_cancel input, .button_cancel button {
+    color: #B86614;
+}
+
+.button_cancel {
+    border-color: #D67618;
+    background: url('buttons_adv/button_cancel_bg.gif') center right repeat-x #FFB366;
+}
+
+.button_cancel:hover {
+    background-image: url('buttons_adv/button_cancel_bg_hover.gif');
+    background-color: #FFD3A6;
+}
+
+.button_cancel .icon {
+    padding-left: 20px;
+    background-image: url(buttons_adv/cancel.gif);
+}
+
+/******************************************************************************
+ * tabs
+ ******************************************************************************/
+.tabs {
+    position: relative;
+    top: 1px;
+
+    height: 24px;
+    padding: 14px 20px 0px 0px;
+}
+
+.tabs a {
+    padding: 7px 10px 8px 10px;
+    margin: 0px 0px 0px 5px;
+
+    color: #FFFFFF;
+    font-size: 11px; font-weight: bold;
+    background: url('panels/panel_tab_bg.gif') repeat-x #3694D1;
+
+    border-top:   1px solid #3392D0;
+    border-right: 1px solid #3392D0;
+    border-left:  1px solid #3392D0;
+    outline: none;
+}
+
+.tabs a:hover {
+    background: url('panels/panel_tab_bg_hover.gif') repeat-x #5DA8DA;
+    text-decoration: none;
+}
+
+.tabs a.selected, .tabs a.selected:hover {
+    color: #256CA0;
+    border-color: #4598D6;
+    background: #F4F9FD;
+    border-bottom: 1px solid #F4F9FD;
+}
+
+/******************************************************************************
+ * simple_panel
+ ******************************************************************************/
+.simple_panel {
+    margin: 0px 0px 20px 0px;
+    padding: 20px 20px 20px 20px;
+    
+    border: 1px solid #78B7E0;
+    background: #F4F9FD;
+}
+
+.simple_panel_caption {
+    margin: 0px 0px 20px 0px;
+    padding: 0px 0px 5px 0px;
+
+    color: #256CA0; font-size: 14px; font-weight: bold;
+
+    border-bottom: 1px solid #78B7E0;
+}
+
+/******************************************************************************
+ * panel
+ ******************************************************************************/
+.panel {
+    margin: 0px 0px 20px 0px;
+
+    border: 1px solid #78B7E0;
+    background: #F4F9FD;
+}
+
+.panel_header {
+    height: 38px;
+    
+    background: url('panels/panel_header_bg.gif') repeat-x #A8CFEB;
+    border-bottom: 1px solid #78B7E0;
+}
+
+.panel_tabs {
+    text-align: right;
+}
+
+.panel_caption {
+    float: left;
+    padding: 9px 0px 0px 20px;
+
+    color: #1D537A;
+    font-size: 14px; font-weight: bold;
+}
+
+.panel_caption div {
+    width: 500px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.panel_content {
+    padding: 20px 20px 20px 20px;
+}
+
+
+/******************************************************************************
+ * Area
+ ******************************************************************************/
+.area_caption {
+    padding: 0px 20px 0px 20px;    
+    color: #4598D6; font-size: 12px; font-weight: bold;
+    background: #FFFFFF;
+}
+.area_caption div {
+    padding: 10px 0px 10px 0px;
+    border-bottom: 1px solid #4598D6;
+}
+
+.area_content {
+    background: #FFFFFF;
+}
+/* ---------- area_tabs ----------------------------------------------------- */
+.area_tabs {
+    padding: 15px 20px 7px 20px;
+}
+
+.area_tabs a {
+    padding: 7px 10px 7px 10px;
+    margin: 0px 5px 0px 0px;
+
+    color: #000000;
+    background: #BCBCBC;
+
+    border-top:   1px solid #DFDFDF;
+    border-right: 1px solid #DFDFDF;
+    border-left:  1px solid #DFDFDF;
+}
+
+.area_tabs a:hover {
+    background: #CCCCCC;
+    text-decoration: none;
+}
+
+.area_tabs a.selected, .area_tabs a.selected:hover {
+    font-weight: bold;
+    border-color: #FFFFFF;
+    background: #FFFFFF;
+}
+
+/* ---------- area_layout --------------------------------------------------- */
+table.area_layout {
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.area_layout td.column {
+    vertical-align: top;
+}
+
+.area_layout .column1 {
+    width: 30%;
+
+    background: #E9F4FF;
+    border-right: 1px solid #AACCEE;
+}
+
+/******************************************************************************
+ * Content
+ ******************************************************************************/
+.content_caption {
+    padding: 0px 0px 10px 0px;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* ---------- content_layout ------------------------------------------------ */
+table.content_layout {
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+td.content_layout {
+    vertical-align: top;
+}
+
+/******************************************************************************
+ * Windows
+ ******************************************************************************/
+#blocker {
+    display: none;
+    position: absolute;
+    top: 0px; left: 0px;
+    width: 100%; height: 100%;
+    z-index: 500;
+
+    background: url('blocker.png');
+}
+
+.window {
+    position: absolute; 
+    top: 0px; left: 0px;
+    z-index: 1000;
+
+    overflow: hidden;
+
+    border: 1px solid #4598D6;
+    background: #FFFFFF;
+}
+
+.window_body {
+    background: #FFFFFF;
+    padding: 0px; margin: 0px;
+}
+
+.window_caption {
+    height: 24px;
+    padding: 10px 20px 0px 20px;
+    color: #FFFFFF; font-weight: bold; font-size: 12px;
+    background: #4598D6;
+}
+.window_caption .close_window {
+    float: right;
+}
+
+.window_content {
+    overflow: auto;
+}
+
+.window_workspace {
+    padding: 0px 20px 20px 20px;
+}
+
+
+/******************************************************************************
+ * Pages
+ ******************************************************************************/
+.pages {
+    padding: 5px 0px 5px 0px;
+
+    font-size: 11px;
+}
+
+.pages a, .pages span {
+    padding: 1px 4px 1px 4px;
+    
+    font-weight: bold;
+}
+
+.pages span {
+    color: #FFFFFF;
+    background: #1F75CC;
+}
+
+.pages a.all {
+    margin-left: 40px;
+}

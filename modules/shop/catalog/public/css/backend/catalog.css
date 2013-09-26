@@ -1,0 +1,141 @@
+/******************************************************************************
+ * Products
+ ******************************************************************************/
+.section_caption {
+    padding: 9px 0px 9px 40px;
+    margin: 0px 0px 0px 0px;
+    background: url('images/section_caption.gif') 0px 0px no-repeat;
+}
+
+table.products .inactive a {
+    color: #777777;
+}
+
+table.products .inactive a:hover {
+    color: #F00000;
+}
+
+/******************************************************************************
+ * Sections
+ ******************************************************************************/
+/* ---------- sections menu ------------------------------------------------- */
+.sectiongroup_tabs {
+    margin: -15px -10px 20px -10px;
+    padding: 0px 10px 0px 10px;
+    zoom: 1;
+    border-bottom: 1px solid #78B7E0;
+}
+
+.sections_menu .section {
+    overflow: hidden;
+    zoom: 1;
+}
+
+.sections_menu .section:hover {
+    background: #E3FAFB;
+}
+
+/* ----- caption -----*/
+.sections_menu .caption_wrapper {
+    width: 220px;
+    overflow: hidden;
+}
+
+.sections_menu a.capt {
+    display: block;
+    margin: 0px 0px 0px 12px;
+    padding: 5px 0px 4px 22px;
+    background: url('images/section.gif') 0px 5px no-repeat;
+}
+
+.sections_menu a.capt.selected, .sections_menu a.selected {
+    text-decoration: underline;
+}
+
+.sections_menu a.capt.capt_inactive {
+    color: #777777;
+}
+
+.sections_menu a.capt.inactive {
+    font-style: italic;
+}
+
+/* ----- toggle ----- */
+.sections_menu .toggle {
+    float: left;
+    margin: 8px 0px 0px 0px;
+    outline: none;
+}
+
+/* ----- controls ----- */
+.sections_menu .ctl {
+    float: right;
+    padding: 5px 0px 0px 0px;
+}
+
+.sections_menu .ctl a {
+    margin: 0px 1px 0px 1px;
+}
+
+/* ----- button_section_add ----- */
+a.button_section_add, .button_section_add button, .button_section_add input {
+    padding-left: 25px;
+    background-image: url(images/section_add.gif);
+}
+
+/* ---------- sections list ------------------------------------------------- */
+
+.sections .toggle {
+    float: left;
+    margin: 3px 0px 0px 0px;
+    outline: none;
+}
+
+.sections .caption_wrapper {
+    width: 300px;
+    overflow: hidden;
+}
+
+.sections .caption_cell {
+    width: 310px;
+}
+
+.sections a.capt {
+    display: block;
+    margin: 0px 0px 0px 12px;
+    padding: 0px 0px 0px 20px;
+    background: url('images/section.gif') 0px 0px no-repeat;
+}
+
+.sections a.capt.selected, .sections a.selected {
+    text-decoration: underline;
+}
+
+.sections a.capt.capt_inactive {
+    color: #777777;
+}
+
+.sections a.capt.inactive {
+    font-style: italic;
+}
+
+
+/* ---------- sections select list ------------------------------------------ */
+/* ----- caption -----*/
+.sections_select .capt {
+    padding: 5px 0px 4px 22px;
+    background: url('images/section.gif') 0px 5px no-repeat;
+}
+
+.sections_select .capt.selected {
+    text-decoration: underline;
+}
+
+.sections_select .capt.capt_inactive {
+    color: #777777;
+}
+
+.sections_select .capt.inactive {
+    font-style: italic;
+}
+

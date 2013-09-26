@@ -1,0 +1,17 @@
+/******************************************************************************
+ * Sites
+ ******************************************************************************/
+/* ---------- sites_menu ---------------------------------------------------- */
+.sites_menu {
+    margin: 5px 0px 25px 0px;
+    font-size: 20px;
+}
+
+.sites_menu a {
+    margin: 0px 30px 0px 0px;
+    color: #E5E5E5; font-style: italic;
+}
+
+.sites_menu a.selected {
+    color: #FFFFFF; text-decoration: underline; font-style: normal;
+}

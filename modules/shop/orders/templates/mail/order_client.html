@@ -1,0 +1,21 @@
+Благодарим за сделанный заказ!
+
+Данные Вашего заказа
+====================
+Контактное лицо: {{ order.name }}
+Телефон(ы): {{ order.phone }}{% if order.email %}
+E-Mail: {{ order.email }}{% endif %}
+
+Адрес доставки:
+----------------
+{{ order.address }}{% if order.comment %}
+
+Дополнительная информация:
+----------------
+{{ order.comment }}{% endif %}
+
+Товары в заказе
+----------------
+{% for product in products %}{{ loop.index }}) [{{product.marking}}] {{ product.caption }} - {{ product.quantity }} шт. по цене {{ product.price }}.
+{% endfor %}
+Итого: {{ order.total_quantity }} шт. на сумму {{ order.total_sum }}
