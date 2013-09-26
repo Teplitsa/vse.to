@@ -292,6 +292,12 @@ class Model_Product extends Model_Res
     {
         return self::INTERACT_LIVE;
     }    
+    
+    public function default_choalg()
+    {
+        return self::CHOALG_RANDOM;
+    }      
+    
     /**
      * @return boolean
      */

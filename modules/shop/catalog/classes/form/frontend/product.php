@@ -187,6 +187,7 @@ class Form_Frontend_Product extends Form_Frontend
         $element = new Form_Element_RadioSelect('interact', $options, array('label' => 'Интерактивность','required' => TRUE),array('class' => 'w300px'));
         $element
             ->add_validator(new Form_Validator_InArray(array_keys($options)));
+        $element->set_disabled(true);
         $element->config_entry = 'checkselect_spec';
 
         $this->add_component($element);
@@ -202,7 +203,7 @@ class Form_Frontend_Product extends Form_Frontend
         // ----- choalg
         $options = Model_Product::$_choalg_options;
 
-        $element = new Form_Element_Select('choalg', $options, array('label' => 'Кто выбирает'),array('class' => 'w300px'));
+        $element = new Form_Element_RadioSelect('choalg', $options, array('label' => 'Кто выбирает'),array('class' => 'w300px'));
         $element
             ->add_validator(new Form_Validator_InArray(array_keys($options)));
         $this->add_component($element);            
@@ -233,7 +234,7 @@ class Form_Frontend_Product extends Form_Frontend
                       
            $label = 'Сохранить';
         } else {
-            $label = 'На модерацию';
+            $label = 'Добавить';
         }
         $button = new Form_Element_Button('submit_product',
                 array('label' => $label),

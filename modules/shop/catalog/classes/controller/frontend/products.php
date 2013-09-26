@@ -973,6 +973,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         {
             $product->section_id = Model_Section::EVENT_ID;
             $product->user_id = Model_User::current()->id;
+            $product->active = 1;
         }
         return $product;
     }
@@ -1112,7 +1113,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         {
             $this->request->response = $component->render();
         }
-    }    
+    }
     
     public function widget_create()
     {
