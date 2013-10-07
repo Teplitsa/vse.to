@@ -849,6 +849,7 @@ section.mini .address {
 #page h2 {
     font-size: 16px;
     font-weight: bold;
+    line-height: 50px;
 }
 #page .soc-link {
     margin-left: 40px;
@@ -1537,7 +1538,7 @@ footer .span6 img
     margin-bottom: 20px;
     font-size: 12px;
 }
-.right-block .left-block-content
+.right-block .right-block-content
 {
     background: #fff;
     margin: 0;

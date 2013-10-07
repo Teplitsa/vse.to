@@ -101,13 +101,17 @@ class Controller_Frontend_Products extends Controller_FrontendRES
             return;
         }
         $product = Model::fly('Model_Product');
-
+            
         // build search condition
         $search_params = array(
             'section' => $section,
             'active'  => -1,
             'section_active' => 1,
         );
+ 
+        $town_alias = Cookie::get(Model_Town::TOWN_TOKEN);
+        if($town_alias == Model_Town::ALL_TOWN)
+           $search_params['all_towns'] = true;
         
         $format = $this->request->param('format',NULL);
         if ($format) $search_params['format'] = $format;

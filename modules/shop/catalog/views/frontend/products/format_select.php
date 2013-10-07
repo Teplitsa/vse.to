@@ -9,7 +9,7 @@ $format_url = URL::to('frontend/catalog/products', array('format' => '{{format}}
         $main_format_url = URL::to('frontend/catalog/products', array('format' => $format), TRUE); ?>
 <li  class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo $main_format_url?>"><?php echo Model_Product::$_format_options[$format]?> <b class="caret"></b></a>       
     <?php } else { ?>
-        <li  class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">формат события<b class="caret"></b></a>
+        <li  class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">формат<b class="caret"></b></a>
     <?php } ?>        
     <ul class="dropdown-menu" role="menu" aria-labelledby="drop10">
         <?php foreach ($formats as $f_id => $f_name) {

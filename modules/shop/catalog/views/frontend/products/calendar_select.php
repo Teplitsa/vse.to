@@ -9,7 +9,7 @@ $calendar_url = URL::to('frontend/catalog/products', array('calendar' => '{{cale
         $main_calendar_url = URL::to('frontend/catalog/products', array('calendar' => $calendar), TRUE); ?>
 <li  class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo $main_calendar_url?>"><?php echo Model_Product::$_calendar_options[$calendar]?> <b class="caret"></b></a>       
     <?php } else { ?>
-        <li  class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">ограничение по времери<b class="caret"></b></a>
+        <li  class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">дата<b class="caret"></b></a>
     <?php } ?>        
     <ul class="dropdown-menu" role="menu" aria-labelledby="drop10">
         <?php foreach ($calendars as $c_id => $c_name) {

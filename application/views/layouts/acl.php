@@ -30,15 +30,15 @@
                 </div>
 		<aside class="span4">
 		    <div class="right-block">
-			<h2>О проекте</h2>
-			<div class="left-block-content">
-			    Тут будет хороший текст о проекте
+			<h2>Что такое vsё.to</h2>
+			<div class="right-block-content">
+			    <?php echo Widget::render_widget('blocks', 'block', 'short_about'); ?>
 			</div>
 		    </div>
 		    <div class="right-block">
 			<h2>События</h2>
-			<div class="left-block-content">
-			    1 ноября пройдет главное событие года!
+			<div class="right-block-content">
+			    <?php echo Widget::render_widget('products', 'calendar'); ?>
 			</div>
 		    </div>
 		    <a href="http://te-st.ru/" class="te-st-link">

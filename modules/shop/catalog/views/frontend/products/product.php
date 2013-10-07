@@ -213,11 +213,14 @@ if ($product->user_id == $current_user_id) {
         Категория:&nbsp<a  href="<?php echo $product->uri_frontend(); ?>"><?php echo Model_Product::$_theme_options[$product->theme] ?></a>
              <?php if (count($product->key_words)) { 
                 echo "&nbsp&nbsp&nbspТеги:";
-             }                
               $i=0; foreach ($product->key_words as $tag) {
-                    $glue =($i)?',':'';$i++;?>
+                    $glue =($i)?',':'';$i++;
+                    ?>
                 <a href=""><?php echo $glue.' '.$tag ?></a>
-                <?php } ?>
+                <?php 
+              }
+             }
+              ?>
         </div>
     </div>
 </div>

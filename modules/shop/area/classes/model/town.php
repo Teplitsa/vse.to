@@ -8,6 +8,8 @@ class Model_Town extends Model
 
     const TOWN_LIFETIME    = 604800; // Town token is valid for 7 days
    
+    const ALL_TOWN = 'all';
+    
     static $towns = NULL;
 
     public static $_timezone_options = array(
@@ -162,22 +164,23 @@ class Model_Town extends Model
         }
         
         $alias = $request->param('are_town_alias',NULL);
-
+        if ($alias === null) {
+            $alias = Cookie::get(Model_Town::TOWN_TOKEN);
+        }
+        
         $town_model = new Model_Town();
         
-        if ($alias !==NULL) {
-            $town_model = Model::fly('Model_Town')->find_by_alias($alias);
-        }
-        
-        if ($alias ===NULL || $town_model->id == NULL) {
-            $alias = Cookie::get(Model_Town::TOWN_TOKEN);
-            if ($alias !==NULL) {
+        if ($alias !== NULL) {
+            if ($alias == Model_Town::ALL_TOWN) {
+                $town_model = new Model_Town(array('id'=>0, 'alias'=>'all', 'name'=>'Все города'));
+            }
+            else {
                 $town_model = Model::fly('Model_Town')->find_by_alias($alias);
             }
-            if ($town_model->id == NULL) {
-                $town_model = Model::fly('Model_Town')->find_by(array(),array('order_by' => 'id'));
-            }
         }
+        if ($town_model->id === NULL) {
+            $town_model = Model::fly('Model_Town')->find_by(array(),array('order_by' => 'id'));
+        }     
         
         $request->set_value('town_model', $town_model);
         return $town_model;
