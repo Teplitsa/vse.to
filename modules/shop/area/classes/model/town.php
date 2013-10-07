@@ -299,7 +299,7 @@ class Model_Town extends Model
     
     public function save($force_create = NULL) {
         // Create alias from name
-        $this->alias = $this->make_alias();
+        if (!$this->id) $this->alias = $this->make_alias();
         return parent::save($force_create);
     }
 

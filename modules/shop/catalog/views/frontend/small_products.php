@@ -15,17 +15,14 @@ $update_url = URL::to('frontend/catalog/products/control', array('action'=>'upda
     <div class="wrapper main-list">
         <div class="ub-title">
             <p>Мои оффлайн-события</p>             
-            <a href="<?php echo $create_url?>" class="link-add">+ добавить</a>
-        </div>
-        <div class="ub-title"></div>       
+            <a href="<?php echo $create_url?>" class="link-add">+ добавить</a>        
+        </div><div class="ub-title"></div>
     <hr>
 <?php
-
 $i=0;
 foreach ($products as $product):
     $i++;
     $url = URL::site($product->uri_frontend());
-    $_update_url = str_replace('${id}', $product->id, $update_url);
 
     $image='';
     if (isset($product->image))
@@ -56,9 +53,14 @@ foreach ($products as $product):
             </div>
          
         </div>
+<?php
+        if ($product->user_id == Model_User::current()->id) {
+            $_update_url = str_replace('${id}', $product->id, $update_url);
+?>        
         <a href="<?php echo $_update_url;?>" class="link-edit"><i class="icon-pencil icon-white"></i></a>
+<?php } ?>
     </section>
-    <?php if ($i == count($products)) {?>
+    <?php if ($i == count($products)) {?>   
     <hr class='last_hr'>
     <?php } else { ?>
     <hr>

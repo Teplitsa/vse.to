@@ -26,6 +26,8 @@ class Model_User_Mapper extends Model_Mapper {
         $this->add_column('phone',   array('Type' => 'varchar(63)'));
         
         $this->add_column('info', array('Type' => 'text'));
+        $this->add_column('notify', array('Type' => 'boolean'));
+        
         $this->add_column('recovery_link', array('Type' => 'text'));        
 
         //$this->add_column('country_id', array('Type' => 'int unsigned', 'Key' => 'INDEX'));

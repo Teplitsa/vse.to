@@ -98,12 +98,11 @@ Kohana::modules(array(
         'nodes'   => MODPATH.'general/nodes',
         'pages'   => MODPATH.'general/pages',
         'images'  => MODPATH.'general/images',
-        'tags'    => MODPATH.'general/tags',    
         'blocks'  => MODPATH.'general/blocks',
         //'faq'     => MODPATH.'general/faq',
         'filemanager' => MODPATH.'general/filemanager',
         'flash'   => MODPATH. 'general/flash',
-        'chat'    => MODPATH. 'general/chat',
+        'chat'   => MODPATH. 'general/chat',
     
         'xls_reader' => MODPATH.'general/xls_reader',
         'twig'    => MODPATH.'general/twig',

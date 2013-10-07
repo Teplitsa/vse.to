@@ -468,14 +468,15 @@ function Autocomplete(form_element)
         if (event.keyCode == '38')
         {
             // An "up" key was pressed
-            self.up();
+            self.up(form_element);
         }
         else if (event.keyCode == '40')
         {
             // A "down" key was pressed
-            self.down()
+            self.down(form_element)
         }
     }).keypress(function(event){
+        
         if (event.keyCode == '13' && self.visible)
         {
             // An "enter" key was pressed
@@ -486,8 +487,16 @@ function Autocomplete(form_element)
         {
             // Peform an ajax request when key is pressed in the input (except up, down, enter and tab)
             // with some delay, because we need the value in form input to be updated after the keypress
+            var text_val;
+            text_val = form_element.get_value();
+            if (form_element.autocomplete_chunk) 
+            {
+                var text_vals;
+                text_vals = text_val.split(form_element.autocomplete_chunk);
+                text_val  = text_vals[text_vals.length -1];
+            }
             setTimeout(function(){
-                $.post(form_element.autocomplete_url, 'value=' + encodeURIComponent(form_element.get_value()), function(response) {
+                $.post(form_element.autocomplete_url, 'value=' + encodeURIComponent(text_val), function(response) {
                     if (response)
                     {
                         //@FIXME: Security breach!
@@ -520,7 +529,7 @@ function Autocomplete(form_element)
 
         if (i > -1)
         {
-            self.highlight(i, true);
+            self.highlight(i, true,form_element);
         } else {
             target = $(event.target);
             if (target.hasClass('active'))
@@ -534,7 +543,7 @@ function Autocomplete(form_element)
 /**
  * Highlight currently selected item
  */
-Autocomplete.prototype.highlight = function(i, set_value)
+Autocomplete.prototype.highlight = function(i, set_value,form_element)
 {
     this.i = i;
 
@@ -546,6 +555,18 @@ Autocomplete.prototype.highlight = function(i, set_value)
 
     if (set_value)
     {
+        var text_val = '';
+        if (form_element.autocomplete_chunk)
+        {
+            var text_vals;
+            text_vals = form_element.get_value().split(form_element.autocomplete_chunk);
+            for (var j = 0; j < text_vals.length-1; j++)
+            {
+                text_val =text_val + text_vals[j] + form_element.autocomplete_chunk; 
+            }
+        }
+        this.items[i].value.name = text_val + this.items[i].value.name;
+        
         var method = 'set_' + this.form_element.id;
         // Copy selected item value to form input
         if (method_exists(this.form_element,method)) {
@@ -559,22 +580,22 @@ Autocomplete.prototype.highlight = function(i, set_value)
 /**
  * Move to the previous item (when user presses "up" key)
  */
-Autocomplete.prototype.up = function()
+Autocomplete.prototype.up = function(form_element)
 {
     if (this.i > 0)
     {
-        this.highlight(this.i - 1, true);
+        this.highlight(this.i - 1, true,form_element);
     }
 }
 
 /**
  * Move to the next item (when user presses "down" key)
  */
-Autocomplete.prototype.down = function()
+Autocomplete.prototype.down = function(form_element)
 {    
     if (this.i < this.items.length - 1)
     {
-        this.highlight(this.i + 1, true);
+        this.highlight(this.i + 1, true,form_element);
     }
 }
 

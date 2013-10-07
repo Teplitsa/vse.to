@@ -37,7 +37,7 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
 //-- Configuration and initialization -----------------------------------------
 
 // Current application
-define('APP', 'BACKEND');
+define('APP', 'FRONTEND');
 
 // Environment
 //Kohana::$environment = Kohana::PRODUCTION;
@@ -59,7 +59,7 @@ Kohana::init(array(
 	'base_url'   => BASE_URL,
 	'index_file' => FALSE,
     'caching'    => (Kohana::$environment == Kohana::PRODUCTION),
-    'cache_dir'  => APPPATH.'cache/core/backend',
+    'cache_dir'  => APPPATH.'cache/core/frontend',
     'profile'    => (Kohana::$environment != Kohana::PRODUCTION)
 ));
 
@@ -71,6 +71,7 @@ I18n::lang('ru-ru');
 /**
  * Attach the file write to logging. Multiple writers are supported.
  */
+
 Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
 
 /**
@@ -81,6 +82,7 @@ Kohana::$config->attach(new Kohana_Config_File);
 /**
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
+
 Kohana::modules(array(
         'database_eresus' => MODPATH.'system/database_eresus',
         'database'        => MODPATH.'system/database',
@@ -90,31 +92,32 @@ Kohana::modules(array(
         'history'         => MODPATH.'system/history',
         'widgets'         => MODPATH.'system/widgets',
         'tasks'           => MODPATH.'system/tasks',
+        'tinymce'         => MODPATH.'general/tinymce',
 
         'jquery'  => MODPATH.'general/jquery',
-        'tinymce' => MODPATH.'general/tinymce',
         'menus'   => MODPATH.'general/menus',
-        'news'    => MODPATH.'general/news',
+        'menus'   => MODPATH.'general/menus',
+        'news'   => MODPATH.'general/news',    
         'nodes'   => MODPATH.'general/nodes',
         'pages'   => MODPATH.'general/pages',
-        'images'  => MODPATH.'general/images',
-        'tags'    => MODPATH.'general/tags',    
-        'blocks'  => MODPATH.'general/blocks',
-        //'faq'     => MODPATH.'general/faq',
-        'filemanager' => MODPATH.'general/filemanager',
+        'feedback' => MODPATH.'general/feedback',
         'flash'   => MODPATH. 'general/flash',
-        'chat'    => MODPATH. 'general/chat',
-    
+        'calendar' => MODPATH. 'general/calendar',    
+        'chat'   => MODPATH. 'general/chat', 
+        'images'  => MODPATH.'general/images',
+        'breadcrumbs' => MODPATH.'general/breadcrumbs',
         'xls_reader' => MODPATH.'general/xls_reader',
+        'blocks'  => MODPATH.'general/blocks',
         'twig'    => MODPATH.'general/twig',
         'swift_mailer' => MODPATH.'general/swift_mailer',
 
         'sites'     => MODPATH.'shop/sites',
         'acl'       => MODPATH.'shop/acl',
-        'area' => MODPATH.'shop/area',
+        'area' => MODPATH.'shop/area',    
+        'towns' => MODPATH.'shop/towns',
         'catalog'   => MODPATH.'shop/catalog',
 
-        'backend'  => MODPATH.'backend'
+        'frontend'  => MODPATH.'frontend'
 	));
 
 /**
@@ -125,9 +128,9 @@ Kohana::modules(array(
 /**
  * Default route. Used when all other routes fail matching. Matches every URL and executes 404 action
  */
-Route::set('404', '<uri>', array('uri' => '.*'))
+Route::add('404', new Route_Frontend('<uri>', array('uri' => '.*')))
 	->defaults(array(
-		'controller' => 'errors',
+		'controller' => 'controller_errors',
         'action'     => 'error',
 
         'uri'        => '',
@@ -138,6 +141,7 @@ Route::set('404', '<uri>', array('uri' => '.*'))
  * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
  * If no source is specified, the URI will be automatically detected.
  */
+
 echo Request::instance()
 	->execute()
 	->send_headers()

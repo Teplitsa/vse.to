@@ -1260,6 +1260,17 @@ form  h1.main-title  > span:after {
     width: 420px
 }
 
+.d-f-notify label {
+    width: 350px;
+    vertical-align: middle;
+}
+
+.cld_month {
+    width: 300px;
+}
+.cld_month td {
+    height: 30px;
+}
 .d-f-pers {
     height: 44px;
 }
@@ -1537,7 +1548,7 @@ footer .span6 img
     margin-bottom: 20px;
     font-size: 12px;
 }
-.right-block .left-block-content
+.right-block .right-block-content
 {
     background: #fff;
     margin: 0;
@@ -1557,4 +1568,10 @@ footer .span6 img
 {
     display:block;
     text-align: center;
+}
+
+.small-product-image
+{
+    max-width: 230px;
+    max-height: 200px;
 }

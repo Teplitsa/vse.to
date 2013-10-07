@@ -138,6 +138,19 @@ abstract class Form_Element extends FormComponent
         return $this;
     }
 
+
+    /**
+     * Set autocomplete chunk for this element
+     *
+     * @param  char $autocomplete_chunk
+     * @return Form_Element
+     */
+    public function set_autocomplete_chunk($autocomplete_chunk)
+    {
+        $this->_properties['autocomplete_chunk'] = $autocomplete_chunk;
+        return $this;
+    }
+    
     /**
      * Get HTML class with element statuses (.disabled, .invalid, .valid, ...)
      * 
@@ -605,6 +618,11 @@ abstract class Form_Element extends FormComponent
         if ($this->autocomplete_url)
         {
             $js .= "e.autocomplete_url = '" . $this->autocomplete_url . "';\n";
+        }
+
+        if ($this->autocomplete_chunk)
+        {
+            $js .= "e.autocomplete_chunk = '" . $this->autocomplete_chunk . "';\n";
         }
 
         $js .=

@@ -95,6 +95,11 @@ class Model_User extends Model
         return FALSE;
     }
 
+    public function default_notify()
+    {
+        return FALSE;
+    }    
+    
     /**
      * Returns default group id for user
      *
@@ -192,8 +197,8 @@ class Model_User extends Model
     public function get_name()
     {
         $name = '';
-        if ($this->last_name) $name.=$this->last_name;
-        if ($this->first_name) $name.=' '.$this->first_name;
+        if ($this->first_name) $name.=$this->first_name;
+        if ($this->last_name) $name.=' '.$this->last_name;
         
         return $name;
     }
@@ -414,6 +419,35 @@ class Model_User extends Model
         return $this->_properties['town'];        
     }
     
+    public function get_tag_items() {
+        if ( ! isset($this->_properties['tag_items']))
+        {
+            $tags = array();
+            if ($this->id) {
+                $tags = Model::fly('Model_Tag')->find_all_by(array(
+                    'owner_type' => 'user',
+                    'owner_id' => $this->id
+                ), array('order_by' => 'weight'));
+            }
+            $this->_properties['tag_items'] = $tags;
+        }
+        return $this->_properties['tag_items'];        
+    }
+    
+    public function get_tags() {
+        if ( ! isset($this->_properties['tags']))
+        {
+            $tag_str = '';
+            $tag_arr = array();
+
+            foreach ($this->tag_items as $tag_item) {
+                $tag_arr[] = $tag_item->name;
+            }
+            $this->_properties['tags'] = implode(Model_Tag::TAGS_DELIMITER,$tag_arr);
+        }
+        return $this->_properties['tags'];
+    }
+    
     public function save($create = FALSE,$update_userprops = TRUE, $update_userlinks = TRUE)
     {
         parent::save($create);
@@ -429,6 +463,8 @@ class Model_User extends Model
             $image->config = 'user';
             $image->save();
         }
+        
+        Model::fly('Model_Tag')->save_all($this->tags, 'user',$this->id);
 
         if ($update_userprops)
         {
@@ -448,7 +484,7 @@ class Model_User extends Model
     
     private function recovery_link_gen()
     {
-        return 'http:/vse.to/'.URL::uri_to('frontend/acl',array('action'=>'newpas','hash' => Auth::instance()->hash(time())));
+        return 'http://vse.to/'.URL::uri_to('frontend/acl',array('action'=>'newpas','hash' => Auth::instance()->hash(time())));
     }
     /**
      * Set notification to client that his question has been answered
