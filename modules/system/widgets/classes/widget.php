@@ -49,7 +49,7 @@ class Widget extends View
     public static function render_widget_with_args($controller, $widget, array $args = NULL)
     {
         //$token = Profiler::start('render_widget', $widget);
-
+            
         try {
             $controller = Request::current()->get_controller($controller);
 

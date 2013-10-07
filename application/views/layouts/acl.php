@@ -28,34 +28,27 @@
                 <div class="span8">
                         <?php echo $content; ?>                                
                 </div>
-				<aside class="span4">
-					<div class="right-block">
-						<h2>О проекте</h2>
-						<div class="right-block-content">
-                                                    <?php echo Widget::render_widget('blocks', 'block', 'short_about'); ?>
-						</div>
-					</div>
-					<div class="right-block">
-                                            <h2>Календарь событий</h2>
-                                            <div class="right-block-content">
-                                                <?php echo Widget::render_widget('products', 'calendar'); ?>
-                                            </div>
-					</div>
-					<!--<div class="left-block">
-						<h2>Теплица социальных технологий</h2>
-						<div class="left-block-content">
-							Данный проект создан при поддержке Теплицы социальных технологий<br />
-							<a href="http://te-st.ru/" class="te-st-link"><img src="/modules/frontend/public/css/frontend/img/te-st-banner.png" /></a>
-						</div>
-					</div> -->
-
-            </aside>
-
+		<aside class="span4">
+		    <div class="right-block">
+			<h2>О проекте</h2>
+			<div class="left-block-content">
+			    Тут будет хороший текст о проекте
+			</div>
+		    </div>
+		    <div class="right-block">
+			<h2>События</h2>
+			<div class="left-block-content">
+			    1 ноября пройдет главное событие года!
+			</div>
+		    </div>
+		    <a href="http://te-st.ru/" class="te-st-link">
+			<img src="/modules/frontend/public/css/frontend/img/te-st-banner.png" />
+		    </a>
+		</aside>
             </div>
-        </div>
-            </div>
-        </div>
-    </div>   
+	</div>
+    </div>
+  
     
 <?php require('_footer.php'); ?>
     

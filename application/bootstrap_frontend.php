@@ -105,7 +105,6 @@ Kohana::modules(array(
         'calendar' => MODPATH. 'general/calendar',    
         'chat'   => MODPATH. 'general/chat', 
         'images'  => MODPATH.'general/images',
-        'tags'    => MODPATH.'general/tags',
         'breadcrumbs' => MODPATH.'general/breadcrumbs',
         'xls_reader' => MODPATH.'general/xls_reader',
         'blocks'  => MODPATH.'general/blocks',

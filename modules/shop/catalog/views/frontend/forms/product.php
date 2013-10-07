@@ -41,10 +41,8 @@
         <?php echo $form->get_element('format')->render_alone_errors();?>
         
     </fieldset>
-    <div class="b-input b-tegs"><label for=""><?php echo $form->get_element('tags')->render_label();?></label><?php echo $form->get_element('tags')->render_input();?></div>
-    <?php echo $form->get_element('tags')->render_alone_autoload();?>
-    <?php echo $form->get_element('tags')->render_alone_errors();?>        
-    
+    <div class="b-input b-tegs"><label for="">Теги</label><?php echo $form->get_element('key_words')->render_input();?></div>
+    <?php echo $form->get_element('key_words')->render_alone_errors();?>
     <div class="b-txt"><label for="">О событии</label><?php echo $form->get_element('description')->render_input();?></div>
     <?php echo $form->get_element('description')->render_alone_errors();?>
 

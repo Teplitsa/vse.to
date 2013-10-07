@@ -10,7 +10,7 @@ if (isset($product->image))
 {
     $image = 
             '<a href="' . $url . '">'
-  .             HTML::image('public/data/' . $product->image, array('alt' => $product->caption, 'class'=>'small-product-image'))
+  .             HTML::image('public/data/' . $product->image, array('alt' => $product->caption))
   .         '</a>';
 }
 
@@ -55,7 +55,7 @@ if (count($telemosts)) {
 </div></div></header>
 <div class="body-section">
 <div class="row-fluid">
-<div class="span5 face">
+<div class="span6 face">
 <?php echo $image ?>
 
     
@@ -63,10 +63,10 @@ if (count($telemosts)) {
     //$html .= '<p class="counter"><span title="хочу телемост" id-"" class="hand">999</span></p>';
  ?>
 </div>
-<div class="span7">
+<div class="span6">
 <a class="dir" href="#"><?php echo Model_Product::$_theme_options[$product->theme] ?></a>
 <h2><a href="<?php echo $url ?>"><?php echo $product->caption ?></a></h2>
-<p class="lecturer">Лектор: <a href="<?php echo $lecturer_url ?>"><?php echo $product->lecturer_name?></a></p>
+<p class="lecturer">Лектор: <a href="#"><?php echo $product->lecturer_name?></a></p>
 <div class="desc"><p><?php echo $product->short_desc ?></p></div>
 <p class="link-more"><a href="<?php echo $url ?>">Подробнее</a></p>
 </div></div></div></section><hr>

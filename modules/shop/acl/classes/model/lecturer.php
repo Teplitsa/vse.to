@@ -11,13 +11,8 @@ class Model_Lecturer extends Model
      */
     public function get_name()
     {
-        $name = '';
-        if ($this->first_name) $name.=$this->first_name;
-        if ($this->last_name) $name.=' '.$this->last_name;
-        
-        return $name;
+        return $this->last_name . ' ' . $this->first_name;
     }
-    
     
     public function image($size = NULL) {
         $image_info = array();

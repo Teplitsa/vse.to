@@ -31,24 +31,9 @@ class Controller_Frontend_Lecturers extends Controller_Frontend
 
     
     public function action_show() {        
-
-        $lecturer_id = $this->request->param('lecturer_id',NULL);
-        
-        $lecturer = new Model_Lecturer();
-        
-        if ($lecturer_id) {
-            $lecturer = Model::fly('Model_Lecturer')->find($lecturer_id);
-        }
-        
-        if ( ! isset($lecturer->id))
-        {
-            $this->_action_404('Указанный лектор не найден');
-            return;
-        }        
-        
         $view = new View('frontend/workspace');
 
-        $view->content = $this->widget_lecturer($lecturer);
+        $view->content = $this->widget_lecturer();
 
         $layout = $this->prepare_layout();
         $layout->content = $view;
@@ -84,8 +69,16 @@ class Controller_Frontend_Lecturers extends Controller_Frontend
      * @param  boolean $select
      * @return string
      */
-    public function widget_lecturer($lecturer,$view = 'frontend/lecturer')
-    {   
+    public function widget_lecturer($view = 'frontend/lecturer')
+    {           
+        // ----- Current lecturer
+        $lecturer_id = $this->request->param('lecturer_id',NULL);
+
+        if (!$lecturer_id) {
+            $lecturer = Model_Lecturer::current();
+        } else {
+            $lecturer = Model::fly('Model_Lecturer')->find($lecturer_id);
+        }
         // Set up view
         $view = new View($view);
 

@@ -57,7 +57,7 @@ if (APP === 'FRONTEND')
             'cat_section_ids' =>  '',
 
             'cat_porder' => 'id',
-            'cat_pdesc'  => '1',
+            'cat_pdesc'  => '0',
             'page'       => '0',
 
             'search_text'   => '',
@@ -109,7 +109,7 @@ if (APP === 'FRONTEND')
                 'catalog/search(/catalog-<sectiongroup_name>)(/text-<search_text>)'
               . '(/p-<page>)'
               . '(/date-<date>)'
-              . '(/tag-<tag>)'
+
             ,
             array(
                 'sectiongroup_name' => '\w++',
@@ -117,7 +117,7 @@ if (APP === 'FRONTEND')
                 'page' => '(\d++|all)',
 
                 'date' => '[0-9\.]++',
-                'tag' => '[a-z0-9_-]++',
+                
                 'search_text' => '[a-z0-9]++'
             )
         ))
@@ -127,7 +127,7 @@ if (APP === 'FRONTEND')
             'search_text' => '',
 
             'page' => '1',
-            'tag'  => NULL,
+
             'price_from' => '',
             'price_to'   => ''
         ));
@@ -435,7 +435,7 @@ if (APP === 'BACKEND')
             'access_town_ids' =>  '',
 
             'cat_porder' => 'id',
-            'cat_pdesc'  => '1',
+            'cat_pdesc'  => '0',
             'page'       => '0',
 
             'search_text'   => '',

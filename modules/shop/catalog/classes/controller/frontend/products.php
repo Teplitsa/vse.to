@@ -21,7 +21,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
             $search_text = URL::encode($form->get_value('search_text'));
             $this->request->redirect(URL::uri_to('frontend/catalog/search', array('search_text' => $search_text)));
         }
-        
+
         return $form->render();
     }
     
@@ -158,10 +158,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
     {
         $view = new View('frontend/workspace');
 
-        if ($this->request->param('tag',NULL))
-            $view->content = $this->widget_search_products_by_tags();
-        else        
-            $view->content = $this->widget_search_products();
+        $view->content = $this->widget_search_products();
 
         $layout = $this->prepare_layout();
         $layout->content = $view;
@@ -170,89 +167,23 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         //$this->add_breadcrumbs();
         $this->request->response = $layout->render();
     }    
-    
 
-    public function widget_search_products_by_tags($view_file = 'frontend/products/search')
+    public function widget_search_products()
     {
-        $tag_alias = $this->request->param('tag',NULL);
-        
-        $products = array();
-        
-        if (!$tag_alias) {
-            $this->_action_404();
-            return;            
-        }
-        
-        $tag = new Model_Tag();
-        $search_condition['alias'] = $tag_alias;
-        $search_condition['owner_type'] = 'product';
-
-        $pages = (int)$this->request->param('page',1); 
-        $per_page = 4*$pages;
-        $count = $tag->count_by($search_condition);
-
-        $pagination = new Pagination($count, $per_page, 'page', 7);
-        $pagination->offset = 0;
-        $order_by = $this->request->param('cat_porder', 'price');
-        $desc = (bool) $this->request->param('cat_pdesc', '1');
-
-        $params['offset'] = $pagination->offset;
-        $params['limit']  = $pagination->limit;
-        $params['order_by'] = $order_by;
-        $params['desc'] = $desc;
-
-        $params['with_image'] = 3;
-        $params['with_sections'] = TRUE;
-
-        $tags = $tag->find_all_by($search_condition);
-
-        $ids = array();
-        foreach ($tags as $tag) {
-            $ids[] =$tag->owner_id;
-        }
-
-        if (count($ids)) {
-            $products = Model::fly('Model_Product')->find_all_by(array('ids' => $ids),$params);
-        }    
-        
-        // Set up view
-        $view = new View($view_file);
-        $view->order_by = $order_by;
-        $view->desc = $desc;
-        $view->cols = 3;
-        
-        //$view->properties = $properties;
-        $view->products = $products;
-
-        $view->pagination = $pagination->render('pagination_load');
-
-        // Add breadcrumbs
-        //$this->add_breadcrumbs();
-
-        return $view->render();
-        
-        
-    }       
-    
-    public function widget_search_products(array $search_params = NULL,$view_file = 'frontend/products/search')
-    {
-        // ---------------------------------------------------------------------
-        // ------------------------ search params ------------------------------
-        // ---------------------------------------------------------------------
         $search_text = URL::decode($this->request->param('search_text'));
         $search_date = $this->request->param('date',NULL);
-        
+
         $product = Model::fly('Model_Product');
 
         // build search condition
-        if (!$search_params) $search_params = array(); 
-            
-        $search_params['search_fields'] = array('caption', 'description');
-        $search_params['search_text'] = $search_text;
-        $search_params['search_date'] = $search_date;            
-        $search_params['active'] = 1;
-        $search_params['section_active'] = 1;
-        $search_params['site_id'] = Model_Site::current()->id;    
+        $search_params = array(
+            'search_fields' => array('caption', 'description'),
+            'search_text' => $search_text,
+            'search_date' => $search_date,            
+            'active'  => 1,
+            'section_active' => 1,
+            'site_id' => Model_Site::current()->id    
+        );
         
         list($search_condition, $params) = $product->search_condition($search_params);
 
@@ -275,8 +206,13 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         
         $products = $product->find_all_by($search_condition, $params);
 
+        $lecturer_ids = array();
+        foreach ($products as $product) {
+            $lecturer_ids[] = $product->lecturer_id;
+        }
         // Set up view
-        $view = new View($view_file);
+        $view = new View('frontend/products/search');
+
         $view->order_by = $order_by;
         $view->desc = $desc;
         $view->cols = 3;
@@ -288,6 +224,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         
         //$view->properties = $properties;
         $view->products = $products;
+        $view->lecturer_ids = $lecturer_ids;
 
         $view->pagination = $pagination->render('pagination_load');
 
@@ -325,7 +262,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         $widget->already_req = $already_req;
         $widget->will_go = $will_go;
         $widget->product   = $product;
-
+        
         return $widget;
     }
     
@@ -789,13 +726,13 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         $count = $product->count_by_owner($owner->id);        
         $pagination = new Paginator($count, $per_page, 'apage', 7,$apage,'frontend/catalog/ajax_products',NULL,'ajax');
         
-        $order_by = $this->request->param('cat_porder', 'datetime');
-        $desc = (bool) $this->request->param('cat_pdesc', '1');
+        $order_by = $this->request->param('cat_porder', 'caption');
+        $desc = (bool) $this->request->param('cat_pdesc', '0');
 
         $params['offset'] = $pagination->offset;
         $params['limit']  = $pagination->limit;        
-        $params['order_by'] = $order_by;
-        $params['desc']     = $desc;
+        $params['order_by'] = 'datetime';//$order_by;
+        $params['desc']     = true;//$desc;
         $params['with_image'] = 2;
         $params['with_sections'] = TRUE;        
         $params['owner'] = $owner;
@@ -816,6 +753,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         $params['offset'] = $pagination->offset;
         $widget->order_by = $order_by;
         $widget->desc = $desc;
+
         $widget->products = $products;
         $widget->will_goes = $will_goes;
         $widget->pagination = $pagination->render('pagination');

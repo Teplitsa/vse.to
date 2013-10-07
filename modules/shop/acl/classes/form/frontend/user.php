@@ -86,6 +86,13 @@ class Form_Frontend_User extends Form_Frontend
             ->add_validator(new Form_Validator_NotEmptyString());
 
         $this->add_component($element);
+
+        // ----- Middle_name
+        $element = new Form_Element_Input('middle_name', array('label' => 'Отчество'), array('maxlength' => 63));
+        $element
+            ->add_filter(new Form_Filter_TrimCrop(63));
+        $this->add_component($element);
+
                 
         // -------------------------------------------------------------------------------------
         // organizer
@@ -122,19 +129,20 @@ class Form_Frontend_User extends Form_Frontend
         } else {
             if ($element->value !== $organizer_name) $control_element->set_value(NULL); 
         }            
- 
-        // ----- tags
-
-        $element = new Form_Element_Input('tags', array('label' => 'Мои интересы','id' => 'tag'), array('maxlength' => 255));
-        $element->autocomplete_url = URL::to('frontend/tags', array('action' => 'ac_tag'));
-        $element->autocomplete_chunk = Model_Tag::TAGS_DELIMITER; 
-        $element
-            ->add_filter(new Form_Filter_TrimCrop(255));
-        $this->add_component($element);
-
-        $element = new Form_Element_Checkbox_Enable('notify', array('label' => 'Информировать о новых интересных событиях'));                
-        $this->add_component($element);
         
+        // ----- Form buttons
+        $button = new Form_Element_Button('add_organizer',
+                array('label' => 'Добавить'),
+                array('class' => 'button button-modal')
+        );
+        $this->add_component($button);          
+
+        // ----- phone
+        $element = new Form_Element_Input('phone', array('label' => 'Телефон'), array('maxlength' => 63));
+        $element
+            ->add_filter(new Form_Filter_TrimCrop(63));
+        $this->add_component($element);          
+
         // ----- town_id                
         $towns = Model_Town::towns();
         $element = new Form_Element_Select('town_id',
@@ -211,11 +219,7 @@ class Form_Frontend_User extends Form_Frontend
         
         // ----- Install javascripts
                 
-        Layout::instance()->add_script(Modules::uri('acl') . '/public/js/backend/organizer_name.js');
-        
-        // Url for ajax requests to redraw product properties when main section is changed
-        Layout::instance()->add_script(Modules::uri('tags') . '/public/js/backend/tag.js');
-        
+        Layout::instance()->add_script(Modules::uri('acl') . '/public/js/backend/organizer_name.js');        
     }     
 }
 

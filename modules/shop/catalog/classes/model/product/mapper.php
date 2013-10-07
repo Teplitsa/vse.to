@@ -44,6 +44,8 @@ class Model_Product_Mapper extends Model_Mapper_Resource {
 
         $this->add_column('duration', array('Type' => 'varchar(7)'));
                         
+        $this->add_column('key_words', array('Type' => 'array'));
+
         $this->add_column('active', array('Type' => 'boolean', 'Key' => 'INDEX'));
 
         $this->add_column('visible', array('Type' => 'boolean', 'Key' => 'INDEX'));        
