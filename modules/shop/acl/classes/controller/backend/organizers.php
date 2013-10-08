@@ -225,8 +225,9 @@ class Controller_Backend_Organizers extends Controller_BackendCRUD
 
         $items = array();
         
-        $pattern = new View('backend/organizer_ac');
+        $pattern = new View('frontend/organizer_ac');
         
+        $i=0;
         foreach ($organizers as $organizer)
         {
             $name = $organizer->name;
@@ -235,12 +236,14 @@ class Controller_Backend_Organizers extends Controller_BackendCRUD
             $image_info = $organizer->image(4);
             
             $pattern->name = $name;
-                $pattern->image_info = $organizer->image(4);
+            $pattern->num = $i; 
+            $pattern->image_info = $organizer->image(4);
             
             $items[] = array(
                 'caption' => $pattern->render(),
                 'value' => array('name' => $name, 'id' => $id) 
             );
+            $i++;
         }
 
         $this->request->response = json_encode($items);

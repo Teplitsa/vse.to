@@ -32,7 +32,7 @@ function product_adv(Model_Product $product,$url,$image,$today_flag,$tomorrow_fl
     $html .= '<div class="span6">';
     $html .= '<a class="dir" href="#">'.Model_Product::$_theme_options[$product->theme].'</a>';
     $html .= '<h2><a href="'.$url.'">'.$product->caption.'</a></h2>';
-    $html .= '<p class="lecturer">Лектор: <a href="#">'.$product->lecturer_name.'</a></p>';
+    $html .= '<p class="lecturer">Лектор: <a href="'.$lecturer_url.'">'.$product->lecturer_name.'</a></p>';
     $html .= '<div class="desc"><p>'.$product->short_desc.'</p></div>';
     $html .= '<p class="link-more"><a href="'.$url.'">Подробнее</a></p>';
     $html .= '</div></div></div></section><hr>';

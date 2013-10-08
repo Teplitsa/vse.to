@@ -148,15 +148,13 @@ class Form_Frontend_Product extends Form_Frontend
             ->add_validator(new Form_Validator_InArray(array_keys($options)));
         $this->add_component($element);
 
-        // ----- Key Words
-        $element = new Form_Element_Array('key_words',
-            array('label' => 'Теги', 'required' => FALSE),
-            array('maxlength' => 255,'glue' => ',')
-        );
+        // ----- tags
 
+        $element = new Form_Element_Input('tags', array('label' => 'Теги','id' => 'tag'), array('maxlength' => 255));
+        $element->autocomplete_url = URL::to('frontend/tags', array('action' => 'ac_tag'));
+        $element->autocomplete_chunk = Model_Tag::TAGS_DELIMITER; 
         $element
             ->add_filter(new Form_Filter_TrimCrop(255));
-
         $this->add_component($element);
 
         // ----- Description
@@ -254,6 +252,7 @@ class Form_Frontend_Product extends Form_Frontend
         // ----- Install javascripts
                 
         Layout::instance()->add_script(Modules::uri('acl') . '/public/js/backend/lecturer_name.js');       
-        Layout::instance()->add_script(Modules::uri('acl') . '/public/js/backend/organizer_name.js');        
+        Layout::instance()->add_script(Modules::uri('acl') . '/public/js/backend/organizer_name.js'); 
+        Layout::instance()->add_script(Modules::uri('tags') . '/public/js/backend/tag.js');        
     }    
 }

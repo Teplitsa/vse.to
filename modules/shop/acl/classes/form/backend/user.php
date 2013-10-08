@@ -186,6 +186,19 @@ class Form_Backend_User extends Form_Backend
                 
                 $fieldset->add_component($element);                
 
+                // ----- tags
+                
+                $element = new Form_Element_Input('tags', array('label' => 'Мои интересы','id' => 'tag'), array('maxlength' => 255));
+                $element->autocomplete_url = URL::to('backend/tags', array('action' => 'ac_tag'));
+                $element->autocomplete_chunk = Model_Tag::TAGS_DELIMITER; 
+                $element
+                    ->add_filter(new Form_Filter_TrimCrop(255));
+                $fieldset->add_component($element);
+
+                $element = new Form_Element_Checkbox_Enable('notify', array('label' => 'Информировать о новых событиях'));                
+                $fieldset->add_component($element);
+                
+                
         // ----- Userprops                
         if (!$creating && count($this->model()->userprops)) {
             $fieldset = new Form_Fieldset('userprops', array('label' => 'Параметры учетной записи'));
@@ -362,5 +375,9 @@ class Form_Backend_User extends Form_Backend
         
         // Url for ajax requests to redraw product properties when main section is changed
         Layout::instance()->add_script(Modules::uri('acl') . '/public/js/backend/organizer_name.js');
+
+        // Url for ajax requests to redraw product properties when main section is changed
+        Layout::instance()->add_script(Modules::uri('tags') . '/public/js/backend/tag.js');
+        
     }    
 }

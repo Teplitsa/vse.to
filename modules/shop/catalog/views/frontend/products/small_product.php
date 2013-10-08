@@ -13,7 +13,6 @@ if (isset($product->image))
   .             HTML::image('public/data/' . $product->image, array('alt' => $product->caption))
   .         '</a>';
 }
-
 $lecturer_url = URL::to('frontend/acl/lecturers', array('action' => 'show','lecturer_id' => $product->lecturer_id));
 
 $day =NULL;
@@ -66,7 +65,7 @@ if (count($telemosts)) {
 <div class="span6">
 <a class="dir" href="#"><?php echo Model_Product::$_theme_options[$product->theme] ?></a>
 <h2><a href="<?php echo $url ?>"><?php echo $product->caption ?></a></h2>
-<p class="lecturer">Лектор: <a href="#"><?php echo $product->lecturer_name?></a></p>
+<p class="lecturer">Лектор: <a href="<?php echo $lecturer_url ?>"><?php echo $product->lecturer_name?></a></p>
 <div class="desc"><p><?php echo $product->short_desc ?></p></div>
 <p class="link-more"><a href="<?php echo $url ?>">Подробнее</a></p>
 </div></div></div></section><hr>

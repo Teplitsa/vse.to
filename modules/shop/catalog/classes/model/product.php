@@ -288,6 +288,11 @@ class Model_Product extends Model_Res
         return FALSE;
     }
 
+    public function default_numviews()
+    {
+        return 5;
+    }
+    
     public function default_interact()
     {
         return self::INTERACT_LIVE;
@@ -623,33 +628,36 @@ class Model_Product extends Model_Res
              
         return $this->_properties['organizer_name'];
     }
-    
-    /*public function show_time()
-    {
-        $numMinutes = self::SHOW_TIME;
-        $current_datetime = new DateTime();
-        $current_datetime->modify("+{$numMinutes} minutes");
-        return ($current_datetime->format('U') > $this->datetime->format('U'));
-    }*/
-    
-    /*public function stage()
-    {
-        if ( ! isset($this->_properties['stage']))
+        
+    public function get_tag_items() {
+        if ( ! isset($this->_properties['tag_items']))
         {
-            $stage = self::DEF_STAGE;
-            if ($this->show_time() && self::COMDI && isset($this->event_id)) {
-                $stage = self::START_STAGE;
-                $actual_stage = TaskManager::start('comdi_status',
-                    Task_Comdi_Base::mapping(array('event_id' => $this->event_id)));
-
-                if ($actual_stage !== NULL) {
-                    $stage = $actual_stage;
-                }
+            if ($this->id) {
+                $tags = Model::fly('Model_Tag')->find_all_by(array(
+                    'owner_type' => 'product',
+                    'owner_id' => $this->id
+                ), array('order_by' => 'weight'));
+            } else {
+                $tags = array();
             }
-            $this->_properties['stage'] = $stage;
+            $this->_properties['tag_items'] = $tags;
         }
-        return $this->_properties['stage'];
-    }*/
+        return $this->_properties['tag_items'];        
+    }
+    
+    public function get_tags() {
+        if ( ! isset($this->_properties['tags']))
+        {
+            $tag_str = '';
+            $tag_arr = array();
+
+            foreach ($this->tag_items as $tag_item) {
+                $tag_arr[] = $tag_item->name;
+            }
+            $this->_properties['tags'] = implode(Model_Tag::TAGS_DELIMITER,$tag_arr);
+        }
+        return $this->_properties['tags'];
+    }
 
     public function stage()
     {
@@ -900,6 +908,8 @@ class Model_Product extends Model_Res
             $image->config = 'product';
             $image->save();
         }
+
+        Model::fly('Model_Tag')->save_all($this->tags, 'product',$this->id);    
         
         if ($update_section_links)
         {

@@ -288,7 +288,7 @@ class Controller_Backend_Products extends Controller_BackendRES
         $count = $product->count_by($search_condition, $params);
 
         $pagination = new Paginator($count, $per_page);
-        
+
         $order_by = $this->request->param('cat_porder', 'caption');
         $desc = (bool) $this->request->param('cat_pdesc', '0');
 

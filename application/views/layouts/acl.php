@@ -28,27 +28,33 @@
                 <div class="span8">
                         <?php echo $content; ?>                                
                 </div>
-		<aside class="span4">
-		    <div class="right-block">
-			<h2>Что такое vsё.to</h2>
-			<div class="right-block-content">
-			    <?php echo Widget::render_widget('blocks', 'block', 'short_about'); ?>
-			</div>
-		    </div>
-		    <div class="right-block">
-			<h2>События</h2>
-			<div class="right-block-content">
-			    <?php echo Widget::render_widget('products', 'calendar'); ?>
-			</div>
-		    </div>
-		    <a href="http://te-st.ru/" class="te-st-link">
-			<img src="/modules/frontend/public/css/frontend/img/te-st-banner.png" />
-		    </a>
-		</aside>
+				<aside class="span4">
+					<div class="right-block">
+						<h2>О проекте</h2>
+						<div class="right-block-content">
+                                                    <?php echo Widget::render_widget('blocks', 'block', 'short_about'); ?>
+						</div>
+					</div>
+					<div class="right-block">
+                                            <h2>Календарь событий</h2>
+                                            <div class="right-block-content">
+                                                <?php echo Widget::render_widget('products', 'calendar'); ?>
+                                            </div>
+					</div>
+					<!--<div class="left-block">
+						<h2>Теплица социальных технологий</h2>
+						<div class="left-block-content">
+							Данный проект создан при поддержке Теплицы социальных технологий<br />
+							<a href="http://te-st.ru/" class="te-st-link"><img src="/modules/frontend/public/css/frontend/img/te-st-banner.png" /></a>
+						</div>
+					</div> -->
+
+            </aside>
+
             </div>
-	</div>
-    </div>
-  
+        </div>
+            </div>
+
     
 <?php require('_footer.php'); ?>
     
