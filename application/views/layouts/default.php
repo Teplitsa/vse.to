@@ -12,7 +12,7 @@
                         <?php echo Widget::render_widget('towns','select'); ?>
                         <?php echo Widget::render_widget('products','format_select'); ?>                         
                         <?php echo Widget::render_widget('products','theme_select'); ?>                         
-                        <li><a href="">следующая неделя</a></li>
+                        <?php echo Widget::render_widget('products','calendar_select'); ?> 
                     </ul>
                     <div class="b-auth-search">
                         <?php echo Widget::render_widget('acl', 'login'); ?>
