@@ -275,6 +275,17 @@ class Controller_Frontend_Telemosts extends Controller_FrontendRES
                 $vals = $form_request->get_values();
                 $vals['user_id'] = $user->id;
 
+                if($product->choalg == Model_Product::CHOALG_ORDER)
+                {
+                    $activeTelemosts = $product->get_telemosts();
+                    $numactiveTelemosts = count($activeTelemosts);
+                    
+                    if($numactiveTelemosts < $product->numviews)
+                    {
+                        $vals['active'] = 1;
+                    }
+                }
+                
                 if ($telemost->validate($vals))
                 {                    
                     $telemost->values($vals);

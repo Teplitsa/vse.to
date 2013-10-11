@@ -66,7 +66,8 @@ class Model_Product extends Model_Res
     const INTERACT_STREAM = 2;
 
     const CHOALG_RANDOM = 1;
-    const CHOALG_MANUAL = 2;    
+    const CHOALG_MANUAL = 2;  
+    const CHOALG_ORDER = 3;
     public static $date_as_timestamp = FALSE;       
 
     public static $_duration_options = array(
@@ -131,7 +132,8 @@ class Model_Product extends Model_Res
     );
     
     public static $_choalg_options = array(
-        self::CHOALG_RANDOM     => 'алгоритм(случайный выбор)',
+        self::CHOALG_ORDER     => 'алгоритм (в порядке очередности заявок)',
+        self::CHOALG_RANDOM     => 'алгоритм (случайный выбор)',
         self::CHOALG_MANUAL     => 'автор анонса'
     );
     
@@ -300,8 +302,8 @@ class Model_Product extends Model_Res
     
     public function default_choalg()
     {
-        return self::CHOALG_RANDOM;
-    }      
+        return self::CHOALG_ORDER;
+    }
     
     /**
      * @return boolean
