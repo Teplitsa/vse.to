@@ -1,6 +1,20 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 if (APP === 'FRONTEND') {
+
+
+    // ----- registration
+    Route::add('registration', new Route_Frontend(
+                'registration'
+            ,
+            array(
+            )
+        ))
+        ->defaults(array(
+            'controller' => 'users',
+            'action'     => 'create'
+        ));
+
     // ----- users
     Route::add('frontend/acl/users/control', new Route_Frontend(
                 'acl/users(/<action>)(/user-<user_id>)(/image-<image_id>)'
