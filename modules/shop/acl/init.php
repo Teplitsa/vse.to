@@ -4,8 +4,8 @@ if (APP === 'FRONTEND') {
 
 
     // ----- registration
-    Route::add('registration', new Route_Frontend(
-                'registration'
+    Route::add('frontend/acl/users/register', new Route_Frontend(
+                'register'
             ,
             array(
             )

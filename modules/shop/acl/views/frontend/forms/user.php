@@ -9,6 +9,15 @@
     <?php echo $form->render_messages(); ?>
 
     <h1 class="main-title"><span>Учетная запись</span></h1>
+	
+    <span>Делаете ли вы события от имени организации? Если да, укажите эту организацию, если нет - оставьте это поле пустым:</span>
+    <fieldset class="d-f-org">    
+        <div class="b-input"><label for="">Организация</label><?php echo $form->get_element('organizer_name')->render_input();?></div>
+        <?php echo $form->get_element('organizer_name')->render_alone_autoload();?>
+        <?php echo $form->get_element('organizer_name')->render_alone_errors();?>
+        <?php echo $form->get_element('organizer_id')->render_input();?>        
+    </fieldset>
+	
     <fieldset class="d-f-main">
         <div class="b-select"><label for=""><?php echo $form->get_element('first_name')->render_label();?></label><?php echo $form->get_element('first_name')->render_input();?></div>
         <?php echo $form->get_element('first_name')->render_alone_errors();?>
@@ -61,14 +70,6 @@
         <div id="prev_<?php echo $form->get_element('file')->id?>" class="prev_container"></div>        
     </fieldset>
     
-    <span>Делаете ли вы события от имени организации? Если да, укажите эту организацию, если нет - оставьте это поле пустым:</span>
-    <fieldset class="d-f-org">    
-        <div class="b-input"><label for="">Организация</label><?php echo $form->get_element('organizer_name')->render_input();?></div>
-        <?php echo $form->get_element('organizer_name')->render_alone_autoload();?>
-        <?php echo $form->get_element('organizer_name')->render_alone_errors();?>
-        <?php echo $form->get_element('organizer_id')->render_input();?>        
-    </fieldset>
-           
     <div class="form-action">
         <?php echo $form->get_element('submit_user')->render_input(); ?>
     </div>
