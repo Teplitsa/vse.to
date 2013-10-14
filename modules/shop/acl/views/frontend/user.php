@@ -19,9 +19,9 @@ $update_url = URL::to('frontend/acl/users/control', array('action'=>'update'));
         </div>
         <div class="span6 content">
             <?php echo $user->info ?>
-            <p class="who meta">Контактное лицо: <span><?php if ($user->name) echo "$user->name,"; ?><?php if ($user->phone) echo "$user->phone,"; ?><?php echo $user->email ?></span></p>
-            <p class="typelec meta">институция: <span><?php echo $user->organizer->full_name ?></span></p>
-            <p class="address meta">адрес институции: <span><?php echo $user->organizer->full_address ?></span></p>
+            <!-- <p class="who meta">Контактное лицо: <span><?php if ($user->name) echo "$user->name,"; ?><?php if ($user->phone) echo "$user->phone,"; ?><?php echo $user->email ?></span></p> -->
+            <p class="typelec meta">Институция: <span><?php echo $user->organizer->full_name ?></span></p>
+            <p class="address meta">Адрес институции: <span><?php echo $user->organizer->full_address ?></span></p>
         </div>
     </div>
     <div class="b-social"></div>

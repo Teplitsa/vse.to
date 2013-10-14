@@ -58,9 +58,10 @@ class Model_Product extends Model_Res
     const FORMAT_10 = 10;  
     
     // CALENDAR options    
-    const CALENDAR_1 = 'P1W';
-    const CALENDAR_2 = 'P2W';
-    const CALENDAR_3 = 'P1M';
+    const CALENDAR_TODAY = 'P0D';
+    const CALENDAR_ONEWEEK = 'P1W';
+    const CALENDAR_TWOWEEK = 'P2W';
+    const CALENDAR_ONEMONTH = 'P1M';
     
     const INTERACT_LIVE = 1;
     const INTERACT_STREAM = 2;
@@ -113,9 +114,10 @@ class Model_Product extends Model_Res
      ); 
    
     public static $_calendar_options = array(
-        self::CALENDAR_1    => 'через неделю',
-        self::CALENDAR_2    => 'через две недели',
-        self::CALENDAR_3    => 'через месяц',
+        self::CALENDAR_TODAY    => 'сегодня',
+        self::CALENDAR_ONEWEEK  => 'через неделю',
+        self::CALENDAR_TWOWEEK  => 'через две недели',
+        self::CALENDAR_ONEMONTH => 'через месяц',
      );    
     
     public static $_interact_options = array(

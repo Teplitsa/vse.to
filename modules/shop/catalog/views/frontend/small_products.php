@@ -24,6 +24,9 @@ foreach ($products as $product):
     $i++;
     $url = URL::site($product->uri_frontend());
 
+    $telemosts = $product->get_telemosts();
+    $numTelemosts = count($telemosts);    
+    
     $image='';
     if (isset($product->image))
     {
@@ -58,6 +61,7 @@ foreach ($products as $product):
             $_update_url = str_replace('${id}', $product->id, $update_url);
 ?>        
         <a href="<?php echo $_update_url;?>" class="link-edit"><i class="icon-pencil icon-white"></i></a>
+        <span class="link-edit-user-page-req">Заявки: <?php echo $numTelemosts ?></span>
 <?php } ?>
     </section>
     <?php if ($i == count($products)) {?>   

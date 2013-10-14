@@ -72,7 +72,7 @@ if (APP === 'FRONTEND')
                 'page' => '(\d++|all)',
                 'format'   => '\d++',
                 'theme'   => '\d++',
-                'calendar'   => '[P0-9MW]+',
+                'calendar'   => '[P0-9MWD]+',
             )
         ))
         ->defaults(array(

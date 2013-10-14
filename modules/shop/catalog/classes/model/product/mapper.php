@@ -310,7 +310,7 @@ class Model_Product_Mapper extends Model_Mapper_Resource {
         if (isset($search_params['calendar']))
         {
             $key = $search_params['calendar'];
-            if(array_key_exists($key,Model_Product::$_calendar_options ))
+            if($key != Model_Product::CALENDAR_TODAY && array_key_exists($key,Model_Product::$_calendar_options ))
             {
                 $needTime = new DateTime("now");
                 $needTime->setTimezone(new DateTimeZone("UTC"));

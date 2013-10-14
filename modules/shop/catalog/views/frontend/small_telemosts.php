@@ -53,7 +53,7 @@ foreach ($telemosts as $telemost):
             </div>
             <div class="span4">
                 <p><span class="type"><?php echo Model_Product::$_interact_options[$product->interact] ?></span></p>
-                <p class="counter"><span title="я пойду" id="" class="go">999</span><span title="хочу телемост" id-"" class="hand">999</span></p>
+                <!-- <p class="counter"><span title="я пойду" id="" class="go">999</span><span title="хочу телемост" id-"" class="hand">999</span></p> -->
             </div>
         </div>
         <a href="#" class="link-edit"><i class="icon-pencil icon-white"></i></a>

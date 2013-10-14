@@ -1570,3 +1570,11 @@ footer .span6 img
     display:block;
     text-align: center;
 }
+
+
+.link-edit-user-page-req
+{
+    position: absolute;
+    top: 25px;
+    right: 0px;    
+}
