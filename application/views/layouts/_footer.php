@@ -7,11 +7,13 @@
                     <?php echo Widget::render_widget('menus','menu', 'footer'); ?> 
                 </div>
                 <div class="span3">
+                <!--
                     <div class="soc-link">
                         <a href="#" class="button fb">f</a>
                         <a href="#" class="tw button ">t</a>
                         <a href="#" class="button vk">v</a>
                     </div>
+                 -->
                     <div class="address">
 			<p>
 				<strong>Контакты:</strong><br />
