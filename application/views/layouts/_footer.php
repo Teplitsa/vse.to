@@ -13,21 +13,25 @@
                         <a href="#" class="button vk">v</a>
                     </div>
                     <div class="address">
-                        <p><strong>Контакты:</strong><br>
-                            123123 Москва<br>
-                            ул. Тверская-Ямская, 99<br>
-                            большое здание
-                        </p>
+			<p>
+				<strong>Контакты:</strong><br />
+				vsё.to <br/>
+				Центр изучения интернета и общества <br/>
+				117418, Москва, Нахимовский пр. 47, оф. 1918<br>
+				tov[dot]dinast[at]gmail[dot]com
+			</p>
                     </div>
                 </div>
                 <div class="span6">
-					<img src="/modules/frontend/public/css/frontend/img/banner.png" />
-					<img src="/modules/frontend/public/css/frontend/img/banner.png" />
-					<img src="/modules/frontend/public/css/frontend/img/banner.png" />
-					<img src="/modules/frontend/public/css/frontend/img/banner.png" />
-					<img src="/modules/frontend/public/css/frontend/img/banner.png" />
-					<img src="/modules/frontend/public/css/frontend/img/banner.png" />
-				</div>
+                	<!-- 
+			<img src="/modules/frontend/public/css/frontend/img/banner.png" />
+			<img src="/modules/frontend/public/css/frontend/img/banner.png" />
+			<img src="/modules/frontend/public/css/frontend/img/banner.png" />
+			<img src="/modules/frontend/public/css/frontend/img/banner.png" />
+			<img src="/modules/frontend/public/css/frontend/img/banner.png" />
+			<img src="/modules/frontend/public/css/frontend/img/banner.png" />
+			-->
+		</div>
             </div>
             <div class="row">
                 <div class="span12">
