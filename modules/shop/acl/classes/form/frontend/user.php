@@ -17,7 +17,7 @@ class Form_Frontend_User extends Form_Frontend
         $element =  new Form_Element_Hidden('group_id');
         $this->add_component($element);
 
-        if ($creating) $element->value = Model_Group::USER_GROUP_ID;
+        if ($creating) $element->value = Model_Group::EDITOR_GROUP_ID;
         else $element->value = $this->model()->group_id;
         
         // ----- E-mail
@@ -185,7 +185,10 @@ class Form_Frontend_User extends Form_Frontend
         $this->add_component($element);        
         
         // ----- Description
-        $this->add_component(new Form_Element_Textarea('info', array('label' => 'О себе')));
+        $element = new Form_Element_Textarea('info', array('label' => 'О себе'));
+        $element
+            ->add_validator(new Form_Validator_NotEmptyString());
+        $this->add_component($element);
         
         
         // ----- Form buttons

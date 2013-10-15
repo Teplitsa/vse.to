@@ -107,8 +107,9 @@ class Controller_Frontend_Users extends Controller_FrontendRES
 
             if ($result)
             {   
-                $this->request->redirect(URL::uri_to('frontend/acl/users/control',array('action' => 'control')));
+                //$this->request->redirect(URL::uri_to('frontend/acl/users/control',array('action' => 'control')));
                 //$this->request->redirect(URL::uri_to('frontend/area/towns',array('action'=>'choose', 'are_town_alias' => Auth::instance()->get_user()->town->alias)));
+                $this->request->redirect(URL::uri_to('frontend/area/towns',array('action'=>'choose', 'are_town_alias' => Model_Town::ALL_TOWN)));
             }
             else
             {
@@ -341,7 +342,7 @@ class Controller_Frontend_Users extends Controller_FrontendRES
 
             $count      = $user->count_by_group_id($group->id);
             $pagination = new Paginator($count, $per_page);
-            $users = $user->find_all_by_group_id($group->id, array(
+            $users = $user->find_all_by_group_id_and_active($group->id,true, array(
                 'offset'   => $pagination->offset,
                 'limit'    => $pagination->limit,
                 'order_by' => $order_by,
@@ -355,7 +356,7 @@ class Controller_Frontend_Users extends Controller_FrontendRES
             $count = $user->count();
             $pagination = new Paginator($count, $per_page);
 
-            $users = $user->find_all(array(
+            $users = $user->find_all_by_active(true,array(
                 'offset'   => $pagination->offset,
                 'limit'    => $pagination->limit,
                 'order_by' => $order_by,
@@ -404,7 +405,7 @@ class Controller_Frontend_Users extends Controller_FrontendRES
 
             $count      = $user->count_by_group_id($group->id);
             $pagination = new Paginator($count, $per_page);
-            $users = $user->find_all_by_group_id($group->id, array(
+            $users = $user->find_all_by_group_id_and_active($group->id,true, array(
                 'offset'   => $pagination->offset,
                 'limit'    => $pagination->limit,
                 'order_by' => $order_by,
@@ -418,7 +419,7 @@ class Controller_Frontend_Users extends Controller_FrontendRES
             $count = $user->count();
             $pagination = new Paginator($count, $per_page);
 
-            $users = $user->find_all(array(
+            $users = $user->find_all_by_active(true,array(
                 'offset'   => $pagination->offset,
                 'limit'    => $pagination->limit,
                 'order_by' => $order_by,

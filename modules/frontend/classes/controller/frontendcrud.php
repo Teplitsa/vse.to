@@ -519,6 +519,7 @@ abstract class Controller_FrontendCRUD extends Controller_Frontend
         {
             $view = $this->_view($action, $model, $form, $params);
         }
+
         return $view;
     }
 

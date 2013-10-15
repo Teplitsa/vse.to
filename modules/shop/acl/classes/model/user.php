@@ -10,7 +10,7 @@ class Model_User extends Model
     {
         if (!isset(self::$users[$group_id])) {
             self::$users[$group_id] =array();
-            $results = Model::fly('Model_User')->find_all_by_group_id($group_id,array(
+            $results = Model::fly('Model_User')->find_all_by_group_id_and_active($group_id,true,array(
                 'order_by'=> 'last_name',
                 'columns'=>array('id','last_name')
             ));
@@ -95,6 +95,11 @@ class Model_User extends Model
         return FALSE;
     }
 
+    public function default_active()
+    {
+        return FALSE;
+    }
+    
     public function default_notify()
     {
         return FALSE;
@@ -261,10 +266,10 @@ class Model_User extends Model
     public function validate_update(array $newvalues)
     {
         
-        if (!isset($newvalues['organizer_id']) || $newvalues['organizer_id'] == NULL) {
-            $this->error('Указана несуществующая организация!');
-            return FALSE;
-        }
+//        if (!isset($newvalues['organizer_id']) || $newvalues['organizer_id'] == NULL) {
+//            $this->error('Указана несуществующая организация!');
+//            return FALSE;
+//        }
         return (
                 $this->validate_email($newvalues)
             AND $this->validate_group_id($newvalues)
@@ -450,6 +455,12 @@ class Model_User extends Model
     
     public function save($create = FALSE,$update_userprops = TRUE, $update_userlinks = TRUE)
     {
+        if (!$this->organizer_id) {
+            $this->organizer_id = Model_Organizer::DEFAULT_ORGANIZER_ID;
+            $this->organizer_name = Model_Organizer::DEFAULT_ORGANIZER_NAME;
+            
+        }        
+        
         parent::save($create);
 
         if ($this->file['name']) {

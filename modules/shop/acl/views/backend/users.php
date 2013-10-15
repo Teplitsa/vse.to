@@ -40,7 +40,8 @@ if ( ! count($users))
         $columns = array(
             'email' => 'E-mail',
             'first_name'  => 'Имя',
-            'last_name'  => 'Фамилия'
+            'last_name'  => 'Фамилия',
+            'active'  => 'Акт.'            
         );
 
         echo View_Helper_Admin::table_header($columns, 'acl_uorder', 'acl_udesc');
@@ -61,21 +62,36 @@ foreach ($users as $user)
         </td>
 
         <?php
-        foreach (array_keys($columns) as $field):
-        ?>
-            <td>
-            <?php
-            if (isset($user->$field) && trim($user->$field) !== '') {
-                echo HTML::chars($user->$field);
-            } else {
-                echo '&nbsp';
-            }
-            ?>
-            </td>
+        foreach (array_keys($columns) as $field) {
+            switch ($field)
+            {
+                
+                case 'active':
+                    echo '<td class="c">';
+                                      
+                    if ( ! empty($user->$field)) {
+                        echo View_Helper_Admin::image('controls/on.gif', 'Да');
+                    } else {
+                        echo View_Helper_Admin::image('controls/off.gif', 'Нет');
+                    }
+                    echo '</td>';
+                    break;
 
-        <?php
-        endforeach;
-        ?>
+                default:
+                    echo '<td class="nowrap">';
+
+                    if (isset($user->$field) && trim($user->$field) !== '') {
+                        echo HTML::chars($user[$field]);
+                    } else {
+                        echo '&nbsp';
+                    }
+
+                    echo '</td>';
+            }
+        
+        
+
+        } ?>
 
         <td class="ctl">
             <?php echo View_Helper_Admin::image_control($_update_url, 'Редактировать пользователя', 'controls/edit.gif', 'Редактировать'); ?>

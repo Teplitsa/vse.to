@@ -70,11 +70,15 @@ class Form_Frontend_Product extends Form_Frontend
         {
             $organizer_id = (int) $control_element->value;
         }
-        else
+        elseif ($this->model()->organizer_id)
         {
             $organizer_id = (int) $this->model()->organizer_id;
         }
-
+        elseif (Model_User::current()->organizer_id)
+        {
+            $organizer_id = (int) Model_User::current()->organizer_id;
+        }
+        
         // ----- organizer_name
         // input field with autocomplete ajax
         $element = new Form_Element_Input('organizer_name',
@@ -158,7 +162,11 @@ class Form_Frontend_Product extends Form_Frontend
         $this->add_component($element);
 
         // ----- Description
-        $this->add_component(new Form_Element_Textarea('description', array('label' => 'О событии')));
+        
+        $element = new Form_Element_Textarea('description', array('label' => 'О событии'));
+        $element
+            ->add_validator(new Form_Validator_NotEmptyString());
+        $this->add_component($element);
 
         // ----- Product images
 //        if ($this->model()->id !== NULL)

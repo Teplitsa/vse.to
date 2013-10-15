@@ -90,9 +90,9 @@ class Controller_Frontend_Acl extends Controller_Frontend
 
                     if ($result)
                     {
-                        $this->request->redirect(URL::uri_to('frontend/area/towns',array('action'=>'choose', 'are_town_alias' => Auth::instance()->get_user()->town->alias)));
-                        
+                        //$this->request->redirect(URL::uri_to('frontend/area/towns',array('action'=>'choose', 'are_town_alias' => Auth::instance()->get_user()->town->alias)));
                         //$this->request->redirect(Request::current()->uri);
+                        $this->request->redirect(URL::uri_to('frontend/area/towns',array('action'=>'choose', 'are_town_alias' => Model_Town::ALL_TOWN)));              
                     }
                     else
                     {
@@ -122,7 +122,9 @@ class Controller_Frontend_Acl extends Controller_Frontend
                         );
                         if ($result)
                         {
-                            $this->request->redirect(URL::uri_to('frontend/area/towns',array('action'=>'choose', 'are_town_alias' => Auth::instance()->get_user()->town->alias)));
+                            //$this->request->redirect(URL::uri_to('frontend/area/towns',array('action'=>'choose', 'are_town_alias' => Auth::instance()->get_user()->town->alias)));
+                            //$this->request->redirect(Request::current()->uri);
+                            $this->request->redirect(URL::uri_to('frontend/area/towns',array('action'=>'choose', 'are_town_alias' => Model_Town::ALL_TOWN)));
                         }
                         else
                         {
@@ -171,7 +173,9 @@ class Controller_Frontend_Acl extends Controller_Frontend
                    
                     if ($result)
                     {
-                        $this->request->redirect(URL::uri_to('frontend/area/towns',array('action'=>'choose', 'are_town_alias' => Auth::instance()->get_user()->town->alias)));
+                        //$this->request->redirect(URL::uri_to('frontend/area/towns',array('action'=>'choose', 'are_town_alias' => Auth::instance()->get_user()->town->alias)));
+                        //$this->request->redirect(Request::current()->uri);                        
+                        $this->request->redirect(URL::uri_to('frontend/area/towns',array('action'=>'choose', 'are_town_alias' => Model_Town::ALL_TOWN)));
                     }
                     else
                     {
@@ -213,9 +217,9 @@ class Controller_Frontend_Acl extends Controller_Frontend
 
                 if ($result)
                 {
-                    $this->request->redirect(URL::uri_to('frontend/area/towns',array('action'=>'choose', 'are_town_alias' => Auth::instance()->get_user()->town->alias)));
-
+                    //$this->request->redirect(URL::uri_to('frontend/area/towns',array('action'=>'choose', 'are_town_alias' => Auth::instance()->get_user()->town->alias)));
                     //$this->request->redirect(Request::current()->uri);
+                    $this->request->redirect(URL::uri_to('frontend/area/towns',array('action'=>'choose', 'are_town_alias' => Model_Town::ALL_TOWN)));               
                 }
                 else
                 {

@@ -25,7 +25,7 @@
 <?php
 if (Kohana::$profiling)
 {
-    echo View::factory('profiler/stats')->render();
+    //echo View::factory('profiler/stats')->render();
 }
 ?>
 </body>

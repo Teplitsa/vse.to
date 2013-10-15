@@ -152,6 +152,11 @@ class Auth {
             return FALSE;
         }
 
+        if (!$user->active) {
+            // Not active user
+            $this->error('Доступ пользователя на портал ограничен!');
+            return FALSE;            
+        }
         // Login succeded!
 
         // Save user to session

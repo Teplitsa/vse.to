@@ -50,8 +50,11 @@ if ($product->user_id == $current_user_id) {
         }
 
         $day = $nearest_flag?$product->weekday:($tomorrow_flag?'Завтра':'Сегодня');
+
+        $telemost_flag= FALSE;
+        if (Model_Town::current()->alias != Model_Town::ALL_TOWN)
+            $telemost_flag = ($product->place->town_name != Model_Town::current()->name);
         
-        $telemost_flag = ($product->place->town_name != Model_Town::current()->name);
         $user_id = Model_User::current()->id;
         $group_id = Model_User::current()->group_id; 
         $available_num = (int)$product->numviews;

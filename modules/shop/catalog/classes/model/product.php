@@ -567,7 +567,7 @@ class Model_Product extends Model_Res
 
     public function get_datetime_front()
     {
-        return l10n::rdate(Kohana::config('datetime.datetime_format_front'),$this->datetime->format('U'));
+        return l10n::rdate(Kohana::config('datetime.datetime_format_front'),$this->datetime->format('U')).' (МСК)';
     }    
 
     public function get_weekday()

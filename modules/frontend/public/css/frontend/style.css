@@ -202,6 +202,15 @@ h1.main-title > span:after {
     text-transform: uppercase;
     background: url(img/sprite.png) no-repeat 2px -50px #c00;
 }
+
+.town {
+    color: #fff;
+    font-size: 10px;
+    padding: 0px 5px 0 15px;
+    text-transform: uppercase;
+    background: no-repeat 2px -50px #c00;
+}
+
 section {
     padding: 10px 0;
 }
@@ -1267,7 +1276,7 @@ form  h1.main-title  > span:after {
 }
 
 .cld_month {
-    width: 300px;
+    width: 280px;
 }
 .cld_month td {
     height: 30px;

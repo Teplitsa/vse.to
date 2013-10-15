@@ -41,6 +41,8 @@ class Form_Backend_User extends Form_Backend
                 array(Form_Validator_InArray::NOT_FOUND => 'Указана несуществующая группа!')
             ));
         $cols->add_component($element);
+        // ----- Active
+        $cols->add_component(new Form_Element_Checkbox('active', array('label' => 'Активность')));
 
         // ----- Login and password
         $fieldset = new Form_Fieldset('email_and_password', array('label' => 'E-mail и пароль'));

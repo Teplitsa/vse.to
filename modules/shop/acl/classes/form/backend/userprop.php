@@ -59,7 +59,7 @@ class Form_Backend_UserProp extends Form_Backend {
             $x_options = array('active' => 'Акт.');
 
             $y_options = array();
-            $users = Model::fly('Model_User')->find_all();
+            $users = Model::fly('Model_User')->find_all_by_active(true);
             foreach ($users as $user)
             {
                 $y_options[$user->id] = $user->email;

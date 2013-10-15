@@ -265,24 +265,25 @@ class Model_Product_Mapper extends Model_Mapper_Resource {
             
             $params['join_sectiongroup']   = TRUE;
         }
-
+        
         if ( APP =='FRONTEND') {
+            $condition->and_where("$table.visible", '=', TRUE);
+
+            $condition->and_where("$table.active", '=', TRUE);
+
+            $today_datetime = new DateTime("now");
+            $today_datetime->setTimezone(new DateTimeZone("UTC"));
+
+            $today_datetime->sub(new DateInterval(Model_Product::DURATION_1));
+
+            $condition->and_where(DB::expr('TIMEDIFF('.$this->_db->table_prefix()."$table.datetime".','.$this->_db->quote($today_datetime->format(Kohana::config('datetime.db_datetime_format'))).')>0'));        
+            
+            
             if (Modules::registered('area') && !isset($search_params['all_towns']))
             {
                 $telemost_table = Model_Mapper::factory('Model_Telemost_Mapper')->table_name();
                 $place_table = Model_Mapper::factory('Model_Place_Mapper')->table_name();
                 $telemost_place_table = $place_table."_telemost";
-
-                $condition->and_where("$table.visible", '=', TRUE);
-
-                $condition->and_where("$table.active", '=', TRUE);
-
-                $today_datetime = new DateTime("now");
-                $today_datetime->setTimezone(new DateTimeZone("UTC"));
-                
-                $today_datetime->sub(new DateInterval(Model_Product::DURATION_1));
-                
-                $condition->and_where(DB::expr('TIMEDIFF('.$this->_db->table_prefix()."$table.datetime".','.$this->_db->quote($today_datetime->format(Kohana::config('datetime.db_datetime_format'))).')>0'));
                 
                 $condition->and_where_open()
                         ->or_where("$place_table.town_id", '=', Model_Town::current()->id)                
@@ -319,7 +320,6 @@ class Model_Product_Mapper extends Model_Mapper_Resource {
                 $condition->and_where(DB::expr('TIMEDIFF('.$this->_db->table_prefix()."$table.datetime".','.$this->_db->quote($needTime->format(Kohana::config('datetime.db_datetime_format'))).')>0'));
             }
         }
-        
         
         if ( ! $condition->is_empty())
         {
@@ -479,6 +479,7 @@ class Model_Product_Mapper extends Model_Mapper_Resource {
         
         // ----- joins
         $this->_apply_joins($query, $params);
+        
         return parent::find_all_by($model, $condition, $params, $query);
     }
 

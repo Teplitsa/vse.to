@@ -37,8 +37,8 @@ abstract class Controller_Frontend extends Controller
             }
             
             $user = Auth::instance()->get_user();
-            $timezone = isset($user->town->timezone)? $user->town->timezone: 'Europe/Moscow';
-
+            //$timezone = isset($user->town->timezone)? $user->town->timezone: 'Europe/Moscow';
+            $timezone = 'Europe/Moscow';
             date_default_timezone_set($timezone);
 
         }

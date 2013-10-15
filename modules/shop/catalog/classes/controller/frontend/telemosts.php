@@ -274,17 +274,6 @@ class Controller_Frontend_Telemosts extends Controller_FrontendRES
             {   
                 $vals = $form_request->get_values();
                 $vals['user_id'] = $user->id;
-
-                if($product->choalg == Model_Product::CHOALG_ORDER)
-                {
-                    $activeTelemosts = $product->get_telemosts();
-                    $numactiveTelemosts = count($activeTelemosts);
-                    
-                    if($numactiveTelemosts < $product->numviews)
-                    {
-                        $vals['active'] = 1;
-                    }
-                }
                 
                 if ($telemost->validate($vals))
                 {                    
@@ -292,6 +281,16 @@ class Controller_Frontend_Telemosts extends Controller_FrontendRES
                     $telemost->product_id = $product->id;
 
                     $telemost->save();
+                    
+                    // activize telemost if the FIFO algorithm is chosen
+                    if($product->choalg == Model_Product::CHOALG_ORDER)
+                    {
+                        $telemost->active = TRUE;
+                        if ($telemost->validate_choose()) {
+                            $telemost->save();            
+                        }    
+                    }
+                    
                     $this->request->redirect($product->uri_frontend());
                 }
             }

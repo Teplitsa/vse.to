@@ -3,6 +3,7 @@
 <?php $url = URL::to('frontend/catalog/product/fullscreen', array('alias' => $product->alias));
 
 if (isset($_GET['width']) AND isset($_GET['height'])) { ?>
+
 <div class ="look">
 <iframe src="<?php echo $aim->event_uri ?>?t=1&export=1&logout=www<?php echo URL::self(array());?>" width="<?php echo $_GET['width'] ?>" height="<?php echo $_GET['height'] ?>" frameborder="0" style="border:none"></iframe>
     

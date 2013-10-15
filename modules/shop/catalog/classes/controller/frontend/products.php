@@ -108,7 +108,6 @@ class Controller_Frontend_Products extends Controller_FrontendRES
             'active'  => -1,
             'section_active' => 1,
         );
- 
         $town_alias = Cookie::get(Model_Town::TOWN_TOKEN);
         if($town_alias == Model_Town::ALL_TOWN)
            $search_params['all_towns'] = true;
@@ -127,8 +126,9 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         $pages = (int)$this->request->param('page',1);
 
         $per_page = 4*$pages;
-        
+
         $count = $product->count_by($search_condition, $params);
+
         $pagination = new Pagination($count, $per_page, 'page', 7);
         $pagination->offset = 0;
         $order_by = $this->request->param('cat_porder', 'datetime');
@@ -141,6 +141,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
 
         $params['with_image'] = 3;
         $params['with_sections'] = TRUE;
+
         $products = $product->find_all_by($search_condition, $params);
         // Set up view
         $view = new View('frontend/products/list');
@@ -190,6 +191,10 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         $tag = new Model_Tag();
         $search_condition['alias'] = $tag_alias;
         $search_condition['owner_type'] = 'product';
+
+        $town_alias = Cookie::get(Model_Town::TOWN_TOKEN);
+        if($town_alias == Model_Town::ALL_TOWN)
+           $search_params['all_towns'] = true;
 
         $pages = (int)$this->request->param('page',1); 
         $per_page = 4*$pages;
@@ -257,6 +262,10 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         $search_params['active'] = 1;
         $search_params['section_active'] = 1;
         $search_params['site_id'] = Model_Site::current()->id;    
+
+        $town_alias = Cookie::get(Model_Town::TOWN_TOKEN);
+        if($town_alias == Model_Town::ALL_TOWN)
+           $search_params['all_towns'] = true;
         
         list($search_condition, $params) = $product->search_condition($search_params);
 
@@ -755,7 +764,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
             $this->_action_404();        
             return;            
         }
-                
+             
         $view = new View('frontend/products/fullscreen');
         $view->aim = $aim;
         $view->product = $product;

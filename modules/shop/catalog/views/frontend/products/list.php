@@ -33,7 +33,7 @@ while ($i < $count)
             $tomorrow_flag++;            
         } elseif ($nearest_flag == 0) {
             if (!$without_dateheaders)            
-            echo '<h1 class="main-title"><span>В ближайшее время </span></h1>';
+            if ($today_flag || $tomorrow_flag) echo '<h1 class="main-title"><span>В ближайшее время </span></h1>';
             $nearest_flag++;
         }
         
