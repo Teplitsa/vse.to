@@ -5,13 +5,15 @@
     <div class="row-fluid">
         <div class="span6 bio">
             <?php echo Widget::render_widget('lecturers', 'lecturer_images', $lecturer); ?>
-            <?php if (is_array($lecturer->links)) {
-                  foreach ($lecturer->links as $link) { ?>
-                <a class="website" href="<?php echo $link?>"><?php echo $link?></a>
-            <?php }} ?>
         </div>
         <div class="span6 content">
             <?php echo $lecturer->info ?>
+            <div>
+                <?php if (is_array($lecturer->links)) {
+                      foreach ($lecturer->links as $link) { ?>
+                    <a class="website" href="<?php echo $link?>"><?php echo $link?></a>
+                <?php }} ?>
+            </div>
         </div>
     </div>
     <div class="b-social"></div>
