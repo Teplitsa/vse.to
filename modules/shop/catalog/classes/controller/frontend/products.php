@@ -483,28 +483,30 @@ class Controller_Frontend_Products extends Controller_FrontendRES
     {
         $parseurl = $_GET['parseurl'];
 
+        $result =  array('parseurl' => $parseurl, 'status'=>'notsupported');
         
-        $html = file_get_contents($parseurl);
-//        $html = mb_convert_encoding($html, 'cp1251');
-        
-        $doc = new DOMDocument(); // '1.0','ISO-8859-1' '1.0','cp1251'
-//        $doc->encoding='cp1251';
-        libxml_use_internal_errors(true);
-        $doc->loadHTML($html);
-        libxml_use_internal_errors(false);
+        if(strpos($parseurl,'theoryandpractice.ru') !== FALSE)
+        {
+            $html = file_get_contents($parseurl);
+            
+            $matches = array();
+            preg_match('|<span class="type">([^<]+?)</span><em>([^<]+?)</em>|', $html, $matches);
+            $title = html_entity_decode($matches[2], ENT_COMPAT, 'UTF-8');
 
-        $dateTime = $doc->getElementById('sidebar')->firstChild->getAttribute('datetime');
-        $title = $doc->getElementsByTagName('h1')->item(0)->lastChild->nodeValue;
-        
-        $result =  array('parseurl' => $parseurl, 'event'=>array(
-            'time'=> $dateTime,
-            'title' => $title
-        ));
-        
-//        $initialEncoding = mb_detect_encoding($title);
-        
-        
-//        file_put_contents('C:/temp/test.txt', $result['event']['title']);
+            preg_match('|<time class="time" datetime="([^"]+?)" itemprop="startDate">|', $html, $matches);
+            $dateTime = date_parse($matches[1]);
+            $dateTime = $dateTime['day'].'-'.$dateTime['month'].'-'.$dateTime['year'].' '.$dateTime['hour'].':'.$dateTime['minute'];
+
+            preg_match('|<div class="description" itemprop="description">(.+?)</div>|s', $html, $matches);
+            $desc = strip_tags(html_entity_decode($matches[1], ENT_COMPAT, 'UTF-8'));
+
+            $result['status'] = 'success';
+            $result['event'] = array(
+                'time'=> $dateTime,
+                'title' => $title,
+                'desc' => $desc,
+            );          
+        }
         
         $this->request->response['data'] = $result;
         $this->_action_ajax();

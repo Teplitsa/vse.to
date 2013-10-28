@@ -31,12 +31,18 @@ function praseUrl(url)
         'success': function(response, textStatus, jqXHR ){
 //            console.log(response.data.parseurl);
 
-            var eventData = response.data.event;
+            if(response.data.status == 'notsupported')
+            {
+                alert('Данный сайт не поддерживается!');
+            }
+            else
+            {
+                var eventData = response.data.event;
 
-            $('#id-product1-caption').val(eventData.title);
-            $('#id-product1-datetime').val(eventData.time);
-
-            console.log(response);
+                $('#id-product1-caption').val(eventData.title);
+                $('#id-product1-datetime').val(eventData.time);
+                $('#id-product1-description').val(eventData.desc);
+            }
         },
         'error': function(jqXHR, textStatus, errorThrown ){
             alert('Произошла ошибка!');
