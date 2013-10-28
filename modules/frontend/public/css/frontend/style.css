@@ -1587,3 +1587,15 @@ footer .span6 img
     top: 25px;
     right: 0px;    
 }
+
+
+
+#parsing-fill-btn
+{
+    right: 0px;
+    position: absolute;
+}
+#id-product1
+{
+    position: relative;
+}

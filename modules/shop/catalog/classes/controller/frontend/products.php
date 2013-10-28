@@ -478,6 +478,39 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         $this->_action_ajax();            
     }         
     
+    // Parsing
+    public function action_ajax_parsing()
+    {
+        $parseurl = $_GET['parseurl'];
+
+        
+        $html = file_get_contents($parseurl);
+//        $html = mb_convert_encoding($html, 'cp1251');
+        
+        $doc = new DOMDocument(); // '1.0','ISO-8859-1' '1.0','cp1251'
+//        $doc->encoding='cp1251';
+        libxml_use_internal_errors(true);
+        $doc->loadHTML($html);
+        libxml_use_internal_errors(false);
+
+        $dateTime = $doc->getElementById('sidebar')->firstChild->getAttribute('datetime');
+        $title = $doc->getElementsByTagName('h1')->item(0)->lastChild->nodeValue;
+        
+        $result =  array('parseurl' => $parseurl, 'event'=>array(
+            'time'=> $dateTime,
+            'title' => $title
+        ));
+        
+//        $initialEncoding = mb_detect_encoding($title);
+        
+        
+//        file_put_contents('C:/temp/test.txt', $result['event']['title']);
+        
+        $this->request->response['data'] = $result;
+        $this->_action_ajax();
+    }
+    
+    
     // -----------------------------------------------------------------------
     // PRODUCT PAGE
     // -----------------------------------------------------------------------

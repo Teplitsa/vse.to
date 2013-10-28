@@ -1,4 +1,6 @@
 <?php echo $form->render_form_open();?>
+    <a href="#" id="parsing-fill-btn">Заполнить поля автоматически</a>
+    
     <?php if ($form->model()->id) { ?>
     <p class="title">Редактирование анонса события</p>
     <?php }else { ?>
