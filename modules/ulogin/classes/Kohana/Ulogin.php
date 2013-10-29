@@ -185,7 +185,7 @@ class Kohana_Ulogin {
         else
         {
             $errors = $user->errors();
-            throw new Kohana_Exception( $errors[0] );
+            throw new Kohana_Exception( $errors[0]['text'] );
         }
         return $user;
     }
