@@ -480,11 +480,7 @@ class Controller_Frontend_Acl extends Controller_Frontend
         {
             try
             {
-                $ulogin->login();
-                
                 $userPassword = $ulogin->login();
-                
-                var_dump($userPassword);
                 
                 if($userPassword)
                 {
