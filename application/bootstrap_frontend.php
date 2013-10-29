@@ -118,7 +118,9 @@ Kohana::modules(array(
         'towns' => MODPATH.'shop/towns',
         'catalog'   => MODPATH.'shop/catalog',
 
-        'frontend'  => MODPATH.'frontend'
+        'frontend'  => MODPATH.'frontend',
+    
+        'ulogin'  => MODPATH.'ulogin',
 	));
 
 /**

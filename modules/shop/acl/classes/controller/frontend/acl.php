@@ -462,4 +462,44 @@ class Controller_Frontend_Acl extends Controller_Frontend
         $this->request->response = JSON_encode($values);
     } 
     
+    /**
+     * Login with social network
+     */
+    public function action_login_social()
+    {
+        $ulogin = Ulogin::factory();
+        $layout = $this->prepare_layout();
+        $layout->caption = 'Вход через социальные сети';
+
+        if (!$ulogin->mode())
+        {
+            $layout->content = $ulogin->render();
+            $this->request->response = $layout->render();
+        }
+        else
+        {
+            try
+            {
+                $ulogin->login();
+                
+                $userPassword = $ulogin->login();
+                
+                if($userPassword)
+                {
+                    $layout->content = 'Вы успешно вошли! Ваш временный пароль: '.$userPassword
+                            .'. <br />Вы можете входить на сайта как через комбинацию email-пароль, так и через выбранную социальную сеть.';
+                    $this->request->response = $layout->render();
+                }
+                else
+                {
+                    $this->request->redirect(URL::uri_to('frontend/area/towns',array('action'=>'choose', 'are_town_alias' => Model_Town::ALL_TOWN)));                
+                }
+            }
+            catch(Kohana_Exception $e)
+            {
+                $layout->content = 'Произошла ошибка: '.$e->getMessage();
+                $this->request->response = $layout->render();
+            }
+        }        
+    }
 }

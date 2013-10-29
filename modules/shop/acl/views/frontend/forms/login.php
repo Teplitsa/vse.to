@@ -12,8 +12,17 @@
                 <a href="#" class="tw button ">t</a>
                 <a href="#" class="button vk">v</a>
             </div>-->
+            
+            <div id="social-login">
+            <p>Через социальные сети</p>
+            <?php echo Ulogin::factory()->render() ?>
+            </div>
+            
+            <div>
+            <p>Или логин-пароль</p>   
             <label for="email"><?php echo $form->get_element('email')->render_input(); ?></label>
             <label for="pass"><?php echo $form->get_element('password')->render_input(); ?></label>
+            </div>
         </div>
         <div class="modal-footer">
             <?php echo $form->get_element('submit_login')->render_input(); ?>
