@@ -175,7 +175,8 @@ class Kohana_Ulogin {
         
         $user = new Model_User();
         $user->group_id = $user->default_group_id();
-        
+        $user->active = 1;
+		
         if($user->validate_create($data))
         {
             $user->values($data);

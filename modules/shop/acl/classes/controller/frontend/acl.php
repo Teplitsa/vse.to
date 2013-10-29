@@ -490,7 +490,7 @@ class Controller_Frontend_Acl extends Controller_Frontend
                 }
                 else
                 {
-//                    $this->request->redirect(URL::uri_to('frontend/area/towns',array('action'=>'choose', 'are_town_alias' => Model_Town::ALL_TOWN)));                
+                    $this->request->redirect(URL::uri_to('frontend/area/towns',array('action'=>'choose', 'are_town_alias' => Model_Town::ALL_TOWN)));                
                 }
             }
             catch(Kohana_Exception $e)
