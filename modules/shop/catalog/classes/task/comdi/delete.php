@@ -15,7 +15,7 @@ class Task_Comdi_Delete extends Task_Comdi_Base
      */
     public function  __construct()
     {
-        parent::__construct('http://my.comdi.com');
+        parent::__construct('http://my.webinar.ru');
         
         $this->default_params();
     }

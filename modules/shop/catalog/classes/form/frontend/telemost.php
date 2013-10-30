@@ -25,6 +25,13 @@ class Form_Frontend_Telemost extends Form_Frontend
         
         $element->add_validator(new Form_Validator_InArray(array_keys($places_arr)));
         $this->add_component($element);        
+       
+        // control hidden field
+        $control_element = new Form_Element_Hidden('product_alias');
+        $control_element->value = $this->model()->alias;
+        
+        $this->add_component($control_element);
+        
         
         // ----- Description
         $this->add_component(new Form_Element_Textarea('info', array('label' => 'Дополнительная информация'),array('placeholder' => "Дополнтельная информация")));        

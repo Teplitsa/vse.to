@@ -108,6 +108,7 @@ Kohana::modules(array(
         'xls_reader' => MODPATH.'general/xls_reader',
         'twig'    => MODPATH.'general/twig',
         'swift_mailer' => MODPATH.'general/swift_mailer',
+        'gmap' => MODPATH.'general/gmap',
 
         'sites'     => MODPATH.'shop/sites',
         'acl'       => MODPATH.'shop/acl',

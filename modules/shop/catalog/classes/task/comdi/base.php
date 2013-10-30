@@ -125,7 +125,7 @@ abstract class Task_Comdi_Base extends Task
         
             
         $url = str_replace(' ', '%20', $url);
-    
+
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -138,14 +138,14 @@ abstract class Task_Comdi_Base extends Task
 
         // Check if any error occured
         if(curl_errno($ch))
-        {
+        { 
             return FALSE;
         }
-
         if (($code == 200) && ($response !== FALSE))
         {   
             $xml_response = simplexml_load_string($response);
-            curl_close($ch);
+
+            curl_close($ch); 
             return  $xml_response;
         }
         else

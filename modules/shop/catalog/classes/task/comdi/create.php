@@ -27,7 +27,7 @@ class Task_Comdi_Create extends Task_Comdi_Base
      */
     public function  __construct()
     {
-        parent::__construct('http://my.comdi.com');
+        parent::__construct('http://my.webinar.ru');
         
         $this->default_params(self::$default_params);
     }
@@ -37,6 +37,7 @@ class Task_Comdi_Create extends Task_Comdi_Base
      */
     public function run()
     {        
+
         $xml_response = parent::send('/api0/Create.php',$this->params(self::$params));
         
         $id = ($xml_response['event_id'] == null)? null:(string)$xml_response['event_id'];        

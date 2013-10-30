@@ -1,7 +1,26 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 class Controller_Frontend_Towns extends Controller_Frontend
-{
+{    
+    /**
+     * Prepare layout
+     *
+     * @param  string $layout_script
+     * @return Layout
+     */
+    public function prepare_layout($layout_script = NULL)
+    {
+        if ($layout_script === NULL)
+        {
+            if ($this->request->action == 'index')
+            {
+                $layout_script = 'layouts/map';
+            }
+        }
+                
+        return parent::prepare_layout($layout_script);
+    }
+    
     /**
      * Render select_town bar
      */
@@ -40,4 +59,46 @@ class Controller_Frontend_Towns extends Controller_Frontend
         
         $this->request->redirect(URL::uri_to('frontend/catalog'));
     }
+    
+    public function action_index()
+    { 
+        $towns = Model::fly('Model_Town')->find_all();
+        
+        $pattern = new View('frontend/places/map_place');
+
+        $place = new Model_Place();
+
+        foreach ($towns as $town)
+        {
+            $options = array();
+
+            $places[$town->alias] = $place->find_all_by_town_id($town->id);
+            
+            $content = '';
+            
+            $glue= '';
+            foreach ($places[$town->alias] as $place) {
+                $pattern->place =$place;
+                $content .= $glue.$pattern->render();
+                $glue = '<br>';
+            }
+            
+            Gmap::instance()->addMarkerByAddress($town->name,$town->name,$content);
+        }
+        
+        $view = new View('frontend/towns/map');
+        $view->towns = $towns;
+        //$view->places = $places;
+        
+        $layout = $this->prepare_layout();
+        $layout->content = $view;
+        
+        // Add breadcrumbs
+        //$this->add_breadcrumbs();
+        $this->request->response = $layout->render();
+        
+        return $view->render();       
+         
+    }
+    
 }

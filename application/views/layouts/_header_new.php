@@ -12,8 +12,7 @@
     
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
-    <?php echo $view->placeholder('styles'); ?>
-    
+    <?php echo $view->placeholder('styles'); ?>    
 </head>
 
  

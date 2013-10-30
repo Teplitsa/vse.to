@@ -111,6 +111,8 @@ Kohana::modules(array(
         'blocks'  => MODPATH.'general/blocks',
         'twig'    => MODPATH.'general/twig',
         'swift_mailer' => MODPATH.'general/swift_mailer',
+        'gmap' => MODPATH.'general/gmap',
+
 
         'sites'     => MODPATH.'shop/sites',
         'acl'       => MODPATH.'shop/acl',

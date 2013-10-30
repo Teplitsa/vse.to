@@ -266,7 +266,7 @@ class Controller_Frontend_Telemosts extends Controller_FrontendRES
         
         $view = new View('frontend/telemosts/request');
 
-        $form_request = new Form_Frontend_Telemost($telemost);
+        $form_request = new Form_Frontend_Telemost($product,'telemost_for_product'.$product->alias);
         if ($form_request->is_submitted())
         {
             // User is trying to log in

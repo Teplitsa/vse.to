@@ -810,7 +810,8 @@ class Model_Product extends Model_Res
         if (Model_Product::COMDI === TRUE) {
 
             if ($dummy_product->event_id == NULL) { 
-                $event_id = TaskManager::start('comdi_create', Task_Comdi_Base::mapping($allvalues));               
+                $event_id = TaskManager::start('comdi_create', Task_Comdi_Base::mapping($allvalues));
+                
                 $username = isset($dummy_product->user->organization_name)?$dummy_product->user->organization_name:$dummy_product->user->email;
                 $event_uri  = TaskManager::start('comdi_register', Task_Comdi_Base::mapping(array(
                     'event_id' => $event_id,
