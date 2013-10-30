@@ -25,14 +25,11 @@ class Kohana_Ulogin {
             'openid'
         ),
         
-        // Эти поля используются для значения поля username в таблице users
-        'username'         => array (
-            'first_name',
-        ),
-        
         // Обязательные поля
         'fields'         => array(
             'email',
+            'first_name',
+            'last_name'            
         ),
         
         // Необязательные поля
@@ -125,7 +122,6 @@ class Kohana_Ulogin {
                         $data[$field] = $user[$field];
                 }
                             
-//                $orm_user = $this->create_new_user($data);
                 $real_user = $this->create_new_user($data);
                 
                 $password = $this->generatePassword();
@@ -143,7 +139,6 @@ class Kohana_Ulogin {
         }
         else
         {
-//            Auth::instance()->force_login($ulogin->user);
             Auth::instance()->set_authenticated(Model::fly('Model_User')->find_by_id($ulogin->user_id));
         }
     }
@@ -155,24 +150,13 @@ class Kohana_Ulogin {
     
     protected function create_ulogin($ulogin, $post)
     {
-//        return $ulogin->values($post, array(
-//            'user_id',
-//            'identity',
-//            'network',
-//        ))->create();
-        
         $ulogin = new Model_Ulogin();
         $ulogin->values($post);
         $ulogin->save();
-        
     }
 
     protected function create_new_user($data)
     {
-//        $orm_user = ORM::factory('User')->values($data)->create();
-//        $orm_user->add('roles', ORM::factory('Role', array('name' => 'login')));
-//        return $orm_user;
-        
         $user = new Model_User();
         $user->group_id = $user->default_group_id();
         $user->active = 1;

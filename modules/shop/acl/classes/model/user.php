@@ -112,7 +112,7 @@ class Model_User extends Model
      */
     public function default_group_id()
     {
-        return 2;
+        return 3;
     }
 
     /**

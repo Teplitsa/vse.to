@@ -120,7 +120,7 @@ Kohana::modules(array(
 
         'frontend'  => MODPATH.'frontend',
     
-        'ulogin'  => MODPATH.'ulogin',
+        'ulogin'  => MODPATH.'general/ulogin',
 	));
 
 /**
