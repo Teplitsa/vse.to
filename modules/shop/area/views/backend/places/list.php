@@ -45,6 +45,7 @@ if ( ! count($places))
         <?php
             $columns = array(
                 'name' => 'Название',
+                'town_name' => 'Город',
                 'ispeed'  => 'Интернет',
             );
             echo View_Helper_Admin::table_header($columns, 'are_porder', 'are_pdesc');
@@ -69,7 +70,15 @@ foreach ($places as $place)
         foreach (array_keys($columns) as $field)
         {
             switch ($field)
-            {
+            {                
+                case 'ispeed':
+                    echo '<td class="nowrap">';
+
+                    echo HTML::chars(Model_Place::$_ispeed_options[$place->ispeed[$field]]);
+
+                    echo '</td>';
+                    break;
+
                 default:
                     echo '<td class="nowrap">';
 
@@ -81,7 +90,7 @@ foreach ($places as $place)
 
                     echo '</td>';
             }
-        }
+        }    
     ?>
         <td class="ctl">
             <?php echo View_Helper_Admin::image_control($_update_url, 'Редактировать площадку', 'controls/edit.gif', 'Редактировать'); ?>

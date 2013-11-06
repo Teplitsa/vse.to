@@ -847,6 +847,10 @@ section.mini .address {
     font-size: 12px;
     padding-right: 20px;
 }
+
+.map_info {
+    width: 350px;
+}
 /* page */
 #page .wrapper {
     padding-bottom: 70px;
@@ -949,7 +953,7 @@ section.mini .address {
 }
 #gmap {
   height: 100%;
-  min-height: 200px;
+  min-height: 500px;
 }
 #gmap img {
     max-width: none !important;

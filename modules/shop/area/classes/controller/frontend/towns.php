@@ -24,7 +24,7 @@ class Controller_Frontend_Towns extends Controller_Frontend
     /**
      * Render select_town bar
      */
-    public function widget_select()
+    public function widget_select($type = 'catalog')
     {
         $town = Model_Town::current();
 
@@ -42,6 +42,8 @@ class Controller_Frontend_Towns extends Controller_Frontend
         
         $view->town = $town;
         
+        $view->type = $type;
+        
         return $view->render();        
     }
     
@@ -58,38 +60,93 @@ class Controller_Frontend_Towns extends Controller_Frontend
         Cookie::set(Model_Town::TOWN_TOKEN, $town->alias, time() + Model_Town::TOWN_LIFETIME);            
         
         $this->request->redirect(URL::uri_to('frontend/catalog'));
+        //$this->request->redirect(URL::uri_self(array()));        
+    }
+    
+    public function action_choosemap()
+    {
+        $town = Model_Town::current();
+        
+        if ( ! isset($town->id))
+        {
+            $this->_action_404('Указанный город не найден');
+            return;
+        }
+
+        Cookie::set(Model_Town::TOWN_TOKEN, $town->alias, time() + Model_Town::TOWN_LIFETIME);            
+        
+        $this->request->redirect(URL::uri_to('frontend/area/towns'));
+        //$this->request->redirect(URL::uri_self(array()));
+        
     }
     
     public function action_index()
     { 
-        $towns = Model::fly('Model_Town')->find_all();
-        
-        $pattern = new View('frontend/places/map_place');
+        $town = Model_Town::current();
 
-        $place = new Model_Place();
-
-        foreach ($towns as $town)
+        if (!$town->id)
         {
-            $options = array();
+            $towns = Model::fly('Model_Town')->find_all();
 
-            $places[$town->alias] = $place->find_all_by_town_id($town->id);
+            $pattern = new View('frontend/places/map_place');
+
+            $place = new Model_Place();
+
+            foreach ($towns as $town)
+            {
+                $options = array();
+
+                $places[$town->alias] = $place->find_all_by_town_id($town->id);
+
+                $content = '';
+
+                $glue= '';
+                foreach ($places[$town->alias] as $place) {
+
+                    $pattern->place =$place;
+                    $content .= $glue.$pattern->render();
+                    $glue = '<br>';
+                }
+                if ($town->lat) {
+                    Gmaps3::instance()->add_mark($town->lat,$town->lon,$town->name);
+                }
+            }
+
+            $view = new View('frontend/towns/map');
+            $view->places = $places;
+            $view->zoom = NULL;
+            $view->lat = NULL;
+            $view->lon = NULL;
+
+        } else {
+            $place = new Model_Place();            
             
-            $content = '';
+            $places = $place->find_all_by_town_id($town->id);
             
-            $glue= '';
-            foreach ($places[$town->alias] as $place) {
-                $pattern->place =$place;
-                $content .= $glue.$pattern->render();
-                $glue = '<br>';
+            $pattern = new View('frontend/places/map_place');
+            
+            foreach ($places as $place) {
+                if ($place->lat) {
+                    Gmaps3::instance()->add_mark($place->lat,$place->lon,$place->name);
+                    $pattern->place =$place;
+                    Gmaps3::instance()->add_infowindow($pattern->render());
+                }
             }
             
-            Gmap::instance()->addMarkerByAddress($town->name,$town->name,$content);
+            $view = new View('frontend/towns/map');
+            //$view->towns = $towns;
+            $view->places = $places;
+
+            if ($town->name != 'Москва') {
+                $view->zoom = 11;
+            } else {
+                $view->zoom = 9;
+            }
+            $view->lat = $town->lat;
+            $view->lon = $town->lon;
+            
+
         }
-        
-        $view = new View('frontend/towns/map');
-        $view->towns = $towns;
-        //$view->places = $places;
-        
         $layout = $this->prepare_layout();
         $layout->content = $view;
         

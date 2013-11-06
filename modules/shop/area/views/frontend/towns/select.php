@@ -2,8 +2,13 @@
 
 <?php
 
-$choose_url = URL::to('frontend/area/towns', array('action'=>'choose', 'are_town_alias' => '{{alias}}'), TRUE);
-$main_town_url = URL::to('frontend/area/towns', array('action'=>'choose', 'are_town_alias' => $town->alias), TRUE);
+if ($type == 'catalog') {
+    $choose_url = URL::to('frontend/area/towns', array('action'=>'choose', 'are_town_alias' => '{{alias}}'), TRUE);
+    $main_town_url = URL::to('frontend/area/towns', array('action'=>'choose', 'are_town_alias' => $town->alias), TRUE);
+} else {
+    $choose_url = URL::to('frontend/area/towns', array('action'=>'choosemap', 'are_town_alias' => '{{alias}}'), TRUE);
+    $main_town_url = URL::to('frontend/area/towns', array('action'=>'choosemap', 'are_town_alias' => $town->alias), TRUE);    
+}
 ?>
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo $main_town_url?>"><?php echo $town->name ?><b class="caret"></b></a>

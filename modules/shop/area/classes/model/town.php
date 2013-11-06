@@ -164,7 +164,7 @@ class Model_Town extends Model
         }
         
         $alias = $request->param('are_town_alias',NULL);
-        if ($alias === null) {
+        if (!$alias) {
             $alias = Cookie::get(Model_Town::TOWN_TOKEN);
         }
         
@@ -299,7 +299,38 @@ class Model_Town extends Model
             }
         }
     }
-    
+
+    public function validate_update(array $newvalues = NULL)
+    {
+        return $this->validate_create($newvalues);
+    }    
+
+    public function validate_create(array $newvalues = NULL)
+    {
+        if (Modules::registered('gmaps3')) {
+            $geoinfo = Gmaps3::instance()->get_from_address($newvalues['name']);
+
+            if (!$geoinfo) {
+                $this->error('Город не найден на карте!');            
+                return FALSE;
+            }
+            
+            if (!isset($geoinfo->geometry->location->lat)) {
+                $this->error('Город не найден на карте!');            
+                return FALSE;                
+            }
+            
+            if (!isset($geoinfo->geometry->location->lng)) {
+                $this->error('Город не найден на карте!');            
+                return FALSE;                
+            }
+            
+            $this->lat = $geoinfo->geometry->location->lat;
+            $this->lon = $geoinfo->geometry->location->lng;                    
+        }
+        return TRUE;
+    }    
+        
     public function save($force_create = NULL) {
         // Create alias from name
         if (!$this->id) $this->alias = $this->make_alias();

@@ -12,6 +12,8 @@ class Model_Town_Mapper extends Model_Mapper
         $this->add_column('name',     array('Type' => 'varchar(63)'));
         $this->add_column('alias',     array('Type' => 'varchar(63)'));        
         $this->add_column('phonecode',   array('Type' => 'varchar(31)'));
-        $this->add_column('timezone',   array('Type' => 'varchar(31)'));        
+        $this->add_column('timezone',   array('Type' => 'varchar(31)'));
+        $this->add_column('lat',   array('Type' => 'double'));
+        $this->add_column('lon',   array('Type' => 'double'));
     }
 }

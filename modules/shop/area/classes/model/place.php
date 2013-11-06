@@ -32,6 +32,88 @@ class Model_Place extends Model
         return $image_info;
     }
     
+    public function validate_update(array $newvalues = NULL)
+    {
+        return $this->validate_create($newvalues);
+    }    
+
+    public function validate_create(array $newvalues = NULL)
+    {
+        if (Modules::registered('gmaps3')) {
+            if (isset($newvalues['town_id'])) {
+                $town = Model::fly('Model_Town')->find($newvalues['town_id']);
+                $newvalues['address'] = $town->name.' '.$newvalues['address'];
+            }
+            $geoinfo = Gmaps3::instance()->get_from_address($newvalues['address']);
+            
+            if (!$geoinfo) {
+                $this->error('Площадка не найдена на карте!');            
+                return FALSE;
+            }
+
+            if (count($geoinfo->address_components) < 6) {
+                $this->error('Площадка не найдена на карте!');            
+                return FALSE;
+            }
+            
+            if (!isset($geoinfo->geometry->location->lat)) {
+                $this->error('Площадка не найдена на карте!');            
+                return FALSE;                
+            }
+            
+            if (!isset($geoinfo->geometry->location->lng)) {
+                $this->error('Площадка не найдена на карте!');            
+                return FALSE;                
+            }
+            
+            $this->lat = $geoinfo->geometry->location->lat;
+            $this->lon = $geoinfo->geometry->location->lng;                    
+        }
+        return TRUE;
+    }    
+          
+    /**
+     * Make alias for town from it's 'town' field
+     *
+     * @return string
+     */
+    public function make_alias()
+    {
+        $caption_alias = str_replace(' ', '_', strtolower(l10n::transliterate($this->name)));
+        $caption_alias = preg_replace('/[^a-z0-9_-]/', '', $caption_alias);
+
+        $i = 0;
+        $loop_prevention = 1000;
+        do {
+
+            if ($i > 0)
+            {
+                $alias = substr($caption_alias, 0, 30);
+                $alias .= $i;
+            }
+            else
+            {
+                $alias = substr($caption_alias, 0, 31);
+            }
+
+            $i++;
+
+            $exists = $this->exists_another_by_alias($alias);
+        }
+        while ($exists && ($loop_prevention-- > 0));
+
+        if ($loop_prevention <= 0)
+            throw new Kohana_Exception ('Possible infinite loop in :method', array(':method' => __METHOD__));
+
+        return $alias;
+    }
+
+    public function save($force_create = NULL) {
+        // Create alias from name
+        /*if (!$this->id)*/ $this->alias = $this->make_alias();
+        return parent::save($force_create);
+    }
+    
     /**
      * Delete product
      */
