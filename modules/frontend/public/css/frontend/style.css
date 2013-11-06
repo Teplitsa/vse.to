@@ -1280,7 +1280,7 @@ form  h1.main-title  > span:after {
 }
 
 .cld_month {
-    width: 280px;
+    width: 260px;
 }
 .cld_month td {
     height: 30px;
@@ -1557,25 +1557,28 @@ footer .span6 img
 }
 .right-block
 {
-    background: #333333;
-    padding: 5px;
+    /*background: #333333;*/
+    /*padding: 10px;*/
     margin-bottom: 20px;
-    font-size: 12px;
+    /*font-size: 12px;*/
 }
-.right-block .right-block-content
+.right-block-content
 {
-    background: #fff;
-    margin: 0;
-    padding: 5px;
+    /*background: #fff;*/
+    /*margin: 0;*/
+    /*padding: 5px;*/
 }
 .right-block h2 {
     font-size: 14px;
-    color: #fff;
+    /*color: #fff;*/
+    color: #C00;
+    border-bottom: 1px solid #cc0000;
     text-align: left;
     text-transform: uppercase;
     line-height: 24px;
     margin: 0;
     margin-bottom: 5px;
+    padding-bottom: 7px;
 }
 
 .te-st-link

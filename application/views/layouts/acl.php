@@ -29,13 +29,13 @@
                         <?php echo $content; ?>                                
                 </div>
 				<aside class="span4">
-					<div class="right-block">
+					<div class="right-block wrapper">
 						<h2>Что такое vsё.to</h2>
 						<div class="right-block-content">
                                                     <?php echo Widget::render_widget('blocks', 'block', 'short_about'); ?>
 						</div>
 					</div>
-					<div class="right-block">
+					<div class="right-block wrapper">
                                             <h2>Календарь событий</h2>
                                             <div class="right-block-content">
                                                 <?php echo Widget::render_widget('products', 'calendar'); ?>

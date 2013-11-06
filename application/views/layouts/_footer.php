@@ -6,7 +6,7 @@
                     <a href="<?php echo URL::site();?>" class="logo"></a>
                     <?php echo Widget::render_widget('menus','menu', 'footer'); ?> 
                 </div>
-                <div class="span3">
+                <div class="span5">
                 <!--
                     <div class="soc-link">
                         <a href="#" class="button fb">f</a>
@@ -24,7 +24,7 @@
 			</p>
                     </div>
                 </div>
-                <div class="span6">
+                <div class="span4">
                 	<!-- 
 			<img src="/modules/frontend/public/css/frontend/img/banner.png" />
 			<img src="/modules/frontend/public/css/frontend/img/banner.png" />

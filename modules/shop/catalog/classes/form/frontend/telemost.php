@@ -11,12 +11,16 @@ class Form_Frontend_Telemost extends Form_Frontend
         // Set HTML class
          $this->view_script = 'frontend/forms/telemost';
         
-        $places = Model::fly('Model_Place')->find_all_by_town_id(Model_User::current()->town->id);
+        $userTownId = Model_User::current()->town->id;
         $places_arr = array();
-        foreach ($places as $place) {
-            $places_arr[$place->id] = $place->name;
-        }
-        
+         if ($userTownId) {
+            $places = Model::fly('Model_Place')->find_all_by_town_id(Model_User::current()->town->id);
+            foreach ($places as $place) {
+                $places_arr[$place->id] = $place->name;
+            }
+         }
+         
+         
         $element = new Form_Element_Select('place_id',
             $places_arr,
             array('label' => 'Площадка','required' => TRUE),
