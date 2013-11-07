@@ -160,7 +160,9 @@ class Kohana_Ulogin {
         $user = new Model_User();
         $user->group_id = $user->default_group_id();
         $user->active = 1;
-		
+	$user->town_id = $this->getTown($data['city'])->id;
+        
+        
         if($user->validate_create($data))
         {
             $user->values($data);
@@ -185,6 +187,16 @@ class Kohana_Ulogin {
         }
 
         return $result;
+    }
+    
+    function getTown($townName)
+    {
+        $town = Model::fly('Model_Town')->find_by_name($townName);
+        
+        if($town->id)
+            return $town;
+        else
+            return Model::fly('Model_Town')->find_by_id(1); // 1 - Moscow
     }
     
 }
