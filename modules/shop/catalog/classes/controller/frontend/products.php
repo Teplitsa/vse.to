@@ -492,11 +492,12 @@ class Controller_Frontend_Products extends Controller_FrontendRES
             $matches = array();
             preg_match('|<span class="type">([^<]+?)</span><em>([^<]+?)</em>|', $html, $matches);
             $title = html_entity_decode($matches[2], ENT_COMPAT, 'UTF-8');
-
+            $format = html_entity_decode($matches[1], ENT_COMPAT, 'UTF-8');
+            
             preg_match('|<time class="time" datetime="([^"]+?)" itemprop="startDate">|', $html, $matches);
-            $dateTime = date_parse($matches[1]);
-            $dateTime = $dateTime['day'].'-'.$dateTime['month'].'-'.$dateTime['year'].' '.$dateTime['hour'].':'.$dateTime['minute'];
-
+            $dateTime = new DateTime($matches[1]);
+            $dateTime = $dateTime->format('m-d-Y H:i');
+                    
             preg_match('|<div class="description" itemprop="description">(.+?)</div>|s', $html, $matches);
             $desc = strip_tags(html_entity_decode($matches[1], ENT_COMPAT, 'UTF-8'));
 
@@ -504,6 +505,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
             $result['event'] = array(
                 'time'=> $dateTime,
                 'title' => $title,
+                'format' => mb_strtolower(trim($format)),
                 'desc' => $desc,
             );          
         }

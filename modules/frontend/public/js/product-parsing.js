@@ -38,10 +38,15 @@ function praseUrl(url)
             else
             {
                 var eventData = response.data.event;
+                    
+                var fullDesc = eventData.desc + "\n\nАнонс с "+url;
 
                 $('#id-product1-caption').val(eventData.title);
                 $('#id-product1-datetime').val(eventData.time);
-                $('#id-product1-description').val(eventData.desc);
+                $('#id-product1-description').val(fullDesc);
+                $("#id-product1-format option").filter(function() {
+                    return $(this).text() == eventData.format;
+                }).prop('selected', true);
             }
         },
         'error': function(jqXHR, textStatus, errorThrown ){
