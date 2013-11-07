@@ -485,7 +485,8 @@ class Controller_Frontend_Acl extends Controller_Frontend
                 if($userPassword)
                 {
                     $layout->content = 'Вы успешно вошли! Ваш временный пароль: '.$userPassword
-                            .'. <br />Вы можете входить на сайта как через комбинацию email-пароль, так и через выбранную социальную сеть.';
+                            .'. <br />Вы можете входить на сайта как через комбинацию email-пароль, так и через выбранную социальную сеть.'
+                            .'. <br /><br />Пожалуйста, проверьте свой город на странице настроек учетной записи.';
                     $this->request->response = $layout->render();
                 }
                 else
