@@ -79,4 +79,18 @@ class Form_Frontend_Register extends Form_Frontend
 
         parent::init();
     }
+    
+    
+    /**
+     * Add javascripts
+     */
+    public function render_js()
+    {
+        parent::render_js();
+        
+        // ----- Install javascripts
+                
+        Layout::instance()->add_script(Modules::uri('jquery') . '/public/js/jquery.saveform.js');
+        Layout::instance()->add_script(Modules::uri('acl') . '/public/js/frontend/register.js');
+    }        
 }

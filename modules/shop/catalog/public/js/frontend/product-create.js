@@ -1,5 +1,3 @@
-//var iframe = null
-
 $(function(){
     
     $('#parsing-fill-btn').click(function(){
@@ -12,24 +10,19 @@ $(function(){
         }
         return false;
     });
+    
+    $('#id-product1').autosave();
 });
 
 
 function praseUrl(url)
 {
-//    if(iframe == null)
-//    {
-//        iframe = $('<iframe/>').attr('id', 'parsing-frame').css('display','none').appendTo('body').ready(iframeLoaded);
-//    }
-//    iframe.attr('src',url);
-
     $.ajax({
         'dataType': "json",
         'method': 'post',
         'url': 'ajax_parsing',
         'data': {'parseurl': url},
         'success': function(response, textStatus, jqXHR ){
-//            console.log(response.data.parseurl);
 
             if(response.data.status == 'notsupported')
             {
@@ -55,11 +48,3 @@ function praseUrl(url)
     });
 
 }
-//
-//function iframeLoaded()
-//{
-//    var time = $('#sidebar>time', iframe);
-//    var result = iframe.contents().find('#sidebar>time').html();
-//
-//    console.log(result);
-//}
