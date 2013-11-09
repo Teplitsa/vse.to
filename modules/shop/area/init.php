@@ -205,4 +205,5 @@ if (Kohana::$environment !== Kohana::PRODUCTION)
 Model_Node::add_node_type('map', array(
     'name' => 'Карта',
     'frontend_route' => 'frontend/area/towns',
+    'backend_route' => 'backend/area'    
 ));

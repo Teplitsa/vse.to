@@ -206,11 +206,11 @@ class Controller_Backend_Places extends Controller_BackendCRUD
         {
             return URL::uri_self(array('action'=>'update', 'id' => $model->id, 'history' => $this->request->param('history'))) . '?flash=ok';
         }
-
-        if ($action == 'update')
-        {
-            return URL::uri_back();
-        }
+//
+//        if ($action == 'update')
+//        {
+//            return URL::uri_back();
+//        }
         if ($action == 'multi_link')
         {
             return URL::uri_back();

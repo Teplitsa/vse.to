@@ -46,28 +46,37 @@ class Model_Place extends Model
             }
             $geoinfo = Gmaps3::instance()->get_from_address($newvalues['address']);
             
+            $err = 0;
             if (!$geoinfo) {
-                $this->error('Площадка не найдена на карте!');            
-                return FALSE;
+                FlashMessages::add('Площадка не найдена и не будет отображена на карте!',FlashMessages::ERROR);
+                $err = 1;
             }
 
-            if (count($geoinfo->address_components) < 6) {
-                $this->error('Площадка не найдена на карте!');            
-                return FALSE;
+            if (!$err) {            
+                if (count($geoinfo->address_components) < 6) {
+                    FlashMessages::add('Площадка не найдена и не будет отображена на карте!',FlashMessages::ERROR);
+                    $err = 1;
+                }
+            }
+    
+            if (!$err) {            
+                if (!isset($geoinfo->geometry->location->lat)) {
+                    FlashMessages::add('Площадка не найдена и не будет отображена на карте!',FlashMessages::ERROR);
+                    $err = 1;
+                }
             }
             
-            if (!isset($geoinfo->geometry->location->lat)) {
-                $this->error('Площадка не найдена на карте!');            
-                return FALSE;                
+            if (!$err) {            
+                if (!isset($geoinfo->geometry->location->lng)) {
+                    FlashMessages::add('Площадка не найдена и не будет отображена на карте!',FlashMessages::ERROR);
+                    $err = 1;
+                }
             }
             
-            if (!isset($geoinfo->geometry->location->lng)) {
-                $this->error('Площадка не найдена на карте!');            
-                return FALSE;                
+            if (!$err) {
+                $this->lat = $geoinfo->geometry->location->lat;
+                $this->lon = $geoinfo->geometry->location->lng;                    
             }
-            
-            $this->lat = $geoinfo->geometry->location->lat;
-            $this->lon = $geoinfo->geometry->location->lng;                    
         }
         return TRUE;
     }    

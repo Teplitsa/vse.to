@@ -314,23 +314,30 @@ class Model_Town extends Model
         if (Modules::registered('gmaps3')) {
             $geoinfo = Gmaps3::instance()->get_from_address($newvalues['name']);
 
+            $err = 0;
             if (!$geoinfo) {
-                $this->error('Город не найден на карте!');            
-                return FALSE;
+                FlashMessages::add('Город не найден и не будет отображен на карте!',FlashMessages::ERROR);
+                $err = 1;
             }
             
-            if (!isset($geoinfo->geometry->location->lat)) {
-                $this->error('Город не найден на карте!');            
-                return FALSE;                
+            if (!$err) {
+                if (!isset($geoinfo->geometry->location->lat)) {          
+                    FlashMessages::add('Город не найден и не будет отображен на карте!',FlashMessages::ERROR); 
+                    $err = 1;
+                }
             }
             
-            if (!isset($geoinfo->geometry->location->lng)) {
-                $this->error('Город не найден на карте!');            
-                return FALSE;                
+            if (!$err) {
+                if (!isset($geoinfo->geometry->location->lng)) {
+                    FlashMessages::add('Город не найден и не будет отображен на карте!',FlashMessages::ERROR); 
+                    $err = 1;
+                }
             }
             
-            $this->lat = $geoinfo->geometry->location->lat;
-            $this->lon = $geoinfo->geometry->location->lng;                    
+            if (!$err) {
+                $this->lat = $geoinfo->geometry->location->lat;
+                $this->lon = $geoinfo->geometry->location->lng;                    
+            }           
         }
         return TRUE;
     }    
