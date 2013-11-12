@@ -2,7 +2,7 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">Добавить заявку на телемост</h3>
-        <small>Cityname, hh:mm, dd.mm.yyy</small>
+        <!--<small>Cityname, hh:mm, dd.mm.yyy</small>-->
     </div>
     <?php echo $form->render_form_open();?>
         <div class="modal-body">

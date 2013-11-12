@@ -2,13 +2,17 @@
 
 <?php   $current_user_id= Model_User::current()->id;
         
-if (!$nav_turn_on) {
 if ($product->user_id == $current_user_id) { 
         $update_url = URL::to('frontend/catalog/products/control', array('action'=>'update', 'id' => $product->id), TRUE);?>
     <div class="action">
         <a href="<?php echo $update_url ?>" class="link-edit"><i class="icon-pencil icon-white"></i></a>
     </div>
-<?php }} else {
+<?php }
+
+if (!$nav_turn_on) {
+    
+} else {
+    
     if ($product->user_id == $current_user_id) {
         $nav = new View('frontend/products/administrator_nav');
         $nav->product = $product;

@@ -22,7 +22,18 @@
       $this.find('input:not(:password,:submit), textarea, select').each(function (index) {
         var elem = $(this),
             key = prefix + index;
-        storage.setItem(key, elem.attr('type') === 'checkbox' ? elem.prop('checked') : elem.val());
+        
+        var elemType = elem.attr('type');
+        if(elemType === 'checkbox' || elemType === 'radio')
+        {
+            var elemValue = elem.prop('checked');
+            if(elemValue)
+                storage.setItem(key, true);
+        }
+        else
+        {
+            storage.setItem(key, elem.val());
+        }
       });
     }
 
@@ -30,10 +41,18 @@
       $this.find('input:not(:password,:submit), textarea, select').each(function (i) {
         var elem = $(this),
             key = prefix + i;
-        if(elem.attr('type') === 'checkbox'){
-          elem.prop('checked', storage.getItem(key));
-        } else {
-          elem.val(storage.getItem(key));
+            
+        var oldVal = storage.getItem(key);
+        
+        if(oldVal != null)
+        {
+            var elemType = elem.attr('type');
+            if(elemType === 'checkbox' || elemType === 'radio'){
+                if(oldVal == "true")
+                    elem.prop('checked', true);
+            } else {
+              elem.val(oldVal);
+            }
         }
       });
     }
