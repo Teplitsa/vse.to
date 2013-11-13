@@ -101,7 +101,7 @@ if (!$nav_turn_on) {
             <?php if (Model_Town::current()->name == $product->place->town_name) {?> 
                 <div class="place-event">
                 <div class="place-tv-new">                
-                    <p class="title">Событие:</p>
+                    <p class="title">Оффлайновое событие:</p>
                     <p class="place"><?php echo $product->place->town_name?>, <?php echo $product->place->name ?><?php if ($product->place->address) { ?>,<a href="#"> <?php echo $product->place->address ?></a><?php } ?></p>
                 </div>
                 <!-- <p class="address"><?php //echo $product->place->town_name?>, <?php //echo $product->place->address?></p> -->
@@ -152,7 +152,7 @@ if (!$nav_turn_on) {
                 
                 <div class="place-event">
                 <div class="place-tv-new">                
-                    <p class="title">Событие:</p>
+                    <p class="title">Оффлайновое событие:</p>
                     <p class="place"><?php echo $product->place->town_name?>, <?php echo $product->place->name ?><?php if ($product->place->address) { ?>,<a href="#"> <?php echo $product->place->address ?></a><?php } ?></p>
                 </div>
                 <!-- <p class="address"><?php //echo $product->place->town_name?>, <?php //echo $product->place->address?></p> -->

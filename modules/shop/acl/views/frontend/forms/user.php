@@ -10,7 +10,7 @@
 
     <h1 class="main-title"><span>Учетная запись</span></h1>
 	
-    <span>Делаете ли вы события от имени организации? Если да, укажите эту организацию, если нет - оставьте это поле пустым:</span>
+    <p>Делаете ли вы события от имени организации? Если да, укажите эту организацию, если нет - оставьте это поле пустым.</p>
     <fieldset class="d-f-org">    
         <div class="b-input"><label for="">Организация</label><?php echo $form->get_element('organizer_name')->render_input();?></div>
         <?php echo $form->get_element('organizer_name')->render_alone_autoload();?>

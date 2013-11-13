@@ -12,7 +12,7 @@ $nearest_flag = 0;
     <div class="wrapper main-list">
         <div class="ub-title">
             <p>Мои телемосты</p>            
-            <a href="#" class="link-add">+ добавить</a>
+            <!--<a href="#" class="link-add">+ добавить</a>-->
         </div>
         <div class="ub-title">        
  
