@@ -108,7 +108,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
             'active'  => -1,
             'section_active' => 1,
         );
-        $town_alias = Cookie::get(Model_Town::TOWN_TOKEN);
+        $town_alias = Cookie::get(Model_Town::TOWN_TOKEN, Model_Town::ALL_TOWN);
         if($town_alias == Model_Town::ALL_TOWN)
            $search_params['all_towns'] = true;
         

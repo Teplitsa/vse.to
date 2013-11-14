@@ -6,7 +6,7 @@
                     <a href="<?php echo URL::site();?>" class="logo"></a>
                     <?php echo Widget::render_widget('menus','menu', 'footer'); ?> 
                 </div>
-                <div class="span3">
+                <div class="span5">
                     <div class="soc-link">
                         <a href="#" class="button fb">f</a>
                         <a href="#" class="tw button ">t</a>
@@ -20,21 +20,23 @@
                         </p>
                     </div>
                 </div>
-                <div class="span6">
+                <div class="span4">
+                    <!-- 
 					<img src="/modules/frontend/public/css/frontend/img/banner.png" />
 					<img src="/modules/frontend/public/css/frontend/img/banner.png" />
 					<img src="/modules/frontend/public/css/frontend/img/banner.png" />
 					<img src="/modules/frontend/public/css/frontend/img/banner.png" />
 					<img src="/modules/frontend/public/css/frontend/img/banner.png" />
 					<img src="/modules/frontend/public/css/frontend/img/banner.png" />
+                    -->
 				</div>
             </div>
             <div class="row">
                 <div class="span12">
                     <p class="copy">
-						&copy; Copyright 2013. <a href="#">Пользовательское соглашение.</a>
+						&copy; vse.to 2013.
 						&nbsp;
-						Создано при поддержке <a href="http://te-st.ru/">Теплицы социальных технологий</a>
+						Проект <a href="http://www.newmediacenter.ru/">ЦИИО РЭШ</a>. Создано при поддержке <a href="http://te-st.ru/">Теплицы социальных технологий</a>
 					</p>
 				</div>
             </div>

@@ -1612,3 +1612,9 @@ footer .span6 img
 {
     margin-bottom: 10px;
 }
+
+
+.shifted-links > *:last-child
+{
+    margin-right: 30px;
+}

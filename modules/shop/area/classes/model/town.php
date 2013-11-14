@@ -166,6 +166,10 @@ class Model_Town extends Model
         $alias = $request->param('are_town_alias',NULL);
         if (!$alias) {
             $alias = Cookie::get(Model_Town::TOWN_TOKEN);
+            
+            if ($alias == null) {
+                $alias = Model_Town::ALL_TOWN;
+            }
         }
         
         $town_model = new Model_Town();

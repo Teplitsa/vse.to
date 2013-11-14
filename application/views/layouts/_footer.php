@@ -38,9 +38,9 @@
             <div class="row">
                 <div class="span12">
                     <p class="copy">
-						&copy; Copyright 2013. <a href="#">Пользовательское соглашение.</a>
+						&copy; vse.to 2013.
 						&nbsp;
-						Проект ЦИИО РЭШ. Создано при поддержке <a href="http://te-st.ru/">Теплицы социальных технологий</a>
+						Проект <a href="http://www.newmediacenter.ru/">ЦИИО РЭШ</a>. Создано при поддержке <a href="http://te-st.ru/">Теплицы социальных технологий</a>
 					</p>
 				</div>
             </div>
