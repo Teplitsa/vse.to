@@ -2,6 +2,7 @@
 
 class Kohana_Comments { // поехали!
 	
+    
 	public static function factory(array $config = array()) // здесь происходит создание объекта
 	{
 		return new Comments($config); // создаем новый объект Comments с нашим конфигом
