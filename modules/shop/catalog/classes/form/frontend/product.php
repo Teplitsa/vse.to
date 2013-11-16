@@ -73,12 +73,13 @@ class Form_Frontend_Product extends Form_Frontend
         elseif ($this->model()->organizer_id)
         {
             $organizer_id = (int) $this->model()->organizer_id;
+            $control_element->value = $organizer_id;
         }
         elseif (Model_User::current()->organizer_id)
         {
             $organizer_id = (int) Model_User::current()->organizer_id;
+            $control_element->value = $organizer_id;
         }
-        
         // ----- organizer_name
         // input field with autocomplete ajax
         $element = new Form_Element_Input('organizer_name',
