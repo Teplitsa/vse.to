@@ -2,7 +2,7 @@
 
 class Model_Place extends Model
 {
-    const LINKS_LENGTH = 36;
+    const LINKS_LENGTH = 64;
 
     const ISPEED_LOW    = 1;
     const ISPEED_MEDIUM = 2;
@@ -116,11 +116,24 @@ class Model_Place extends Model
 
         return $alias;
     }
-
+    
     public function save($force_create = NULL) {
         // Create alias from name
         /*if (!$this->id)*/ $this->alias = $this->make_alias();
         return parent::save($force_create);
+        
+        if ($this->file) {
+            // Delete organizer images
+            Model::fly('Model_Image')->delete_all_by_owner_type_and_owner_id('place', $this->id);
+            
+            $image = new Model_Image();
+            $image->file = $this->file;
+            $image->owner_type = 'place';
+            $image->owner_id = $this->id;
+            $image->config = 'place';
+            $image->save();
+        }
+        
     }
     
     /**

@@ -2,6 +2,7 @@
 
 class Controller_Frontend_Products extends Controller_FrontendRES
 {
+    
     // -----------------------------------------------------------------------
     // MENU WIDGETS
     // -----------------------------------------------------------------------
@@ -79,7 +80,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
      * Render list of products in section
      */
     public function action_index()
-    {
+    {   
         $view = new View('frontend/workspace');
 
         $view->content = $this->widget_list_products();
@@ -902,6 +903,33 @@ class Controller_Frontend_Products extends Controller_FrontendRES
     
     public function _view_create(Model_Product $model, Form_Frontend_Product $form, array $params = NULL)
     {
+        $place = new Model_Place();
+
+        $form_place = new Form_Frontend_Place($place);
+        if ($form_place->is_submitted())
+        {
+            $form_place->validate();
+
+            // User is trying to log in
+            if ($form_place->validate())
+            {   
+                $vals = $form_place->get_values();
+
+                if ($place->validate($vals))
+                {                    
+                    
+                    $place->values($vals);
+                    $place->save();
+                    
+                    $form->get_element('place_name')->set_value($place->name);
+                    $form->get_element('place_id')->set_value($place->id);
+                }
+            }
+        }
+        
+        $modal = Layout::instance()->get_placeholder('modal');
+        $modal = $form_place->render().' '.$modal;
+        
         $lecturer = new Model_Lecturer();
 
         $form_lecturer = new Form_Frontend_Lecturer($lecturer);
@@ -922,9 +950,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
                 }
             }
         }
-        $modal = Layout::instance()->get_placeholder('modal');
         $modal .= ' '.$form_lecturer->render();
-        Layout::instance()->set_placeholder('modal',$modal);
 
         $organizer = new Model_Organizer();
 
@@ -949,10 +975,10 @@ class Controller_Frontend_Products extends Controller_FrontendRES
                 }
             }
         }
-        $modal = Layout::instance()->get_placeholder('modal');        
         $modal = $form_organizer->render().' '.$modal;
-        Layout::instance()->set_placeholder('modal',$modal);
 
+        Layout::instance()->set_placeholder('modal',$modal);
+  
         $view = new View('frontend/products/control');
         $view->product = $model;
         $view->form = $form;
@@ -962,6 +988,33 @@ class Controller_Frontend_Products extends Controller_FrontendRES
     
     public function _view_update(Model_Product $model, Form_Frontend_Product $form, array $params = NULL)
     {
+        $place = new Model_Place();
+
+        $form_place = new Form_Frontend_Place($place);
+        if ($form_place->is_submitted())
+        {
+            $form_place->validate();
+
+            // User is trying to log in
+            if ($form_place->validate())
+            {   
+                $vals = $form_place->get_values();
+
+                if ($place->validate($vals))
+                {                    
+                    
+                    $place->values($vals);
+                    $place->save();
+                    
+                    $form->get_element('place_name')->set_value($place->name);
+                    $form->get_element('place_id')->set_value($place->id);
+                }
+            }
+        }
+        
+        $modal = Layout::instance()->get_placeholder('modal');
+        $modal = $form_place->render().' '.$modal;        
+        
         $lecturer = new Model_Lecturer();
 
         $form_lecturer = new Form_Frontend_Lecturer($lecturer);
@@ -982,9 +1035,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
                 }
             }
         }
-        $modal = Layout::instance()->get_placeholder('modal');
         $modal .= ' '.$form_lecturer->render();
-        Layout::instance()->set_placeholder('modal',$modal);
 
         $organizer = new Model_Organizer();
 
@@ -1009,7 +1060,6 @@ class Controller_Frontend_Products extends Controller_FrontendRES
                 }
             }
         }
-        $modal = Layout::instance()->get_placeholder('modal');        
         $modal = $form_organizer->render().' '.$modal;
         Layout::instance()->set_placeholder('modal',$modal);
 

@@ -2,7 +2,7 @@
 
 class Model_Lecturer extends Model
 {
-    const LINKS_LENGTH = 36;
+    const LINKS_LENGTH = 64;
     
     /**
      * Return user name

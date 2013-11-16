@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Backend_Places extends Controller_Frontend
+class Controller_Frontend_Places extends Controller_Frontend
 {  
     /**
      * Select several towns
@@ -56,12 +56,13 @@ class Controller_Backend_Places extends Controller_Frontend
     /**
      * Display autocomplete options for a postcode form field
      */
-    public function action_ac_organizer_name()
-    {           
-        $organizer_name = isset($_POST['value']) ? trim(UTF8::strtolower($_POST['value'])) : NULL;
-        $organizer_name = UTF8::str_ireplace("ё", "е", $organizer_name);
-
-        if ($organizer_name == '')
+    public function action_ac_place_name()
+    {                   
+        
+        $place_name = isset($_POST['value']) ? trim(UTF8::strtolower($_POST['value'])) : NULL;
+        $place_name = UTF8::str_ireplace("ё", "е", $place_name);
+                
+        if ($place_name == '')
         {
             $this->request->response = '';
             return;
@@ -69,34 +70,33 @@ class Controller_Backend_Places extends Controller_Frontend
 
         $limit = 7;
         
-        $organizers  = Model::fly('Model_Place')->find_all_like_name($organizer_name,array('limit' => $limit));
-            
-        if ( ! count($organizers))
-        {
-            $this->request->response = '';
-            return;
-        }
-
+        $places  = Model::fly('Model_Place')->find_all_like_name($place_name,array('limit' => $limit));
+        
         $items = array();
         
-        $pattern = new View('backend/organizer_ac');
+        $pattern = new View('frontend/place_ac');
         
-        foreach ($organizers as $organizer)
+        $i=0;
+        foreach ($places as $place)
         {
-            $name = $organizer->name;
-            $id = $organizer->id;
+            $name = $place->name;
+            $id = $place->id;
             
-            $image_info = $organizer->image(4);
+            $image_info = $place->image(4);
             
             $pattern->name = $name;
-                $pattern->image_info = $organizer->image(4);
+            $pattern->num = $i; 
+            $pattern->image_info = $place->image(4);
             
             $items[] = array(
                 'caption' => $pattern->render(),
                 'value' => array('name' => $name, 'id' => $id) 
             );
+            $i++;
         }
 
+        $items[] = array('caption' => '<a data-toggle="modal" href="#PlaceModal" class="active">Добавить новую площадку</a>');
+        
         $this->request->response = json_encode($items);
     }
     

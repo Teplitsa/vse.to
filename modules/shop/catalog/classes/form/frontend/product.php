@@ -122,8 +122,44 @@ class Form_Frontend_Product extends Form_Frontend
             ->add_validator(new Form_Validator_InArray(array_keys($options)));
         $this->add_component($element);
 
-        // ----- Place
-        $places = Model::fly('Model_Place')->find_all_by_town_id(Model_User::current()->town->id);
+        // -------------------------------------------------------------------------------------
+        // place
+        // -------------------------------------------------------------------------------------        
+        // control hidden field
+
+        $control_element = new Form_Element_Hidden('place_id',array('id' => 'place_id'));
+
+        $this->add_component($control_element);
+        
+        if ($control_element->value !== FALSE)
+        {
+            $place_id = (int) $control_element->value;
+        }
+        else
+        {
+            $place_id = (int) $this->model()->lecturer_id;
+        }
+        // ----- place_name
+        // input field with autocomplete ajax
+        $element = new Form_Element_Input('place_name',
+                array('label' => 'Площадка', 'layout' => 'wide','id' => 'place_name'));
+        $element->autocomplete_url = URL::to('frontend/area/places', array('action' => 'ac_place_name'));            
+        Layout::instance()->add_style(Modules::uri('area') . '/public/css/frontend/area.css');
+      
+        $this->add_component($element);
+
+        $place = new Model_Place();
+        $place->find($place_id);
+        
+        $place_name = ($place->id !== NULL) ? $place->name : '';
+ 
+        if ($element->value === FALSE) {   
+            $element->value = $place_name;                
+        } else {
+            if ($element->value !== $place_name) $control_element->set_value(NULL); 
+        }
+        
+/*        $places = Model::fly('Model_Place')->find_all_by_town_id(Model_User::current()->town->id);
         $places_arr = array();
         foreach ($places as $place) {
             $places_arr[$place->id] = $place->name;
@@ -135,7 +171,7 @@ class Form_Frontend_Product extends Form_Frontend
             array('placeholder' => 'Выберите площадку')
         );
         $this->add_component($element);
-        
+*/        
         // ----- theme
         $options = Model_Product::$_theme_options;
 
@@ -259,7 +295,8 @@ class Form_Frontend_Product extends Form_Frontend
         parent::render_js();
         
         // ----- Install javascripts
-                
+
+        Layout::instance()->add_script(Modules::uri('area') . '/public/js/frontend/place_name.js');               
         Layout::instance()->add_script(Modules::uri('acl') . '/public/js/backend/lecturer_name.js');       
         Layout::instance()->add_script(Modules::uri('acl') . '/public/js/backend/organizer_name.js'); 
         Layout::instance()->add_script(Modules::uri('tags') . '/public/js/backend/tag.js');        

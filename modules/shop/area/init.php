@@ -20,8 +20,8 @@ if (APP === 'FRONTEND')
             'are_town_alias'  => '',            
         ));
 
-    Route::add('frontend/area/place', new Route_Frontend(
-                'area/place(/<action>(/<are_place_alias>))'
+    Route::add('frontend/area/places', new Route_Frontend(
+                'area/places(/<action>(/<are_place_alias>))'
             ,
             array(
                 'action'    => '\w++',
@@ -29,7 +29,7 @@ if (APP === 'FRONTEND')
             )
         ))
         ->defaults(array(
-            'controller' => 'place',
+            'controller' => 'places',
             'action'     => 'index',
             'are_place_alias'  => '',            
         ));
@@ -39,7 +39,7 @@ if (APP === 'FRONTEND')
             array(
         )))
         ->defaults(array(
-            'controller' => 'place',
+            'controller' => 'places',
             'action'     => 'select'             
         ));       
     

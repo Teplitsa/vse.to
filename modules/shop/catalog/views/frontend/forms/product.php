@@ -21,6 +21,11 @@
         <?php echo $form->get_element('organizer_name')->render_alone_autoload();?>
         <?php echo $form->get_element('organizer_name')->render_alone_errors();?>
         <?php echo $form->get_element('organizer_id')->render_input();?>        
+        
+        <div class="b-input"><label for="">Площадка</label><?php echo $form->get_element('place_name')->render_input();?></div>
+        <?php echo $form->get_element('place_name')->render_alone_autoload();?>
+        <?php echo $form->get_element('place_name')->render_alone_errors();?>
+        <?php echo $form->get_element('place_id')->render_input();?>        
     </fieldset>
     <fieldset class="b-f-date">
         <div class="b-input"><label for="">Дата</label><?php echo $form->get_element('datetime')->render_input();?></div>
@@ -30,11 +35,7 @@
         <?php echo $form->get_element('duration')->render_alone_errors();?>
         
     </fieldset>
-    <fieldset class="b-f-place-one">
-        <div class="b-select"><label for=""></label></div>
-        <div class="b-select"><label for="">Место проведения</label><?php echo $form->get_element('place_id')->render_input();?></div>
-        <?php echo $form->get_element('place_id')->render_alone_errors();?>
-    </fieldset>    
+    
     <fieldset class="b-f-theme">
         <div class="b-select"><label for="">Тема</label><?php echo $form->get_element('theme')->render_input();?></div>
         <?php echo $form->get_element('theme')->render_alone_errors();?>

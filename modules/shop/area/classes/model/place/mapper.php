@@ -93,4 +93,24 @@ class Model_Place_Mapper extends Model_Mapper
         
         return parent::find_all_by($model, $condition, $params, $query);
     }    
+    
+    /**
+     * Find all places by part of the name
+     *
+     * @param  Model $model
+     * @param  string $name
+     * @param  array $params
+     * @return Models
+     */
+    public function find_all_like_name(Model $model, $name, array $params = NULL)
+    {
+        $table = $this->table_name();
+        
+        $query = DB::select_array($this->_prepare_columns($params))
+                ->distinct('whatever')
+                ->from($table)
+                ->where($table.'.name', 'LIKE', "$name%");
+        
+        return $this->find_all_by($model, NULL, $params, $query);
+    }        
 }
