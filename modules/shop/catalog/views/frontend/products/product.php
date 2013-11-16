@@ -228,5 +228,6 @@ if (!$nav_turn_on) {
                 <a href="<?php echo $search_url ?>"><?php echo $glue.' '.$tag->name ?></a>
                 <?php } ?>
         </div>
+        <?php echo Comments::factory()->render();?>        
     </div>
 </div>
