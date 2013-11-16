@@ -1,5 +1,5 @@
 <?php 
-$url = URL::to('frontend/area/place', array('alias' => $place->alias));
+$url = URL::to('frontend/area/places', array('alias' => $place->alias));
 
 $image = $place->image(4);
 
