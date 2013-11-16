@@ -104,6 +104,7 @@ Kohana::modules(array(
         'flash'   => MODPATH. 'general/flash',
         'calendar' => MODPATH. 'general/calendar',    
         'chat'   => MODPATH. 'general/chat',
+        'cackle'    => MODPATH. 'general/cackle',    
         'comments'    => MODPATH. 'general/comments',    
     
         'images'  => MODPATH.'general/images',

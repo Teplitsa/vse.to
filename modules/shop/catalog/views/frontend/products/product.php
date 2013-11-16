@@ -228,6 +228,6 @@ if (!$nav_turn_on) {
                 <a href="<?php echo $search_url ?>"><?php echo $glue.' '.$tag->name ?></a>
                 <?php } ?>
         </div>
-        <?php echo Comments::factory()->render();?>        
+        <?php echo Cackle::factory()->render();?>        
     </div>
 </div>
