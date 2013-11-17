@@ -203,7 +203,7 @@ class Controller_Backend_Towns extends Controller_BackendCRUD
         $per_page = 20;
         $town = Model::fly('Model_Town');
         $count = $town->count();
-        $pagination = new Pagination($count, $per_page);
+        $pagination = new Paginator($count, $per_page,'tpage');
 
         $towns = Model::fly('Model_Town')->find_all(array(
             'offset'   => $pagination->offset,

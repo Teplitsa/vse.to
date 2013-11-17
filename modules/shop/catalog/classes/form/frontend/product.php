@@ -202,7 +202,7 @@ class Form_Frontend_Product extends Form_Frontend
         
         $element = new Form_Element_Textarea('description', array('label' => 'О событии'));
         $element
-            ->add_validator(new Form_Validator_NotEmptyString());
+            ->add_validator(new Form_Validator_NotEmptyString(array(Form_Validator_NotEmptyString::EMPTY_STRING => 'Добавьте информацию о событии')));
         $this->add_component($element);
 
         // ----- Product images
@@ -214,7 +214,7 @@ class Form_Frontend_Product extends Form_Frontend
 //        }
         // ----- File
         $element = new Form_Element_File('file', array('label' => 'Загрузить фото'),array('placeholder' => 'Загрузить фото'));
-        //$element->add_validator(new Form_Validator_File());
+        $element->add_validator(new Form_Validator_File(NULL,TRUE,TRUE));
         $this->add_component($element);
         
         if ($this->model()->id !== NULL)
@@ -300,7 +300,7 @@ class Form_Frontend_Product extends Form_Frontend
         Layout::instance()->add_script(Modules::uri('acl') . '/public/js/backend/lecturer_name.js');       
         Layout::instance()->add_script(Modules::uri('acl') . '/public/js/backend/organizer_name.js'); 
         Layout::instance()->add_script(Modules::uri('tags') . '/public/js/backend/tag.js');        
-        Layout::instance()->add_script(Modules::uri('jquery') . '/public/js/jquery.saveform.js');
+        //Layout::instance()->add_script(Modules::uri('jquery') . '/public/js/jquery.saveform.js');
         Layout::instance()->add_script(Modules::uri('catalog') . '/public/js/frontend/product-create.js');
     }    
 }

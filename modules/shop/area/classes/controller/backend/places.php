@@ -105,7 +105,7 @@ class Controller_Backend_Places extends Controller_BackendCRUD
             }
 
             $count      = $place->count_by_town_id($town->id);
-            $pagination = new Pagination($count, $per_page);
+            $pagination = new Paginator($count, $per_page);
             $places = $place->find_all_by_town_id($town->id, array(
                 'offset'   => $pagination->offset,
                 'limit'    => $pagination->limit,
@@ -117,7 +117,7 @@ class Controller_Backend_Places extends Controller_BackendCRUD
             $town = NULL;
             // Select all users
             $count = $place->count();
-            $pagination = new Pagination($count, $per_page);
+            $pagination = new Paginator($count, $per_page);
 
             $places = $place->find_all(array(
                 'offset'   => $pagination->offset,

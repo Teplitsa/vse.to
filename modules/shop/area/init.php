@@ -55,7 +55,7 @@ if (APP === 'BACKEND')
     
     Route::add('backend/area/places', new Route_Backend(
                 'area/places(/<action>(/<id>))(/ids-<ids>)'
-              . '(/town-<are_town_alias>)(/p-<page>)'             
+              . '(/town-<are_town_alias>)(/p-<page>)(/tp-<tpage>)'             
               . '(/torder-<are_torder>)(/tdesc-<are_tdesc>)'
               . '(/porder-<are_porder>)(/pdesc-<are_pdesc>)'
               . '(/opts-<options_count>)'             
@@ -63,7 +63,9 @@ if (APP === 'BACKEND')
             array(
             'action'    => '\w++',
             'id'        => '\d++',
-            'ids'       => '[\d_]++',                
+            'ids'       => '[\d_]++',
+            'page'         => '(\d++|all)',
+            'tpage'         => '(\d++|all)',                                        
             'are_torder' => '\w++',
             'are_tdesc'  => '[01]',
             'are_porder' => '\w++',
@@ -77,6 +79,8 @@ if (APP === 'BACKEND')
             'action'     => 'index',
             'id'         => NULL,
             'ids'        => '',            
+            'page'         => '0',
+            'tpage'         => '0',                                                    
             'are_torder' => 'name',
             'are_tdesc'  => '0',
             'are_porder' => 'name',
@@ -87,7 +91,7 @@ if (APP === 'BACKEND')
     
     // ----- sections
     Route::add('backend/area/towns', new Route_Backend(
-                'area/towns(/<action>(/<id>)(/ids-<ids>))'
+                'area/towns(/<action>(/<id>)(/ids-<ids>))(/tp-<tpage>)'
               . '(/town-<are_town_alias>)'
               . '(/torder-<are_torder>)(/tdesc-<are_tdesc>)'
               . '(/opts-<options_count>)'             
@@ -97,6 +101,7 @@ if (APP === 'BACKEND')
                 'action'    => '\w++',
                 'id'        => '\d++',
                 'ids'       => '[\d_]++',
+                'tpage'         => '(\d++|all)',                
                 'are_town_alias'  => '[^/]++', 
                 'are_torder' => '\w++',
                 'are_tdesc'  => '[01]',
@@ -109,6 +114,7 @@ if (APP === 'BACKEND')
             'action'     => 'index',
             'id'         => NULL,
             'ids'        => '',
+            'tpage'         => '0',                                                                
             'are_torder' => 'lft',
             'are_tdesc'  => '0',
             'are_town_alias'  => '',            

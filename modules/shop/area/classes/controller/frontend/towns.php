@@ -109,6 +109,7 @@ class Controller_Frontend_Towns extends Controller_Frontend
                 }
                 if ($town->lat) {
                     Gmaps3::instance()->add_mark($town->lat,$town->lon,$town->name);
+                    Gmaps3::instance()->add_link(URL::to('frontend/area/towns', array('action'=>'choosemap', 'are_town_alias' => $town->alias), TRUE));               
                 }
             }
 

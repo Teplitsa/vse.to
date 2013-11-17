@@ -195,15 +195,15 @@ if (APP === 'BACKEND')
 
     // ----- lecturers
     Route::add('backend/acl/lecturers', new Route_Backend(
-                'acl/lecturers(/<action>(/<id>)(/ids-<ids>))'
+                'acl/lecturers(/<action>(/<id>)(/ids-<ids>))(/p-<page>)'
               . '(/opts-<options_count>)' 
               . '(/~<history>)',
         array(
             'action'    => '\w++',
             'id'        => '\d++',
             'ids'       => '[\d_]++',
+            'page'         => '(\d++|all)',            
             'options_count' => '\d++',
-
             'history'   => '.++'
         )))
         ->defaults(array(
@@ -211,13 +211,13 @@ if (APP === 'BACKEND')
             'action'     => 'index',
             'id'         => NULL,
             'ids'        => '',
-            
+            'page'         => '0',            
             'options_count' => NULL            
         ));
 
     // ----- lecturers
     Route::add('backend/acl/organizers', new Route_Backend(
-                'acl/organizers(/<action>(/<id>)(/ids-<ids>))'
+                'acl/organizers(/<action>(/<id>)(/ids-<ids>))(/p-<page>)'
               . '(/opts-<options_count>)' 
               . '(/oorder-<acl_oorder>)(/odesc-<acl_odesc>)'            
               . '(/~<history>)',
@@ -225,6 +225,7 @@ if (APP === 'BACKEND')
             'action'    => '\w++',
             'id'        => '\d++',
             'ids'       => '[\d_]++',
+            'page'         => '(\d++|all)',                        
             'options_count' => '\d++',
             'acl_oorder' => '\w++',
             'acl_odesc'  => '[01]',
@@ -235,6 +236,7 @@ if (APP === 'BACKEND')
             'action'     => 'index',
             'id'         => NULL,
             'ids'        => '',
+            'page'         => '0',                        
             'acl_oorder' => 'name',
             'acl_odesc'  => '0',             
             'options_count' => NULL            
@@ -306,7 +308,7 @@ if (APP === 'BACKEND')
             'group_id'  => '\d++',
             'lecturer_id'    => '\d++',                
             
-            'page'         => '\d++',
+            'page'         => '(\d++|all)',
             'tab'          => '\w++',
 
             'acl_uorder'    => '\w++',

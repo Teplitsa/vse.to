@@ -118,22 +118,24 @@ class Model_Place extends Model
     }
     
     public function save($force_create = NULL) {
-        // Create alias from name
-        /*if (!$this->id)*/ $this->alias = $this->make_alias();
-        return parent::save($force_create);
+        parent::save($force_create);
         
-        if ($this->file) {
-            // Delete organizer images
-            Model::fly('Model_Image')->delete_all_by_owner_type_and_owner_id('place', $this->id);
-            
-            $image = new Model_Image();
-            $image->file = $this->file;
-            $image->owner_type = 'place';
-            $image->owner_id = $this->id;
-            $image->config = 'place';
-            $image->save();
+        if (is_array($this->file)) {
+            $file_info = $this->file;
+            if (isset($file_info['name'])) {
+                if ($file_info['name'] != '') {
+                    // Delete place images
+                    Model::fly('Model_Image')->delete_all_by_owner_type_and_owner_id('place', $this->id);
+
+                    $image = new Model_Image();
+                    $image->file = $this->file;
+                    $image->owner_type = 'place';
+                    $image->owner_id = $this->id;
+                    $image->config = 'place';
+                    $image->save();
+                }
+            }
         }
-        
     }
     
     /**

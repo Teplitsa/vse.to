@@ -50,7 +50,7 @@ class Form_Frontend_Lecturer extends Form_Frontend
         
         // ----- File
         $element = new Form_Element_File('file', array('label' => 'Загрузить фото'),array('placeholder' => 'Загрузить фото'));
-        $element->add_validator(new Form_Validator_File());
+        $element->add_validator(new Form_Validator_File(NULL,TRUE,TRUE));
         $this->add_component($element);
 
         // ----- Description

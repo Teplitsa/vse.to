@@ -23,6 +23,7 @@ abstract class Kohana_Gmaps3 {
 	protected $rectangles	= array();
 	protected $coords			= array();
 	protected $infos			= array();
+	protected $links			= array();
 	protected $jscod			= array();
 		    
 	public $lat;
@@ -162,7 +163,36 @@ abstract class Kohana_Gmaps3 {
                                          
     return $this;     	       
 	}
-	
+
+  /**
+	 * Add a link
+	 *	 
+	 * @chainable	 	 
+	 * @param   string  uri
+	 * @param		string	Group (Default group = 0)	 
+	 * @param   integer Mark id (FALSE = Last mark)   	          	       	 	 
+	 * @return  object
+	 */
+	public function add_link($uri, $group = 0, $mark_id = FALSE)
+	{
+    // Get mark id
+    if ($mark_id === FALSE)
+    {      
+      $mark_id = $this->last_key;            
+      
+      if (empty($mark_id))
+        throw new Kohana_Exception('You need define an element.');                                  
+    }
+        	 	    	  
+	  $group = Inflector::camelize($group);
+	  
+		// Add infowindow
+		$this->links[$group][] = array('mark_id' => $mark_id, 
+                                   'uri' => $uri																 															 
+																	);
+                                         
+    return $this;     	       
+	}        
 	
 	/**
 	 * Add a marker
@@ -618,7 +648,10 @@ abstract class Kohana_Gmaps3 {
      
      // Generate infowindows
      $js .= $this->_generate_infowindows();
-                    
+
+     // Generate infowindows
+     $js .= $this->_generate_links();
+     
      // Generate layers
      $js .= $this->_generate_layers();
      
@@ -930,7 +963,50 @@ abstract class Kohana_Gmaps3 {
  	 
 	}
 	
+	/**
+	 * Generate links
+	 *	    	 
+	 * @return  string
+	 */
+	protected function _generate_links()
+	{
 	
+	 	$js = '';
+	    
+   	foreach($this->links as $k => $link)
+   	{	
+	  
+		  // Generate infowindow
+		  
+			foreach($link as $lk)
+			{
+				
+				$type = $this->_detect_type($lk['mark_id']);
+				 
+				if ( $type == 'mark')
+				{
+					$self_reference = ', this';
+					$position = '';
+				}
+				else
+				{
+					$self_reference = '';
+					$position = "infowindow_{$k}_{$this->id}.setPosition(e.latLng);";
+				}
+				
+				$js .= "google.maps.event.addListener({$lk['mark_id']}_{$this->id}, 'click', function(e) {
+									document.location.href = '{$lk['uri']}';
+		       	});\n";
+	     
+				             		
+			}
+		}
+	            
+  	return $js;
+ 	 
+	}
+
+        
 	/**
 	 * Generate layers
 	 *	    	 

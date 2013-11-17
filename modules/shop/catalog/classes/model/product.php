@@ -901,18 +901,23 @@ class Model_Product extends Model_Res
         }
 
         parent::save($create);
-        
-        if ($this->file['name']) {
-            // Delete product images
-            Model::fly('Model_Image')->delete_all_by_owner_type_and_owner_id('product', $this->id);
-            
-            $image = new Model_Image();
-            $image->file = $this->file;
-            $image->owner_type = 'product';
-            $image->owner_id = $this->id;
-            $image->config = 'product';
-            $image->save();
-        }
+     
+        if (is_array($this->file)) {
+            $file_info = $this->file;
+            if (isset($file_info['name'])) {
+                if ($file_info['name'] != '') {
+                // Delete product images
+                Model::fly('Model_Image')->delete_all_by_owner_type_and_owner_id('product', $this->id);
+
+                $image = new Model_Image();
+                $image->file = $this->file;
+                $image->owner_type = 'product';
+                $image->owner_id = $this->id;
+                $image->config = 'product';
+                $image->save();
+                }
+            }
+        }                
 
         Model::fly('Model_Tag')->save_all($this->tags, 'product',$this->id);    
         
