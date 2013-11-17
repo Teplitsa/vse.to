@@ -38,16 +38,16 @@
                 </div>
 				<aside class="span4">
 					<div class="right-block wrapper">
-						<h2>Что такое vsё.to</h2>
+						<h1 class="main-title"><span>Что такое vsё.to</span></h1>						
 						<div class="right-block-content">
-                                                    <?php echo Widget::render_widget('blocks', 'block', 'short_about'); ?>
+                            <?php echo Widget::render_widget('blocks', 'block', 'short_about'); ?>
 						</div>
 					</div>
 					<div class="right-block wrapper">
-                                            <h2>Календарь событий</h2>
-                                            <div class="right-block-content">
-                                                <?php echo Widget::render_widget('products', 'calendar'); ?>
-                                            </div>
+						<h1 class="main-title"><span>Календарь событий</span></h1>
+						<div class="right-block-content">
+							<?php echo Widget::render_widget('products', 'calendar'); ?>
+						</div>
 					</div>
 					<!-- <div class="left-block">
 						<h2>Теплица социальных технологий</h2>

@@ -500,7 +500,10 @@ class Controller_Frontend_Products extends Controller_FrontendRES
             $dateTime = $dateTime->format('m-d-Y H:i');
                     
             preg_match('|<div class="description" itemprop="description">(.+?)</div>|s', $html, $matches);
-            $desc = strip_tags(html_entity_decode($matches[1], ENT_COMPAT, 'UTF-8'));
+            $rawDesc = $matches[1];
+            $descWithUrls = preg_replace('|<a href="([^"]+?)">([^<]+?)</a>|i', '$2 - $1', $rawDesc);
+            
+            $desc = strip_tags(html_entity_decode($descWithUrls, ENT_COMPAT, 'UTF-8'));
 
             $result['status'] = 'success';
             $result['event'] = array(

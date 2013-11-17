@@ -36,7 +36,7 @@
                     <p class="copy">
 						&copy; vse.to 2013.
 						&nbsp;
-						Проект <a href="http://www.newmediacenter.ru/">ЦИИО РЭШ</a>. Создано при поддержке <a href="http://te-st.ru/">Теплицы социальных технологий</a>
+						Проект <a href="http://www.newmediacenter.ru/">ЦИИО РЭШ</a>. Создан при поддержке <a href="http://te-st.ru/">Теплицы социальных технологий</a>
 					</p>
 				</div>
             </div>

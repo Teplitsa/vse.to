@@ -269,7 +269,7 @@ class Form_Frontend_Product extends Form_Frontend
         { 
             // Button to select place
             $button = new Form_Element_LinkButton('cancel_product',
-                    array('label' => 'Отменить'),
+                    array('label' => 'Отменить событие'),
                     array('class' => 'button')
             );
             $button->url   = URL::to('frontend/catalog/products/control', array('action' => 'cancel','id' => $this->model()->id), TRUE);

@@ -99,7 +99,11 @@ class Controller_Frontend_Users extends Controller_FrontendRES
         
     protected function  _redirect_uri($action, Model $model = NULL, Form $form = NULL, array $params = NULL)
     {
-        if ($action == 'create' || $action == 'update')
+        if($action == 'create')
+        {
+            return URL::uri_to('frontend/acl/users/control',array('action' => 'confirm'));
+        }
+        if ($action == 'update')
         {            
             $result = Auth::instance()->login(
                 $model->email,
@@ -173,43 +177,43 @@ class Controller_Frontend_Users extends Controller_FrontendRES
         
     }
     
-	public function action_edit() {
-		$view = new View('frontend/workspace');
-		$view->content = new View('frontend/users/profedit');
-	
-		$defpass = '0000000000';
-		
-		$user = Model_User::current();	
-		
-		$form = new Form_Frontend_ProfileEdit;
-		if ($form->is_submitted()) {
-			if ($form->validate()) {
-				$data = $form->get_values();
-				if ($data['password'] == $defpass) {
-				$data['password'] = $user->password;
-				}		
-				$user->update_props($form->get_values());
-				$user->save(); 
-				$this->request->redirect('/acl/users/control');
-			}
-		}
-			
-		$form->set_defaults(array(
-                    'first_name' => $user->first_name, 
-                    'last_name' => $user->last_name,
-                    'town_id' => $user->town_id,
-                    'email' => $user->email, 
-                    'password' => $defpass,
-                    'organizer_name' => $user->organizer_name,								 
-                    'info' => $user->info,						 
-		));
-		
-		
-		$layout = $this->prepare_layout();
-                $layout->content = $view;
-		$view->content->form = $form;
-		$this->request->response = $layout->render();  
-	}
+    public function action_edit() {
+            $view = new View('frontend/workspace');
+            $view->content = new View('frontend/users/profedit');
+
+            $defpass = '0000000000';
+
+            $user = Model_User::current();	
+
+            $form = new Form_Frontend_ProfileEdit;
+            if ($form->is_submitted()) {
+                    if ($form->validate()) {
+                            $data = $form->get_values();
+                            if ($data['password'] == $defpass) {
+                            $data['password'] = $user->password;
+                            }		
+                            $user->update_props($form->get_values());
+                            $user->save(); 
+                            $this->request->redirect('/acl/users/control');
+                    }
+            }
+
+            $form->set_defaults(array(
+                'first_name' => $user->first_name, 
+                'last_name' => $user->last_name,
+                'town_id' => $user->town_id,
+                'email' => $user->email, 
+                'password' => $defpass,
+                'organizer_name' => $user->organizer_name,								 
+                'info' => $user->info,						 
+            ));
+
+
+            $layout = $this->prepare_layout();
+            $layout->content = $view;
+            $view->content->form = $form;
+            $this->request->response = $layout->render();  
+    }
 
         
     /**
@@ -496,5 +500,15 @@ class Controller_Frontend_Users extends Controller_FrontendRES
                 'uri' => URL::uri_to('frontend/acl/users/control',array('action' => 'control')),
                 'caption' => 'Профайл'));
         }        
-    }     
+    }
+    
+    
+    public function action_confirm()
+    {
+        $view = new View('frontend/users/confirm');
+        
+        $layout = $this->prepare_layout();
+        $layout->content = $view;
+        $this->request->response = $layout->render();         
+    }
 }
