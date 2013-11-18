@@ -1096,12 +1096,12 @@ form  h1.main-title  > span:after {
     margin-bottom: 0;
 }
 .b-f-main label {
-    width: 160px;
+    width: 120px;
     vertical-align: middle;
 }
 .b-f-main input[type="text"] {
     margin: 0;
-    width: 300px;
+    width: 448px;
 }
 .b-f-main #i-title {
     width: 420px
@@ -1113,24 +1113,20 @@ form  h1.main-title  > span:after {
     display: inline-block;
     margin-left: 18px;
 }
-.b-f-date {
-    height: 44px;
-}
-.b-f-date > div {
+.b-f-date > .b-input, .b-f-date > .b-select
+{
+    width: 50%;
     display: inline-block;
-    margin-right: 1%;
 }
-.b-f-date > div:nth-child(1) label {
-    width: 40px;
+.b-f-date label
+{
+    width: 120px;
 }
-.b-f-date > div:nth-child(3) {
-    margin-right: 0;
+.b-f-date input, .b-f-date select
+{
+    width: 158px;
 }
-.b-f-date input[type="text"],
-.b-f-date select {
-    width: 200px;
-    margin: 0 6px 0 2px;
-}
+
 
 .b-f-place > div {
     display: inline-block;
@@ -1169,7 +1165,7 @@ form  h1.main-title  > span:after {
     width: 188px;
 }
 
-.b-f-theme > div {
+/*.b-f-theme > div {
     display: inline-block;
 }
 .b-f-theme > div select {
@@ -1187,23 +1183,36 @@ form  h1.main-title  > span:after {
 }
 .b-f-theme > div:nth-child(1) select {
     width: 130px;
+}*/
+
+.b-f-theme > .b-input, .b-f-theme > .b-select
+{
+    width: 50%;
+    display: inline-block;
+}
+.b-f-theme label
+{
+    width: 120px;
+}
+.b-f-theme input, .b-f-theme select
+{
+    width: 158px;
 }
 
+
 .b-tegs label {
-    width: 88px;
-    margin-right: 10px;
+    width: 120px;
 }
 .b-tegs input, 
 .b-tegs textarea {
-    width: 470px;
+    width: 448px;
     height: 44px;
 }
 .b-txt label {
-    width: 88px;
-    margin-right: 10px;
+    width: 120px;
 }
 .b-txt textarea {
-    width: 470px;
+    width: 448px;
     height: 180px;
 }
 

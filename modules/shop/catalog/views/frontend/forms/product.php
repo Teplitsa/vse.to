@@ -28,19 +28,18 @@
         <?php echo $form->get_element('place_id')->render_input();?>        
     </fieldset>
     <fieldset class="b-f-date">
-        <div class="b-input"><label for="">Дата</label><?php echo $form->get_element('datetime')->render_input();?></div>
+        <div class="b-input"><label for="">Дата</label><?php echo $form->get_element('datetime')->render_input();?>
+        </div><div class="b-select"><label for="">Длительность</label><?php echo $form->get_element('duration')->render_input();?></div>
+
         <?php echo $form->get_element('datetime')->render_alone_errors();?>
-        
-        <div class="b-select"><label for="">Длительность</label><?php echo $form->get_element('duration')->render_input();?></div>
         <?php echo $form->get_element('duration')->render_alone_errors();?>
-        
     </fieldset>
     
     <fieldset class="b-f-theme">
-        <div class="b-select"><label for="">Тема</label><?php echo $form->get_element('theme')->render_input();?></div>
+        <div class="b-select"><label for="">Тема</label><?php echo $form->get_element('theme')->render_input();?>
+        </div><div class="b-select"><label for="">Формат события</label><?php echo $form->get_element('format')->render_input();?></div>
+
         <?php echo $form->get_element('theme')->render_alone_errors();?>
-        
-        <div class="b-select"><label for="">Формат события</label><?php echo $form->get_element('format')->render_input();?></div>
         <?php echo $form->get_element('format')->render_alone_errors();?>
         
     </fieldset>
