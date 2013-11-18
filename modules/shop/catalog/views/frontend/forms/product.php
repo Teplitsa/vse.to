@@ -82,7 +82,7 @@
     </fieldset>
     <?php echo $form->get_element('choalg')->render_alone_errors();?>            
     
-    <div class="b-txt"><label for="">Требования к площадке</label><?php echo $form->get_element('require')->render_input();?></div>
+    <div class="b-txt b-require"><label for="">Требования к площадке</label><?php echo $form->get_element('require')->render_input();?></div>
     <?php echo $form->get_element('require')->render_alone_errors();?>    
 
     <div class="form-action">

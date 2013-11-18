@@ -1265,7 +1265,14 @@ form  h1.main-title  > span:after {
 .b-f-request .b-radio select {
     width: 170px;
 }
-
+.b-require > label
+{
+    width: 150px;
+}
+.b-require > textarea
+{
+    width: 418px;
+}
 
 .d-f-main label {
     width: 160px;
