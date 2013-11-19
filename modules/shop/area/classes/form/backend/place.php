@@ -36,6 +36,26 @@ class Form_Backend_Place extends Form_Backend
 
                 $fieldset->add_component($element, 1);
                 
+            // ----- Email
+            $element = new Form_Element_Input('email',
+                array('label' => 'E-mail', 'required' => FALSE),
+                array('maxlength' => 63)
+            );
+            $element
+                    ->add_filter(new Form_Filter_TrimCrop(63))
+                    ->add_validator(new Form_Validator_Email(NULL,TRUE,TRUE));
+                    ;
+            $fieldset->add_component($element);                
+                
+            // ----- Phone
+            $element = new Form_Element_Input('phone',
+                array('label' => 'Телефон', 'required' => FALSE),
+                array('maxlength' => 63)
+            );
+            $element->add_filter(new Form_Filter_TrimCrop(63));
+            $fieldset->add_component($element);                   
+                
+                
             // ----- Town
             $towns = Model_Town::towns();
             $current_town = Model_Town::current();

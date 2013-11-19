@@ -17,7 +17,10 @@ class Model_Place_Mapper extends Model_Mapper
         $this->add_column('links', array('Type' => 'array'));
         $this->add_column('ispeed',     array('Type' => 'varchar(15)'));   
         $this->add_column('lat',   array('Type' => 'double'));
-        $this->add_column('lon',   array('Type' => 'double'));        
+        $this->add_column('lon',   array('Type' => 'double'));   
+        
+        $this->add_column('email',   array('Type' => 'varchar(63)'));
+        $this->add_column('phone',   array('Type' => 'varchar(63)'));
     }
  
     /**

@@ -31,13 +31,35 @@ class Form_Backend_Organizer extends Form_Backend
         $fieldset = new Form_Fieldset('personal_data', array('label' => 'Общие данные'));
         $cols->add_component($fieldset);
         
-                // ----- Name
-                $element = new Form_Element_Input('name', array('label' => 'Название', 'required' => TRUE), array('maxlength' => 63));
-                $element
-                    ->add_filter(new Form_Filter_TrimCrop(63))
-                    ->add_validator(new Form_Validator_NotEmptyString());
+            // ----- Name
+            $element = new Form_Element_Input('name', array('label' => 'Название', 'required' => TRUE), array('maxlength' => 63));
+            $element
+                ->add_filter(new Form_Filter_TrimCrop(63))
+                ->add_validator(new Form_Validator_NotEmptyString());
 
-                $fieldset->add_component($element, 1);
+            $fieldset->add_component($element, 1);
+                
+                
+            // ----- Email
+            $element = new Form_Element_Input('email',
+                array('label' => 'E-mail', 'required' => FALSE),
+                array('maxlength' => 63)
+            );
+            $element
+                    ->add_filter(new Form_Filter_TrimCrop(63))
+                    ->add_validator(new Form_Validator_Email(NULL,TRUE,TRUE));
+                    ;
+            $fieldset->add_component($element);                
+                
+            // ----- Phone
+            $element = new Form_Element_Input('phone',
+                array('label' => 'Телефон', 'required' => FALSE),
+                array('maxlength' => 63)
+            );
+            $element->add_filter(new Form_Filter_TrimCrop(63));
+            $fieldset->add_component($element);                     
+                
+                
                 
             // ----- Town
             $towns = Model_Town::towns();

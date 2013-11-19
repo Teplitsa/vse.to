@@ -16,6 +16,10 @@ class Model_Organizer_Mapper extends Model_Mapper {
         $this->add_column('links', array('Type' => 'array'));
         
         $this->add_column('info', array('Type' => 'text'));  
+        
+        
+        $this->add_column('email',   array('Type' => 'varchar(63)'));
+        $this->add_column('phone',   array('Type' => 'varchar(63)'));
     }
 
     public function find_by(Model $model, $condition = NULL, array $params = NULL, Database_Query_Builder_Select $query = NULL)

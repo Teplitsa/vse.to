@@ -78,9 +78,36 @@ class Model_Place extends Model
                 $this->lon = $geoinfo->geometry->location->lng;                    
             }
         }
+        
+        if (!$this->validate_email($newvalues))
+            return FALSE;
+        
         return TRUE;
     }    
           
+    /**
+     * Validate place email
+     * 
+     * @param  array $newvalues
+     * @return boolean
+     */
+    public function validate_email(array $newvalues)
+    {
+        if (isset($newvalues['email']) && !empty($newvalues['email']))
+        {
+            if ($this->exists_another_by_email($newvalues['email']))
+            {
+                $this->error('Организация с таким e-mail уже существует!', 'email');
+                return FALSE;
+            }
+        }
+
+        return TRUE;
+    } 
+    
+    
+    
+    
     /**
      * Make alias for town from it's 'town' field
      *

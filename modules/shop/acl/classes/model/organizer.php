@@ -116,6 +116,41 @@ class Model_Organizer extends Model
         }
     }
     
+    public function validate_update(array $newvalues = NULL)
+    {
+        return $this->validate_create($newvalues);
+    }    
+
+    public function validate_create(array $newvalues = NULL)
+    {
+        if (!$this->validate_email($newvalues))
+            return FALSE;
+        
+        return TRUE;
+    }    
+          
+    /**
+     * Validate organizer email
+     * 
+     * @param  array $newvalues
+     * @return boolean
+     */
+    public function validate_email(array $newvalues)
+    {
+        if (isset($newvalues['email']) && !empty($newvalues['email']))
+        {
+            if ($this->exists_another_by_email($newvalues['email']))
+            {
+                $this->error('Организация с таким e-mail уже существует!', 'email');
+                return FALSE;
+            }
+        }
+
+        return TRUE;
+    }        
+    
+    
+    
     /**
      * Is group valid to be deleted?
      *
