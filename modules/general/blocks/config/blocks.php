@@ -7,6 +7,7 @@ return array
         'about' => 'О проекте',
         'short_about' => 'Коротко о проекте',
         'events' => 'События',
-        'faq'   => 'FAQ',            
+        'faq'   => 'FAQ',
+        'main_page_adv'   => 'Реклама',
     )
 );

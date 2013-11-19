@@ -40,7 +40,7 @@
 					<div class="right-block wrapper">
 						<h1 class="main-title"><span>Что такое vsё.to</span></h1>						
 						<div class="right-block-content">
-                            <?php echo Widget::render_widget('blocks', 'block', 'short_about'); ?>
+                                                    <?php echo Widget::render_widget('blocks', 'block', 'short_about'); ?>
 						</div>
 					</div>
 					<div class="right-block wrapper">
@@ -49,13 +49,14 @@
 							<?php echo Widget::render_widget('products', 'calendar'); ?>
 						</div>
 					</div>
-					<!-- <div class="left-block">
-						<h2>Теплица социальных технологий</h2>
-						<div class="left-block-content">
-							Данный проект создан при поддержке Теплицы социальных технологий<br />
-							<a href="http://te-st.ru/" class="te-st-link"><img src="/modules/frontend/public/css/frontend/img/te-st-banner.png" /></a>
+                                        <!--
+                                        <div class="right-block wrapper">
+						<h1 class="main-title"><span>Что такое vsё.to</span></h1>						
+						<div class="right-block-content">
+                                                    <?php /*echo Widget::render_widget('blocks', 'block', 'main_page_adv');*/ ?>
 						</div>
-					</div> -->
+					</div>
+                                        -->
 					
 				</aside>
             </div>
