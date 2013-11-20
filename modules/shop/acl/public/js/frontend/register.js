@@ -1,3 +1,3 @@
 $(function(){
-    $('#id-user1').autosave();
+    $('#id-user1').xtautosave();
 });

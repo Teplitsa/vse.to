@@ -300,7 +300,7 @@ class Form_Frontend_Product extends Form_Frontend
         Layout::instance()->add_script(Modules::uri('acl') . '/public/js/backend/lecturer_name.js');       
         Layout::instance()->add_script(Modules::uri('acl') . '/public/js/backend/organizer_name.js'); 
         Layout::instance()->add_script(Modules::uri('tags') . '/public/js/backend/tag.js');        
-        //Layout::instance()->add_script(Modules::uri('jquery') . '/public/js/jquery.saveform.js');
+        Layout::instance()->add_script(Modules::uri('jquery') . '/public/js/jquery.xtsaveform.js');
         Layout::instance()->add_script(Modules::uri('catalog') . '/public/js/frontend/product-create.js');
     }    
 }

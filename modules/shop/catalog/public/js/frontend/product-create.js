@@ -11,7 +11,7 @@ $(function(){
         return false;
     });
     
-    $('#id-product1').autosave();
+    $('#id-product1').xtautosave();
 });
 
 
