@@ -36,6 +36,7 @@ function praseUrl(url)
 
                 $('#id-product1-caption').val(eventData.title);
                 $('#id-product1-datetime').val(eventData.time);
+                $('#image_url').val(eventData.image_url);
                 $('#id-product1-description').val(fullDesc);
                 $("#id-product1-format option").filter(function() {
                     return $(this).text() == eventData.format;

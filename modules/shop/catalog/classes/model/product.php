@@ -902,7 +902,7 @@ class Model_Product extends Model_Res
 
         parent::save($create);
      
-        if (is_array($this->file)) {
+        if (is_array($this->file) && !empty($this->file['name'])) {
             $file_info = $this->file;
             if (isset($file_info['name'])) {
                 if ($file_info['name'] != '') {
@@ -917,7 +917,24 @@ class Model_Product extends Model_Res
                 $image->save();
                 }
             }
-        }                
+        }
+        else
+        {
+            if($this->image_url)
+            {
+                $file = File::download_file($this->image_url);
+                
+                // Delete product images
+                Model::fly('Model_Image')->delete_all_by_owner_type_and_owner_id('product', $this->id);
+
+                $image = new Model_Image();
+                $image->tmp_file = $file;
+                $image->owner_type = 'product';
+                $image->owner_id = $this->id;
+                $image->config = 'product';
+                $image->save();
+            }
+        }
 
         Model::fly('Model_Tag')->save_all($this->tags, 'product',$this->id);    
         

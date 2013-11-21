@@ -222,7 +222,10 @@ class Form_Frontend_Product extends Form_Frontend
             $element = new Form_Element_Custom('images', array('label' => '', 'layout' => 'standart'));
             $element->value = Request::current()->get_controller('images')->widget_image('product', $this->model()->id, 'product');
             $this->add_component($element);
-        }              
+        }        
+        // Hidden element for product images for parser
+        $element = new Form_Element_Hidden('image_url',array('id' => 'image_url'));        
+        $this->add_component($element);
         
         // ----- interact
         $options = Model_Product::$_interact_options;

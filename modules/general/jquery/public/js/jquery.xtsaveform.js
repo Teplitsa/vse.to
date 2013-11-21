@@ -34,9 +34,6 @@
 				return;
 			}
 			
-                        console.log(elem);
-                        
-                        
 			if ((elem.attr('type') === 'checkbox') || (elem.attr('type') === 'radio')) {
 				elem.prop('checked', value);
 			} else {
@@ -137,19 +134,19 @@
 	};
 	
         $.fn.xtautosave.reset = function () {
-                       var $this = $(this), elems;		
-                       elems = $this.find('input:not([type=password],[type=submit])');
-                       elems.each(
-                                       function(index, elem) {
-                                                var key = $.fn.xtautosave.getKey($this, index);
-                                                storage.removeItem(key);
-                                       });
-                       elems = $this.find('select');
-                       elems.each(
-                                       function(index, elem) {
-                                               var key = $.fn.xtautosave.getSelectKey($this, index);
-                                               storage.removeItem(key);
-                                       });			
-               };       
+            var storage = window.localStorage, $this = $(this), elems;		
+            elems = $this.find('input:not([type=password],[type=submit])');
+            elems.each(
+                            function(index, elem) {
+                                     var key = $.fn.xtautosave.getKey($this, index);
+                                     storage.removeItem(key);
+                            });
+            elems = $this.find('select');
+            elems.each(
+                            function(index, elem) {
+                                    var key = $.fn.xtautosave.getSelectKey($this, index);
+                                    storage.removeItem(key);
+                            });			
+        };       
 
 }(jQuery, window));

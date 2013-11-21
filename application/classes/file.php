@@ -231,6 +231,47 @@ class File extends Kohana_File {
      */
     public static function upload(array $file, $path = NULL)
     {
+        $path = File::getPath($path);
+
+        if ( ! @move_uploaded_file($file['tmp_name'], $path))
+        {
+            throw new Kohana_Exception('Failed to move uploaded file!');
+        }
+
+        @chmod($path, 0666);
+        
+        return $path;
+    }
+    
+    
+    /**
+     * Download file from specific URL and move him to specified path or to the temporary location in application tmp dir
+     * and return the new path
+     *
+     * @param $url Url to download
+     * @param $path Path to save file
+     * @param $allowed_extn Allowed file extensions
+     * @return string
+     */
+    public static function download_file($url, $path = NULL, array $allowed_extn = array('jpg', 'png'))
+    {
+        $extn = substr($url, strrpos($url, '.')+1);
+        
+        if (!in_array($extn, $allowed_extn))
+             throw new Kohana_Exception('File has not-allowed extension!');
+
+        $file = file_get_contents($url);
+        
+        $pathToSave = File::getPath($path);
+        file_put_contents($pathToSave, $file);
+        @chmod($pathToSave, 0666);
+        
+        return $pathToSave;
+    }   
+    
+    
+    private static function getPath($path)
+    {
         if ( ! is_writable(TMPPATH))
         {
             throw new Kohana_Exception('Temporary directory "' . TMPPATH . '" is not writable');
@@ -244,13 +285,6 @@ class File extends Kohana_File {
             }
             while (is_file($path));
         }
-
-        if ( ! @move_uploaded_file($file['tmp_name'], $path))
-        {
-            throw new Kohana_Exception('Failed to move uploaded file!');
-        }
-
-        @chmod($path, 0666);
         
         return $path;
     }

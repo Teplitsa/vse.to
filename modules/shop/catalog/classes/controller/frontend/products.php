@@ -488,7 +488,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         
         if(strpos($parseurl,'theoryandpractice.ru') !== FALSE)
         {
-            $html = file_get_contents($parseurl);
+            $html = Remote::get($parseurl);
             
             $matches = array();
             preg_match('|<span class="type">([^<]+?)</span><em>([^<]+?)</em>|', $html, $matches);
@@ -497,20 +497,28 @@ class Controller_Frontend_Products extends Controller_FrontendRES
             
             preg_match('|<time class="time" datetime="([^"]+?)" itemprop="startDate">|', $html, $matches);
             $dateTime = new DateTime($matches[1]);
-            $dateTime = $dateTime->format('m-d-Y H:i');
+            $dateTime = $dateTime->format('d-m-Y H:i');
                     
             preg_match('|<div class="description" itemprop="description">(.+?)</div>|s', $html, $matches);
             $rawDesc = $matches[1];
             $descWithUrls = preg_replace('|<a href="([^"]+?)">([^<]+?)</a>|i', '$2 - $1', $rawDesc);
-            
             $desc = strip_tags(html_entity_decode($descWithUrls, ENT_COMPAT, 'UTF-8'));
 
+            $imageUrl = '';
+            if(strpos($html,'<figure class="poster">') !== FALSE)
+            {
+                // <figure class="poster"><span class="img"><img alt="Международный стартап" itemprop="image" src="https://tnp-production.s3.amazonaws.com/uploads/image_unit/000/024/198/image/base_8be2e36ea1.jpg"></span><figcaption><span>Автор картинки: Jag Nagra</span></figcaption></figure>
+                preg_match('|<img alt="([^"]+)" itemprop="image" src="([^"]+)"|s', $html, $matches);
+                $imageUrl = html_entity_decode($matches[2], ENT_COMPAT, 'UTF-8');
+            }
+            
             $result['status'] = 'success';
             $result['event'] = array(
                 'time'=> $dateTime,
                 'title' => $title,
                 'format' => mb_strtolower(trim($format)),
                 'desc' => $desc,
+                'image_url' => $imageUrl
             );          
         }
         

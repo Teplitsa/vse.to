@@ -54,7 +54,8 @@
         <div class="b-input"><?php echo $form->get_element('file')->render_label(); echo $form->get_element('file')->render_input(); ?></div>
         <?php echo $form->get_element('file')->render_alone_errors();?>
         <?php if ($form->model()->id) echo $form->get_element('images')->render_input();?>        
-        <div id="prev_<?php echo $form->get_element('file')->id?>" class="prev_container"></div>        
+        <div id="prev_<?php echo $form->get_element('file')->id?>" class="prev_container"></div>
+        <?php echo $form->get_element('image_url')->render_input();?>
     </fieldset>
     
     <h1 class="main-title"><span>О трансляции</span></h1>
