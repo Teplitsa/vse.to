@@ -1271,7 +1271,9 @@ form  h1.main-title  > span:after {
 }
 .b-require > textarea
 {
-    width: 418px;
+    /* Without help */
+    /* width: 418px; */
+    width: 388px;
 }
 
 .d-f-main label {
@@ -1633,4 +1635,46 @@ footer .span6 img
 .shifted-links > *:last-child
 {
     margin-right: 30px;
+}
+
+.modal[id^="requestModal"] textarea
+{
+    width: 500px;
+}
+.modal[id^="requestModal"] .modal-footer button
+{
+    margin-right: 30px;
+}
+
+#LectorModal input[type=text], #LectorModal input[type=email], #LectorModal textarea
+{
+    width: 500px;
+}
+#LectorModal .modal-footer button
+{
+    margin-right: 30px;
+}
+
+
+#OrgModal input[type=text], #OrgModal input[type=email], #OrgModal textarea
+{
+    width: 500px;
+}
+#OrgModal .modal-footer button
+{
+    margin-right: 30px;
+}
+
+#PlaceModal input[type=text], #PlaceModal input[type=email], #PlaceModal textarea
+{
+    width: 500px;
+}
+#PlaceModal .modal-footer button
+{
+    margin-right: 30px;
+}
+
+#id-product1-numviews
+{
+    margin-bottom: 0px;
 }

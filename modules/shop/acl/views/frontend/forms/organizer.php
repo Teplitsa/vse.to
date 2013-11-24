@@ -21,7 +21,10 @@
                 </div>                
             </div>
             <?php echo $form->get_element('type')->render_alone_errors();?>
-            <label for="info"><?php echo $form->get_element('info')->render_input(); ?></label>
+            <label for="info">
+                <?php echo $form->get_element('info')->render_input(); ?>
+                &nbsp;<a class="help-pop"  href="#" title="" data-placement="bottom" data-original-title="Чем занимается организация, какие её основные достижения">?</a>
+            </label>
             <?php echo $form->get_element('info')->render_alone_errors();?>
             
             <label for="links"><?php echo $form->get_element('links')->render_input(); ?></label>

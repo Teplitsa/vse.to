@@ -9,10 +9,13 @@
             <div class="row-fluid">
                 <div class="span6">
                     <label for="place"><?php echo $form->get_element('place_id')->render_input();?>
-                    &nbsp;<a class="help-pop"  href="#" title="" data-placement="bottom" data-original-title="A much longer tooltip belongs right here to demonstrate the max-width we apply.">?</a></label>
+                    &nbsp;<a class="help-pop"  href="#" title="" data-placement="bottom" data-original-title="Выберите площадку из предложенных или добавьте новую  в список, написав письмо с названием и адресом площадки на адрес tov.dinast@gmail.com.">?</a>
+                    </label>
                 </div>                
             </div>
-            <label for="info"><?php echo $form->get_element('info')->render_input(); ?></label>
+            <label for="info"><?php echo $form->get_element('info')->render_input(); ?>
+            &nbsp;<a class="help-pop"  href="#" title="" data-placement="bottom" data-original-title="Тут можно написать о локальном событии, которое будет до или после трансляции (например, дискуссия с приглашённым экспертом, дебаты или просмотр фильма), или о чём-то другом.">?</a>
+            </label>
         </div>
         <div class="modal-footer">
             <?php echo $form->get_element('submit_request')->render_input(); ?>

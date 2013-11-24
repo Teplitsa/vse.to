@@ -35,7 +35,11 @@
         <div class="b-input"><label for="i-title"><?php echo $form->get_element('town_id')->render_label();?></label><?php echo $form->get_element('town_id')->render_input();?></div>
         <?php echo $form->get_element('town_id')->render_alone_errors();?>                
         
-        <div class="b-input"><label for="i-title"><?php echo $form->get_element('tags')->render_label();?></label><?php echo $form->get_element('tags')->render_input();?></div>
+        <div class="b-input">
+            <label for="i-title"><?php echo $form->get_element('tags')->render_label();?></label>
+            <?php echo $form->get_element('tags')->render_input();?>
+            <a class="help-pop" href="#" title="" data-placement="right" data-original-title="Интересы нужны для того, чтобы vse.to мог рекомендовать Вам события. Поставьте галочку, если Вы хотите получать анонсы интересных событий на почту.">?</a>
+        </div>
         <?php echo $form->get_element('tags')->render_alone_autoload();?>
         <?php echo $form->get_element('tags')->render_alone_errors();?>        
     </fieldset>

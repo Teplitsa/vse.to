@@ -62,6 +62,11 @@
     
 <?php echo $view->placeholder('modal'); ?>
 
+<script>
+    jQuery(function($){
+        $('.help-pop').tooltip()
+    });
+</script> 
 
 <!-- Reformal -->
 <script type="text/javascript">

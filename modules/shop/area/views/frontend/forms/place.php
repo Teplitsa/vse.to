@@ -15,7 +15,10 @@
             <label for="address"><?php echo $form->get_element('address')->render_input(); ?></label>
             <?php echo $form->get_element('address')->render_alone_errors();?>
 
-            <label for="description"><?php echo $form->get_element('description')->render_input(); ?></label>
+            <label for="description">
+                <?php echo $form->get_element('description')->render_input(); ?>
+                &nbsp;<a class="help-pop"  href="#" title="" data-placement="bottom" data-original-title="Какие события тут проходили, какие темы событий интересны площадке.">?</a>
+            </label>
             <?php echo $form->get_element('description')->render_alone_errors();?>
      
             <label for="ispeed">Доступ к интернету:         <?php echo $form->get_element('ispeed')->render_input(); ?></label>

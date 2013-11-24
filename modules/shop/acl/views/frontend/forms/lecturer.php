@@ -13,7 +13,10 @@
             <label for="middle_name"><?php echo $form->get_element('middle_name')->render_input(); ?></label>
             <?php echo $form->get_element('middle_name')->render_alone_errors();?>
             
-            <label for="info"><?php echo $form->get_element('info')->render_input(); ?></label>
+            <label for="info">
+                <?php echo $form->get_element('info')->render_input(); ?>
+                &nbsp;<a class="help-pop help-pop-right" href="#" title="" data-placement="bottom" data-original-title="Где учился лектор, где он работает, какие у него научные или практические интересы, какие главные публикации и основные достижения.">?</a>
+            </label>
             <?php echo $form->get_element('info')->render_alone_errors();?>
 
             <label for="links"><?php echo $form->get_element('links')->render_input(); ?></label>

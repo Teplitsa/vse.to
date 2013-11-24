@@ -71,19 +71,25 @@
         <span class="title">Количество телемостов</span>
         <div class="pull-left">
             <?php echo $form->get_element('numviews')->render_input();?>
+            &nbsp;<a class="help-pop"  href="#" title="" data-placement="right" data-original-title="Это максимальное количество городов, в которых могут быть телемосты Вашего события. Количество телемостов нельзя будет поменять после публикации анонса. Обратите внимание: чем больше телемостов, тем меньше возможности для обратной связи.">?</a>
         </div>
     </fieldset>
     <?php echo $form->get_element('numviews')->render_alone_errors();?>            
     
     <fieldset class="b-f-chose">
         <span class="title">Кто выбирает</span>
+        &nbsp;<a class="help-pop"  href="#" title="" data-placement="bottom" data-original-title="Алгоритм (в порядке очередности заявок) - первые поданные заявки будут одобрены автоматически. Алгоритм (случайный выбор) - алгоритм выберет случайные заявки. Автор анонса - Вы сами выберете из заявок. Это нужно сделать в течение 3 дней после публикации анонса.  Если вы не выберете заявки к этому сроку, заявки будут отобраны автоматически. ">?</a>
         <div class="pull-left">
             <?php echo $form->get_element('choalg')->render_input();?>
         </div>
     </fieldset>
     <?php echo $form->get_element('choalg')->render_alone_errors();?>            
     
-    <div class="b-txt b-require"><label for="">Требования к площадке</label><?php echo $form->get_element('require')->render_input();?></div>
+    <div class="b-txt b-require">
+        <label for="">Требования к площадке</label>
+        <?php echo $form->get_element('require')->render_input();?>
+        &nbsp;<a class="help-pop"  href="#" title="" data-placement="top" data-original-title="Если представителю понадобится специфическая техника или особенный зал, если вы хотите видеть определённых зрителей - эти и другие требования укажите тут.">?</a>
+    </div>
     <?php echo $form->get_element('require')->render_alone_errors();?>    
 
     <div class="form-action">
