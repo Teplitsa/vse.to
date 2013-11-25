@@ -115,6 +115,7 @@ Kohana::modules(array(
         'twig'    => MODPATH.'general/twig',
         'swift_mailer' => MODPATH.'general/swift_mailer',
         'gmaps3' => MODPATH.'general/gmaps3',
+        'qiwi' => MODPATH.'general/qiwi',
 
 
         'sites'     => MODPATH.'shop/sites',
