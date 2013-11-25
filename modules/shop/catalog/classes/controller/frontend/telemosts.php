@@ -53,6 +53,19 @@ class Controller_Frontend_Telemosts extends Controller_FrontendRES
         return $telemost;
     }
 
+    protected function _execute_create(Model $model, Form $form, array $params = NULL)
+    {
+        $phone = '7777777777';
+        $amount = '0.01';
+        $txn = 77;
+        $comment = 'test billd';
+        $alarm = 0;
+
+        $rc = QIWI::factory()->createBill($phone, $amount, $txn, $comment, $alarm);
+        var_dump($rc);
+        die();
+    }
+    
     /**
      * Renders list of product telemosts
      *
