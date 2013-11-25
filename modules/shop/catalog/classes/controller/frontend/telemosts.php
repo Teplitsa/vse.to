@@ -276,17 +276,7 @@ class Controller_Frontend_Telemosts extends Controller_FrontendRES
                 $vals['user_id'] = $user->id;
                 
                 if ($telemost->validate($vals))
-                {                    
-                    $phone = '7777777777';
-                    $amount = '0.01';
-                    $txn = 77;
-                    $comment = 'test billd';
-                    $alarm = 0;
-
-                    $rc = QIWI::factory()->createBill($phone, $amount, $txn, $comment, $alarm);
-                    var_dump($rc);
-                    die();
-                    
+                {                                        
                     $telemost->values($vals);
                     $telemost->product_id = $product->id;
 
