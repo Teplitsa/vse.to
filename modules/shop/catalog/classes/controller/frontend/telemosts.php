@@ -333,4 +333,8 @@ class Controller_Frontend_Telemosts extends Controller_FrontendRES
         $this->_action_ajax();        
     }    
     
+    
+	public function action_updatebill() {
+		QIWI::factory()->updateBill();
+	}    
 }

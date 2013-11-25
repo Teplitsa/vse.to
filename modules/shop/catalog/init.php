@@ -220,6 +220,18 @@ if (APP === 'FRONTEND')
             'action'     => 'ajax_telemost_select',
             'telemost_id'=> NULL
         ));
+
+    // ----- product_buy
+    Route::add('frontend/catalog/telemost/updatebill', new Route_Frontend(
+                'catalog/telemost/updatebill'
+            ,
+            array(
+            )
+        ))
+        ->defaults(array(
+            'controller' => 'telemosts',
+            'action'     => 'updatebill'
+        ));
     
     // ----- product_choose
     Route::add('frontend/catalog/smallproduct/choose', new Route_Frontend(
