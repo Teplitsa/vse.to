@@ -1678,3 +1678,10 @@ footer .span6 img
 {
     margin-bottom: 0px;
 }
+
+
+
+textarea.invalid, input[type="text"].invalid, input[type="email"].invalid, input[type="password"].invalid
+{
+    border: 1px solid red;
+}

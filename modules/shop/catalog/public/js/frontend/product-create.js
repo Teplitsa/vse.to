@@ -2,7 +2,7 @@ $(function(){
     
     $('#parsing-fill-btn').click(function(){
         
-        var url = prompt("Введите адрес страницы события для автоматического заполенния полей");
+        var url = prompt('Введите адрес страницы события для автоматического заполенния полей.\n\nВсе поля будут заполнены автоматически, кроме полей "лектор"и "площадка"');
         
         if(url != null)
         {
@@ -41,6 +41,11 @@ function praseUrl(url)
                 $("#id-product1-format option").filter(function() {
                     return $(this).text() == eventData.format;
                 }).prop('selected', true);
+                
+                
+                // Set invalid fields
+                $('#lecturer_name').addClass('invalid');
+                $('#place_name').addClass('invalid');
             }
         },
         'error': function(jqXHR, textStatus, errorThrown ){
