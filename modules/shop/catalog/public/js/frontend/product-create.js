@@ -46,6 +46,13 @@ function praseUrl(url)
                 // Set invalid fields
                 $('#lecturer_name').addClass('invalid');
                 $('#place_name').addClass('invalid');
+                
+                // Set photo
+                var fileElem = $('#prev_id-product1-file');
+                fileElem.html('&nbsp Новое фото ');
+                $('<img />').css('margin-top', '10px').addClass('prev_thumb').attr('src',eventData.image_url).appendTo(fileElem);
+
+                
             }
         },
         'error': function(jqXHR, textStatus, errorThrown ){
