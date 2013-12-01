@@ -45,6 +45,8 @@ while ($i < $count)
         
 } ?>
 
+<iframe name="iframeName" frameborder="0" width="550" height="700"></iframe>
+
 <?php
 if ($pagination)
 {

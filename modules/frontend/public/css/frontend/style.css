@@ -1650,6 +1650,7 @@ footer .span6 img
 {
     width: 500px;
 }
+
 #LectorModal .modal-footer button
 {
     margin-right: 30px;
@@ -1672,6 +1673,12 @@ footer .span6 img
 #PlaceModal .modal-footer button
 {
     margin-right: 30px;
+}
+
+
+#qiwiphone input[type=text]
+{
+    width: 94%;
 }
 
 #id-product1-numviews

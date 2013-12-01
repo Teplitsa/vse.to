@@ -66,6 +66,13 @@
         </div>
     </fieldset>
     <?php echo $form->get_element('interact')->render_alone_errors();?>
+
+    <div class="b-txt b-require">
+        <label for="">Стоимость лицензии</label>
+        <?php echo $form->get_element('price')->render_input();?> руб.
+        &nbsp;<a class="help-pop"  href="#" title="" data-placement="top" data-original-title="Если Вы планируете выдавать лицензии на трансляцию Вашего события, укажите стоимость одной лицензии.">?</a>
+    </div>
+    <?php echo $form->get_element('require')->render_alone_errors();?>    
     
     <fieldset class="b-f-chose">
         <span class="title">Количество телемостов</span>

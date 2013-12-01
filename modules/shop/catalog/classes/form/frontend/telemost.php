@@ -36,13 +36,28 @@ class Form_Frontend_Telemost extends Form_Frontend
         
         $this->add_component($control_element);
         
+        $button_text = 'Отправить заявку';
+        if ($this->model()->price->gt(new Money())) {
+            // ----- Сумма
+            $price_elem = new Form_Element_Text('price', array('label' => 'Стоимость лицензии'),array('placeholder' => "Стоимость лицензии"));
+            $price_elem->value = $this->model()->price;
+            $this->add_component($price_elem);
+            // ----- Telephone
+            $phone_elem = new Form_Element_Input('telephone', array('label' => 'Номер телефона пользователя Visa QIWI Wallet'),array('placeholder' => "Номер телефона пользователя Visa QIWI Wallet"));
+            $phone_elem
+                ->add_validator(new Form_Validator_Integer())
+                ->add_validator(new Form_Validator_NotEmptyString());
+            $this->add_component($phone_elem);
+            
+            $button_text = 'Оплатить лицензию';
+        }
         
         // ----- Description
         $this->add_component(new Form_Element_Textarea('info', array('label' => 'Дополнительная информация'),array('placeholder' => "Дополнтельная информация")));        
         
         // ----- Form buttons
         $button = new Form_Element_Button('submit_request',
-                array('label' => 'Отправить'),
+                array('label' => $button_text),
                 array('class' => 'button button-modal')
         );
         $this->add_component($button);        

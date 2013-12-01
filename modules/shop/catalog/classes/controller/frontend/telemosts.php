@@ -267,6 +267,7 @@ class Controller_Frontend_Telemosts extends Controller_FrontendRES
         $view = new View('frontend/telemosts/request');
 
         $form_request = new Form_Frontend_Telemost($product,'telemost_for_product'.$product->alias);
+        
         if ($form_request->is_submitted())
         {
             // User is trying to log in
@@ -276,22 +277,27 @@ class Controller_Frontend_Telemosts extends Controller_FrontendRES
                 $vals['user_id'] = $user->id;
                 
                 if ($telemost->validate($vals))
-                {                                        
+                {                       
                     $telemost->values($vals);
                     $telemost->product_id = $product->id;
 
                     $telemost->save();
                     
                     // activize telemost if the FIFO algorithm is chosen
-                    if($product->choalg == Model_Product::CHOALG_ORDER)
+                    if($product->choalg == Model_Product::CHOALG_ORDER && $product->price->eq(new Money()))
                     {
                         $telemost->active = TRUE;
                         if ($telemost->validate_choose()) {
                             $telemost->save();            
                         }    
                     }
-                    
-                    $this->request->redirect($product->uri_frontend());
+ 
+                    //$rc = QIWI::factory()->createBill($vals['telephone'], $vals['price'], $telemost->id, $comment, $alarm);
+                    if ($product->price->gt(new Money())) {
+                        $this->request->redirect(QIWI::createBill($vals['telephone'],$product->price->amount, $telemost->id,'TRUE',$product->uri_frontend(),$product->uri_frontend(),'iframeName'));
+                    } else {
+                        $this->request->redirect($product->uri_frontend());
+                    }
                 }
             }
         }

@@ -46,7 +46,7 @@ class Kohana_QIWI {
 	 * @throws Kohana_Exception
 	 * @return number
 	 */
-	public function createBill($phone, $amount, $txn, $comment, $alarm=0, $create=true) {
+	/*public function createBill($phone, $amount, $txn, $comment, $alarm=0, $create=true) {
 		$service = $this->setService();
 
 		$params = new createBill();
@@ -68,8 +68,15 @@ class Kohana_QIWI {
 		$params->create = $create;
 
 		return $service->createBill($params)->createBillResult;
-	}
+	}*/
 
+	public static function createBill($phone, $amount, $txn, $iframe, $successUrl, $failUrl,$target =NULL,$comm=NULL) {
+		
+            $url = 'https://w.qiwi.com/order/external/create.action?from='.Kohana::$config->load('qiwi')->login.'&summ='.$amount.'&to='.$phone.'&txn_id='.$txn.'&iframe='.$iframe.'&successUrl='.$successUrl.'&failUrl='.$failUrl;
+            if ($target) $url.= '&target='.$target;
+            if ($comm) $url.= '&comm='.$comm;
+            return $url;
+	}
 
 	/**
 	 * Отмена счета

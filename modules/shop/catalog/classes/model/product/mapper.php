@@ -59,6 +59,8 @@ class Model_Product_Mapper extends Model_Mapper_Resource {
         $this->add_column('choalg', array('Type' => 'int unsigned'));
 
         $this->add_column('require', array('Type' => 'text'));
+
+        $this->add_column('price',       array('Type' => 'money'));
         
 //        $this->cache_find_all = TRUE;        
     }

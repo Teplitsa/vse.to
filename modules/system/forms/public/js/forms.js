@@ -662,6 +662,7 @@ function jFormElementCheckboxEnable(name, id)
     this.jFormElement(name, id);
 
     this.dep_elements = [];
+    
 }
 
 // Inherit from jFormElement
@@ -704,11 +705,13 @@ jFormElementCheckboxEnable.prototype.get_value = function()
 jFormElementCheckboxEnable.prototype.toggle_dependent = function()
 {
     var value = this.get_value();
-    
-    for (var i = 0; i < this.dep_elements.length; i++)
+    var i=0;
+    var name;
+    var e;
+    for (i = 0; i < this.dep_elements.length; i++)
     {
-        var name = this.dep_elements[i];
-        var e = this.form.get_element(name);
+        name = this.dep_elements[i];
+        e = this.form.get_element(name);
         if ( ! e)
             continue;
 
@@ -717,6 +720,20 @@ jFormElementCheckboxEnable.prototype.toggle_dependent = function()
         else
             e.disable();
     }
+    
+    for (i = 0; i < this.depvis_elements.length; i++)
+    {
+
+        name = this.depvis_elements[i];
+        e = this.form.get_element(name);
+        if ( ! e)
+            continue;
+
+        if (value)
+            e.visible = true;
+        else
+            e.visible = false;
+    }    
 }
 
 

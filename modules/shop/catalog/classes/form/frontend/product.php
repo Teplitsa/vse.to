@@ -238,6 +238,13 @@ class Form_Frontend_Product extends Form_Frontend
 
         $this->add_component($element);
 
+        // ----- Price
+        $element = new Form_Element_Money('price', array('label' => 'Стоимость лицензии'));
+        $element
+            ->add_filter(new Form_Filter_Trim())
+            ->add_validator(new Form_Validator_Float(0, NULL));
+        $this->add_component($element);
+        
         // ----- numviews
         $options = Model_Product::$_numviews_options;
 

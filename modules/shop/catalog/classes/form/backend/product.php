@@ -269,7 +269,14 @@ class Form_Backend_Product extends Form_BackendRes
             $element
                 ->add_validator(new Form_Validator_InArray(array_keys($options)));
             $fieldset->add_component($element);
-          
+
+            // ----- Price
+            $element = new Form_Element_Money('price', array('label' => 'Стоимость лицензии'));
+            $element
+                ->add_filter(new Form_Filter_Trim())
+                ->add_validator(new Form_Validator_Float(0, NULL));
+            $fieldset->add_component($element);
+            
             // ----- numviews
             $options = Model_Product::$_numviews_options;
 
@@ -278,6 +285,20 @@ class Form_Backend_Product extends Form_BackendRes
                 ->add_validator(new Form_Validator_InArray(array_keys($options)));
             $fieldset->add_component($element);
             
+                /*$cols1 = new Form_Fieldset_Columns('price',array('column_classes' => array(2 => 'w60per')));
+                $fieldset->add_component($cols1);
+
+                $element = new Form_Element_Checkbox_Enable('change_payable', array('label' => 'Платное событие'));                
+                $element->dep_elements = array('price');
+                $cols1->add_component($element,1);
+                
+                // ----- Price
+                $element = new Form_Element_Money('price', array('label' => 'Стоимость лицензии',));
+                $element
+                    ->add_filter(new Form_Filter_Trim())
+                    ->add_validator(new Form_Validator_Float(0, NULL));
+                $cols1->add_component($element,2);
+                */
             // ----- choalg
             $options = Model_Product::$_choalg_options;
 
