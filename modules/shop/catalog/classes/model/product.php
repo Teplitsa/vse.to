@@ -325,6 +325,13 @@ class Model_Product extends Model_Res
     }
 
     /**
+     * @return Money
+     */
+    public function default_price()
+    {
+        return new Money();
+    }    
+    /**
      * Get additional sections this product belongs to for each sectiongroup
      *
      * @return array array(sectiongroup_id=>section_id=>1/0)
