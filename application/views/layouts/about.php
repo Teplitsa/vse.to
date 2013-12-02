@@ -37,11 +37,11 @@
 
                             <div class="span3">
 
-                                <?php echo HTML::image('public/data/img/logo.svg',array('class' =>'big-logo'))?>
+                                <?php echo HTML::image('public/data/img/logo.svg',array('class' =>'big-logo', 'style'=>'margin-top: 10px'))?>
 
                                 
 
-                                <div class="soc-link">
+<!--                                <div class="soc-link">
 
                                     <a href="#" class="button fb">f</a>
 
@@ -49,7 +49,7 @@
 
                                     <a href="#" class="button vk">v</a>
 
-                                </div>
+                                </div>-->
 
                             </div>
                         

@@ -126,7 +126,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         // count & find products by search condition
         $pages = (int)$this->request->param('page',1);
 
-        $per_page = 20*$pages;//4*$pages;
+        $per_page = 50*$pages;//4*$pages;
 
         $count = $product->count_by($search_condition, $params);
 

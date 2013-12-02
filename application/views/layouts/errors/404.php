@@ -35,11 +35,11 @@
                         <div class="row-fluid">
                             <div class="span3">
                                 <?php echo HTML::image('public/data/img/logo.svg',array('class' =>'big-logo'))?>
-                                <div class="soc-link">
+<!--                                <div class="soc-link">
                                     <a href="#" class="button fb">f</a>
                                     <a href="#" class="tw button ">t</a>
                                     <a href="#" class="button vk">v</a>
-                                </div>
+                                </div>-->
                             </div>
                             <div class="span1">&nbsp;</div>
                             <div class="span7 content">
