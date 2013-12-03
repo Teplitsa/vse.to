@@ -72,7 +72,7 @@ class Kohana_QIWI {
 
 	public static function createBill($phone, $amount, $txn, $iframe, $successUrl, $failUrl,$target =NULL,$comm=NULL) {
 		
-            $url = 'https://w.qiwi.com/order/external/create.action?from='.Kohana::$config->load('qiwi')->login.'&summ='.$amount.'&to='.$phone.'&txn_id='.$txn.'&iframe='.$iframe.'&successUrl='.$successUrl.'&failUrl='.$failUrl;
+            $url = 'https://w.qiwi.com/order/external/create.action?from='.Kohana::$config->load('qiwi')->login.'&summ='.$amount.'&to='.$phone.'&txn_id='.$txn.'&iframe='.$iframe.'&successUrl="'.$successUrl.'"&failUrl="'.$failUrl.'"';
             if ($target) $url.= '&target='.$target;
             if ($comm) $url.= '&comm='.$comm;
             return $url;

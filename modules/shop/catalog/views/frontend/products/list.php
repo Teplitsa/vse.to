@@ -41,11 +41,9 @@ while ($i < $count)
         
         echo Widget::render_widget('products', 'small_product', $product);
 
-        echo Widget::render_widget('telemosts', 'request', $product);    
+        Widget::render_widget('telemosts', 'request', $product);    
         
 } ?>
-
-<iframe name="iframeName" frameborder="0" width="550" height="700"></iframe>
 
 <?php
 if ($pagination)

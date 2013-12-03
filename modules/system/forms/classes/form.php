@@ -385,6 +385,7 @@ class Form extends FormComponent
         {
             // Render form using View
             $view = new View($this->view_script);
+            
             $view->form = $this;
             
             $html = $view->render();

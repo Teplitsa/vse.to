@@ -8,7 +8,9 @@
         <?php } ?>
         <!--<small>Cityname, hh:mm, dd.mm.yyy</small>-->
     </div>
-    <?php echo $form->render_form_open();?>
+    
+    <?php 
+    echo $form->render_form_open();?>
         <div class="modal-body">
             <div class="row-fluid">
                 <div class="span6">
@@ -41,4 +43,5 @@
             <?php echo $form->get_element('submit_request')->render_input(); ?>
         </div>
     <?php echo $form->render_form_close();?>
+   
 </div>

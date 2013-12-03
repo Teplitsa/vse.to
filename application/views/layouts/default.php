@@ -33,6 +33,8 @@
             <div class="row">
                 <div class="span8">
                     <div class="wrapper main-list" id="events_show">
+                        <?php echo $view->placeholder('payment'); ?> 
+                        
                         <?php echo $content; ?>                                
                     </div>
                 </div>
