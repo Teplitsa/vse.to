@@ -119,20 +119,16 @@ class Kohana_QIWI {
 	}
 
 	public function update($param) {
-		// логика приложения
-		$f = fopen('phpdump.txt', 'a+');
-		fwrite($f, $param->login);
-		fwrite($f, ', ');
-		fwrite($f, $param->password);
-		fwrite($f, ', ');
-		fwrite($f, $param->txn);
-		fwrite($f, ', ');
-		fwrite($f, $param->status);
-		fwrite($f, ', ');
-		fwrite($f, $this->checkBill($param->txn)->status);
-		fwrite($f, "\n");
-		fclose($f);
-		return 0;
+                if ($param->status == $this->checkBill($param->txn)->status) {
+                    $telemost = Model::fly('Model_Telemost')->find($param->txn);
+                    if ($telemost->id) {
+                        $telemost->active = true;
+                        $telemost->save();
+                    }
+                    return 0;
+                } else {
+                    return 1;
+                }
 	}
 
 	public function check_signature($param) {
