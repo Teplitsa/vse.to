@@ -5,9 +5,6 @@ body * {
     -webkit-font-smoothing: subpixel-antialiased;
 }
 body > header {
-    height: 65px;
-    background: url(img/top-bg.png) repeat-x 0 0;
-    box-shadow: 0 2px 3px rgba(0,0,0,.5);
     position: fixed;
     z-index: 10;
     width: 100%;
@@ -17,25 +14,30 @@ body > header .span12 {
     position: relative;
 }
 body > footer {
-    height: 200px;
-    background: url(img/footer-bg-0.png) repeat-x 0 0;
-    padding: 24px 0 0;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
-    padding-top: 20px;
-    box-shadow: inset 0 4px 8px rgba(0,0,0,.5);
+    background-color: #404041;
+    -moz-box-sizing: border-box;
+     box-sizing: border-box;
 }
 body > footer .logo {
-    background-image: url(img/footer-logo.png);
-    height: 25px;
-    width: 92px;
+    background-image: url(img/vseto_logo_small.png);
+    background-position: left top;
+    width: 130px;
+    height: 40px;
 }
 body > footer p {
-    color: #777676;
+    color: #87898c;
     font-size: 14px;
     line-height: 19px;
 }
-body > footer .copy {
+body > footer  a
+{
+    color: #87898c;
+}
+body > footer  a:hover
+{
+    color: #777676;
+}
+/*body > footer .copy {
     margin-top: 15px;
     font-size: 11px;
     font-weight: lighter;
@@ -43,7 +45,7 @@ body > footer .copy {
 body > footer .copy a {
     color: #777676;
     text-decoration: underline;
-}
+}*/
 
 a,
 button,
@@ -116,10 +118,11 @@ form fieldset {
     text-align: center;
 }
 .logo {
-    background: url(img/logo.png) no-repeat top center;
+    background: url(img/vseto_logo_big.png) no-repeat center center;
     display: inline-block;
-    width: 130px;
-    height: 65px;
+    width: 140px;
+    height: 70px;
+    background-color: #a93393;
 }
 .faq-logo{
     background: url(img/logo.svg) no-repeat top center;    
@@ -301,7 +304,7 @@ section .link-more a {
     background: #FFF;
 }
 #main {
-    margin: 90px 0 120px 0;
+    margin: 120px 0 120px 0;
     position: relative;
 }
 .near-tv {
@@ -406,17 +409,18 @@ section .link-more a {
     margin-top: .6em;
 }
 .main-menu {
-height: 23px;
-margin: 10px 0 0 0;
+    margin: 0px;
+    margin-top: 25px;
+    display: inline-block;
 }
 .main-menu li {
-float: left;
-padding: 1px 6px 1px 0;
-margin: 0 15px 0 0;
-font-size: 15px;
-text-transform: uppercase;
-font-weight: bold;
-list-style: none;
+    float: left;
+    padding: 1px 6px 1px 0;
+    margin: 0 15px 0 0;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    list-style: none;
 }
 .main-menu li a {
     color: #808285;
@@ -425,8 +429,8 @@ list-style: none;
     color: #cc0000;
 }
 .second-menu {
-    color: #FFF;
-    margin: 6px 0 0 0;
+    color: #000;
+    margin: 4px 0 0 0;
 }
 .second-menu li {
 float: left;
@@ -436,15 +440,20 @@ margin: 0 3px 0 0;
 list-style: none;
 }
 .second-menu li a {
-    color: #FFF;
+    color: #000;
     display: block;
 }
 .b-auth-search {
+    margin-top: 25px;
+}
+.b-auth-search > *
+{
     display: inline-block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    text-align: right;
+    vertical-align: top;
+}
+.b-auth-search > form
+{
+    margin-bottom: 0px;
 }
 .b-auth-search,
 .b-auth-search a {
@@ -463,18 +472,13 @@ list-style: none;
     font-size: 10px;
     padding: 0px 15% 0 7px;
     width: 130px;
-    margin-top: 8px;
     border-radius: 21px;
     color: #000;
     background: url(img/sprite.png) no-repeat 110px -159px #eee;
-    height: 18px;
+    height: 20px;
     line-height: 10px;
 }
 .b-auth-search  .b-lang {
-    position: absolute;
-    top: 28px;
-    right: 145px;
-    width: 50px;
     color: #808285;
 }
 .b-auth-search  .b-lang .dash {
@@ -862,7 +866,7 @@ section.mini .address {
 #page h2 {
     font-size: 16px;
     font-weight: bold;
-    padding-top: 20px;
+    padding-top: 40px;
 }
 #page .soc-link {
     margin-left: 40px;
@@ -1691,4 +1695,48 @@ footer .span6 img
 textarea.invalid, input[type="text"].invalid, input[type="email"].invalid, input[type="password"].invalid
 {
     border: 1px solid red;
+}
+
+
+.footer-logo-block
+{
+    background-color: #a93393;
+}
+.footer-logo-block > *
+{
+    margin-left: 10px;
+}
+.footer-logo-block > span
+{
+    display: block;
+    color: #FFFFFF;
+}
+footer>div>div>div
+{
+    height: 180px;
+    padding-top: 20px;
+}
+
+.mainheader
+{
+    background-color: #404041;
+}
+
+.subheader
+{
+    background-color: rgba(255,255,255,0.9);
+    height: 30px;
+}
+.subheader .caret
+{
+    border-top-color: #000;
+    border-bottom-color: #000;
+}
+.subheader a
+{
+    color: #000;
+}
+.login-form
+{
+    margin-top: 4px;
 }

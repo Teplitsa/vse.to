@@ -176,7 +176,7 @@ class Model_Town extends Model
         
         if ($alias !== NULL) {
             if ($alias == Model_Town::ALL_TOWN) {
-                $town_model = new Model_Town(array('id'=>0, 'alias'=>'all', 'name'=>'Все города'));
+                $town_model = new Model_Town(array('id'=>0, 'alias'=>'all', 'name'=>'все города'));
             }
             else {
                 $town_model = Model::fly('Model_Town')->find_by_alias($alias);
