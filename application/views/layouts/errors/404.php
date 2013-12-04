@@ -84,7 +84,7 @@
         project_host: "vseto.reformal.ru",
         tab_orientation: "left",
         tab_indent: "50%",
-        tab_bg_color: "#333333",
+        tab_bg_color: "#a93393",
         tab_border_color: "#FFFFFF",
         tab_image_url: "http://tab.reformal.ru/T9GC0LfRi9Cy0Ysg0Lgg0L%252FRgNC10LTQu9C%252B0LbQtdC90LjRjw==/FFFFFF/2a94cfe6511106e7a48d0af3904e3090/left/1/tab.png",
         tab_border_width: 0
