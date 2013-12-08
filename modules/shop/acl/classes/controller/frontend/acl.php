@@ -490,7 +490,8 @@ class Controller_Frontend_Acl extends Controller_Frontend
             $this->request->response = $layout->render();
         }
         else
-        {
+        {   
+            // правильно
             try
             {
                 $userPassword = $ulogin->login();
