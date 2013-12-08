@@ -309,7 +309,7 @@ class Controller_Frontend_Acl extends Controller_Frontend
             $user->activation_link = '';
             $user->active = TRUE;
             $user->save();
-            $this->request->redirect(URL::uri_to('frontend/acl',array('action'=>'relogin','stat' => 'try')));
+            $this->request->redirect(URL::uri_to('frontend/acl',array('action'=>'relogin','stat' => 'act')));
         } else {
             $this->request->redirect(URL::uri_to('frontend/acl',array('action'=>'relogin')));
         }
