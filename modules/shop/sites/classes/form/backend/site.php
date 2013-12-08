@@ -97,21 +97,27 @@ class Form_Backend_Site extends Form_Backend
         $this->add_component($tab);
 
             // ----- Title
-            $element = new Form_Element_Textarea('settings[meta_title]', array('label' => 'Метатег title'), array('rows' => 3));
+            $element = new Form_Element_Textarea('settings[meta_title]', array('label' => 'Метатег title','required' => TRUE), array('rows' => 3));
             $element
-                ->add_filter(new Form_Filter_TrimCrop(511));
+                ->add_filter(new Form_Filter_TrimCrop(511))
+                ->add_validator(new Form_Validator_NotEmptyString());
+                    
             $tab->add_component($element);
 
             // ----- Description
-            $element = new Form_Element_Textarea('settings[meta_description]', array('label' => 'Метатег description'), array('rows' => 3));
+            $element = new Form_Element_Textarea('settings[meta_description]', array('label' => 'Метатег description','required' => TRUE), array('rows' => 3));
             $element
-                ->add_filter(new Form_Filter_TrimCrop(511));
+                ->add_filter(new Form_Filter_TrimCrop(511))
+                ->add_validator(new Form_Validator_NotEmptyString());
+                    
             $tab->add_component($element);
 
             // ----- Keywords
-            $element = new Form_Element_Textarea('settings[meta_keywords]', array('label' => 'Метатег keywords'), array('rows' => 3));
+            $element = new Form_Element_Textarea('settings[meta_keywords]', array('label' => 'Метатег keywords','required' => TRUE), array('rows' => 3));
             $element
-                ->add_filter(new Form_Filter_TrimCrop(511));
+                ->add_filter(new Form_Filter_TrimCrop(511))
+                ->add_validator(new Form_Validator_NotEmptyString());
+                    
             $tab->add_component($element);
 
         // ----- Form buttons
