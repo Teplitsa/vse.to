@@ -274,6 +274,8 @@ class Controller_Frontend_Acl extends Controller_Frontend
     
     public function action_newpas()
     {
+        var_dump('http://vse.to/'.URL::site().$this->request->uri);
+        die();
         $user = Model::fly('Model_User')->find_by_recovery_link('http://vse.to/'.URL::site().$this->request->uri);
         if ($user->id) {
             $form_log = new Form_Frontend_Newpas();
