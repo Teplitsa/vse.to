@@ -28,7 +28,8 @@ class Model_User_Mapper extends Model_Mapper {
         $this->add_column('info', array('Type' => 'text'));
         $this->add_column('notify', array('Type' => 'boolean'));
         
-        $this->add_column('recovery_link', array('Type' => 'text'));        
+        $this->add_column('recovery_link', array('Type' => 'text'));
+        $this->add_column('activation_link', array('Type' => 'text'));                
         $this->add_column('active', array('Type' => 'boolean', 'Key' => 'INDEX'));
 
         

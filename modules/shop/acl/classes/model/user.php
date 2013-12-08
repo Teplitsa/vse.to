@@ -455,6 +455,12 @@ class Model_User extends Model
     
     public function save($create = FALSE,$update_userprops = TRUE, $update_userlinks = TRUE)
     {
+        $notify_flag = FALSE;
+        if ($create || $this->id == NULL)
+        {
+            $notify_flag=TRUE;
+        }
+        
         if (!$this->organizer_id) {
             $this->organizer_id = Model_Organizer::DEFAULT_ORGANIZER_ID;
             $this->organizer_name = Model_Organizer::DEFAULT_ORGANIZER_NAME;
@@ -477,6 +483,7 @@ class Model_User extends Model
         
         Model::fly('Model_Tag')->save_all($this->tags, 'user',$this->id);
 
+        
         if ($update_userprops)
         {
             // Link user to the userprops
@@ -491,12 +498,101 @@ class Model_User extends Model
             Model_Mapper::factory('Model_LinkValue_Mapper')->update_values_for_user($this);
         }        
         
+        if ($notify_flag) {
+            $this->notify();
+        }
     }
     
-    private function recovery_link_gen()
+    /**
+     * Send e-mail notification for activation 
+     */
+    public function notify()
     {
-        return 'http://vse.to/'.URL::uri_to('frontend/acl',array('action'=>'newpas','hash' => Auth::instance()->hash(time())));
+        try {
+            $this->activation_link = $this->activation_link_gen();
+            
+            $settings = Model_Site::current()->settings;
+
+            $email_to     = isset($settings['email']['to'])        ? $settings['email']['to']        : '';
+            $email_from   = isset($settings['email']['from'])      ? $settings['email']['from']      : '';
+            $email_sender = isset($settings['email']['sender'])    ? $settings['email']['sender']    : '';
+            $signature    = isset($settings['email']['signature']) ? $settings['email']['signature'] : '';
+
+            if ($email_sender != '')
+            {
+                $email_from = array($email_from => $email_sender);
+            }
+
+            if ($email_to != '' || $this->email != '')
+            {
+                // Init mailer
+                SwiftMailer::init();
+                $transport = Swift_MailTransport::newInstance();
+                $mailer = Swift_Mailer::newInstance($transport);
+
+                if ($email_to != '')
+                {
+                    // --- Send message to administrator
+
+                    $message = Swift_Message::newInstance()
+                        ->setSubject('Новый представитель на портале ' . URL::base(FALSE, TRUE))
+                        ->setFrom($email_from)
+                        ->setTo($email_to);
+
+
+                    // Message body
+                    $twig = Twig::instance();
+
+                    $template = $twig->loadTemplate('mail/reg_admin');
+
+                    $message->setBody($template->render(array(
+                        'user'    => $this
+                    )));
+                    // Send message
+                    $mailer->send($message);
+                }
+
+                if ($this->email != '')
+                {
+                    // --- Send message to client
+                    
+                    $message = Swift_Message::newInstance()
+                        ->setSubject('Регистрация на портале ' . URL::base(FALSE, TRUE))
+                        ->setFrom($email_from)
+                        ->setTo($this->email);
+
+                    // Message body
+                    $twig = Twig::instance();
+
+                    $template = $twig->loadTemplate('mail/reg_client');
+
+                    $body = $template->render(array(
+                        'user'    => $this
+                    ));
+
+                    if ($signature != '')
+                    {
+                        $body .= "\n\n\n" . $signature;
+                    }
+
+                    $message->setBody($body);
+
+                    // Send message
+                    $mailer->send($message);
+                }
+            }
+        }
+        catch (Exception $e)
+        {
+            if (Kohana::$environment !== Kohana::PRODUCTION)
+            {
+                throw $e;
+            }
+        }
+        $this->save(FALSE,FALSE,FALSE);
+        return TRUE;        
     }
+    
     /**
      * Set notification to client that his question has been answered
      */
@@ -567,6 +663,16 @@ class Model_User extends Model
         }
         $this->save(FALSE,FALSE,FALSE);
         return TRUE;
+    }
+
+    private function activation_link_gen()
+    {
+        return 'http://vse.to/'.URL::uri_to('frontend/acl',array('action'=>'activation','hash' => Auth::instance()->hash(time())));
+    }
+    
+    private function recovery_link_gen()
+    {
+        return 'http://vse.to/'.URL::uri_to('frontend/acl',array('action'=>'newpas','hash' => Auth::instance()->hash(time())));
     }
     
     public function delete()

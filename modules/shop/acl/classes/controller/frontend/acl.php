@@ -233,7 +233,7 @@ class Controller_Frontend_Acl extends Controller_Frontend
         $layout->content = $view;
         $this->request->response = $layout->render();        
     }
-  
+    
   public function widget_pasrecovery()
     {  
         $view = new View('frontend/pasrecovery');
@@ -274,7 +274,7 @@ class Controller_Frontend_Acl extends Controller_Frontend
     
     public function action_newpas()
     {
-        $user = Model::fly('Model_User')->find_by_recovery_link('http:/'.URL::site().$this->request->uri);
+        $user = Model::fly('Model_User')->find_by_recovery_link('http://vse.to/'.URL::site().$this->request->uri);
         if ($user->id) {
             $form_log = new Form_Frontend_Newpas();
 
@@ -300,6 +300,19 @@ class Controller_Frontend_Acl extends Controller_Frontend
         $layout = $this->prepare_layout();
         $layout->content = $view;
         $this->request->response = $layout->render();         
+    }
+
+    public function action_activation()
+    {
+        $user = Model::fly('Model_User')->find_by_activation_link('http://vse.to/'.URL::site().$this->request->uri);
+        if ($user->id) {
+            $user->activation_link = '';
+            $user->active = TRUE;
+            $user->save();
+            $this->request->redirect(URL::uri_to('frontend/acl',array('action'=>'relogin','stat' => 'try')));
+        } else {
+            $this->request->redirect(URL::uri_to('frontend/acl',array('action'=>'relogin')));
+        }
     }
     
     public function action_pasrecovery()
