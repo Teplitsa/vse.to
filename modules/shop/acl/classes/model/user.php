@@ -482,6 +482,7 @@ class Model_User extends Model
                     $image->owner_id = $this->id;
                     $image->config = 'user';
                     $image->save();
+                    unset($this->file);
                 }
             }
         }        
