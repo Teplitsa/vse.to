@@ -175,6 +175,9 @@ class Model_Product extends Model_Res
         return $product;
     }   
 
+    public function get_uri_frontend() {
+        return $this->uri_frontend();
+    }
     /**
      * Get frontend uri to the product
      */
@@ -783,6 +786,9 @@ class Model_Product extends Model_Res
      */
     public function validate(array $newvalues)
     {  
+        // save previous state to check what was changed
+        $this->backup();
+        
         $valid = parent::validate($newvalues);
         if (!$valid) return FALSE;
         
@@ -976,8 +982,250 @@ class Model_Product extends Model_Res
 
             Model::fly('Model_Section')->mapper()->update_products_count($section_ids);
         }
+        
+        if ($create_flag) {
+            notify('create');
+        } else {
+            
+            $flag_caption = FALSE;
+            $flag_lecturer = FALSE;
+            $flag_place = FALSE;
+            $flag_time = FALSE;
+            
+            $previous_model = $this->previous();
+                        
+            if ($previous_model->active == 1 && $this->active == 0) {
+                    notify('cancel');
+                    // Admin:<format> ... отменяется. 
+                    // User:Здравствуйте .... <format> ... отменяется. Приносим свои извинения.  
+                    // Lector:<format> ... отменяется. Представители желавшие провести телемост Вашего события были своевременно осведомлены. Спасибо за пользование услугами первой социальной сети телемостов и вебинаров Vse.To
+                    
+            } else {
+                    if ($previous_model->caption != $this->caption) {
+                        $flag_caption = TRUE;
+                    }                
+                    if ($previous_model->lecturer_name != $this->lecturer_name) {
+                        $flag_lecturer = TRUE;
+                    }
+                    if ($previous_model->place_name != $this->place_name) {
+                        $flag_place = TRUE;
+                    }                
+                    if ($previous_model->datetime != $this->datetime) {
+                        $flag_time = TRUE;
+                    }
+                    notify_change($flag_caption,$flag_lecturer,$flag_place,$flag_time);
+                    // Admin:Событие ... было изменено. Изменилось название, лектор, площадка и время проведения события. Вы можете просмотреть изменения на странице <link>. 
+                    // Lector: Событие ... было изменено. Изменилось название, лектор, площадка и время проведения события. Вы можете просмотреть изменения на странице <link>. Представители желавшие провести телемост Вашего события были своевременно осведомлены. Спасибо за пользование услугами первой социальной сети телемостов и вебинаров Vse.To.
+                    // User:Здравствуйте .... Организатор изменил название, лектора, площадку и время проведения события, которое вы хотите транслировать. Вы можете просмотреть изменения на странице <link>.Спасибо за пользование услугами первой социальной сети телемостов и вебинаров Vse.To.                    
+            }            
+        }
             
     }
+    
+    /**
+     * Send e-mail notification for anounce creation 
+     */
+    public function notify($type,$flag_caption = FALSE,$flag_lecturer = FALSE,$flag_place = FALSE,$flag_time = FALSE)
+    {
+        switch ($type) {
+            case 'create':
+                $admin_subject = 'Новый анонс на портале ' . URL::base(FALSE, TRUE);
+                $client_subject = 'Ваш новый анонс на портале ' . URL::base(FALSE, TRUE);
+                $subclient_subject = 'Новый анонс на портале ' . URL::base(FALSE, TRUE);
+                
+                $admin_template = 'mail/product_create_admin';
+                $client_template = 'mail/product_create_client';
+                $client_template = 'mail/product_create_subclient';
+                break;
+            case 'cancel':
+                $admin_subject = 'Отмена события на портале ' . URL::base(FALSE, TRUE);
+                $client_subject = 'Отмена Вашего события на портале ' . URL::base(FALSE, TRUE);
+                $subclient_subject = 'Отмена события на портале ' . URL::base(FALSE, TRUE);
+                
+                $admin_template = 'mail/product_cancel_admin';
+                $client_template = 'mail/product_cancel_client';
+                $subclient_template = 'mail/product_cancel_subclient';
+                break;
+            case 'change':
+                $admin_subject = 'Изменение события на портале ' . URL::base(FALSE, TRUE);
+                $client_subject = 'Изменение Вашего события на портале ' . URL::base(FALSE, TRUE);
+                $subclient_subject = 'Изменение события на портале ' . URL::base(FALSE, TRUE);
+                
+                $admin_template = 'mail/product_change_admin';
+                $client_template = 'mail/product_change_client';
+                $subclient_template = 'mail/product_change_subclient';
+                break;            
+        }
+        
+        
+        try {
+            
+            $settings = Model_Site::current()->settings;
+
+            $email_to     = isset($settings['email']['to'])        ? $settings['email']['to']        : '';
+            $email_from   = isset($settings['email']['from'])      ? $settings['email']['from']      : '';
+            $email_sender = isset($settings['email']['sender'])    ? $settings['email']['sender']    : '';
+            $signature    = isset($settings['email']['signature']) ? $settings['email']['signature'] : '';
+
+            if ($email_sender != '')
+            {
+                $email_from = array($email_from => $email_sender);
+            }
+
+            if ($email_to != '' || $this->user->email != '')
+            {
+                // Init mailer
+                SwiftMailer::init();
+                $transport = Swift_MailTransport::newInstance();
+                $mailer = Swift_Mailer::newInstance($transport);
+
+                if ($email_to != '')
+                {
+                    // --- Send message to administrator
+
+                    $message = Swift_Message::newInstance()
+                        ->setSubject($admin_subject)
+                        ->setFrom($email_from)
+                        ->setTo($email_to);
+
+
+                    // Message body
+                    $twig = Twig::instance();
+
+                    $template = $twig->loadTemplate($admin_template);
+
+                    $message->setBody($template->render(array(
+                        'product'    => $this,
+                        'user'  => $this->user,
+                        'flag_caption' => $flag_caption,
+                        'flag_lecturer' => $flag_lecturer,
+                        'flag_place' => $flag_place,
+                        'flag_time' => $flag_time                        
+                    )));
+                    // Send message
+                    $mailer->send($message);
+                }
+
+                if ($this->user->email != '')
+                {
+                    // --- Send message to client
+                    
+                    $message = Swift_Message::newInstance()
+                        ->setSubject($client_subject)
+                        ->setFrom($email_from)
+                        ->setTo($this->user->email);
+
+                    // Message body
+                    $twig = Twig::instance();
+
+                    $template = $twig->loadTemplate($client_template);
+
+                    $body = $template->render(array(
+                        'product'    => $this,
+                        'user'  => $this->user,
+                        'flag_caption' => $flag_caption,
+                        'flag_lecturer' => $flag_lecturer,
+                        'flag_place' => $flag_place,
+                        'flag_time' => $flag_time                        
+                    ));
+
+                    if ($signature != '')
+                    {
+                        $body .= "\n\n\n" . $signature;
+                    }
+
+                    $message->setBody($body);
+
+                    // Send message
+                    $mailer->send($message);
+                }
+                
+                foreach ($this->telemosts() as $telemost) {
+                    if ($telemost->user->email != '')
+                    {
+                        // --- Send message to client
+
+                        $message = Swift_Message::newInstance()
+                            ->setSubject($subclient_subject)
+                            ->setFrom($email_from)
+                            ->setTo($telemost->user->email);
+
+                        // Message body
+                        $twig = Twig::instance();
+
+                        $template = $twig->loadTemplate($subclient_template);
+
+                        $body = $template->render(array(
+                            'product'    => $this,
+                            'user'  => $telemost->user,
+                            'flag_caption' => $flag_caption,
+                            'flag_lecturer' => $flag_lecturer,
+                            'flag_place' => $flag_place,
+                            'flag_time' => $flag_time                            
+                        ));
+
+                        if ($signature != '')
+                        {
+                            $body .= "\n\n\n" . $signature;
+                        }
+
+                        $message->setBody($body);
+
+                        // Send message
+                        $mailer->send($message);
+                    }
+                    
+                }
+                
+                foreach ($this->app_telemosts() as $telemost) {
+                    if ($telemost->user->email != '')
+                    {
+                        // --- Send message to client
+
+                        $message = Swift_Message::newInstance()
+                            ->setSubject($subclient_subject)
+                            ->setFrom($email_from)
+                            ->setTo($telemost->user->email);
+
+                        // Message body
+                        $twig = Twig::instance();
+
+                        $template = $twig->loadTemplate($subclient_template);
+
+                        $body = $template->render(array(
+                            'product'    => $this,
+                            'user'  => $telemost->user,
+                            'flag_caption' => $flag_caption,
+                            'flag_lecturer' => $flag_lecturer,
+                            'flag_place' => $flag_place,
+                            'flag_time' => $flag_time                            
+                        ));
+
+                        if ($signature != '')
+                        {
+                            $body .= "\n\n\n" . $signature;
+                        }
+
+                        $message->setBody($body);
+
+                        // Send message
+                        $mailer->send($message);
+                    }
+                    
+                }
+                
+            }
+        }
+        catch (Exception $e)
+        {
+            if (Kohana::$environment !== Kohana::PRODUCTION)
+            {
+                throw $e;
+            }
+        }
+        return TRUE;        
+    }
+
     
     /**
      * Validate product deletion
