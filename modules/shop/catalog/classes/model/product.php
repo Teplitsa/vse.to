@@ -995,11 +995,7 @@ class Model_Product extends Model_Res
             $previous_model = $this->previous();
                         
             if ($previous_model->active == 1 && $this->active == 0) {
-                    notify('cancel');
-                    // Admin:<format> ... отменяется. 
-                    // User:Здравствуйте .... <format> ... отменяется. Приносим свои извинения.  
-                    // Lector:<format> ... отменяется. Представители желавшие провести телемост Вашего события были своевременно осведомлены. Спасибо за пользование услугами первой социальной сети телемостов и вебинаров Vse.To
-                    
+                    notify('cancel');                    
             } else {
                     if ($previous_model->caption != $this->caption) {
                         $flag_caption = TRUE;
@@ -1013,10 +1009,10 @@ class Model_Product extends Model_Res
                     if ($previous_model->datetime != $this->datetime) {
                         $flag_time = TRUE;
                     }
-                    notify_change($flag_caption,$flag_lecturer,$flag_place,$flag_time);
-                    // Admin:Событие ... было изменено. Изменилось название, лектор, площадка и время проведения события. Вы можете просмотреть изменения на странице <link>. 
-                    // Lector: Событие ... было изменено. Изменилось название, лектор, площадка и время проведения события. Вы можете просмотреть изменения на странице <link>. Представители желавшие провести телемост Вашего события были своевременно осведомлены. Спасибо за пользование услугами первой социальной сети телемостов и вебинаров Vse.To.
-                    // User:Здравствуйте .... Организатор изменил название, лектора, площадку и время проведения события, которое вы хотите транслировать. Вы можете просмотреть изменения на странице <link>.Спасибо за пользование услугами первой социальной сети телемостов и вебинаров Vse.To.                    
+                    
+                    if ($flag_caption || $flag_lecturer || $flag_place || $flag_time) {
+                        notify_change($flag_caption,$flag_lecturer,$flag_place,$flag_time);
+                    }
             }            
         }
             
