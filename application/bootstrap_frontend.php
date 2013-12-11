@@ -60,7 +60,7 @@ Kohana::init(array(
 	'index_file' => FALSE,
     'caching'    => (Kohana::$environment == Kohana::PRODUCTION),
     'cache_dir'  => APPPATH.'cache/core/frontend',
-    'errors'=>FALSE,
+    'errors'=>TRUE,
     'profile'    => (Kohana::$environment != Kohana::PRODUCTION)
 ));
 

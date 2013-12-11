@@ -1011,7 +1011,7 @@ class Model_Product extends Model_Res
                     }
                     
                     if ($flag_caption || $flag_lecturer || $flag_place || $flag_time) {
-                        notify_change($flag_caption,$flag_lecturer,$flag_place,$flag_time);
+                        notify_change('change',$flag_caption,$flag_lecturer,$flag_place,$flag_time);
                     }
             }            
         }
