@@ -984,7 +984,7 @@ class Model_Product extends Model_Res
         }
         
         if ($create_flag) {
-            notify('create');
+            $this->notify('create');
         } else {
             
             $flag_caption = FALSE;
@@ -995,7 +995,7 @@ class Model_Product extends Model_Res
             $previous_model = $this->previous();
                         
             if ($previous_model->active == 1 && $this->active == 0) {
-                    notify('cancel');                    
+                    $this->notify('cancel');                    
             } else {
                     if ($previous_model->caption != $this->caption) {
                         $flag_caption = TRUE;
@@ -1011,7 +1011,7 @@ class Model_Product extends Model_Res
                     }
                     
                     if ($flag_caption || $flag_lecturer || $flag_place || $flag_time) {
-                        notify('change',$flag_caption,$flag_lecturer,$flag_place,$flag_time);
+                        $this->notify('change',$flag_caption,$flag_lecturer,$flag_place,$flag_time);
                     }
             }            
         }
