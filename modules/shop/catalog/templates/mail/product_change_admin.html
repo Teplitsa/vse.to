@@ -1,6 +1,10 @@
-Создан новый анонс на портале Vse.To
-===============
-Название: {{ product.caption }}
-Дата проведения: {{ product.datetime_front }}
-Автор: {{ user.name }}
-Email автора: {{ user.email }}
+Cобытие "{{ product.caption }}" было изменено. 
+
+Изменилось: {% if flag_caption %}название{% endif %}
+            {% if flag_lecturer %}лектор{% endif %}
+            {% if flag_place %}площадка{% endif %}
+            {% if flag_time %}время проведения{% endif %}
+            
+Подробнее изменения вы можете посмотреть на странице {{ product.uri_frontend }}
+
+Спасибо за пользование услугами первой социальной сети телемостов и вебинаров Vse.To.
