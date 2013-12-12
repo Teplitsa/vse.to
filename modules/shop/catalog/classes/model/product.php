@@ -994,7 +994,7 @@ class Model_Product extends Model_Res
             
             $previous_model = $this->previous();
                         
-            if ($previous_model->active == 1 && $this->active == 0) {
+            if ($previous_model->visible == 1 && $this->visible == 0) {
                     $this->notify('cancel');                    
             } else {
                     if ($previous_model->caption != $this->caption) {

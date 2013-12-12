@@ -779,6 +779,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         $product = Model::fly('Model_Product')->find_by_id($product_id,array('owner' => $user));
         
         if ($product->id) { 
+            $product->backup();
             $product->visible=0;
             $product->save();
             $this->request->redirect(URL::uri_to('frontend/acl/users/control',array('action' => 'control')));
