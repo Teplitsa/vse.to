@@ -1136,7 +1136,7 @@ class Model_Product extends Model_Res
                     $mailer->send($message);
                 }
                 
-                foreach ($this->telemosts() as $telemost) {
+                foreach ($this->telemosts as $telemost) {
                     if ($telemost->user->email != '')
                     {
                         // --- Send message to client
@@ -1173,7 +1173,7 @@ class Model_Product extends Model_Res
                     
                 }
                 
-                foreach ($this->app_telemosts() as $telemost) {
+                foreach ($this->app_telemosts as $telemost) {
                     if ($telemost->user->email != '')
                     {
                         // --- Send message to client
