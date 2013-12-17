@@ -39,8 +39,8 @@ if ( ! count($users))
         <?php
         $columns = array(
             'email' => 'E-mail',
-            'first_name'  => 'Имя',
-            'last_name'  => 'Фамилия',
+            //'name'  => 'Имя',
+            'logins'  => 'Посещения',
             'active'  => 'Акт.'            
         );
 
@@ -73,6 +73,13 @@ foreach ($users as $user)
                         echo View_Helper_Admin::image('controls/on.gif', 'Да');
                     } else {
                         echo View_Helper_Admin::image('controls/off.gif', 'Нет');
+                    }
+                    echo '</td>';
+                    break;
+                case 'logins':
+                    echo '<td class="nowrap">';
+                    if ($user->logins) {
+                        echo $user->logins.' '.l10n::plural($user->logins, 'вход', 'входов', 'входа').', последний '.$user->last_login_str;
                     }
                     echo '</td>';
                     break;

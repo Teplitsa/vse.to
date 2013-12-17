@@ -32,6 +32,9 @@ class Model_User_Mapper extends Model_Mapper {
         $this->add_column('activation_link', array('Type' => 'text'));                
         $this->add_column('active', array('Type' => 'boolean', 'Key' => 'INDEX'));
 
+        $this->add_column('logins', array('Type' => 'int unsigned'));
+        $this->add_column('last_login', array('Type' => 'datetime'));
+
         
         //$this->add_column('country_id', array('Type' => 'int unsigned', 'Key' => 'INDEX'));
         //$this->add_column('region_id',  array('Type' => 'int unsigned', 'Key' => 'INDEX'));

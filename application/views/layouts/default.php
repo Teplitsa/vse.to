@@ -61,12 +61,6 @@
                                                     <?php echo Widget::render_widget('blocks', 'block', 'short_about'); ?>
 						</div>
 					</div>
-					<div class="right-block wrapper">
-						<h1 class="main-title"><span>Календарь событий</span></h1>
-						<div class="right-block-content">
-							<?php echo Widget::render_widget('products', 'calendar'); ?>
-						</div>
-					</div>
                                         <!--
                                         <div class="right-block wrapper">
 						<h1 class="main-title"><span>Что такое vsё.to</span></h1>						

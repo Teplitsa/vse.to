@@ -17,5 +17,7 @@ $calendar_url = URL::to('frontend/catalog/products', array('calendar' => '{{cale
             $_calendar_url = str_replace('{{calendar}}', $c_id, $calendar_url); ?>
             <li><a role="menuitem" tabindex="-1" href="<?php echo $_calendar_url ?>"><?php echo $c_name ?></a></li>
         <?php }?>
+            <li><a role="menuitem" tabindex="-1" id="datesearch" href="">выбрать день</a></li>
+            <div id ="datesearch_show"></div>
     </ul>
 </li>

@@ -114,6 +114,16 @@ class Model_User extends Model
     {
         return 3;
     }
+    
+    /**
+     * Returns default logins
+     *
+     * @return integer
+     */
+    public function default_logins()
+    {
+        return 0;
+    }    
 
     /**
      * Get active[!] userprops for this user
@@ -230,19 +240,30 @@ class Model_User extends Model
 	 */
 	public function complete_login()
 	{
-        //@TODO:
-        /*
-		// Update the number of logins
-		$this->logins += 1;
 
-		// Set the last login date
-		$this->last_login = time();
+            // Update the number of logins
+            $this->logins += 1;
 
-		// Save the user
-		$this->save();
-         */
+            // Set the last login date
+            $this->last_login = new DateTime();
+
+            // Save the user
+            $this->save();
 	}
 
+    public function get_last_login()
+    {
+        if ( ! isset($this->_properties['last_login']))
+        {
+            $this->_properties['last_login'] = new DateTime();  
+        }
+        return clone $this->_properties['last_login'];
+    }
+    
+    public function get_last_login_str()
+    {
+        return $this->last_login->format(Kohana::config('datetime.datetime_format'));
+    }        
     // -------------------------------------------------------------------------
     // Validation
     // -------------------------------------------------------------------------

@@ -61,9 +61,21 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         $calendar = $this->request->param('calendar',NULL);
         
         $calendars = Model_Product::$_calendar_options;
-
-        $view = new View('frontend/products/calendar_select');
         
+        if (Modules::registered('jquery')) {
+            jQuery::add_scripts();
+            Layout::instance()->add_script(Modules::uri('jquery') . '/public/js/datetimesimple.js');
+            Layout::instance()->add_script(Modules::uri('catalog') . '/public/js/frontend/datesearch.js');            
+        }    
+        $view = new View('frontend/products/calendar_select');
+
+        Layout::instance()->add_script(
+            "var datesearch_url='" . URL::to('frontend/catalog/search', array('date'=>'{{d}}'), TRUE) . "';\n\n",TRUE);
+                
+        
+                
+        $view->form = new Form_Frontend_Datesearch();
+
         $view->calendars = $calendars;
         
         $view->calendar = $calendar;

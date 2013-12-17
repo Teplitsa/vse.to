@@ -158,7 +158,7 @@ class Auth {
             return FALSE;            
         }
         // Login succeded!
-
+        $user->complete_login();
         // Save user to session
         Session_Native::instance()->set('login', $user->email);
 
