@@ -216,7 +216,7 @@ if (!$nav_turn_on) {
         <div class="content">
             <p><?php echo $product->description; ?></p>
         </div>
-		<br />
+	<br />
         <div class="dir righted">
         Категория:&nbsp<a  href="<?php echo $product->uri_frontend(); ?>"><?php echo Model_Product::$_theme_options[$product->theme] ?></a>
              <?php if (count($product->tag_items)) { 

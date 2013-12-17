@@ -490,8 +490,10 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         {
             $html = Remote::get($parseurl);
             
+            $html = str_replace(array('<nobr>','</nobr>','&nbsp;'),array('','',' '),$html);
+            
             $matches = array();
-            preg_match('|<span class="type">([^<]+?)</span><em>([^<]+?)</em>|', $html, $matches);
+            preg_match('|<span class="type type-[a-z]+?">([^<]+?)</span><em>([^<]+?)</em>|', $html, $matches);
             $title = html_entity_decode($matches[2], ENT_COMPAT, 'UTF-8');
             $format = html_entity_decode($matches[1], ENT_COMPAT, 'UTF-8');
             
@@ -588,6 +590,9 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         
         $nav_turn_on = ($today_datetime->getTimestamp() > $product->datetime->getTimestamp())? TRUE:FALSE;
        
+        if ($nav_turn_on && $product->stage() == Model_Product::ACTIVE_STAGE && $product->get_telemost_provider() == Model_Product::HANGOTS)
+            $product->change_stage(Model_Product::START_STAGE);
+        
         $result = FALSE;
 
         if ($stage) $result = $product->change_stage($stage);
@@ -1232,6 +1237,37 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         }
     }
 
+    public function action_set_hangouts_url($key, $url)
+    {
+        $key = $_GET['key'];
+        $url = $_GET['url'];
+        
+        $result = array('status'=>'ok');
+        
+        if($key != Model_Product::HANGOUTS_STOP_KEY)
+        {
+            $product = Model::fly('Model_Product')->find_by_hangouts_secret_key($key);
+            
+            if($product->id)
+            {
+                $product->hangouts_url = $url;
+                $product->save();
+            }
+            else
+            {
+                $result['status'] = 'notfound';
+            }
+            
+        }
+        else
+        {
+            $result['status'] = 'error';
+        }
+        
+        $this->request->response['data'] = $result;
+        $this->_action_ajax();
+    }
+    
     /**
      * This action is executed via ajax request after additional
      * sections for product have been selected.

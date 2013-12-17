@@ -9,14 +9,18 @@ class Model_Product extends Model_Res
     //Time before starting the event when Video Platform becomes available (in minutes)
     const SHOW_TIME = 10;
     
-    // TRUE if the video provider is COMDI
-    const COMDI = TRUE;
-
+    // Telemosts's providers
+    const COMDI = 'COMDI';
+    const HANGOTS = 'HANGOUTS';
+    private $telemostProvider;
+    
     // available phases of COMDI events
     const DEF_STAGE = 'wait';
     const ACTIVE_STAGE = 'active';    
     const START_STAGE = 'start';
     const STOP_STAGE = 'stop';
+    
+    const HANGOUTS_STOP_KEY = 'stop';
     
     // duration options
     const DURATION_1 = 'PT30M';
@@ -334,6 +338,21 @@ class Model_Product extends Model_Res
     {
         return new Money();
     }    
+    
+    public function default_telemost_provider()
+    {
+        return self::HANGOTS;
+    }
+    
+    public function get_telemost_provider()
+    {
+        if ($this->telemostProvider != null)
+            return $this->telemostProvider;
+        else
+            return self::COMDI;
+    }
+    
+    
     /**
      * Get additional sections this product belongs to for each sectiongroup
      *
@@ -676,41 +695,79 @@ class Model_Product extends Model_Res
     public function stage()
     {
         $stage = self::START_STAGE;
-        $actual_stage = TaskManager::start('comdi_status',
-            Task_Comdi_Base::mapping(array('event_id' => $this->event_id)));
 
-        if ($actual_stage !== NULL) {
-            $stage = $actual_stage;
+        if ($this->telemostProvider == self::COMDI) {
+            $actual_stage = TaskManager::start('comdi_status',
+                Task_Comdi_Base::mapping(array('event_id' => $this->event_id)));
+
+            if ($actual_stage !== NULL) {
+                $stage = $actual_stage;
+            }
         }
-        return $stage;
+        else if ($this->telemostProvider == self::HANGOTS) {
+            
+            $key = $this->hangouts_secret_key;
+            
+            if($key == NULL)
+                $stage = self::ACTIVE_STAGE;
+            else if ($key == self::HANGOUTS_STOP_KEY)
+                $stage = self::STOP_STAGE;
+            else
+                $stage = self::START_STAGE;
+            
+            return $stage;
+        }
     }
     
     public function change_stage($stage) {
-        if (!self::COMDI || $this->user_id != Model_User::current()->id) {
+        if ($this->user_id != Model_User::current()->id) {
             return FALSE;
         }
         $event_id = FALSE;
 
-        switch ($stage) {
-            case Model_Product::START_STAGE:
-                if ($this->stage() == Model_Product::ACTIVE_STAGE) {
-                    $event_id = TaskManager::start('comdi_start',
-                            Task_Comdi_Base::mapping(array('event_id' => $this->event_id)));
-                }
-                break;
-            case Model_Product::STOP_STAGE:
-                if ($this->stage() == Model_Product::START_STAGE) {
-                    $event_id = TaskManager::start('comdi_stop',
-                            Task_Comdi_Base::mapping(array('event_id' => $this->event_id)));
-                }
-                if ($event_id == $this->event_id) {
-                    $this->active = 0;
+        if($this->telemostProvider == self::COMDI) {
+            switch ($stage) {
+                case Model_Product::START_STAGE:
+                    if ($this->stage() == Model_Product::ACTIVE_STAGE) {
+                        $event_id = TaskManager::start('comdi_start',
+                                Task_Comdi_Base::mapping(array('event_id' => $this->event_id)));
+                    }
+                    break;
+                case Model_Product::STOP_STAGE:
+                    if ($this->stage() == Model_Product::START_STAGE) {
+                        $event_id = TaskManager::start('comdi_stop',
+                                Task_Comdi_Base::mapping(array('event_id' => $this->event_id)));
+                    }
+                    if ($event_id == $this->event_id) {
+                        $this->active = 0;
+                        $this->save(FALSE,FALSE,FALSE,TRUE);
+                    }
+                    break;
+                default:
+                    return FALSE;
+            }
+        } else if ($this->telemostProvider == self::HANGOTS) {
+            
+            switch ($stage) {
+                case Model_Product::START_STAGE:
+
+                    $this->hangouts_secret_key = Text::random('alnum', 128);
                     $this->save(FALSE,FALSE,FALSE,TRUE);
-                }
-                break;
-            default:
-                return FALSE;
+                    
+                    break;
+                case Model_Product::STOP_STAGE:
+                    
+                    $this->hangouts_secret_key = self::HANGOUTS_STOP_KEY;
+                    $this->save(FALSE,FALSE,FALSE,TRUE);
+                    
+                    break;
+
+                default:
+                    return FALSE;
+            }
+            
         }
+
         return $event_id;
     }
     /**
@@ -820,7 +877,7 @@ class Model_Product extends Model_Res
         $dummy_product = new Model_Product($allvalues);
         
         // Create COMDI FOR ANNOUNCE
-        if (Model_Product::COMDI === TRUE) {
+        if ($this->telemostProvider == self::COMDI) {
 
             if ($dummy_product->event_id == NULL) { 
                 $event_id = TaskManager::start('comdi_create', Task_Comdi_Base::mapping($allvalues));
@@ -1023,6 +1080,7 @@ class Model_Product extends Model_Res
      */
     public function notify($type,$flag_caption = FALSE,$flag_lecturer = FALSE,$flag_place = FALSE,$flag_time = FALSE)
     {
+        return true;
         switch ($type) {
             case 'create':
                 $admin_subject = 'Новый анонс на портале ' . URL::base(FALSE, TRUE);
@@ -1232,7 +1290,7 @@ class Model_Product extends Model_Res
     public function validate_delete(array $newvalues = NULL)
     {        
         // Delete COMDI event        
-        if (Model_Product::COMDI === TRUE && $this->event_id != NULL) 
+        if (self::$telemostProvider == self::COMDI && $this->event_id != NULL) 
         {
             $arr['event_id'] = $this->event_id;
            $event_id = TaskManager::start('comdi_delete', Task_Comdi_Base::mapping($arr));
@@ -1366,5 +1424,5 @@ class Model_Product extends Model_Res
     public function get_comments()
     {
         return Model::fly('Model_ProductComment')->find_all_by_product_id((int) $this->id);
-    }       
+    }  
 }

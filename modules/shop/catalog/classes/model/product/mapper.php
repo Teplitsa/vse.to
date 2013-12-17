@@ -63,6 +63,13 @@ class Model_Product_Mapper extends Model_Mapper_Resource {
         $this->add_column('price',       array('Type' => 'money'));
         
 //        $this->cache_find_all = TRUE;        
+        
+        // Telemost provider
+        $this->add_column('telemost_provider', array('Type' => 'varchar(128)'));
+        
+        // Hangouts
+        $this->add_column('hangouts_secret_key', array('Type' => 'varchar(128)'));
+        $this->add_column('hangouts_url', array('Type' => 'varchar(256)'));
     }
     
 
