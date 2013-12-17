@@ -92,6 +92,16 @@
     </fieldset>
     <?php echo $form->get_element('choalg')->render_alone_errors();?>            
     
+    <fieldset class="b-f-chose">
+        <span class="title">Платформа телемоста</span>
+        &nbsp;<a class="help-pop"  href="#" title="" data-placement="bottom" data-original-title="В случае выбора Google Hangouts возможно недокументированное поведение системы">?</a>
+        <div class="pull-left">
+            <?php echo $form->get_element('telemost_provider')->render_input();?>
+        </div>
+    </fieldset>
+    <?php echo $form->get_element('telemost_provider')->render_alone_errors();?>          
+    
+    
     <div class="b-txt b-require">
         <label for="">Требования к площадке</label>
         <?php echo $form->get_element('require')->render_input();?>

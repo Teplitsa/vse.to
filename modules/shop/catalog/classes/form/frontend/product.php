@@ -261,6 +261,15 @@ class Form_Frontend_Product extends Form_Frontend
             ->add_validator(new Form_Validator_InArray(array_keys($options)));
         $this->add_component($element);            
 
+        // ----- telemost provider
+        $options = Model_Product::$_telemost_provider_options;
+
+        $element = new Form_Element_RadioSelect('telemost_provider', $options, array('label' => 'Платформа телемоста'),array('class' => 'w300px'));
+        $element
+            ->add_validator(new Form_Validator_InArray(array_keys($options)));
+        $this->add_component($element);            
+        
+        
         // ----- Require
         $this->add_component(new Form_Element_Textarea('require', array('label' => 'Требования к площадке, аудитории и др.')));            
 
