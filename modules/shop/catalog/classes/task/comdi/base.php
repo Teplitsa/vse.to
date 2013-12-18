@@ -46,7 +46,7 @@ abstract class Task_Comdi_Base extends Task
                     break;
                 case 'event_id':
                     $data[$value] = (int)$values[$key];
-                    break;                
+                    break;             
                 default:
                     $data[$value] = $values[$key];
                     break;

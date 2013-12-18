@@ -1,14 +1,20 @@
 <?php defined('SYSPATH') or die('No direct script access.');
+
+    $provider = $product->get_telemost_provider();
+    if ($provider == Model_Product::COMDI)
+        $choose_url = URL::to('frontend/catalog/product/fullscreen', array('alias' => $product->alias));
+    else if ($provider == Model_Product::HANGOTS)
+        $choose_url = $product->hangouts_url;
+
     switch ($stage) {
         case Model_Product::ACTIVE_STAGE:
             break;                        
         case Model_Product::START_STAGE:
-            $choose_url = URL::to('frontend/catalog/product/fullscreen', array('alias' => $product->alias));
-            
-            /*if (Auth::granted('stop_event')) { */?>
-                        <a href="<?php echo $choose_url; ?>" class="request-link button" target="_blank">Присоединиться</a>
-                        <!--<a href="<?php //echo URL::site($product->uri_frontend(NULL,Model_Product::START_STAGE)); ?>" class="request-link button">Присоединиться</a>-->                       
-                <?php
-            /*}*/
+            if (!empty($choose_url)):
+?>
+                <a href="<?php echo $choose_url; ?>" class="request-link button" target="_blank">Присоединиться</a>
+<?php
+                endif;
             break;
-    } ?>
+    } 
+?>
