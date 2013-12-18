@@ -46,6 +46,8 @@ function praseUrl(url)
                 // Set invalid fields
                 $('#lecturer_name').addClass('invalid');
                 $('#place_name').addClass('invalid');
+                $('#id-product1-duration').removeClass('valid').addClass('invalid');
+                $('#id-product1-theme').removeClass('valid').addClass('invalid');
                 
                 // Set photo
                 var fileElem = $('#prev_id-product1-file');

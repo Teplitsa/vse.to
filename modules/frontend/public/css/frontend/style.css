@@ -1696,7 +1696,7 @@ footer .span6 img
 
 
 
-textarea.invalid, input[type="text"].invalid, input[type="email"].invalid, input[type="password"].invalid
+textarea.invalid, input[type="text"].invalid, input[type="email"].invalid, input[type="password"].invalid, select.invalid
 {
     border: 1px solid red;
 }
