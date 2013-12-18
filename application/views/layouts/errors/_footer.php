@@ -26,6 +26,11 @@
                             tov[dot]dinast[at]gmail[dot]com
 			</p>
                     </div>
+                    <div class="soc-link">
+                        <a href="https://www.facebook.com/vsetonetwork" class="button fb">f</a>
+                        <a href="https://twitter.com/vse_to" class="tw button ">t</a>
+                        <a href="https://vk.com/vseto" class="button vk">v</a>
+                    </div>                    
                 </div>
             </div>
         </div>

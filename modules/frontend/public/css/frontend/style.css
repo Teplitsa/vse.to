@@ -29,11 +29,11 @@ body > footer p {
     font-size: 14px;
     line-height: 19px;
 }
-body > footer  a
+footer  a
 {
     color: #87898c;
 }
-body > footer  a:hover
+footer  a:hover
 {
     color: #777676;
 }
@@ -871,8 +871,12 @@ section.mini .address {
 #page .soc-link {
     margin-left: 40px;
 }
-#page .soc-link a {
+#page .soc-link a, footer .soc-link a {
     color: #FFF;
+}
+footer .soc-link
+{
+    margin-top: 30px;
 }
 .faq li {
     list-style: none;
