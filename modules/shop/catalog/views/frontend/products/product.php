@@ -214,7 +214,7 @@ if (!$nav_turn_on) {
         <?php $lecturer_url = URL::to('frontend/acl/lecturers', array('action' => 'show','lecturer_id' => $product->lecturer_id));?>
         <p class="lecturer">Лектор: <a href="<?php echo $lecturer_url ?>"><?php echo $product->lecturer->name; ?></a></p>
         <div class="content">
-            <p><?php echo $product->description; ?></p>
+            <p><?php echo nl2br($product->description); ?></p>
         </div>
 	<br />
         <div class="dir righted">
