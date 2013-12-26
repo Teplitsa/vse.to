@@ -200,7 +200,7 @@ class Form_Frontend_Product extends Form_Frontend
 
         // ----- Description
         
-        $element = new Form_Element_Textarea('description', array('label' => 'О событии'));
+        $element = new Form_Element_Wysiwyg('description', array('label' => 'О событии'));
         $element
             ->add_validator(new Form_Validator_NotEmptyString(array(Form_Validator_NotEmptyString::EMPTY_STRING => 'Добавьте информацию о событии')));
         $this->add_component($element);

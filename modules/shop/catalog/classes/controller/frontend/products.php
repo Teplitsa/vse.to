@@ -504,20 +504,26 @@ class Controller_Frontend_Products extends Controller_FrontendRES
             
             $html = str_replace(array('<nobr>','</nobr>','&nbsp;'),array('','',' '),$html);
             
+            // Title & format
             $matches = array();
-            preg_match('|<span class="type type-[a-z]+?">([^<]+?)</span><em>([^<]+?)</em>|', $html, $matches);
-            $title = html_entity_decode($matches[2], ENT_COMPAT, 'UTF-8');
-            $format = html_entity_decode($matches[1], ENT_COMPAT, 'UTF-8');
+            preg_match('|<title>(.+?)</title>|', $html, $matches);
+            $rawData = html_entity_decode($matches[1], ENT_COMPAT, 'UTF-8');
+            $pos = strpos($rawData, ':');
+            $title = substr($rawData, $pos + 2);
+            $format = substr($rawData, 0,$pos);
             
+            // Date
             preg_match('|<time class="time" datetime="([^"]+?)" itemprop="startDate">|', $html, $matches);
             $dateTime = new DateTime($matches[1]);
             $dateTime = $dateTime->format('d-m-Y H:i');
-                    
+                   
+            // Description
             preg_match('|<div class="description" itemprop="description">(.+?)</div>|s', $html, $matches);
             $rawDesc = $matches[1];
             $descWithUrls = preg_replace('|<a href="([^"]+?)">([^<]+?)</a>|i', '$2 - $1', $rawDesc);
             $desc = strip_tags(html_entity_decode($descWithUrls, ENT_COMPAT, 'UTF-8'));
 
+            // Image
             $imageUrl = '';
             if(strpos($html,'<figure class="poster">') !== FALSE)
             {

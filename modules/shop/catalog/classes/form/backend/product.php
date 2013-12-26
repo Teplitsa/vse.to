@@ -248,7 +248,7 @@ class Form_Backend_Product extends Form_BackendRes
             $fieldset->add_component($element);
             
             // ----- Description
-            $fieldset->add_component(new Form_Element_Textarea('description', array('label' => 'О событии')));
+            $fieldset->add_component(new Form_Element_Wysiwyg('description', array('label' => 'О событии')));
             
             // ----- Product images
             if ($this->model()->id !== NULL)

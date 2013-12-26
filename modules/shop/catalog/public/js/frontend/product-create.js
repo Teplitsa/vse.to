@@ -37,11 +37,12 @@ function praseUrl(url)
                 $('#id-product1-caption').val(eventData.title);
                 $('#id-product1-datetime').val(eventData.time);
                 $('#image_url').val(eventData.image_url);
-                $('#id-product1-description').val(fullDesc);
                 $("#id-product1-format option").filter(function() {
                     return $(this).text() == eventData.format;
                 }).prop('selected', true);
                 
+                //$('#id-product1-description').val(fullDesc);
+                tinyMCE.activeEditor.setContent(fullDesc);
                 
                 // Set invalid fields
                 $('#lecturer_name').addClass('invalid');
