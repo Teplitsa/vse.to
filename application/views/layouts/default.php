@@ -44,21 +44,9 @@
     </header>
 
     <div id="main">
-<!--         <div class="container">
+        <div class="container">
             <div class="row">
                 <div class="span8">
-        </div>
-        </div>
-        </div>
- -->        <div class="container">
-            <div class="row">
-                <div class="span8">
-                <div class="wrapper" id="drugoekino-banner-wrapper">
-                    <a href="<?php echo URL::site('pages/drugoekino')?>">
-                        <img src="<?php echo URL::site('modules/frontend/public/css/frontend/img/drugoekino-banner.jpg')?>" title="Другое Кино"/>
-                    </a>
-                </div>
-
                     <div class="wrapper main-list" id="events_show">
                         <?php echo $view->placeholder('payment'); ?> 
                         
