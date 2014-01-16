@@ -267,7 +267,6 @@ class Controller_Frontend_Telemosts extends Controller_FrontendRES
         $view = new View('frontend/telemosts/request');
 
         $form_request = new Form_Frontend_Telemost($product,'telemost_for_product'.$product->alias);
-        $form_request->attribute('target','iframeName');
 
         if ($form_request->is_submitted())
         {
