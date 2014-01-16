@@ -26,9 +26,9 @@
         
         <div class="b-input"><label for="i-title"><?php echo $form->get_element('email')->render_label();?></label><?php echo $form->get_element('email')->render_input();?></div>
         <?php echo $form->get_element('email')->render_alone_errors();?>
-        <div class="b-input"><label for="i-title"><?php echo $form->get_element('password')->render_label();?></label><?php echo $form->get_element('password')->render_input();?></div>
-        <?php echo $form->get_element('password')->render_alone_errors();?>        
         <?php if ($form->model()->id == NULL) { ?>        
+            <div class="b-input"><label for="i-title"><?php echo $form->get_element('password')->render_label();?></label><?php echo $form->get_element('password')->render_input();?></div>
+            <?php echo $form->get_element('password')->render_alone_errors();?>        
             <div class="b-input"><label for="i-title"><?php echo $form->get_element('password2')->render_label();?></label><?php echo $form->get_element('password2')->render_input();?></div>
             <?php echo $form->get_element('password2')->render_alone_errors();?>
         <?php } ?>
@@ -75,6 +75,10 @@
     </fieldset>
     
     <div class="form-action">
+        <?php if ($form->model()->id != NULL) { ?>        
+            <div class="b-input"><label for="i-title">Введите пароль для подтверждения изменений&nbsp;</label><?php echo $form->get_element('password')->render_input();?></div>
+            <?php echo $form->get_element('password')->render_alone_errors();?>        
+        <?php } ?>        
         <?php echo $form->get_element('submit_user')->render_input(); ?>
     </div>
     
