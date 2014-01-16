@@ -129,11 +129,21 @@ class Model_Product extends Model_Res
     );    
     
     public static $_numviews_options = array(
-        1          => '1',                
-        2          => '2',
-        3          => '3',
-        4          => '4',
-        5          => '5'
+        1   => '1',                
+        2   => '2',
+        3   => '3',
+        4   => '4',
+        5   => '5',
+        6   => '6',                
+        7   => '7',
+        8   => '8',
+        9   => '9',
+        10  => '10',
+        11  => '11',
+        12  => '12',
+        13  => '13',
+        14  => '14',
+        15  => '15',
     );
     
     public static $_choalg_options = array(
@@ -305,7 +315,7 @@ class Model_Product extends Model_Res
 
     public function default_numviews()
     {
-        return 5;
+        return 4;
     }
     
     public function default_interact()
