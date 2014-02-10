@@ -27,7 +27,7 @@
                     </div>
                     <div class="span6">
                         <ul class="second-menu">
-                            <?php echo Widget::render_widget('towns','select'); ?>
+                            <?php echo Widget::render_widget('towns','select', 'map'); ?>
                         </ul>                    
                     </div>
                     <div class="span4">
