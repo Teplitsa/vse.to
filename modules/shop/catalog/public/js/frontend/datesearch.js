@@ -3,15 +3,6 @@ $("#datesearch").datepicker({
     maxDate: "+2M",
 });
 
-//$('#datesearch').mouseover(function () {
-//    $('#datesearch_show').datepicker().show();
-//});
-//
-//$('#datesearch_show').mouseleave(function(){
-//    $("#datesearch_show").datepicker().hide();
-//
-//})
-
 $('#datesearch_show').click(function(){return false;});
 
 $("#datesearch_show").datepicker({
