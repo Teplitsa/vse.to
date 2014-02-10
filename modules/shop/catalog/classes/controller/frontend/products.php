@@ -1145,6 +1145,10 @@ class Controller_Frontend_Products extends Controller_FrontendRES
             {
                 $layout_script = 'layouts/catalog';
             }
+            if ($this->request->action == 'create' || $this->request->action == 'update')
+            {
+                $layout_script = 'layouts/default_without_menu';
+            }            
             if ($this->request->action == 'fullscreen')
             {
                 $layout_script = 'layouts/only_vision';

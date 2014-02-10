@@ -26,12 +26,6 @@
                     <div class="span2">
                     </div>
                     <div class="span6">
-                        <ul class="second-menu">
-                            <?php echo Widget::render_widget('towns','select'); ?>
-                            <?php echo Widget::render_widget('products','format_select'); ?>                         
-                            <?php echo Widget::render_widget('products','theme_select'); ?>                         
-                            <?php echo Widget::render_widget('products','calendar_select'); ?> 
-                        </ul>                    
                     </div>
                     <div class="span4">
                         <div class="login-form">
