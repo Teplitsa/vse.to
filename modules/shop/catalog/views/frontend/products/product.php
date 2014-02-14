@@ -78,11 +78,14 @@ if (!$nav_turn_on) {
                 echo $nav->render();
             } else {
             ?>            
-<?php if (!$telemost_flag && $group_id != Model_Group::USER_GROUP_ID && $group_id && $product->user_id !=  $user_id && $available_num) {    
-    if ($user_id == NULL) { ?>
+<?php if (!$telemost_flag && $group_id != Model_Group::USER_GROUP_ID && $group_id && $product->user_id !=  $user_id) {    
+    if ($available_num && !$user_id) { ?>
     <a data-toggle="modal" href="#notifyModal" class="request-link button">Подать заявку</a>    
-<?php  } elseif (!$already_req) { ?>
-<a data-toggle="modal" href="#requestModal" class="request-link button">Подать заявку</a>
+<?php  } elseif ($available_num && !$already_req) { ?>
+<a data-toggle="modal" href="<?php echo "#requestModal_".$product->alias?>" class="request-link button">Подать заявку</a>
+<?php } elseif($already_req) {
+    $unrequest_url = URL::to('frontend/catalog/product/unrequest', array('alias' => $product->alias));?>
+<a href="<?php echo $unrequest_url ?>" class="ajax request-link button">Отменить заявку</a>         
 <?php }} ?>
 
    

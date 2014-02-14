@@ -343,6 +343,20 @@ if (APP === 'FRONTEND')
             'controller' => 'products',
             'action'     => 'ajax_smallproduct_unrequest'
         ));
+    // Unrequest product on product page
+    Route::add('frontend/catalog/product/unrequest', new Route_Frontend(
+                'catalog/product/unrequest-<alias>.html'
+            ,
+            array(
+                'alias' => '[a-z0-9_-]++'
+            )
+        ))
+        ->defaults(array(
+            'controller' => 'products',
+            'action'     => 'ajax_product_unrequest'
+        ));
+
+    
     
     // ----- product_images
     Route::add('frontend/catalog/product/images', new Route_Frontend(

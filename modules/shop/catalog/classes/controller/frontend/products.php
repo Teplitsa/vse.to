@@ -489,9 +489,38 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         $widget->to_response($this->request);
 
         $this->_action_ajax();            
-    }         
+    } 
     
-    // Parsing
+    public function action_ajax_product_unrequest()
+    {
+        $request = Widget::switch_context();
+
+        $product = Model_Product::current();
+
+        $user = Model_User::current();
+        
+        if ( ! isset($product->id) && ! isset($user->id))
+        {   
+            $this->_action_404();
+            return;
+        }
+
+        $telemost = new Model_Telemost();
+        $telemost->find_by_product_id($product->id, array('owner' => $user));
+        
+        if ($telemost->id) {
+            $telemost->delete();
+        }
+            
+        $widget = $request->get_controller('products')
+                ->widget_product($product);
+
+        $widget->to_response($this->request);
+
+        $this->_action_ajax();            
+    }   
+
+// Parsing
     public function action_ajax_parsing()
     {
         $parseurl = $_GET['parseurl'];
@@ -1448,5 +1477,5 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         $search_date_url = URL::to('frontend/catalog/search', array('date'=>'{{d}}'), TRUE);
         $calendar->addDateLinks($search_date_url,'{{d}}');
         return $calendar->genUMonth(time(), true);
-    }    
+    }  
 }
