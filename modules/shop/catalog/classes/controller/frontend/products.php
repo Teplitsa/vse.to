@@ -1315,6 +1315,7 @@ class Controller_Frontend_Products extends Controller_FrontendRES
             $result['status'] = 'error';
         }
         
+        $this->request->headers["Access-Control-Allow-Origin"] = "*";
         $this->request->response['data'] = $result;
         $this->_action_ajax();
     }
