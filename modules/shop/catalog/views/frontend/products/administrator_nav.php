@@ -10,7 +10,7 @@ if ($provider == Model_Product::COMDI) {
 } else if ($provider == Model_Product::HANGOTS) {
     
     if (!empty($product->hangouts_url)) {
-        $connectUrl = $product->hangouts_url;
+        $connectUrl = base64_decode($product->hangouts_url);
     } else {
         $isButton = true;
         $connectUrl = '';

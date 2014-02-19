@@ -4,7 +4,7 @@
     if ($provider == Model_Product::COMDI)
         $choose_url = URL::to('frontend/catalog/product/fullscreen', array('alias' => $product->alias));
     else if ($provider == Model_Product::HANGOTS)
-        $choose_url = $product->hangouts_url;
+        $choose_url = base64_decode($product->hangouts_url);
 
     switch ($stage) {
         case Model_Product::ACTIVE_STAGE:
