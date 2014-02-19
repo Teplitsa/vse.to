@@ -1316,6 +1316,8 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         }
         
         $this->request->headers["Access-Control-Allow-Origin"] = "*";
+        $this->request->headers["Access-Control-Allow-Headers"] = "origin, x-requested-with, content-type";
+        $this->request->headers["Access-Control-Allow-Methods"] = "PUT, GET, POST, DELETE, OPTIONS";
         $this->request->response['data'] = $result;
         $this->_action_ajax();
     }
