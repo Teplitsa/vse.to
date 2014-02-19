@@ -40,7 +40,7 @@ if ($provider == Model_Product::COMDI) {
     gapi.hangout.render('hangouts-button', {
             'render': 'createhangout',
             'initial_apps': [{'app_id' : '1085528649580', 'start_data' : '<?php echo $product->hangouts_secret_key;  ?>', 'app_type' : 'ROOM_APP' }],
-            'hangout_type': 'onair',
+            // 'hangout_type': 'onair',
             'widget_size': 175 // 136, 72
     });
 })();
