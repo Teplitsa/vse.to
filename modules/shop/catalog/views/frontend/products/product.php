@@ -123,6 +123,7 @@ if (!$nav_turn_on) {
                     </div>
                     <p class="organizer">Организатор телемоста: <span><?php echo $telemost->user->organizer->name?></span></p>
                     <!--<p class="coordinator">Координатор: <span><?php //echo $telemost->user->name?></span></p>-->               
+                    <?php if ($telemost->info) { ?><p class="desc">Дополнительно: <span><?php echo $telemost->info?></span></p><?php } ?>                    
                 <hr>    
                 <?php } ?>
             <?php } else {
@@ -174,6 +175,7 @@ if (!$nav_turn_on) {
                     </div>
                     <p class="organizer">Организатор телемоста: <span><?php echo $telemost->user->organizer->name?></span></p>
                     <!--<p class="coordinator">Координатор: <span><?php //echo $telemost->user->name?></span></p>-->               
+                    <?php if ($telemost->info) { ?><p class="desc">Дополнительно: <span><?php echo $telemost->info?></span></p><?php } ?>                    
                     <hr>    
                 <?php } ?>
             <?php } ?>    
