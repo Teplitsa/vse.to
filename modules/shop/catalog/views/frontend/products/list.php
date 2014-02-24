@@ -11,39 +11,70 @@ else {
 $count = count($products);
 $i = 0;
 $products->rewind();
+
+if (!isset($without_dateheaders)) $without_dateheaders=FALSE; 
+
 $today_datetime = new DateTime("now");
 $tomorrow_datetime = new DateTime("tomorrow");
-$today_flag= 0;
-$tomorrow_flag= 0;
-$nearest_flag = 0;
-if (!isset($without_dateheaders)) $without_dateheaders=FALSE; 
+$today_time = $today_datetime->format('d.m.Y');
+$tomorrow_time = $tomorrow_datetime->format('d.m.Y');
+
+$today_events = array();
+$tomorrow_events = array();
+$near_events = array();
+
+$today_str = "";
+$tomorrow_str = "";
+$near_str = "";
+
 while ($i < $count)
 {               
-        $product = $products->current();
+    $product = $products->current();
+    $products->next();
 
-        $products->next();
-        
-        if (($today_flag == 0) && $product->datetime->format('d.m.Y') == $today_datetime->format('d.m.Y')) {
-            if (!$without_dateheaders)
-            echo '<h1 class="main-title"><span>Сегодня, '.$product->datetime->format('d.m.Y').'</span></h1>';
-            $today_flag++;
-        } elseif (($tomorrow_flag == 0) && $product->datetime->format('d.m.Y') == $tomorrow_datetime->format('d.m.Y')){
-            if (!$without_dateheaders)            
-            echo '<h1 class="main-title"><span>Завтра, '.$product->datetime->format('d.m.Y').'</span></h1>';
-            $tomorrow_flag++;            
-        } elseif ($nearest_flag == 0) {
-            if (!$without_dateheaders)            
-            if ($today_flag || $tomorrow_flag) echo '<h1 class="main-title"><span>В ближайшее время</span></h1>';
-            $nearest_flag++;
-        }
-        
-        $i++;      
-        
-        echo Widget::render_widget('products', 'small_product', $product);
+    $prod_time = $product->datetime->format('d.m.Y'); 
+    
+    if($prod_time == $today_time) {
+        array_push($today_events, $product);
+        $today_str .= Widget::render_widget('products', 'small_product', $product);
+        $today_str .= Widget::render_widget('telemosts', 'request', $product);
+    } else if($prod_time == $tomorrow_time) {
+        array_push($tomorrow_events, $product);
+        $tomorrow_str .= Widget::render_widget('products', 'small_product', $product);
+        $tomorrow_str .= Widget::render_widget('telemosts', 'request', $product);
+    } else {
+        array_push($near_events, $product);
+        $near_str .= Widget::render_widget('products', 'small_product', $product);
+        $near_str .= Widget::render_widget('telemosts', 'request', $product);
+    }
+    $i++;    
+}
 
-        Widget::render_widget('telemosts', 'request', $product);    
-        
-} ?>
+if(count($today_events)) {
+    echo '<h1 class="main-title"><span>Сегодня, '.$today_time.'</span></h1>';
+//    foreach ($today_events as $product) {
+//        echo Widget::render_widget('products', 'small_product', $product);
+//        Widget::render_widget('telemosts', 'request', $product);    
+//    }
+    echo $today_str;
+}
+if(count($tomorrow_events)) {
+    echo '<h1 class="main-title"><span>Завтра, '.$tomorrow_time.'</span></h1>';
+//    foreach ($tomorrow_events as $product) {
+//        echo Widget::render_widget('products', 'small_product', $product);
+//        Widget::render_widget('telemosts', 'request', $product);    
+//    }
+    echo $tomorrow_str;
+}
+if (count($near_events)) {
+    echo '<h1 class="main-title"><span>В ближайшее время</span></h1>';
+//    foreach ($near_events as $product) {
+//        echo Widget::render_widget('products', 'small_product', $product);
+//        Widget::render_widget('telemosts', 'request', $product);    
+//    }
+    echo $near_str;
+}
+?>
 
 <?php
 if ($pagination)
