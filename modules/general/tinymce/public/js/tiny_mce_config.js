@@ -23,4 +23,10 @@ var tinyMCE_config = {
 	//,content_css 	    :	--- Is set in layout
 
     ,height: 600
+    ,setup: function(ed) {
+        ed.onPaste.add( function(ed, e, o) {
+            ed.execCommand('mcePasteText', true);
+            return tinymce.dom.Event.cancel(e);
+        });
+    }
 };
