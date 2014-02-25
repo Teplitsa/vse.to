@@ -23,10 +23,16 @@ var tinyMCE_config = {
 	//,content_css 	    :	--- Is set in layout
 
     ,height: 600
-    ,setup: function(ed) {
-        ed.onPaste.add( function(ed, e, o) {
-            ed.execCommand('mcePasteText', true);
-            return tinymce.dom.Event.cancel(e);
-        });
+
+    ,paste_preprocess : function(pl, o) {
+        function strip_tags( str ){
+            // Strip HTML and PHP tags from a string
+            // 
+            // +   original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+            return str.replace(/<\/?[^>]+>/gi, '');
+        }
+
+        o.content = strip_tags( o.content );
     }
+
 };
