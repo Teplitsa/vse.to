@@ -572,15 +572,7 @@ class Model_Product extends Model_Res
     {
         if ( ! isset($this->_properties['datetime']))
         {
-            if (empty($this->_properties['id']))
-            {
-                // Default value for a new event
-                $this->_properties['datetime'] = new DateTime();
-            }
-            else
-            {
-                return NULL;
-            }
+            return NULL;
         }
         return clone $this->_properties['datetime'];
     }
