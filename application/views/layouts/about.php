@@ -69,7 +69,7 @@
                                     <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse1">
-                                          - что такое vse.to?
+                                          Что такое vse.to?
                                         </a>
                                       </div>
                                       <div id="collapse1" class="accordion-body collapse">
@@ -99,7 +99,7 @@
                                     <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse3">
-                                          - если вам нравится удалённое событие, и вы хотите показать его в своём городе, то
+                                          - если вам нравится удалённое событие, и вы хчттите показать его в своём городе, то
                                         </a>
                                       </div>
                                       <div id="collapse3" class="accordion-body collapse">
