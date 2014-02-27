@@ -81,13 +81,13 @@
                                     <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse2">
-                                          - если у вас есть событие, и вы хотите транслировать его в регионы
+                                          Если у вас есть событие, и вы хотите транслировать его в регионы
                                         </a>
                                       </div>
                                       <div id="collapse2" class="accordion-body collapse">
                                         <div class="accordion-inner">
                                             <ul>
-                                            <li>Станьте представителем vse.to </li>
+                                            <li><a herf="http://vse.to/register">Станьте представителем vse.to</a> </li>
                                             <li>Разместите анонс Вашего события </li>
                                             <li>Региональные представители vse.to подадут заявки на трансляцию Вашего события </li>
                                             <li>Выберите заявки из тех городов, в которых Вы хотите провести трансляцию (города могут быть также отобраны автоматически) </li>
@@ -99,13 +99,13 @@
                                     <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse3">
-                                          - если вам нравится удалённое событие, и вы хчттите показать его в своём городе, то
+                                          Если вам нравится удалённое событие, и вы хчттите показать его в своём городе
                                         </a>
                                       </div>
                                       <div id="collapse3" class="accordion-body collapse">
                                         <div class="accordion-inner">
                                             <ul>
-                                            <li>Станьте представителем vse.to </li>
+                                            <li><a herf="http://vse.to/register">Станьте представителем vse.to</a> </li>
                                             <li>Добавьте заявку на трансляцию, нажав на кнопку &ldquo;Подать заявку&rdquo; на странице события </li>
                                             <li>Если Ваша заявка будет одобрена, создайте ивент в социальных сетях и пригласите всех на телемост </li>
                                             <li>Проверьте, что у площадки, которую Вы выбрали, есть всё необходимое оборудование </li>
@@ -117,7 +117,7 @@
                                     <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse4">
-                                          - если вы хотите посмотреть телемост удалённого события в своём городе
+                                          Если вы хотите посмотреть телемост удалённого события в своём городе
                                         </a>
                                       </div>
                                       <div id="collapse4" class="accordion-body collapse">
@@ -133,7 +133,7 @@
                                     <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse5">
-                                          - кто такие представители vse.to
+                                          Кто такие представители vse.to?
                                         </a>
                                       </div>
                                       <div id="collapse5" class="accordion-body collapse">
@@ -150,7 +150,7 @@
                                     <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse6">
-                                          - как стать представителем
+                                          Как стать представителем?
                                         </a>
                                       </div>
                                       <div id="collapse6" class="accordion-body collapse">
@@ -161,6 +161,7 @@
                                             <li>доступ к Интернету</li>
                                             <li>оборудование</li>
                                             <li>умение собирать зрителей.</li>
+                                            <li><a herf="http://vse.to/register">Станьте представителем vse.to</a> </li>
                                             </ul>                                            
                                         </div>
                                       </div>
