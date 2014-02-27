@@ -146,22 +146,29 @@
                                             <li>оборудование</li>
                                             <li>умение собирать зрителей.</li>
                                             </ul>                                            
-                                            <li><a href="http://vse.to/register">Станьте представителем vse.to</a> </li>
+                                            <a href="http://vse.to/register">Станьте представителем vse.to</a>
                                         </div>
                                       </div>
                                     </div>
                                     <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse7">
-                                          - оборудование для телемоста
+                                         Какое потребуется борудование для телемоста?
                                         </a>
                                       </div>
                                       <div id="collapse7" class="accordion-body collapse">
                                         <div class="accordion-inner">
                                             <p>Для участия в телемосте Вам нужно иметь</p>
-                                            <p>ПК: Intel Core 2 Duo 2.13 ГГц или AMD Athlon II 215 и выше, Оперативная память: от 2 Гб и выше для всех ОС</p>
-                                            <p>Интернет со скоростью доступа не меньше, чем 1 Мбит/с.</p>
-                                            <p>Вы можете проверить Вашу систему <a href="http://www.comdi.com/support/">тут</a> .</p>                                            
+                                            <ul>
+                                            <li>ПК: Intel Core 2 Duo 2.13 ГГц или AMD Athlon II 215 и выше, Оперативная память: от 2 Гб и выше для всех ОС</li>
+                                            <li>Интернет со скоростью доступа не меньше, чем 3 Мбит/с.</li>
+                                            <li>веб-камеру/li>
+                                            <li>микрофон</li>
+                                            <li>колонки/li>
+                                            <li>проектор и экран или плазменную панель/li>
+                                            <li>установленный плагин для Google Hangouts. Плагин можно скачать <a href="http://www.google.com/tools/dlpage/hangoutplugin">тут</a>./li>
+                                            </ul>
+                                            <p>Вы можете проверить вашу систему <a href="http://www.comdi.com/support/">тут</a> .</p>                                            
                                         </div>
                                       </div>
                                     </div>
