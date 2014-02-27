@@ -174,7 +174,7 @@
                                     <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse9">
-                                          - виды трансляций на vse.to
+                                          Какие виды трансляций есть на vse.to?
                                         </a>
                                       </div>
                                       <div id="collapse9" class="accordion-body collapse">
@@ -189,7 +189,7 @@
                                      <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse10">
-                                          - какие события может транслировать vse.to
+                                          Какие события может транслировать vse.to?
                                         </a>
                                       </div>
                                       <div id="collapse10" class="accordion-body collapse">
@@ -200,28 +200,8 @@
                                     </div>                                   
                                      <div class="accordion-group">
                                       <div class="accordion-heading">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse11">
-                                          - как проходит отбор заявок
-                                        </a>
-                                      </div>
-                                      <div id="collaps11" class="accordion-body collapse">
-                                        <div class="accordion-inner">
-                                            <p>Добавляя анонс события на vse.to, организатор указывает максимальное количество телемостов и определяет, какие представители могут подать заявку на проведение телемоста:</p>
-                                            <ul>
-                                            <li>все представители</li>
-                                            <li>представители из определённых городов</li>
-                                            <li>определённые типы организаций (например, библиотеки или ВУЗы)</li>
-                                            <li>определённые региональные сети организаций (например, филиалы ГЦСИ)</li>
-                                            <li>конкретные представители, с которыми есть предварительная договорённость</li>
-                                            </ul>
-                                            <p>Кроме того, организатор события выбирает способ отбора заявок: автоматический или ручной. При автоматическом отборе алгоритм выбирает случайные заявки, при ручном - заявки одобряет организатор.</p>                                            
-                                        </div>
-                                      </div>
-                                    </div> 
-                                     <div class="accordion-group">
-                                      <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse12">
-                                          - какие бывают типы организаций
+                                          Какие бывают типы организаций?
                                         </a>
                                       </div>
                                       <div id="collapse12" class="accordion-body collapse">
