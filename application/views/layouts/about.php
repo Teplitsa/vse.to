@@ -145,8 +145,8 @@
                                             <li>доступ к Интернету</li>
                                             <li>оборудование</li>
                                             <li>умение собирать зрителей.</li>
-                                            <li><a herf="http://vse.to/register">Станьте представителем vse.to</a> </li>
                                             </ul>                                            
+                                            <li><a herf="http://vse.to/register">Станьте представителем vse.to</a> </li>
                                         </div>
                                       </div>
                                     </div>
