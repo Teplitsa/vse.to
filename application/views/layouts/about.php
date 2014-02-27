@@ -99,7 +99,7 @@
                                     <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse3">
-                                          Если вам нравится удалённое событие, и вы хчттите показать его в своём городе
+                                          Если вам нравится удалённое событие, и вы хотите показать его в своём городе
                                         </a>
                                       </div>
                                       <div id="collapse3" class="accordion-body collapse">
@@ -111,22 +111,6 @@
                                             <li>Проверьте, что у площадки, которую Вы выбрали, есть всё необходимое оборудование </li>
                                             <li>Проведите телемост</li>
                                             </ul>                                            
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="accordion-group">
-                                      <div class="accordion-heading">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse4">
-                                          Если вы хотите посмотреть телемост удалённого события в своём городе
-                                        </a>
-                                      </div>
-                                      <div id="collapse4" class="accordion-body collapse">
-                                        <div class="accordion-inner">
-                                            <ul>
-                                            <li>Зайдите на страницу удалённого события, которое Вам интересно, и нажмите на кнопку &ldquo;Хочу телемост&rdquo; </li>
-                                            <li>Представитель в Вашем городе узнает о Вашем интересе и, возможно, организует трансляцию </li>
-                                            <li>Если Вы хотите организовать телемост сами, Вы можете стать представителем vse.to.         
-                                            <ul>                                            
                                         </div>
                                       </div>
                                     </div>
