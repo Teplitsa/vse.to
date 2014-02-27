@@ -87,7 +87,7 @@
                                       <div id="collapse2" class="accordion-body collapse">
                                         <div class="accordion-inner">
                                             <ul>
-                                            <li><a herf="http://vse.to/register">Станьте представителем vse.to</a> </li>
+                                            <li><a href="http://vse.to/register">Станьте представителем vse.to</a> </li>
                                             <li>Разместите анонс Вашего события </li>
                                             <li>Региональные представители vse.to подадут заявки на трансляцию Вашего события </li>
                                             <li>Выберите заявки из тех городов, в которых Вы хотите провести трансляцию (города могут быть также отобраны автоматически) </li>
@@ -105,7 +105,7 @@
                                       <div id="collapse3" class="accordion-body collapse">
                                         <div class="accordion-inner">
                                             <ul>
-                                            <li><a herf="http://vse.to/register">Станьте представителем vse.to</a> </li>
+                                            <li><a href="http://vse.to/register">Станьте представителем vse.to</a> </li>
                                             <li>Добавьте заявку на трансляцию, нажав на кнопку &ldquo;Подать заявку&rdquo; на странице события </li>
                                             <li>Если Ваша заявка будет одобрена, создайте ивент в социальных сетях и пригласите всех на телемост </li>
                                             <li>Проверьте, что у площадки, которую Вы выбрали, есть всё необходимое оборудование </li>
@@ -146,7 +146,7 @@
                                             <li>оборудование</li>
                                             <li>умение собирать зрителей.</li>
                                             </ul>                                            
-                                            <li><a herf="http://vse.to/register">Станьте представителем vse.to</a> </li>
+                                            <li><a href="http://vse.to/register">Станьте представителем vse.to</a> </li>
                                         </div>
                                       </div>
                                     </div>
