@@ -61,7 +61,7 @@
                                     <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse1">
-                                          - что такое vse.to?
+                                          Что такое vse.to?
                                         </a>
                                       </div>
                                       <div id="collapse1" class="accordion-body collapse">
@@ -73,13 +73,13 @@
                                     <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse2">
-                                          - если у вас есть событие, и вы хотите транслировать его в регионы
+                                          Если у вас есть событие, и вы хотите транслировать его в регионы
                                         </a>
                                       </div>
                                       <div id="collapse2" class="accordion-body collapse">
                                         <div class="accordion-inner">
                                             <ul>
-                                            <li>Станьте представителем vse.to </li>
+                                            <li><a href="http://vse.to/register">Станьте представителем vse.to</a> </li>
                                             <li>Разместите анонс Вашего события </li>
                                             <li>Региональные представители vse.to подадут заявки на трансляцию Вашего события </li>
                                             <li>Выберите заявки из тех городов, в которых Вы хотите провести трансляцию (города могут быть также отобраны автоматически) </li>
@@ -91,13 +91,13 @@
                                     <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse3">
-                                          - если вам нравится удалённое событие, и вы хотите показать его в своём городе, то
+                                          Если вам нравится удалённое событие, и вы хотите показать его в своём городе
                                         </a>
                                       </div>
                                       <div id="collapse3" class="accordion-body collapse">
                                         <div class="accordion-inner">
                                             <ul>
-                                            <li>Станьте представителем vse.to </li>
+                                            <li><a href="http://vse.to/register">Станьте представителем vse.to</a> </li>
                                             <li>Добавьте заявку на трансляцию, нажав на кнопку &ldquo;Провести телемост&rdquo; на странице события </li>
                                             <li>Если Ваша заявка будет одобрена, создайте ивент в социальных сетях и пригласите всех на телемост </li>
                                             <li>Проверьте, что у площадки, которую Вы выбрали, есть всё необходимое оборудование </li>
@@ -108,24 +108,8 @@
                                     </div>
                                     <div class="accordion-group">
                                       <div class="accordion-heading">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse4">
-                                          - если вы хотите посмотреть телемост удалённого события в своём городе
-                                        </a>
-                                      </div>
-                                      <div id="collapse4" class="accordion-body collapse">
-                                        <div class="accordion-inner">
-                                            <ul>
-                                            <li>Зайдите на страницу удалённого события, которое Вам интересно, и нажмите на кнопку &ldquo;Хочу телемост&rdquo; </li>
-                                            <li>Представитель в Вашем городе узнает о Вашем интересе и, возможно, организует трансляцию </li>
-                                            <li>Если Вы хотите организовать телемост сами, Вы можете стать представителем vse.to.         
-                                            <ul>                                            
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="accordion-group">
-                                      <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse5">
-                                          - кто такие представители vse.to
+                                          Кто такие представители vse.to?
                                         </a>
                                       </div>
                                       <div id="collapse5" class="accordion-body collapse">
@@ -142,7 +126,7 @@
                                     <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse6">
-                                          - как стать представителем
+                                          Как стать представителем?
                                         </a>
                                       </div>
                                       <div id="collapse6" class="accordion-body collapse">
@@ -154,40 +138,35 @@
                                             <li>оборудование</li>
                                             <li>умение собирать зрителей.</li>
                                             </ul>                                            
+                                            <a href="http://vse.to/register">Станьте представителем vse.to</a>
                                         </div>
                                       </div>
                                     </div>
                                     <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse7">
-                                          - оборудование для телемоста
+                                         Какое потребуется оборудование для телемоста?
                                         </a>
                                       </div>
                                       <div id="collapse7" class="accordion-body collapse">
                                         <div class="accordion-inner">
                                             <p>Для участия в телемосте Вам нужно иметь</p>
-                                            <p>ПК: Intel Core 2 Duo 2.13 ГГц или AMD Athlon II 215 и выше, Оперативная память: от 2 Гб и выше для всех ОС</p>
-                                            <p>Интернет со скоростью доступа не меньше, чем 1 Мбит/с.</p>
-                                            <p>Вы можете проверить Вашу систему <a href="http://www.comdi.com/support/">тут</a> .</p>                                            
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="accordion-group">
-                                      <div class="accordion-heading">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse8">
-                                          - инструкция к вебинарному сервису
-                                        </a>
-                                      </div>
-                                      <div id="collapse8" class="accordion-body collapse">
-                                        <div class="accordion-inner">
-                                            <p>Большая инструкция есть <a href="http://help.comdi.com/">тут</a>.</p>                                           
+                                            <ul>
+                                            <li>ПК: Intel Core 2 Duo 2.13 ГГц или AMD Athlon II 215 и выше, Оперативная память: от 2 Гб и выше для всех ОС</li>
+                                            <li>Интернет со скоростью доступа не меньше, чем 3 Мбит/с. Вы можете проверить скорость интернета <a href="http://www.speedtest.net/">тут</a>.</li>
+                                            <li>веб-камеру</li>
+                                            <li>микрофон</li>
+                                            <li>колонки</li>
+                                            <li>проектор и экран или плазменную панель</li>
+                                            <li>установленный плагин для Google Hangouts. Плагин можно скачать <a href="http://www.google.com/tools/dlpage/hangoutplugin">тут</a>.</li>
+                                            </ul>
                                         </div>
                                       </div>
                                     </div>
                                     <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse9">
-                                          - виды трансляций на vse.to
+                                          Какие виды трансляций есть на vse.to?
                                         </a>
                                       </div>
                                       <div id="collapse9" class="accordion-body collapse">
@@ -202,7 +181,7 @@
                                      <div class="accordion-group">
                                       <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse10">
-                                          - какие события может транслировать vse.to
+                                          Какие события может транслировать vse.to?
                                         </a>
                                       </div>
                                       <div id="collapse10" class="accordion-body collapse">
@@ -213,28 +192,8 @@
                                     </div>                                   
                                      <div class="accordion-group">
                                       <div class="accordion-heading">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse11">
-                                          - как проходит отбор заявок
-                                        </a>
-                                      </div>
-                                      <div id="collaps11" class="accordion-body collapse">
-                                        <div class="accordion-inner">
-                                            <p>Добавляя анонс события на vse.to, организатор указывает максимальное количество телемостов и определяет, какие представители могут подать заявку на проведение телемоста:</p>
-                                            <ul>
-                                            <li>все представители</li>
-                                            <li>представители из определённых городов</li>
-                                            <li>определённые типы организаций (например, библиотеки или ВУЗы)</li>
-                                            <li>определённые региональные сети организаций (например, филиалы ГЦСИ)</li>
-                                            <li>конкретные представители, с которыми есть предварительная договорённость</li>
-                                            </ul>
-                                            <p>Кроме того, организатор события выбирает способ отбора заявок: автоматический или ручной. При автоматическом отборе алгоритм выбирает случайные заявки, при ручном - заявки одобряет организатор.</p>                                            
-                                        </div>
-                                      </div>
-                                    </div> 
-                                     <div class="accordion-group">
-                                      <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse12">
-                                          - какие бывают типы организаций
+                                          Какие бывают типы организаций?
                                         </a>
                                       </div>
                                       <div id="collapse12" class="accordion-body collapse">
