@@ -182,7 +182,7 @@ if (!$nav_turn_on) {
         </div>
         <div class="b-new-events">
             <?php if ($available_num) { ?>
-                <p><strong>Доступное количество телемостов: <?php echo ((int)$product->numviews - count($telemosts))?></strong></p>
+                <p><strong>Максимальное количество телемостов: <?php echo $product->numviews ?>, осталось: <?php echo ((int)$product->numviews - count($telemosts))?></strong></p>
             <?php } else { ?>
                 <p><strong>Вы уже выбрали максимально возможное количество телемостов</strong></p>                
             <?php } ?>
