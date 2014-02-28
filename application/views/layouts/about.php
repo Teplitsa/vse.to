@@ -52,14 +52,6 @@
 
                             <div class="span3">
 
-                                <?php echo HTML::image('public/data/img/logo.svg',array('class' =>'big-logo', 'style'=>'margin-top: 10px'))?>
-
-                                <div class="soc-link">
-                                    <a href="https://www.facebook.com/vsetonetwork" class="button fb">f</a>
-                                    <a href="https://twitter.com/vse_to" class="tw button ">t</a>
-                                    <a href="https://vk.com/vseto" class="button vk">v</a>
-                                </div>
-
                             </div>
                         
                             <div class="span7 content">
