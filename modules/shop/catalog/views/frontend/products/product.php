@@ -165,7 +165,7 @@ if (!$nav_turn_on) {
                 <hr>
                     
                 <?php if (count($other_telemosts)) { ?>
-                <p class="title"><?php echo count($main_telemosts) ? 'Другие телемосты:' : 'Телемосты' ?></p>
+                <p class="title"><?php echo count($main_telemosts) ? 'Другие телемосты:' : 'Телемосты:' ?></p>
                 <?php } ?>
 
                 <?php foreach ($other_telemosts as $telemost) {?>
