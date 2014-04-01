@@ -70,6 +70,9 @@ class Model_Product_Mapper extends Model_Mapper_Resource {
         // Hangouts
         $this->add_column('hangouts_secret_key', array('Type' => 'varchar(128)'));
         $this->add_column('hangouts_url', array('Type' => 'varchar(256)'));
+
+        $this->add_column('hangouts_test_secret_key', array('Type' => 'varchar(128)'));
+        $this->add_column('hangouts_test_url', array('Type' => 'varchar(256)'));
     }
     
 

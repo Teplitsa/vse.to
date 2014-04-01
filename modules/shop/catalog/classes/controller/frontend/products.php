@@ -1293,15 +1293,29 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         $key = $_GET['key'];
         $url = $_GET['url'];
         
+        
+       // Hangouts test
+        if(strpos($key,"zzzzzTESTzzzzz") === 0)
+        {
+            $isTest = true;
+            $key = substr($key, 14);
+        }
+        
         $result = array('status'=>'ok');
         
         if($key != Model_Product::HANGOUTS_STOP_KEY)
         {
-            $product = Model::fly('Model_Product')->find_by_hangouts_secret_key($key);
+            if($isTest)
+                $product = Model::fly('Model_Product')->find_by_hangouts_test_secret_key($key);
+            else
+                $product = Model::fly('Model_Product')->find_by_hangouts_secret_key($key);
             
             if($product->id)
             {
-                $product->hangouts_url = $url;
+                if($isTest)
+                    $product->hangouts_test_url = $url;
+                else
+                    $product->hangouts_url = $url;
                 $product->save();
             }
             else

@@ -760,12 +760,14 @@ class Model_Product extends Model_Res
                 case Model_Product::START_STAGE:
 
                     $this->hangouts_secret_key = Text::random('alnum', 128);
+                    $this->hangouts_test_secret_key = Text::random('alnum', 128);
                     $this->save(FALSE,FALSE,FALSE,TRUE);
                     
                     break;
                 case Model_Product::STOP_STAGE:
                     
                     $this->hangouts_secret_key = self::HANGOUTS_STOP_KEY;
+                    $this->hangouts_test_secret_key = self::HANGOUTS_STOP_KEY;
                     $this->save(FALSE,FALSE,FALSE,TRUE);
                     
                     break;

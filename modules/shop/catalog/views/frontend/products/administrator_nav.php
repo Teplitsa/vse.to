@@ -17,6 +17,10 @@ if ($provider == Model_Product::COMDI) {
     }
     
     $endUrl = URL::site($product->uri_frontend(NULL,Model_Product::STOP_STAGE));
+    
+    // Hangouts test
+    $startTestUrl = 'https://plus.google.com/hangouts/_?gid=1085528649580&gd=zzzzzTESTzzzzz'.$product->hangouts_test_secret_key;
+    $connectTestUrl = base64_decode($product->hangouts_test_url);
 }
 ?>
 
@@ -30,6 +34,12 @@ if ($provider == Model_Product::COMDI) {
 <?php
             break;                        
         case Model_Product::START_STAGE:
+            
+            // Set hangouts test url
+            if($connectTestUrl)
+                echo '<a href="',$connectTestUrl,'" class="go-link button" target="_blank" style="vertical-align: top">Войти в тест</a>';
+            else
+                echo '<a href="',$startTestUrl,'" class="request-link button" target="_blank" style="vertical-align: top">Начать тест</a>';
 ?>
     <?php if($isButton): ?>
         <div id="hangouts-button"></div>
