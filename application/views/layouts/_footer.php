@@ -23,7 +23,7 @@
                             Контакты:<br />
                             Центр изучения интернета и общества <br />
                             117418, Москва, Нахимовский пр. 47, оф. 1918<br />
-                            tov[dot]dinast[at]gmail[dot]com
+                            <a href="mailto:info@vse.to">info@vse.to</a>
 			</p>
                     </div>
                     <div class="soc-link">
