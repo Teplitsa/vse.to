@@ -15,7 +15,7 @@ var tinyMCE_config = {
                                                                                 "pasteword,removeformat,cleanup,code"
    ,theme_advanced_buttons2			:	""
    ,theme_advanced_buttons3			:	""
-
+   , extended_valid_elements : "iframe[src|width|height|name|align]",
    ,plugins :   "inlinepopups,advimage,advlink,table,paste"
 
 	//,document_base_url :	--- Is set in layout
