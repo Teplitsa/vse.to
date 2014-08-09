@@ -66,6 +66,8 @@ class Model_Product extends Model_Res
     const CALENDAR_TWOWEEK = 'P2W';
     const CALENDAR_ONEMONTH = 'P1M';
     
+	const CALENDAR_ARCHIVE = 'CLNDARCH';
+	
     const INTERACT_LIVE = 1;
     const INTERACT_STREAM = 2;
 

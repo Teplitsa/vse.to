@@ -43,7 +43,8 @@ if (count($telemosts)) {
 <?php if ($telemost_flag) { ?><span class="type"><?php echo Model_Product::$_interact_options[$product->interact];?></span><?php } ?>
 </div>
 <div class="span6 b-link">
- 
+<?php $datenow = new DateTime("now");
+if($product->datetime > $datenow): ?>
 <?php if (!$telemost_flag && $group_id != Model_Group::USER_GROUP_ID && $group_id && $product->user_id !=  $user_id) {    
     if ($available_num && !$user_id) { ?>
     <a data-toggle="modal" href="#notifyModal" class="request-link button">Провести телемост</a>    
@@ -53,7 +54,7 @@ if (count($telemosts)) {
     $unrequest_url = URL::to('frontend/catalog/smallproduct/unrequest', array('alias' => $product->alias));?>
 <a href="<?php echo $unrequest_url?>" class="ajax request-link button">Отменить заявку</a>         
 <?php }} ?>
-
+<? endif ?>
    
 </div></div></header>
 <div class="body-section">

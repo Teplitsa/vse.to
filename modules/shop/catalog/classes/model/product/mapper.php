@@ -288,8 +288,13 @@ class Model_Product_Mapper extends Model_Mapper_Resource {
 
             $today_datetime->sub(new DateInterval(Model_Product::DURATION_1));
 
-            $condition->and_where(DB::expr('TIMEDIFF('.$this->_db->table_prefix()."$table.datetime".','.$this->_db->quote($today_datetime->format(Kohana::config('datetime.db_datetime_format'))).')>0'));        
-            
+			if(!isset($search_params['calendar']) && $search_params['calendar'] != CALENDAR_ARCHIVE)
+				$condition->and_where(DB::expr('TIMEDIFF('.$this->_db->table_prefix()."$table.datetime".','.$this->_db->quote($today_datetime->format(Kohana::config('datetime.db_datetime_format'))).')>0'));        
+            else
+			{
+				$condition->and_where(DB::expr('TIMEDIFF('.$this->_db->quote($today_datetime->format(Kohana::config('datetime.db_datetime_format'))).','.$this->_db->table_prefix()."$table.datetime".')>0'));
+				$params['join_telemost'] = TRUE;
+			}
             
             if (Modules::registered('area') && !isset($search_params['all_towns']))
             {
@@ -331,6 +336,7 @@ class Model_Product_Mapper extends Model_Mapper_Resource {
 
                 $condition->and_where(DB::expr('TIMEDIFF('.$this->_db->table_prefix()."$table.datetime".','.$this->_db->quote($needTime->format(Kohana::config('datetime.db_datetime_format'))).')>0'));
             }
+
         }
         
         if ( ! $condition->is_empty())
@@ -601,7 +607,16 @@ class Model_Product_Mapper extends Model_Mapper_Resource {
             $query
                 ->join($place_table, 'LEFT')
                     ->on("$place_table.id", '=', "$table.place_id");
-        }        
+        }      
+        if ( ! empty($params['join_telemost'])) 
+        {        
+            $telemost_table = Model_Mapper::factory('Model_Telemost_Mapper')->table_name();
+
+            $query
+                ->join($telemost_table, 'inner')
+                    ->on("$telemost_table.product_id", '=', "$table.id");
+        }
+		
     }
     
     /**

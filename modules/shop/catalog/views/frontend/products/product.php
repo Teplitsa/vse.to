@@ -78,6 +78,9 @@ if (!$nav_turn_on) {
                 echo $nav->render();
             } else {
             ?>            
+			
+<?php $datenow = new DateTime("now");
+if($product->datetime > $datenow): ?>		
 <?php if (!$telemost_flag && $group_id != Model_Group::USER_GROUP_ID && $group_id && $product->user_id !=  $user_id) {    
     if ($available_num && !$user_id) { ?>
     <a data-toggle="modal" href="#notifyModal" class="request-link button">Провести телемост</a>    
@@ -87,7 +90,7 @@ if (!$nav_turn_on) {
     $unrequest_url = URL::to('frontend/catalog/product/unrequest', array('alias' => $product->alias));?>
 <a href="<?php echo $unrequest_url ?>" class="ajax request-link button">Отменить заявку</a>         
 <?php }} ?>
-
+<?php endif ?>
    
             <?php } ?>
         </div>

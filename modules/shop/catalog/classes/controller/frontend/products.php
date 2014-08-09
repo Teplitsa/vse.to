@@ -104,7 +104,19 @@ class Controller_Frontend_Products extends Controller_FrontendRES
         //$this->add_breadcrumbs();
         $this->request->response = $layout->render();
     }
-    
+    public function action_archive()
+    {   
+        $view = new View('frontend/workspace');
+
+        $view->content = $this->widget_list_products_archive();
+
+        $layout = $this->prepare_layout();
+        $layout->content = $view;
+        
+        // Add breadcrumbs
+        //$this->add_breadcrumbs();
+        $this->request->response = $layout->render();
+    }   
     public function widget_list_products() {        
         $section = Model_Section::current();
         
@@ -168,7 +180,72 @@ class Controller_Frontend_Products extends Controller_FrontendRES
 
         return $view->render();
     }
+    public function widget_list_products_archive() {        
+        $section = Model_Section::current();
+        
+        if ( ! isset($section->id))
+        {
+            $this->_action_404('Указанный раздел не найден');
+            return;
+        }
+        $product = Model::fly('Model_Product');
 
+        // build search condition
+        $search_params = array(
+            'section' => $section,
+            'active'  => -1,
+            'section_active' => 1,
+        );
+		
+        $town_alias = Cookie::get(Model_Town::TOWN_TOKEN, Model_Town::ALL_TOWN);
+        if($town_alias == Model_Town::ALL_TOWN)
+           $search_params['all_towns'] = true;
+        
+        $format = $this->request->param('format',NULL);
+        if ($format) $search_params['format'] = $format;
+
+        $theme = $this->request->param('theme',NULL);
+        if ($theme) $search_params['theme'] = $theme;
+
+		$search_params['calendar'] = Model_Product::CALENDAR_ARCHIVE;
+        
+        list($search_condition, $params) = $product->search_condition($search_params);
+		
+		// var_dump((string)$search_condition);die();
+		
+        // count & find products by search condition
+        $pages = (int)$this->request->param('page',1);
+
+        $per_page = 50;//4*$pages;
+
+        $count = $product->count_by($search_condition, $params);
+
+        $pagination = new Pagination($count, $per_page, 'page', 7);
+        $pagination->offset = 0;
+        $order_by = $this->request->param('cat_porder', 'datetime');
+        $desc = false;//(bool) $this->request->param('cat_pdesc', '0');
+
+        $params['offset'] = $pagination->offset;
+        $params['limit']  = $pagination->limit;
+        $params['order_by'] = $order_by;
+        $params['desc'] = $desc;
+
+        $params['with_image'] = 3;
+        $params['with_sections'] = TRUE;
+
+        $products = $product->find_all_by($search_condition, $params);
+        // Set up view
+        $view = new View('frontend/products/list');
+
+        $view->order_by = $order_by;
+        $view->desc = $desc;
+        //$view->properties = $properties;
+        $view->products = $products;
+
+        $view->pagination = $pagination->render('pagination_load');
+
+        return $view->render();
+    }
     /**
      * Search products
      */
