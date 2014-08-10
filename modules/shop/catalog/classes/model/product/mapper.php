@@ -288,7 +288,7 @@ class Model_Product_Mapper extends Model_Mapper_Resource {
 
             $today_datetime->sub(new DateInterval(Model_Product::DURATION_1));
 
-			if(!isset($search_params['calendar']) && $search_params['calendar'] != CALENDAR_ARCHIVE)
+			if(!(isset($search_params['calendar']) && $search_params['calendar'] == CALENDAR_ARCHIVE))
 				$condition->and_where(DB::expr('TIMEDIFF('.$this->_db->table_prefix()."$table.datetime".','.$this->_db->quote($today_datetime->format(Kohana::config('datetime.db_datetime_format'))).')>0'));        
             else
 			{
