@@ -24,8 +24,11 @@
                             Центр изучения интернета и общества <br />
                             117418, Москва, Нахимовский пр. 47, оф. 1918<br />
                             <a href="mailto:info@vse.to">info@vse.to</a>
-			</p>
+						</p>
                     </div>
+					<div>
+						<a href="<?php echo URL::uri_to('frontend/catalog/products/control', array('action' => 'archive'), TRUE) ?>">Архив событий</a>
+					</div>
                     <div class="soc-link">
                         <a href="https://www.facebook.com/vsetonetwork" class="button fb">f</a>
                         <a href="https://twitter.com/vse_to" class="tw button ">t</a>
