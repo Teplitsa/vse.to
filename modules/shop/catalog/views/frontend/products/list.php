@@ -67,7 +67,7 @@ if(count($tomorrow_events)) {
     echo $tomorrow_str;
 }
 if (count($near_events)) {
-    if ($is_archive) {
+    if (isset($is_archive) && $is_archive) {
       $title = 'Архивные события';
     } else {
       $title = 'В ближайшее время';
