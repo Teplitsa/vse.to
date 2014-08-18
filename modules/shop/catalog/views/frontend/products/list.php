@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
 
 <?php require_once(Kohana::find_file('views', 'frontend/products/_map')); ?>
-   
+
 <?php
 if ( ! count($products))
 {
@@ -12,7 +12,7 @@ $count = count($products);
 $i = 0;
 $products->rewind();
 
-if (!isset($without_dateheaders)) $without_dateheaders=FALSE; 
+if (!isset($without_dateheaders)) $without_dateheaders=FALSE;
 
 $today_datetime = new DateTime("now");
 $tomorrow_datetime = new DateTime("tomorrow");
@@ -28,12 +28,12 @@ $tomorrow_str = "";
 $near_str = "";
 
 while ($i < $count)
-{               
+{
     $product = $products->current();
     $products->next();
 
-    $prod_time = $product->datetime->format('d.m.Y'); 
-    
+    $prod_time = $product->datetime->format('d.m.Y');
+
     if($prod_time == $today_time) {
         array_push($today_events, $product);
         $today_str .= Widget::render_widget('products', 'small_product', $product);
@@ -47,14 +47,14 @@ while ($i < $count)
         $near_str .= Widget::render_widget('products', 'small_product', $product);
         $near_str .= Widget::render_widget('telemosts', 'request', $product);
     }
-    $i++;    
+    $i++;
 }
 
 if(count($today_events)) {
     echo '<h1 class="main-title"><span>Сегодня, '.$today_time.'</span></h1>';
 //    foreach ($today_events as $product) {
 //        echo Widget::render_widget('products', 'small_product', $product);
-//        Widget::render_widget('telemosts', 'request', $product);    
+//        Widget::render_widget('telemosts', 'request', $product);
 //    }
     echo $today_str;
 }
@@ -62,15 +62,21 @@ if(count($tomorrow_events)) {
     echo '<h1 class="main-title"><span>Завтра, '.$tomorrow_time.'</span></h1>';
 //    foreach ($tomorrow_events as $product) {
 //        echo Widget::render_widget('products', 'small_product', $product);
-//        Widget::render_widget('telemosts', 'request', $product);    
+//        Widget::render_widget('telemosts', 'request', $product);
 //    }
     echo $tomorrow_str;
 }
 if (count($near_events)) {
-    echo '<h1 class="main-title"><span>В ближайшее время</span></h1>';
+    if ($is_archive) {
+      $title = 'Архивные события';
+    } else {
+      $title = 'В ближайшее время';
+    }
+
+    echo "<h1 class='main-title'><span>$title</span></h1>";
 //    foreach ($near_events as $product) {
 //        echo Widget::render_widget('products', 'small_product', $product);
-//        Widget::render_widget('telemosts', 'request', $product);    
+//        Widget::render_widget('telemosts', 'request', $product);
 //    }
     echo $near_str;
 }
@@ -81,5 +87,3 @@ if ($pagination)
 {
     echo $pagination;
 } }?>
-
-
