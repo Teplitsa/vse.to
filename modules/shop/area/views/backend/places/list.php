@@ -74,7 +74,7 @@ foreach ($places as $place)
                 case 'ispeed':
                     echo '<td class="nowrap">';
 
-                    echo HTML::chars(Model_Place::$_ispeed_options[$place->ispeed[$field]]);
+                    echo HTML::chars(Model_Place::$_ispeed_options[$place->ispeed]);
 
                     echo '</td>';
                     break;
